@@ -11,9 +11,13 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+//        guard let window = NSApplication.shared.windows.first else {
+//            return
+//        }
+//        
+//        window.toggleFullScreen(nil)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
