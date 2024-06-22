@@ -36,28 +36,28 @@ extension GameScene: SKPhysicsContactDelegate {
                 displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
             }
         }
-//        
-//        //Blue Tower
-//        if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerBlueNotActivated {
-//            activateBlueTowerButtonAvailable = true
-//            
-//            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerBlueNotActivated ? contact.bodyA.node : contact.bodyB.node
-//            
-//            if let towerPosition = towerNode?.position {
-//                displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
-//            }
-//        }
-//        
-//        //Green Tower
-//        if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerGreenNotActivated {
-//            activateGreenTowerButtonAvailable = true
-//            
-//            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerGreenNotActivated ? contact.bodyA.node : contact.bodyB.node
-//            
-//            if let towerPosition = towerNode?.position {
-//                displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
-//            }
-//        }
+
+        //Blue Tower
+        if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerBlueNotActivated {
+            activateBlueTowerButtonAvailable = true
+            
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerBlueNotActivated ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position {
+                displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+            }
+        }
+        
+        //Green Tower
+        if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerGreenNotActivated {
+            activateGreenTowerButtonAvailable = true
+            
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerGreenNotActivated ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position {
+                displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+            }
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
@@ -72,14 +72,14 @@ extension GameScene: SKPhysicsContactDelegate {
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated {
             activatePurpleTowerButtonAvailable = false
         }
-//        //Blue Tower
-//        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerBlueNotActivated {
-//            activateBlueTowerButtonAvailable = false
-//        }
-//        //Green Tower
-//        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerGreenNotActivated {
-//            activateGreenTowerButtonAvailable = false
-//        }
+        //Blue Tower
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerBlueNotActivated {
+            activateBlueTowerButtonAvailable = false
+        }
+        //Green Tower
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerGreenNotActivated {
+            activateGreenTowerButtonAvailable = false
+        }
     }
     
 }

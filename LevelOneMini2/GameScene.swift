@@ -52,6 +52,11 @@ class GameScene: SKScene {
     var activatePurpleTowerButtonAvailable:Bool = false
     var activateBlueTowerButtonAvailable:Bool = false
     var activateGreenTowerButtonAvailable:Bool = false
+    
+    var redPressedTime:Double = 0.0
+    var purplePressedTime:Double = 0.0
+    var bluePressedTime:Double = 0.0
+    var greenPressedTime:Double = 0.0
 
     override func didMove(to view: SKView) {
         
@@ -155,16 +160,16 @@ class GameScene: SKScene {
             case kVK_ANSI_Q:
             if activateRedTowerButtonAvailable == true {
                 activateRedTowerButtonPressed = true
-            } else if activatePurpleTowerButtonAvailable == true {
+            }
+            if activatePurpleTowerButtonAvailable == true {
                 activatePurpleTowerButtonPressed = true
             }
-//                 else if activatePurpleTowerButtonAvailable == true {
-//                    activatePurpleTowerButtonPressed = true
-//                } else if activateBlueTowerButtonAvailable == true {
-//                    activateBlueTowerButtonPressed = true
-//                } else if activateGreenTowerButtonAvailable == true {
-//                    activateGreenTowerButtonPressed = true
-//                }
+            if activateBlueTowerButtonAvailable == true {
+                activateBlueTowerButtonPressed = true
+            }
+            if activateGreenTowerButtonAvailable == true {
+                activateGreenTowerButtonPressed = true
+            }
             default:
                 break
         }
@@ -199,22 +204,24 @@ class GameScene: SKScene {
         case kVK_ANSI_Q:
             if activateRedTowerButtonPressed {
                 activateRedTowerButtonPressed = false
-            } else if activatePurpleTowerButtonPressed {
-                activatePurpleTowerButtonPressed = false
+//                self.removeAction(forKey: "redTowerActivation")
             }
-//            } else if activatePurpleTowerButtonPressed {
-//                activatePurpleTowerButtonPressed = false
-//            } else if activateBlueTowerButtonPressed {
-//                activateBlueTowerButtonPressed = false
-//            } else if activateGreenTowerButtonPressed {
-//                activateGreenTowerButtonPressed = false
-//            }
+            if activatePurpleTowerButtonPressed {
+                activatePurpleTowerButtonPressed = false
+//                self.removeAction(forKey: "purpleTowerActivation")
+            }
+            if activateBlueTowerButtonPressed {
+                activateBlueTowerButtonPressed = false
+//                self.removeAction(forKey: "blueTowerActivation")
+            }
+            if activateGreenTowerButtonPressed {
+                activateGreenTowerButtonPressed = false
+//                self.removeAction(forKey: "greenTowerActivation")
+            }
         default:
             break
         }
     }
-    
-    //Timer dibuat di update, jgn di lain!
     
     override func update(_ currentTime: TimeInterval) {
         //Gendut movement
@@ -293,51 +300,88 @@ class GameScene: SKScene {
         
         //Tower Activation mechanism
         if activateRedTowerButtonPressed {
-            let wait = SKAction.wait(forDuration: 15.0)
-            let activatingTower = SKAction.run {
+            redPressedTime += 1.0
+            if redPressedTime == 900.0 {
                 self.towerRedActivate = true
             }
-            let sequence = SKAction.sequence([wait, activatingTower])
-            self.run(sequence)
-        } 
-//        else {
-//            self.removeAllActions()
-//        }
+        } else if !activateRedTowerButtonPressed {
+            redPressedTime = 0.0
+        }
         
         if activatePurpleTowerButtonPressed {
-            let wait = SKAction.wait(forDuration: 15.0)
-            let activatingTower = SKAction.run {
+            purplePressedTime += 1.0
+            if purplePressedTime == 900.0 {
                 self.towerPurpleActivate = true
             }
-            let sequence = SKAction.sequence([wait, activatingTower])
-            self.run(sequence)
-        } 
-//            else {
-//            self.removeAllActions()
+        } else if !activatePurpleTowerButtonPressed {
+            purplePressedTime = 0.0
+        }
+        
+        if activateBlueTowerButtonPressed {
+            bluePressedTime += 1.0
+            if bluePressedTime == 900.0 {
+                self.towerBlueActivate = true
+            }
+        } else if !activateBlueTowerButtonPressed {
+            bluePressedTime = 0.0
+        }
+        
+        if activateGreenTowerButtonPressed {
+            greenPressedTime += 1.0
+            if greenPressedTime == 900.0 {
+                self.towerGreenActivate = true
+            }
+        } else if !activateGreenTowerButtonPressed {
+            greenPressedTime = 0.0
+        }
+        
+        
+//        if activateRedTowerButtonPressed {
+//            let waitRed = SKAction.wait(forDuration: 15.0)
+//            let activatingRedTower = SKAction.run {
+//                self.towerRedActivate = true
+//            }
+//            let sequenceRed = SKAction.sequence([waitRed, activatingRedTower])
+//            self.run(sequenceRed, withKey: "redTowerActivation")
 //        }
-//        
+//        else {
+//            self.removeAction(forKey: "redTowerActivation")
+//        }
+        
+//        if activatePurpleTowerButtonPressed {
+//            let waitPurple = SKAction.wait(forDuration: 15.0)
+//            let activatingPurpleTower = SKAction.run {
+//                self.towerPurpleActivate = true
+//            }
+//            let sequencePurple = SKAction.sequence([waitPurple, activatingPurpleTower])
+//            self.run(sequencePurple, withKey: "purpleTowerActivation")
+//        }
+//        else {
+//            self.removeAction(forKey: "purpleTowerActivation")
+//        }
+        
 //        if activateBlueTowerButtonPressed {
-//            let wait = SKAction.wait(forDuration: 15.0)
-//            let activatingTower = SKAction.run {
+//            let waitBlue = SKAction.wait(forDuration: 15.0)
+//            let activatingBlueTower = SKAction.run {
 //                self.towerBlueActivate = true
 //            }
-//            let sequence = SKAction.sequence([wait, activatingTower])
-//            self.run(sequence)
-//        } 
-//        else {
-//            self.removeAllActions()
+//            let sequenceBlue = SKAction.sequence([waitBlue, activatingBlueTower])
+//            self.run(sequenceBlue, withKey: "blueTowerActivation")
 //        }
-//        
+//        else {
+//            self.removeAction(forKey: "blueTowerActivation")
+//        }
+        
 //        if activateGreenTowerButtonPressed {
-//            let wait = SKAction.wait(forDuration: 15.0)
-//            let activatingTower = SKAction.run {
+//            let waitGreen = SKAction.wait(forDuration: 15.0)
+//            let activatingGreenTower = SKAction.run {
 //                self.towerGreenActivate = true
 //            }
-//            let sequence = SKAction.sequence([wait, activatingTower])
-//            self.run(sequence)
-//        } 
+//            let sequenceGreen = SKAction.sequence([waitGreen, activatingGreenTower])
+//            self.run(sequenceGreen, withKey: "greenTowerActivation")
+//        }
 //        else {
-//            self.removeAllActions()
+//            self.removeAction(forKey: "greenTowerActivation")
 //        }
         
         if towerRedActivate == true {
@@ -375,43 +419,43 @@ class GameScene: SKScene {
                 parent.addChild(towerPurpleActivated)
             }
         }
-//        
-//        if towerBlueActivate == true {
-//            if let parent = towerBlue.parent {
-//                let position = towerBlue.position
-//                let zPos = towerBlue.zPosition
-//                towerBlueActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerBlue.size.width/1.5, height: towerBlue.size.height/4), center: CGPoint(x: 0, y: towerBlue.size.height/5))
-//                towerBlueActivated.physicsBody?.affectedByGravity = false
-//                towerBlueActivated.physicsBody?.isDynamic = false
-//                towerBlueActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerActivated
-//                towerBlueActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
-//                towerBlueActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
-//                towerBlue.removeFromParent()
-//                towerBlueActivated.size = CGSize(width: 300, height: 600)
-//                towerBlueActivated.position = position
-//                towerBlueActivated.zPosition = zPos
-//                parent.addChild(towerBlueActivated)
-//            }
-//        }
-//        
-//        if towerGreenActivate == true {
-//            if let parent = towerGreen.parent {
-//                let position = towerGreen.position
-//                let zPos = towerGreen.zPosition
-//                towerGreenActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerGreen.size.width/1.5, height: towerGreen.size.height/4), center: CGPoint(x: 0, y: towerGreen.size.height/5))
-//                towerGreenActivated.physicsBody?.affectedByGravity = false
-//                towerGreenActivated.physicsBody?.isDynamic = false
-//                towerGreenActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerActivated
-//                towerGreenActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
-//                towerGreenActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
-//                towerGreen.removeFromParent()
-//                towerGreenActivated.size = CGSize(width: 300, height: 600)
-//                towerGreenActivated.position = position
-//                towerGreenActivated.zPosition = zPos
-//                parent.addChild(towerGreenActivated)
-//            }
-//        }
-        print(activatePurpleTowerButtonPressed)
+
+        if towerBlueActivate == true {
+            if let parent = towerBlue.parent {
+                let position = towerBlue.position
+                let zPos = towerBlue.zPosition
+                towerBlueActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerBlue.size.width/1.5, height: towerBlue.size.height/4), center: CGPoint(x: 0, y: towerBlue.size.height/5))
+                towerBlueActivated.physicsBody?.affectedByGravity = false
+                towerBlueActivated.physicsBody?.isDynamic = false
+                towerBlueActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerActivated
+                towerBlueActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
+                towerBlueActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+                towerBlue.removeFromParent()
+                towerBlueActivated.size = CGSize(width: 300, height: 600)
+                towerBlueActivated.position = position
+                towerBlueActivated.zPosition = zPos
+                parent.addChild(towerBlueActivated)
+            }
+        }
+        
+        if towerGreenActivate == true {
+            if let parent = towerGreen.parent {
+                let position = towerGreen.position
+                let zPos = towerGreen.zPosition
+                towerGreenActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerGreen.size.width/1.5, height: towerGreen.size.height/4), center: CGPoint(x: 0, y: towerGreen.size.height/5))
+                towerGreenActivated.physicsBody?.affectedByGravity = false
+                towerGreenActivated.physicsBody?.isDynamic = false
+                towerGreenActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerActivated
+                towerGreenActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
+                towerGreenActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+                towerGreen.removeFromParent()
+                towerGreenActivated.size = CGSize(width: 300, height: 600)
+                towerGreenActivated.position = position
+                towerGreenActivated.zPosition = zPos
+                parent.addChild(towerGreenActivated)
+            }
+        }
+
     }
     
     func displayTextTower(at position: CGPoint) {
