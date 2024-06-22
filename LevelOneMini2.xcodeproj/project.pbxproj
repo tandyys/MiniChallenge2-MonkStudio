@@ -165,13 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				273B6F6A2C214EB800A64CA0 /* AppDelegate.swift */,
-				273B6F902C215B0C00A64CA0 /* SpriteKitHelper.swift */,
-				273B6F722C214EB800A64CA0 /* ViewController.swift */,
-				273B6F702C214EB800A64CA0 /* GameScene.swift */,
-				273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */,
-				273B712A2C2297FC00A64CA0 /* Tower.swift */,
-				273B6F9A2C217E7B00A64CA0 /* MainChar */,
 				273B700A2C2180EA00A64CA0 /* Level_1_Assets */,
+				273B71422C2703B400A64CA0 /* Level1 */,
 				273B6F742C214EB900A64CA0 /* Assets.xcassets */,
 				273B6F762C214EB900A64CA0 /* Main.storyboard */,
 				273B6F792C214EB900A64CA0 /* LevelOneMini2.entitlements */,
@@ -294,6 +289,19 @@
 			);
 			name = Cat;
 			path = ../../../../Downloads/Cat;
+			sourceTree = "<group>";
+		};
+		273B71422C2703B400A64CA0 /* Level1 */ = {
+			isa = PBXGroup;
+			children = (
+				273B6F902C215B0C00A64CA0 /* SpriteKitHelper.swift */,
+				273B6F722C214EB800A64CA0 /* ViewController.swift */,
+				273B6F702C214EB800A64CA0 /* GameScene.swift */,
+				273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */,
+				273B712A2C2297FC00A64CA0 /* Tower.swift */,
+				273B6F9A2C217E7B00A64CA0 /* MainChar */,
+			);
+			path = Level1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
