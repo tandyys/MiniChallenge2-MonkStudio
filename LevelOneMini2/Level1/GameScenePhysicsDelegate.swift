@@ -18,7 +18,7 @@ extension GameScene: SKPhysicsContactDelegate {
         //Red Tower
         if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerRedNotActivated {
             activateRedTowerButtonAvailable = true
-            
+            createRedProgressBar(at: CGPoint(x: towerRed.position.x, y: towerRed.position.y))
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerRedNotActivated ? contact.bodyA.node : contact.bodyB.node
             
             if let towerPosition = towerNode?.position {
@@ -29,7 +29,7 @@ extension GameScene: SKPhysicsContactDelegate {
         //Purple Tower
         if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated {
             activatePurpleTowerButtonAvailable = true
-            
+            createPurpleProgressBar(at: CGPoint(x: towerPurple.position.x, y: towerPurple.frame.maxY))
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerPurpleNotActivated ? contact.bodyA.node : contact.bodyB.node
             
             if let towerPosition = towerNode?.position {
@@ -40,7 +40,7 @@ extension GameScene: SKPhysicsContactDelegate {
         //Blue Tower
         if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerBlueNotActivated {
             activateBlueTowerButtonAvailable = true
-            
+            createBlueProgressBar(at: CGPoint(x: towerBlue.position.x, y: towerBlue.frame.maxY))
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerBlueNotActivated ? contact.bodyA.node : contact.bodyB.node
             
             if let towerPosition = towerNode?.position {
@@ -51,7 +51,7 @@ extension GameScene: SKPhysicsContactDelegate {
         //Green Tower
         if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerGreenNotActivated {
             activateGreenTowerButtonAvailable = true
-            
+            createGreenProgressBar(at: CGPoint(x: towerGreen.position.x, y: towerGreen.position.y))
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerGreenNotActivated ? contact.bodyA.node : contact.bodyB.node
             
             if let towerPosition = towerNode?.position {
@@ -67,18 +67,22 @@ extension GameScene: SKPhysicsContactDelegate {
         //Red Tower
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerRedNotActivated {
             activateRedTowerButtonAvailable = false
+            removeProgressBar()
         }
         //Purple Tower
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated {
             activatePurpleTowerButtonAvailable = false
+            removeProgressBar()
         }
         //Blue Tower
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerBlueNotActivated {
             activateBlueTowerButtonAvailable = false
+            removeProgressBar()
         }
         //Green Tower
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerGreenNotActivated {
             activateGreenTowerButtonAvailable = false
+            removeProgressBar()
         }
     }
     

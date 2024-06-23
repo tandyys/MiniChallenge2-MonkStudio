@@ -53,10 +53,14 @@ class GameScene: SKScene {
     var activateBlueTowerButtonAvailable:Bool = false
     var activateGreenTowerButtonAvailable:Bool = false
     
-    var redPressedTime:Double = 0.0
+    var redPressedTime:Double = 0.0 
     var purplePressedTime:Double = 0.0
     var bluePressedTime:Double = 0.0
     var greenPressedTime:Double = 0.0
+    
+    //Progress Bar node
+    var progressBar = SKShapeNode(rectOf: CGSize(width: 50, height: 50), cornerRadius: 5)
+    let border = SKShapeNode(rectOf: CGSize(width: 250, height: 50), cornerRadius: 5)
 
     override func didMove(to view: SKView) {
         
@@ -104,6 +108,8 @@ class GameScene: SKScene {
         towerRed.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
         towerRed.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
         addChild(towerRed)
+//        createProgressBar(at: CGPoint(x: towerRed.position.x, y: towerRed.position.y))
+//        createNewProgressBar(at: CGPoint(x: towerRed.position.x, y: towerRed.position.y))
         
         towerPurple.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
         towerPurple.position = CGPoint(x: 900, y: 20)

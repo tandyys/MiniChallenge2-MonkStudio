@@ -21,6 +21,7 @@ extension SKSpriteNode {
         case towerDown
         case decor
         case label
+        case progressBar
     }
     
     enum PhysicsCategory {

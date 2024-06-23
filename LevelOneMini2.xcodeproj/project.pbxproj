@@ -65,6 +65,7 @@
 		273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */; };
 		273B713C2C258FD500A64CA0 /* ProgressBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 273B713A2C258FD500A64CA0 /* ProgressBar.png */; };
 		273B713D2C258FD500A64CA0 /* ProgressBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 273B713B2C258FD500A64CA0 /* ProgressBarBG.png */; };
+		273B71442C28414300A64CA0 /* TowerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B71432C28414300A64CA0 /* TowerProgressBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,7 @@
 		273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScenePhysicsDelegate.swift; sourceTree = "<group>"; };
 		273B713A2C258FD500A64CA0 /* ProgressBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgressBar.png; sourceTree = "<group>"; };
 		273B713B2C258FD500A64CA0 /* ProgressBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgressBarBG.png; sourceTree = "<group>"; };
+		273B71432C28414300A64CA0 /* TowerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +301,7 @@
 				273B6F702C214EB800A64CA0 /* GameScene.swift */,
 				273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */,
 				273B712A2C2297FC00A64CA0 /* Tower.swift */,
+				273B71432C28414300A64CA0 /* TowerProgressBar.swift */,
 				273B6F9A2C217E7B00A64CA0 /* MainChar */,
 			);
 			path = Level1;
@@ -426,6 +429,7 @@
 				273B6F732C214EB800A64CA0 /* ViewController.swift in Sources */,
 				273B6F712C214EB800A64CA0 /* GameScene.swift in Sources */,
 				273B712B2C2297FC00A64CA0 /* Tower.swift in Sources */,
+				273B71442C28414300A64CA0 /* TowerProgressBar.swift in Sources */,
 				273B6F972C217E6D00A64CA0 /* Gendut.swift in Sources */,
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
