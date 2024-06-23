@@ -9,11 +9,16 @@ class GameScene: SKScene {
     let gendut = Gendut()
     let kecil = Kecil()
     
+    private var progressBar: HpProgressBarBos!
+    private var progressBarKecil: HpProgressBarBos!
+    private var progressBarGendut: HpProgressBarBos!
     let canonLeft = Canon_Left()
     let canonRight = Canon_Right()
     
     let bos = Bos()
     
+    let bosHpName =  SKSpriteNode(imageNamed: "hpBosLabel")
+
     var gendutUpPressed:Bool = false
     var gendutDownPressed:Bool = false
     var gendutLeftPressed:Bool = false
@@ -24,16 +29,18 @@ class GameScene: SKScene {
     var kecilLeftPressed:Bool = false
     var kecilRightPressed:Bool = false
     
+    var activateCanonLeftButtonAvailable = false
+    var activateCanonRightButtonAvailable:Bool = false
+
+    
     let backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
     let foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
-
+    
     var connectedControllers: [GCController] = []
     var playerControllers: [Int: GCController] = [:]
     let maximumControllerCount = 2
     
-    
-    
-    
+
     override func didMove(to view: SKView) {
 
    
@@ -66,16 +73,38 @@ class GameScene: SKScene {
         bos.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 50)
         addChild(bos)
         
+        bosHpName.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - 200)
+        bosHpName.zPosition = SKSpriteNode.Layer.label.rawValue
+        addChild(bosHpName)
+        
+        let progressBarSize = CGSize(width: 1264, height: 39)
+        progressBar = HpProgressBarBos(size: progressBarSize, backgroundImage: "hpProgressBarBosTexture", progressImage: "HpProgressBarBos")
+        progressBar.position = CGPoint(x: size.width / 2, y: frame.maxY - 280)
+        addChild(progressBar)
+        
+        let progressBarSizeKecil = CGSize(width: 195/1.4, height: 27.42/1.4)
+        progressBarKecil = HpProgressBarBos(size: progressBarSizeKecil, backgroundImage: "HpProgressBarCharacterTexture", progressImage: "HpProgressBarCharacter")
+        progressBarKecil.position = CGPoint(x: kecil.position.x, y: kecil.position.y + 10)
+        
+        let progressBarSizeBesar = CGSize(width: 195/1.4, height: 27.42/1.4)
+        progressBarGendut = HpProgressBarBos(size: progressBarSizeBesar, backgroundImage: "HpProgressBarCharacterTexture", progressImage: "HpProgressBarCharacter")
+        progressBarGendut.position = CGPoint(x: gendut.position.x, y: gendut.position.y + 10)
+        
+        addChild(progressBarKecil)
+        addChild(progressBarGendut)
+        
+        
+                
         canonLeft.shoot()
         canonRight.shoot()
         
-        
-        
-        
-       
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
+        
+        physicsWorld.contactDelegate = self
     }
+    
+    
     
     
     @objc func didConnectController(_ notification: Notification) {
@@ -217,20 +246,46 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
        
         let movement = Movement()
+        
+        
+        progressBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 140)
+        progressBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 200)
+        
+        
+        let newProgress = progressBar.progress + 0.0001
+        progressBar.setProgress(newProgress)
+        let newHpKecil = progressBar.progress + 0.0001
+        let newHpGendut = progressBar.progress + 0.0001
+        progressBarKecil.setProgress(newHpKecil)
+        progressBarGendut.setProgress(newHpGendut)
+        
         outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)
         movement.moveGendutAnimation(gendut: gendut,gendutUpPressed: gendutUpPressed, gendutDownPressed: gendutDownPressed, gendutLeftPressed: gendutLeftPressed, gendutRightPressed: gendutRightPressed)
         movement.moveKecilAnimation(kecil: kecil, kecilUpPressed: kecilUpPressed, kecilDownPressed: kecilDownPressed, kecilLeftPressed: kecilLeftPressed, kecilRightPressed: kecilRightPressed)
-        
-        
-        
-        
+         
     }
     
-    
 
-    
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
+    
+    
+    func displayTextCanon(at position: CGPoint) {
+        let text = SKLabelNode(text: "Press A to activate")
+        text.position = position
+        text.zPosition = SKSpriteNode.Layer.label.rawValue
+        text.fontName = "Helvetica-Bold"
+        text.fontSize = 36
+        text.fontColor = SKColor.white
+        addChild(text)
+        
+        text.run(SKAction.sequence([
+            SKAction.wait(forDuration: 2.0),
+            SKAction.removeFromParent()
+        ]))
+    }
+    
+    
+    
 }

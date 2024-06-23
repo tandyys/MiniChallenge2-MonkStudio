@@ -7,32 +7,87 @@
 
 import Foundation
 import SpriteKit
+import GameplayKit
+//activateCanonRightButtonAvailable
 
 extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
-        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        //Text Label mechanism
+        let canonContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
-        if contactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.tower {
-            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.tower ? contact.bodyA.node : contact.bodyB.node
+        //Canon Left kecil
+        if canonContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {
+            activateCanonLeftButtonAvailable = true
             
-            if let towerPosition = towerNode?.position {
-                displayTextTower(at: towerPosition)
+            let CanonLeftNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonLeftNotActivated ? contact.bodyA.node : contact.bodyB.node
+            
+            if let CanonLeftPosition = CanonLeftNode?.position {
+                displayTextCanon(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100))
             }
         }
+        
+        //canon left gendut
+        if canonContactMask ==  SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {
+            activateCanonLeftButtonAvailable = true
+            
+            let CanonLeftNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonLeft ? contact.bodyA.node : contact.bodyB.node
+            
+            if let CanonLeftPosition = CanonLeftNode?.position {
+                displayTextCanon(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100 ))
+            }
+        }
+        
+        
+        
+        //canon right kecil
+        if canonContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.canonRightNotActivated {
+            activateCanonRightButtonAvailable = true
+            
+            let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRightNotActivated ? contact.bodyA.node : contact.bodyB.node
+            
+            if let CanonRightPosition = CanonRightNode?.position {
+                displayTextCanon(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+            }
+        }
+        
+        
+        
+        //canon Right gendut
+        if canonContactMask ==  SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.canonRightNotActivated {
+            activateCanonRightButtonAvailable = true
+            
+            let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRight ? contact.bodyA.node : contact.bodyB.node
+            
+            if let CanonRightPosition = CanonRightNode?.position {
+                displayTextCanon(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+            }
+        }
+        
     }
     
-    func displayTextTower(at position: CGPoint) {
-        let text = SKLabelNode(text: "Press Q to activate!")
-        text.position = position
-        text.zPosition = SKSpriteNode.Layer.label.rawValue
-        text.fontSize = 36
-        text.fontColor = SKColor.white
-        addChild(text)
+    func didEnd(_ contact: SKPhysicsContact) {
         
-        text.run(SKAction.sequence([
-            SKAction.wait(forDuration: 5.0),
-            SKAction.removeFromParent()
-        ]))
+        let canonContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        //kecil left
+        if canonContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {
+            activateCanonLeftButtonAvailable = false
+        }
+        //kecil right
+        if canonContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.canonRightNotActivated {
+            activateCanonLeftButtonAvailable = false
+        }
+        
+        //gendut left
+        if canonContactMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {
+            activateCanonLeftButtonAvailable = false
+        }
+        //gendut right
+        if canonContactMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.canonRightNotActivated {
+            activateCanonLeftButtonAvailable = false
+        }
+     
     }
+    
 }

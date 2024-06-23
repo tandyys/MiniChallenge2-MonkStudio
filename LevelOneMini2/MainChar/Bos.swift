@@ -14,6 +14,10 @@ class Bos: SKSpriteNode {
     }
     
     private var bosMoveTexture: [SKTexture]?
+    var hpBos: Double = 1000
+
+    
+    
     
     init() {
         let texture = SKTexture(imageNamed: "ratBoss_0")
@@ -27,6 +31,8 @@ class Bos: SKSpriteNode {
 //        self.size = CGSize(width: 320, height: 360)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.zPosition = SKSpriteNode.Layer.bos.rawValue
+
+        
         
         //physics
 //        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/3), center: CGPoint(x: 0, y: self.size.height/3))
@@ -56,4 +62,6 @@ class Bos: SKSpriteNode {
         removeAction(forKey: PlayerAnimationType.move.rawValue)
 //        removeAllActions()
     }
+    
+
 }

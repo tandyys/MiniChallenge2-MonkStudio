@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		273B6F782C214EB900A64CA0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 273B6F772C214EB900A64CA0 /* Base */; };
+		F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F848446B2C286C2600BD64F4 /* Projectile.swift */; };
 		F8A86B122C282195003C4282 /* Kecil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B0D2C282195003C4282 /* Kecil.swift */; };
 		F8A86B132C282195003C4282 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B032C282195003C4282 /* GameScene.swift */; };
 		F8A86B142C282195003C4282 /* OutOfBound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B042C282195003C4282 /* OutOfBound.swift */; };
@@ -25,12 +26,14 @@
 		F8A86B202C282195003C4282 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F8A86B012C282195003C4282 /* GameScene.sks */; };
 		F8A86B212C282195003C4282 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8A86B112C282195003C4282 /* Assets.xcassets */; };
 		F8A86B222C282195003C4282 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F8A86B022C282195003C4282 /* Actions.sks */; };
+		F8E7CE2E2C28319300FB8F74 /* HpProgressBarBos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7CE2D2C28318F00FB8F74 /* HpProgressBarBos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		273B6F672C214EB800A64CA0 /* LevelOneMini2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LevelOneMini2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		273B6F772C214EB900A64CA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		273B6F792C214EB900A64CA0 /* LevelOneMini2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LevelOneMini2.entitlements; sourceTree = "<group>"; };
+		F848446B2C286C2600BD64F4 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		F8A86AFF2C282195003C4282 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		F8A86B002C282195003C4282 /* AppDelegate 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate 2.swift"; sourceTree = "<group>"; };
 		F8A86B012C282195003C4282 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		F8A86B0F2C282195003C4282 /* SpriteKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitHelper.swift; sourceTree = "<group>"; };
 		F8A86B102C282195003C4282 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F8A86B112C282195003C4282 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F8E7CE2D2C28318F00FB8F74 /* HpProgressBarBos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressBarBos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 				F8A86B012C282195003C4282 /* GameScene.sks */,
 				F8A86B022C282195003C4282 /* Actions.sks */,
 				F8A86B032C282195003C4282 /* GameScene.swift */,
+				F8E7CE2D2C28318F00FB8F74 /* HpProgressBarBos.swift */,
+				F848446B2C286C2600BD64F4 /* Projectile.swift */,
 				F8A86B042C282195003C4282 /* OutOfBound.swift */,
 				F8A86B052C282195003C4282 /* Movement.swift */,
 				F8A86B062C282195003C4282 /* Handler.swift */,
@@ -198,10 +204,12 @@
 				F8A86B162C282195003C4282 /* Bos.swift in Sources */,
 				F8A86B172C282195003C4282 /* Movement.swift in Sources */,
 				F8A86B182C282195003C4282 /* ViewController.swift in Sources */,
+				F8E7CE2E2C28319300FB8F74 /* HpProgressBarBos.swift in Sources */,
 				F8A86B192C282195003C4282 /* Handler.swift in Sources */,
 				F8A86B1A2C282195003C4282 /* Canon_Right.swift in Sources */,
 				F8A86B1B2C282195003C4282 /* AppDelegate 2.swift in Sources */,
 				F8A86B1C2C282195003C4282 /* GameScenePhysicsDelegate.swift in Sources */,
+				F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */,
 				F8A86B1D2C282195003C4282 /* MenuScene.swift in Sources */,
 				F8A86B1E2C282195003C4282 /* Canon_Left.swift in Sources */,
 				F8A86B1F2C282195003C4282 /* Gendut.swift in Sources */,

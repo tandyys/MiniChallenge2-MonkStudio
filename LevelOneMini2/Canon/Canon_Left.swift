@@ -15,10 +15,11 @@ class Canon_Left: SKSpriteNode {
     }
     
     private var canon_LeftTextures: [SKTexture]?
+    var attack: Double = 1000
     
     init() {
         let texture = SKTexture(imageNamed: "CanonLeft_0")
-        
+      
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
@@ -32,10 +33,8 @@ class Canon_Left: SKSpriteNode {
         //physics
         
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width/5, height: self.size.height/5), center: CGPoint(x: self.size.width/2, y: -25))
-        self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.canon
-        self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.gendut |
-        SKSpriteNode.PhysicsCategory.kecil |
-        SKSpriteNode.PhysicsCategory.monster
+        self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.canonLeftNotActivated
+        self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.kecil
         self.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = false
