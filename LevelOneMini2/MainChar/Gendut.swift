@@ -14,7 +14,7 @@ class Gendut: SKSpriteNode {
     }
     
     private var gendutWalkTexture: [SKTexture]?
-    var maxHpGendut:Double = 300
+    var hp:Double = 1000
     
     init() {
         let texture = SKTexture(imageNamed: "GendutWalk_0")

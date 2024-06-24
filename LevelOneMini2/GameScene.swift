@@ -9,13 +9,21 @@ class GameScene: SKScene {
     let gendut = Gendut()
     let kecil = Kecil()
     
-    private var progressBar: HpProgressBarBos!
-    private var progressBarKecil: HpProgressBarBos!
-    private var progressBarGendut: HpProgressBarBos!
+    private var healthBarBos: HpProgressBar!
+    private var healthBarGendut: HpProgressBar!
+    private var healthBarKecil: HpProgressBar!
     let canonLeft = Canon_Left()
     let canonRight = Canon_Right()
     
+    var canonLeftShoot: Bool = false
+    var canonRightShoot: Bool = false
+    
+    
     let bos = Bos()
+    
+    let totalhpBos = 10000 // kalau ganti ini ganti juga ke class bos
+    let totalhpKecil = 500
+    let totalhpGendut = 1000
     
     let bosHpName =  SKSpriteNode(imageNamed: "hpBosLabel")
 
@@ -29,9 +37,12 @@ class GameScene: SKScene {
     var kecilLeftPressed:Bool = false
     var kecilRightPressed:Bool = false
     
-    var activateCanonLeftButtonAvailable = false
+    var activateCanonLeftButtonAvailable:Bool = false
     var activateCanonRightButtonAvailable:Bool = false
-
+    
+    var attackedBosHit:Bool = false
+    var attackedKecilHit:Bool = false
+    var attackedGendutHit:Bool = false
     
     let backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
     let foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
@@ -39,6 +50,8 @@ class GameScene: SKScene {
     var connectedControllers: [GCController] = []
     var playerControllers: [Int: GCController] = [:]
     let maximumControllerCount = 2
+    
+    
     
 
     override func didMove(to view: SKView) {
@@ -78,25 +91,25 @@ class GameScene: SKScene {
         addChild(bosHpName)
         
         let progressBarSize = CGSize(width: 1264, height: 39)
-        progressBar = HpProgressBarBos(size: progressBarSize, backgroundImage: "hpProgressBarBosTexture", progressImage: "HpProgressBarBos")
-        progressBar.position = CGPoint(x: size.width / 2, y: frame.maxY - 280)
-        addChild(progressBar)
+        healthBarBos = HpProgressBar(size: progressBarSize, backgroundImage: "HpProgressBarBos", progressImage: "hpProgressBarBosTexture")
+        healthBarBos.position = CGPoint(x: size.width / 2, y: frame.maxY - 280)
+        addChild(healthBarBos)
+        
+        let progressBarSizeGendut = CGSize(width: 195/1.4, height: 27.42/1.4)
+        healthBarGendut = HpProgressBar(size: progressBarSizeGendut, backgroundImage: "HpProgressBarCharacter", progressImage: "HpProgressBarCharacterTexture")
+        healthBarGendut.position = CGPoint(x: gendut.position.x, y: gendut.position.y + 10)
         
         let progressBarSizeKecil = CGSize(width: 195/1.4, height: 27.42/1.4)
-        progressBarKecil = HpProgressBarBos(size: progressBarSizeKecil, backgroundImage: "HpProgressBarCharacterTexture", progressImage: "HpProgressBarCharacter")
-        progressBarKecil.position = CGPoint(x: kecil.position.x, y: kecil.position.y + 10)
+        healthBarKecil = HpProgressBar(size: progressBarSizeKecil, backgroundImage: "HpProgressBarCharacter", progressImage: "HpProgressBarCharacterTexture")
+        healthBarKecil.position = CGPoint(x: kecil.position.x, y: kecil.position.y + 10)
         
-        let progressBarSizeBesar = CGSize(width: 195/1.4, height: 27.42/1.4)
-        progressBarGendut = HpProgressBarBos(size: progressBarSizeBesar, backgroundImage: "HpProgressBarCharacterTexture", progressImage: "HpProgressBarCharacter")
-        progressBarGendut.position = CGPoint(x: gendut.position.x, y: gendut.position.y + 10)
+        addChild(healthBarGendut)
+        addChild(healthBarKecil)
         
-        addChild(progressBarKecil)
-        addChild(progressBarGendut)
-        
-        
-                
-        canonLeft.shoot()
-        canonRight.shoot()
+     
+   
+//        canonLeft.shoot()
+//        canonRight.shoot()
         
 
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
@@ -191,8 +204,13 @@ class GameScene: SKScene {
         switch Int(event.keyCode) {
             case kVK_ANSI_W:
                 gendutUpPressed = true
+                canonLeftShoot = true
+                canonLeft.shoot()
+             
             case kVK_ANSI_A:
                 gendutLeftPressed = true
+                canonRightShoot = true
+                canonRight.shoot()
             case kVK_ANSI_S:
                 gendutDownPressed = true
             case kVK_ANSI_D:
@@ -217,9 +235,12 @@ class GameScene: SKScene {
         case kVK_ANSI_W:
             gendutUpPressed = false
             gendut.stop()
+            canonLeft.stop()
+          
         case kVK_ANSI_A:
             gendutLeftPressed = false
             gendut.stop()
+            canonRight.stop()
         case kVK_ANSI_S:
             gendutDownPressed = false
             gendut.stop()
@@ -248,16 +269,36 @@ class GameScene: SKScene {
         let movement = Movement()
         
         
-        progressBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 140)
-        progressBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 200)
+        healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 140)
+        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 200)
         
+        if attackedBosHit == true{
+            bosGotAttack(damage: 10)
+        }
         
-        let newProgress = progressBar.progress + 0.0001
-        progressBar.setProgress(newProgress)
-        let newHpKecil = progressBar.progress + 0.0001
-        let newHpGendut = progressBar.progress + 0.0001
-        progressBarKecil.setProgress(newHpKecil)
-        progressBarGendut.setProgress(newHpGendut)
+        if attackedKecilHit == true{          
+            kecilGotAttack(damage: 10)
+        }
+        
+        if attackedGendutHit == true{
+            GendutGotAttack(damage: 10)
+        }
+        
+        if canonLeftShoot == true {
+            canonLeft.shootAction(movementSpeed: 1000)
+            canonLeftShoot = false
+        }
+        
+        if canonRightShoot == true {
+            canonRight.shootAction(movementSpeed: 1000)
+            canonRightShoot = false
+        }
+    
+        //healthBarBos.updateInnerBarWidth(health: 80, totalHealth: 100)
+        
+       // healthBarKecil.updateInnerBarWidth(health: 100, totalHealth: 100)
+        
+        //healthBarGendut.updateInnerBarWidth(health: 50, totalHealth: 100)
         
         outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)
         movement.moveGendutAnimation(gendut: gendut,gendutUpPressed: gendutUpPressed, gendutDownPressed: gendutDownPressed, gendutLeftPressed: gendutLeftPressed, gendutRightPressed: gendutRightPressed)
@@ -285,6 +326,59 @@ class GameScene: SKScene {
             SKAction.removeFromParent()
         ]))
     }
+    
+    
+    func bosGotAttack(damage: CGFloat) {
+        bos.hpBos -= damage
+        healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: CGFloat(totalhpBos))
+        print("\(bos.hpBos)")
+        attackedBosHit = false
+            
+            // Check if player health is zero or less
+            if  bos.hpBos < 0 {
+                bos.hpBos = 0
+                // Perform game over actions
+                gameOver()
+           }
+        }
+        
+    func kecilGotAttack(damage: CGFloat){
+        kecil.hp -= damage
+        healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
+        print("\(kecil.hp)")
+        attackedKecilHit = false
+            
+            // Check if player health is zero or less
+            if  kecil.hp < 0 {
+                kecil.hp = 0
+                // Perform game over actions
+                gameOver()
+           }
+        }
+    
+    func GendutGotAttack(damage: CGFloat){
+        gendut.hp -= damage
+        healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
+        print("\(gendut.hp)")
+        attackedGendutHit = false
+            
+            // Check if player health is zero or less
+        if  gendut.hp < 0 {
+            gendut.hp = 0
+                // Perform game over actions
+                gameOver()
+           }
+        }
+    
+    
+    
+        func gameOver() {
+            // Game over logic
+            print("Lu Mati")
+        }
+    
+    
+
     
     
     

@@ -52,8 +52,37 @@ class Canon_Right: SKSpriteNode {
             preconditionFailure("Cant find canon_Right texture")
         }
         
-        startAnimation(textures: canonRightTexture, speed: 0.135, name: PlayerAnimationType.shoot.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: canonRightTexture, speed: 0.0001, name: PlayerAnimationType.shoot.rawValue, count: 0, resize: true, restore: true)
     }
+    
+    func shootAction(movementSpeed: CGFloat) {
+        // Create a new instance of Projectile
+        let projectile = Projectile()
+        
+        // Calculate the position of the tip of the canon for the projectile
+        let canonTipPosition = CGPoint(x: 140, y: 170)
+        
+        // Set the position of the projectile at the tip of the canon
+        if let parent = parent {
+            projectile.position = parent.convert(canonTipPosition, from: self)
+        }
+        
+        // Add the projectile to the scene
+        self.parent?.addChild(projectile)
+        
+        // Calculate the x and y components of the vector for a 45-degree angle to the left with the specified movement speed
+           let angleInRadians = CGFloat.pi * 3 / 4  // 45 degrees to the left in radians
+           let dx = cos(angleInRadians) * movementSpeed  // Magnitude of the impulse in the x-direction based on movement speed
+           let dy = sin(angleInRadians) * movementSpeed  // Magnitude of the impulse in the
+        
+        // Apply an impulse to the projectile to shoot it at a 45-degree angle with the specified movement speed
+        let impulseVector = CGVector(dx: dx, dy: dy)
+        projectile.physicsBody?.applyImpulse(impulseVector)
+        print("Ini kluar ngak")
+    }
+    
+    
+  
     
     func stop(){
         removeAction(forKey: PlayerAnimationType.shoot.rawValue)

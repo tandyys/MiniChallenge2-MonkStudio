@@ -1,6 +1,6 @@
 import SpriteKit
 
-class HpProgressBarBos: SKNode {
+class HpProgressBar: SKNode {
     private var backgroundBar: SKSpriteNode!
     private var progressBar: SKSpriteNode!
     
@@ -33,7 +33,7 @@ class HpProgressBarBos: SKNode {
     
     // Function to update progress
     func updateInnerBarWidth(health: CGFloat, totalHealth: CGFloat) {
-        let newWidth = (health / totalHealth) * backgroundBar.size.width // Calculate the new width based on health
-        progressBar.size.width = newWidth
-    }
+         let newWidth = (health / totalHealth) * backgroundBar.size.width
+         progressBar.size.width = newWidth
+     }
 }

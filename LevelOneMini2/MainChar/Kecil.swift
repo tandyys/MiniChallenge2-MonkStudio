@@ -14,7 +14,7 @@ class Kecil: SKSpriteNode {
     }
     
     private var gendutWalkTexture: [SKTexture]?
-    var maxHpKecil:Double = 100
+    var hp:Double = 500
     
     init() {
         let texture = SKTexture(imageNamed: "KecilWalk_0")

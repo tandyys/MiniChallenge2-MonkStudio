@@ -15,11 +15,12 @@ class Canon_Left: SKSpriteNode {
     }
     
     private var canon_LeftTextures: [SKTexture]?
-    var attack: Double = 1000
+    var attack: Double = 10
+    var hitBoss: Bool = false
     
     init() {
         let texture = SKTexture(imageNamed: "CanonLeft_0")
-      
+        
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
@@ -55,12 +56,38 @@ class Canon_Left: SKSpriteNode {
         }
         
         //Run animation
-        startAnimation(textures: canonLeftTexture, speed: 0.135, name: PlayerAnimationType.shoot.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: canonLeftTexture, speed: 0.0001, name: PlayerAnimationType.shoot.rawValue, count: 0, resize: true, restore: true)
     }
     
+    func shootAction(movementSpeed: CGFloat) {
+        // Create a new instance of Projectile
+        let projectile = Projectile()
+        
+        // Calculate the position of the tip of the canon for the projectile
+        let canonTipPosition = CGPoint(x: self.position.x + 250, y: self.position.y - 275)
+        
+        // Set the position of the projectile at the tip of the canon
+        if let parent = parent {
+            projectile.position = parent.convert(canonTipPosition, from: self)
+        }
+        
+        // Add the projectile to the scene
+        self.parent?.addChild(projectile)
+        
+        // Calculate the x and y components of the vector for a 45-degree angle with the specified movement speed
+        let angleInRadians = CGFloat.pi / 4  // 45 degrees in radians
+        let dx = cos(angleInRadians) * movementSpeed  // Magnitude of the impulse in the x-direction based on movement speed
+        let dy = sin(angleInRadians) * movementSpeed  // Magnitude of the impulse in the y-direction based on movement speed
+        
+        // Apply an impulse to the projectile to shoot it at a 45-degree angle with the specified movement speed
+        let impulseVector = CGVector(dx: dx, dy: dy)
+        projectile.physicsBody?.applyImpulse(impulseVector)
+    }
     
-    func stop(){
-        removeAction(forKey: PlayerAnimationType.shoot.rawValue)
+    func stop() {
+        
+       removeAction(forKey: PlayerAnimationType.shoot.rawValue)
+        
     }
     
     

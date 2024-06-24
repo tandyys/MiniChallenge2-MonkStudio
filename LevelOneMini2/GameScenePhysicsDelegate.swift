@@ -15,7 +15,31 @@ extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         //Text Label mechanism
         let canonContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        let contactProjectileMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+                
         
+               
+        if contactProjectileMask == SKSpriteNode.PhysicsCategory.projectile | SKSpriteNode.PhysicsCategory.bos {
+            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+                if nodeA.name == "Projectile" && nodeB.name == "Bos" {
+                    attackedBosHit = true
+                    print("\(attackedBosHit)")
+
+                    // Apply damage to the boss
+                    let damage = 200
+                    bosGotAttack(damage: CGFloat(damage))
+                    nodeA.isHidden = true
+                } else if nodeA.name == "Bos" && nodeB.name == "Projectile" {
+                    attackedBosHit = true
+                    print("\(attackedBosHit)")
+
+                    // Apply damage to the boss
+                    let damage = 200
+                    bosGotAttack(damage: CGFloat(damage))
+                    nodeB.isHidden = true
+                }
+            }
+        }
         //Canon Left kecil
         if canonContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {
             activateCanonLeftButtonAvailable = true

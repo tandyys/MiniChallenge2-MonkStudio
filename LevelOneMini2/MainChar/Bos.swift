@@ -14,7 +14,7 @@ class Bos: SKSpriteNode {
     }
     
     private var bosMoveTexture: [SKTexture]?
-    var hpBos: Double = 1000
+    var hpBos: Double = 10000
 
     
     
@@ -35,13 +35,13 @@ class Bos: SKSpriteNode {
         
         
         //physics
-//        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/3), center: CGPoint(x: 0, y: self.size.height/3))
-//        self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.gendut
-//        self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.tower | SKSpriteNode.PhysicsCategory.canon
-//        self.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.tower | SKSpriteNode.PhysicsCategory.canon
-//        self.physicsBody?.affectedByGravity = false
-//        self.physicsBody?.isDynamic = true
-//        self.physicsBody?.allowsRotation = false
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/3), center: CGPoint(x: 0, y: self.size.height/3))
+        self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.bos
+        self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.projectile
+        self.physicsBody?.collisionBitMask =  SKSpriteNode.PhysicsCategory.projectile
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.allowsRotation = false
     }
     
     required init?(coder aDecoder: NSCoder) {

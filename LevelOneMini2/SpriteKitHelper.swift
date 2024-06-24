@@ -14,9 +14,11 @@ extension SKSpriteNode {
         case bos
         case foreground
         case character
+        case projectile
         case canon
         case label
         case progressBar
+      
         
     }
     
@@ -26,7 +28,6 @@ extension SKSpriteNode {
         static let kecil: UInt32 = 0b10 //2
         static let monster: UInt32 = 0b100 //4
         static let tower: UInt32 = 0b1000 //8
-        static let canon: UInt32 = 0b10000 //16
         static let bos: UInt32 = 0b100000 
         static let canonLeft: UInt32 = 0b1000000
         static let canonRight: UInt32 = 0b1000000
