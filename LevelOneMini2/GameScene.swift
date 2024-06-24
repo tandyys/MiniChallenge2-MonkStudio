@@ -18,8 +18,11 @@ class GameScene: SKScene {
     var canonLeftShoot: Bool = false
     var canonRightShoot: Bool = false
     
+    var CanonContactLeft: Bool = false
+    var CanonContactRight: Bool = false
     
     let bos = Bos()
+    
     
     let totalhpBos = 10000 // kalau ganti ini ganti juga ke class bos
     let totalhpKecil = 500
@@ -202,15 +205,22 @@ class GameScene: SKScene {
     
     override func keyDown(with event: NSEvent) {
         switch Int(event.keyCode) {
-            case kVK_ANSI_W:
-                gendutUpPressed = true
+            case kVK_ANSI_Y:
+            if CanonContactLeft == true{
                 canonLeftShoot = true
                 canonLeft.shoot()
-             
-            case kVK_ANSI_A:
-                gendutLeftPressed = true
+            }
+  
+            case kVK_ANSI_U:
+            if CanonContactRight == true{
                 canonRightShoot = true
                 canonRight.shoot()
+            }
+            
+            case kVK_ANSI_W:
+                gendutUpPressed = true
+            case kVK_ANSI_A:
+                gendutLeftPressed = true
             case kVK_ANSI_S:
                 gendutDownPressed = true
             case kVK_ANSI_D:
@@ -232,11 +242,16 @@ class GameScene: SKScene {
     
     override func keyUp(with event: NSEvent) {
         switch Int(event.keyCode) {
+        case kVK_ANSI_Y:
+            canonLeftShoot = false
+            CanonContactLeft = false
+            canonLeft.stop()
+        case kVK_ANSI_U:
+            canonRightShoot = false
+            CanonContactRight = false
+            canonRight.stop()
         case kVK_ANSI_W:
             gendutUpPressed = false
-            gendut.stop()
-            canonLeft.stop()
-          
         case kVK_ANSI_A:
             gendutLeftPressed = false
             gendut.stop()
@@ -269,8 +284,8 @@ class GameScene: SKScene {
         let movement = Movement()
         
         
-        healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 140)
-        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 200)
+        healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 200)
+        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 140)
         
         if attackedBosHit == true{
             bosGotAttack(damage: 10)
@@ -312,8 +327,42 @@ class GameScene: SKScene {
     }
     
     
-    func displayTextCanon(at position: CGPoint) {
-        let text = SKLabelNode(text: "Press A to activate")
+    func displayTextCanonLeft(at position: CGPoint) {
+        let text = SKLabelNode(text: "Press Y to activate")
+        text.position = position
+        text.zPosition = SKSpriteNode.Layer.label.rawValue
+        text.fontName = "Helvetica-Bold"
+        text.fontSize = 36
+        text.fontColor = SKColor.white
+        addChild(text)
+        
+        text.run(SKAction.sequence([
+            SKAction.wait(forDuration: 2.0),
+            SKAction.removeFromParent()
+        ]))
+    }
+    
+    
+    func displayTextCanonRight(at position: CGPoint) {
+        let text = SKLabelNode(text: "Press U to activate")
+        text.position = position
+        text.zPosition = SKSpriteNode.Layer.label.rawValue
+        text.fontName = "Helvetica-Bold"
+        text.fontSize = 36
+        text.fontColor = SKColor.white
+        addChild(text)
+        
+        text.run(SKAction.sequence([
+            SKAction.wait(forDuration: 2.0),
+            SKAction.removeFromParent()
+        ]))
+    }
+    
+    
+    
+    
+    func displayAmno(at position: CGPoint, currentAmmo: Int, AmmoMax:Int) {
+        let text = SKLabelNode(text: "(\(currentAmmo), / \(AmmoMax)")
         text.position = position
         text.zPosition = SKSpriteNode.Layer.label.rawValue
         text.fontName = "Helvetica-Bold"
@@ -338,6 +387,7 @@ class GameScene: SKScene {
             if  bos.hpBos < 0 {
                 bos.hpBos = 0
                 // Perform game over actions
+                healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: CGFloat(totalhpBos))
                 gameOver()
            }
         }
@@ -353,6 +403,7 @@ class GameScene: SKScene {
                 kecil.hp = 0
                 // Perform game over actions
                 gameOver()
+                healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
            }
         }
     
@@ -367,6 +418,7 @@ class GameScene: SKScene {
             gendut.hp = 0
                 // Perform game over actions
                 gameOver()
+            healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
            }
         }
     

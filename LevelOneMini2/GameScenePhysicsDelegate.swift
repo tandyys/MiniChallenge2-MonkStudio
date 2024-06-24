@@ -28,6 +28,8 @@ extension GameScene: SKPhysicsContactDelegate {
                     // Apply damage to the boss
                     let damage = 200
                     bosGotAttack(damage: CGFloat(damage))
+                    kecilGotAttack(damage: CGFloat(200))
+                    GendutGotAttack(damage: CGFloat(100))
                     nodeA.isHidden = true
                 } else if nodeA.name == "Bos" && nodeB.name == "Projectile" {
                     attackedBosHit = true
@@ -36,6 +38,8 @@ extension GameScene: SKPhysicsContactDelegate {
                     // Apply damage to the boss
                     let damage = 200
                     bosGotAttack(damage: CGFloat(damage))
+                    kecilGotAttack(damage: CGFloat(200))
+                    GendutGotAttack(damage: CGFloat(100))
                     nodeB.isHidden = true
                 }
             }
@@ -44,10 +48,11 @@ extension GameScene: SKPhysicsContactDelegate {
         if canonContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {
             activateCanonLeftButtonAvailable = true
             
-            let CanonLeftNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonLeftNotActivated ? contact.bodyA.node : contact.bodyB.node
+            let CanonLeftNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonLeft ? contact.bodyA.node : contact.bodyB.node
             
             if let CanonLeftPosition = CanonLeftNode?.position {
-                displayTextCanon(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100))
+                displayTextCanonLeft(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100))
+                CanonContactLeft = true
             }
         }
         
@@ -58,7 +63,9 @@ extension GameScene: SKPhysicsContactDelegate {
             let CanonLeftNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonLeft ? contact.bodyA.node : contact.bodyB.node
             
             if let CanonLeftPosition = CanonLeftNode?.position {
-                displayTextCanon(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100 ))
+                displayTextCanonLeft(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100 ))
+                CanonContactLeft = true
+                
             }
         }
         
@@ -68,10 +75,11 @@ extension GameScene: SKPhysicsContactDelegate {
         if canonContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.canonRightNotActivated {
             activateCanonRightButtonAvailable = true
             
-            let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRightNotActivated ? contact.bodyA.node : contact.bodyB.node
+            let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRight ? contact.bodyA.node : contact.bodyB.node
             
             if let CanonRightPosition = CanonRightNode?.position {
-                displayTextCanon(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+                displayTextCanonRight(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+                CanonContactRight = true
             }
         }
         
@@ -84,7 +92,8 @@ extension GameScene: SKPhysicsContactDelegate {
             let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRight ? contact.bodyA.node : contact.bodyB.node
             
             if let CanonRightPosition = CanonRightNode?.position {
-                displayTextCanon(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+                displayTextCanonRight(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+                CanonContactRight = true
             }
         }
         
