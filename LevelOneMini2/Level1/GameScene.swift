@@ -60,10 +60,25 @@ class GameScene: SKScene {
     let maxPressedTime:Double = 900.0
     
     //Progress Bar node
-    var progressBar: SKSpriteNode!
-    var progressBarBg: SKSpriteNode!
-    var progressBarMask: SKSpriteNode!
-    var cropNode: SKCropNode!
+    var redProgressBar: SKSpriteNode!
+    var redProgressBarBg: SKSpriteNode!
+    var redProgressBarMask: SKSpriteNode!
+    var redCropNode: SKCropNode!
+    
+    var purpleProgressBar: SKSpriteNode!
+    var purpleProgressBarBg: SKSpriteNode!
+    var purpleProgressBarMask: SKSpriteNode!
+    var purpleCropNode: SKCropNode!
+    
+    var blueProgressBar: SKSpriteNode!
+    var blueProgressBarBg: SKSpriteNode!
+    var blueProgressBarMask: SKSpriteNode!
+    var blueCropNode: SKCropNode!
+    
+    var greenProgressBar: SKSpriteNode!
+    var greenProgressBarBg: SKSpriteNode!
+    var greenProgressBarMask: SKSpriteNode!
+    var greenCropNode: SKCropNode!
     
     //Deactive Time
     var towerRedDeactiveTime: Double = 60.0
@@ -274,7 +289,7 @@ class GameScene: SKScene {
         //Tower Activation mechanism
         if activateRedTowerButtonPressed {
             redPressedTime += 1.0
-            self.updateProgressBar(redPressedTime)
+            self.updateRedProgressBar(redPressedTime)
             if redPressedTime == maxPressedTime {
                 self.towerRedActivate = true
             }
@@ -284,7 +299,7 @@ class GameScene: SKScene {
         
         if activatePurpleTowerButtonPressed {
             purplePressedTime += 1.0
-            self.updateProgressBar(purplePressedTime)
+            self.updatePurpleProgressBar(purplePressedTime)
             if purplePressedTime == maxPressedTime {
                 self.towerPurpleActivate = true
             }
@@ -294,7 +309,7 @@ class GameScene: SKScene {
         
         if activateBlueTowerButtonPressed {
             bluePressedTime += 1.0
-            self.updateProgressBar(bluePressedTime)
+            self.updateBlueProgressBar(bluePressedTime)
             if bluePressedTime == maxPressedTime {
                 self.towerBlueActivate = true
             }
@@ -304,7 +319,7 @@ class GameScene: SKScene {
         
         if activateGreenTowerButtonPressed {
             greenPressedTime += 1.0
-            self.updateProgressBar(greenPressedTime)
+            self.updateGreenProgressBar(greenPressedTime)
             if greenPressedTime == maxPressedTime {
                 self.towerGreenActivate = true
             }
@@ -395,7 +410,7 @@ class GameScene: SKScene {
                 towerPurpleActivated.zPosition = zPos
                 parent.addChild(towerPurpleActivated)
             }
-//            self.deactivePurpleTower(towerPurpleDeactiveTime)
+            self.deactivePurpleTower(towerPurpleDeactiveTime)
         }
 
         if towerBlueActivate == true {
@@ -414,7 +429,7 @@ class GameScene: SKScene {
                 towerBlueActivated.zPosition = zPos
                 parent.addChild(towerBlueActivated)
             }
-//            self.deactiveBlueTower(towerBlueDeactiveTime)
+            self.deactiveBlueTower(towerBlueDeactiveTime)
         }
         
         if towerGreenActivate == true {
@@ -433,7 +448,7 @@ class GameScene: SKScene {
                 towerGreenActivated.zPosition = zPos
                 parent.addChild(towerGreenActivated)
             }
-//            self.deactiveGreenTower(towerGreenDeactiveTime)
+            self.deactiveGreenTower(towerGreenDeactiveTime)
         }
         
 //        print(towerRedActivate)

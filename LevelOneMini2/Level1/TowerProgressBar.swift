@@ -11,104 +11,116 @@ import SpriteKit
 extension GameScene {
     
     func createRedProgressBar(at position: CGPoint) {
-        progressBar = SKSpriteNode(imageNamed: "TowerProgBarBG")
-        progressBar.position = position
-        progressBar.zPosition = SKSpriteNode.Layer.label.rawValue
-        self.addChild(progressBar)
+        redProgressBar = SKSpriteNode(imageNamed: "TowerProgBarBG")
+        redProgressBar.position = position
+        redProgressBar.zPosition = SKSpriteNode.Layer.label.rawValue
+        self.addChild(redProgressBar)
         
-        progressBarBg = SKSpriteNode(imageNamed: "RedTowerProgBarMask")
-        progressBarBg.position = position
-        progressBarBg.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        redProgressBarBg = SKSpriteNode(imageNamed: "RedTowerProgBarMask")
+        redProgressBarBg.position = position
+        redProgressBarBg.zPosition = SKSpriteNode.Layer.progressBar.rawValue
         
-        progressBarMask = SKSpriteNode(imageNamed: "TowerProgBarBG")
-        progressBarMask.anchorPoint = CGPoint(x: 0, y: 0.5)
-        progressBarMask.position = CGPoint(x: progressBarBg.frame.minX, y: progressBarBg.position.y)
-        progressBarMask.zPosition = SKSpriteNode.Layer.progressBar.rawValue
-        progressBarMask.size = CGSize(width: 0, height: progressBarBg.size.height)
+        redProgressBarMask = SKSpriteNode(imageNamed: "TowerProgBarBG")
+        redProgressBarMask.anchorPoint = CGPoint(x: 0, y: 0.5)
+        redProgressBarMask.position = CGPoint(x: redProgressBarBg.frame.minX, y: redProgressBarBg.position.y)
+        redProgressBarMask.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        redProgressBarMask.size = CGSize(width: 0, height: redProgressBarBg.size.height)
         
-        cropNode = SKCropNode()
-        cropNode.maskNode = progressBarMask
-        cropNode.zPosition = SKSpriteNode.Layer.progressBar.rawValue
-        cropNode.addChild(progressBarBg)
+        redCropNode = SKCropNode()
+        redCropNode.maskNode = redProgressBarMask
+        redCropNode.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        redCropNode.addChild(redProgressBarBg)
         
-        self.addChild(cropNode)
+        self.addChild(redCropNode)
     }
     
     func createPurpleProgressBar(at position: CGPoint) {
-        progressBar = SKSpriteNode(imageNamed: "TowerProgBarBG")
-        progressBar.position = position
-        progressBar.zPosition = SKSpriteNode.Layer.label.rawValue
-        self.addChild(progressBar)
+        purpleProgressBar = SKSpriteNode(imageNamed: "TowerProgBarBG")
+        purpleProgressBar.position = position
+        purpleProgressBar.zPosition = SKSpriteNode.Layer.label.rawValue
+        self.addChild(purpleProgressBar)
         
-        progressBarBg = SKSpriteNode(imageNamed: "PurpleTowerProgBarMask")
-        progressBarBg.position = position
-        progressBarBg.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        purpleProgressBarBg = SKSpriteNode(imageNamed: "PurpleTowerProgBarMask")
+        purpleProgressBarBg.position = position
+        purpleProgressBarBg.zPosition = SKSpriteNode.Layer.progressBar.rawValue
         
-        progressBarMask = SKSpriteNode(imageNamed: "TowerProgBarBG")
-        progressBarMask.anchorPoint = CGPoint(x: 0, y: 0.5)
-        progressBarMask.position = CGPoint(x: progressBarBg.frame.minX, y: progressBarBg.position.y)
-        progressBarMask.zPosition = SKSpriteNode.Layer.progressBar.rawValue
-        progressBarMask.size = CGSize(width: 0, height: progressBarBg.size.height)
+        purpleProgressBarMask = SKSpriteNode(imageNamed: "TowerProgBarBG")
+        purpleProgressBarMask.anchorPoint = CGPoint(x: 0, y: 0.5)
+        purpleProgressBarMask.position = CGPoint(x: purpleProgressBarBg.frame.minX, y: purpleProgressBarBg.position.y)
+        purpleProgressBarMask.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        purpleProgressBarMask.size = CGSize(width: 0, height: purpleProgressBarBg.size.height)
         
-        cropNode = SKCropNode()
-        cropNode.maskNode = progressBarMask
-        cropNode.zPosition = SKSpriteNode.Layer.progressBar.rawValue
-        cropNode.addChild(progressBarBg)
+        purpleCropNode = SKCropNode()
+        purpleCropNode.maskNode = purpleProgressBarMask
+        purpleCropNode.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        purpleCropNode.addChild(purpleProgressBarBg)
         
-        self.addChild(cropNode)
+        self.addChild(purpleCropNode)
     }
     
     func createBlueProgressBar(at position: CGPoint) {
-        progressBar = SKSpriteNode(imageNamed: "TowerProgBarBG")
-        progressBar.position = position
-        progressBar.zPosition = SKSpriteNode.Layer.label.rawValue
-        self.addChild(progressBar)
+        blueProgressBar = SKSpriteNode(imageNamed: "TowerProgBarBG")
+        blueProgressBar.position = position
+        blueProgressBar.zPosition = SKSpriteNode.Layer.label.rawValue
+        self.addChild(blueProgressBar)
         
-        progressBarBg = SKSpriteNode(imageNamed: "BlueTowerProgBarMask")
-        progressBarBg.position = position
-        progressBarBg.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        blueProgressBarBg = SKSpriteNode(imageNamed: "BlueTowerProgBarMask")
+        blueProgressBarBg.position = position
+        blueProgressBarBg.zPosition = SKSpriteNode.Layer.progressBar.rawValue
         
-        progressBarMask = SKSpriteNode(imageNamed: "TowerProgBarBG")
-        progressBarMask.anchorPoint = CGPoint(x: 0, y: 0.5)
-        progressBarMask.position = CGPoint(x: progressBarBg.frame.minX, y: progressBarBg.position.y)
-        progressBarMask.zPosition = SKSpriteNode.Layer.progressBar.rawValue
-        progressBarMask.size = CGSize(width: 0, height: progressBarBg.size.height)
+        blueProgressBarMask = SKSpriteNode(imageNamed: "TowerProgBarBG")
+        blueProgressBarMask.anchorPoint = CGPoint(x: 0, y: 0.5)
+        blueProgressBarMask.position = CGPoint(x: blueProgressBarBg.frame.minX, y: blueProgressBarBg.position.y)
+        blueProgressBarMask.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        blueProgressBarMask.size = CGSize(width: 0, height: blueProgressBarBg.size.height)
         
-        cropNode = SKCropNode()
-        cropNode.maskNode = progressBarMask
-        cropNode.zPosition = SKSpriteNode.Layer.progressBar.rawValue
-        cropNode.addChild(progressBarBg)
+        blueCropNode = SKCropNode()
+        blueCropNode.maskNode = blueProgressBarMask
+        blueCropNode.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        blueCropNode.addChild(blueProgressBarBg)
         
-        self.addChild(cropNode)
+        self.addChild(blueCropNode)
     }
     
     func createGreenProgressBar(at position: CGPoint) {
-        progressBar = SKSpriteNode(imageNamed: "TowerProgBarBG")
-        progressBar.position = position
-        progressBar.zPosition = SKSpriteNode.Layer.label.rawValue
-        self.addChild(progressBar)
+        greenProgressBar = SKSpriteNode(imageNamed: "TowerProgBarBG")
+        greenProgressBar.position = position
+        greenProgressBar.zPosition = SKSpriteNode.Layer.label.rawValue
+        self.addChild(greenProgressBar)
         
-        progressBarBg = SKSpriteNode(imageNamed: "GreenTowerProgBarMask")
-        progressBarBg.position = position
-        progressBarBg.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        greenProgressBarBg = SKSpriteNode(imageNamed: "GreenTowerProgBarMask")
+        greenProgressBarBg.position = position
+        greenProgressBarBg.zPosition = SKSpriteNode.Layer.progressBar.rawValue
         
-        progressBarMask = SKSpriteNode(imageNamed: "TowerProgBarBG")
-        progressBarMask.anchorPoint = CGPoint(x: 0, y: 0.5)
-        progressBarMask.position = CGPoint(x: progressBarBg.frame.minX, y: progressBarBg.position.y)
-        progressBarMask.zPosition = SKSpriteNode.Layer.progressBar.rawValue
-        progressBarMask.size = CGSize(width: 0, height: progressBarBg.size.height)
+        greenProgressBarMask = SKSpriteNode(imageNamed: "TowerProgBarBG")
+        greenProgressBarMask.anchorPoint = CGPoint(x: 0, y: 0.5)
+        greenProgressBarMask.position = CGPoint(x: greenProgressBarBg.frame.minX, y: greenProgressBarBg.position.y)
+        greenProgressBarMask.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        greenProgressBarMask.size = CGSize(width: 0, height: greenProgressBarBg.size.height)
         
-        cropNode = SKCropNode()
-        cropNode.maskNode = progressBarMask
-        cropNode.zPosition = SKSpriteNode.Layer.progressBar.rawValue
-        cropNode.addChild(progressBarBg)
+        greenCropNode = SKCropNode()
+        greenCropNode.maskNode = greenProgressBarMask
+        greenCropNode.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        greenCropNode.addChild(greenProgressBarBg)
         
-        self.addChild(cropNode)
+        self.addChild(greenCropNode)
     }
     
-    func updateProgressBar(_ buttonPressedType: Double) {
-        let progress = min(buttonPressedType / maxPressedTime, 1.0)
-        progressBarMask.size.width = progress * progressBarBg.size.width
+    func updateRedProgressBar(_ buttonPressedType: Double) {
+        let redProgress = min(buttonPressedType / maxPressedTime, 1.0)
+        redProgressBarMask.size.width = redProgress * redProgressBarBg.size.width
+    }
+    func updatePurpleProgressBar(_ buttonPressedType: Double) {
+        let purpleProgress = min(buttonPressedType / maxPressedTime, 1.0)
+        purpleProgressBarMask.size.width = purpleProgress * purpleProgressBarBg.size.width
+    }
+    func updateBlueProgressBar(_ buttonPressedType: Double) {
+        let blueProgress = min(buttonPressedType / maxPressedTime, 1.0)
+        blueProgressBarMask.size.width = blueProgress * blueProgressBarBg.size.width
+    }
+    func updateGreenProgressBar(_ buttonPressedType: Double) {
+        let greenProgress = min(buttonPressedType / maxPressedTime, 1.0)
+        greenProgressBarMask.size.width = greenProgress * greenProgressBarBg.size.width
     }
     
     func deactiveRedTower(_ deactiveTime: Double) {
@@ -116,64 +128,76 @@ extension GameScene {
         let resizeAction = SKAction.resize(toWidth: -190, duration: deactiveTime)
         let completeAction = SKAction.run { [self] in
             SKAction.removeFromParent()
-            removeChildren(in: [progressBar, progressBarBg, cropNode])
+            removeChildren(in: [redProgressBar, redProgressBarBg, redCropNode])
             towerRedActivate = false
             towerRedActivated.removeFromParent()
             addChild(towerRed)
         }
         
         let sequence = SKAction.sequence([resizeAction, completeAction])
-        progressBarMask.run(sequence)
+        redProgressBarMask.run(sequence)
     }
     
-//    func deactivePurpleTower(_ deactiveTime: Double) {
-//        let deactiveTime = TimeInterval(deactiveTime)
-//        let resizeAction = SKAction.resize(toWidth: -190, duration: deactiveTime)
-//        let completeAction = SKAction.run { [self] in
-//            SKAction.removeFromParent()
-//            removeChildren(in: [progressBar, progressBarBg, cropNode])
-//            towerPurpleActivate = false
-//            towerPurpleActivated.removeFromParent()
-//            addChild(towerPurple)
-//        }
-//        
-//        let sequence = SKAction.sequence([resizeAction, completeAction])
-//        progressBarMask.run(sequence)
-//    }
-//    
-//    func deactiveBlueTower(_ deactiveTime: Double) {
-//        let deactiveTime = TimeInterval(deactiveTime)
-//        let resizeAction = SKAction.resize(toWidth: -190, duration: deactiveTime)
-//        let completeAction = SKAction.run { [self] in
-//            SKAction.removeFromParent()
-//            removeChildren(in: [progressBar, progressBarBg, cropNode])
-//            towerBlueActivate = false
-//            towerBlueActivated.removeFromParent()
-//            addChild(towerBlue)
-//        }
-//        
-//        let sequence = SKAction.sequence([resizeAction, completeAction])
-//        progressBarMask.run(sequence)
-//    }
-//    
-//    func deactiveGreenTower(_ deactiveTime: Double) {
-//        let deactiveTime = TimeInterval(deactiveTime)
-//        let resizeAction = SKAction.resize(toWidth: -190, duration: deactiveTime)
-//        let completeAction = SKAction.run { [self] in
-//            SKAction.removeFromParent()
-//            removeChildren(in: [progressBar, progressBarBg, cropNode])
-//            towerGreenActivate = false
-//            towerGreenActivated.removeFromParent()
-//            addChild(towerPurple)
-//        }
-//        
-//        let sequence = SKAction.sequence([resizeAction, completeAction])
-//        progressBarMask.run(sequence)
-//    }
+    func deactivePurpleTower(_ deactiveTime: Double) {
+        let deactiveTime = TimeInterval(deactiveTime)
+        let resizeAction = SKAction.resize(toWidth: -190, duration: deactiveTime)
+        let completeAction = SKAction.run { [self] in
+            SKAction.removeFromParent()
+            removeChildren(in: [purpleProgressBar, purpleProgressBarBg, purpleCropNode])
+            towerPurpleActivate = false
+            towerPurpleActivated.removeFromParent()
+            addChild(towerPurple)
+        }
+        
+        let sequence = SKAction.sequence([resizeAction, completeAction])
+        purpleProgressBarMask.run(sequence)
+    }
     
-    func removeProgressBar() {
+    func deactiveBlueTower(_ deactiveTime: Double) {
+        let deactiveTime = TimeInterval(deactiveTime)
+        let resizeAction = SKAction.resize(toWidth: -190, duration: deactiveTime)
+        let completeAction = SKAction.run { [self] in
+            SKAction.removeFromParent()
+            removeChildren(in: [blueProgressBar, blueProgressBarBg, blueCropNode])
+            towerBlueActivate = false
+            towerBlueActivated.removeFromParent()
+            addChild(towerBlue)
+        }
+        
+        let sequence = SKAction.sequence([resizeAction, completeAction])
+        blueProgressBarMask.run(sequence)
+    }
+    
+    func deactiveGreenTower(_ deactiveTime: Double) {
+        let deactiveTime = TimeInterval(deactiveTime)
+        let resizeAction = SKAction.resize(toWidth: -190, duration: deactiveTime)
+        let completeAction = SKAction.run { [self] in
+            SKAction.removeFromParent()
+            removeChildren(in: [greenProgressBar, greenProgressBarBg, greenCropNode])
+            towerGreenActivate = false
+            towerGreenActivated.removeFromParent()
+            addChild(towerPurple)
+        }
+        
+        let sequence = SKAction.sequence([resizeAction, completeAction])
+        greenProgressBarMask.run(sequence)
+    }
+    
+    func removeRedProgressBar() {
         SKAction.removeFromParent()
-        removeChildren(in: [progressBar, progressBarBg, cropNode])
+        removeChildren(in: [redProgressBar, redProgressBarBg, redCropNode])
+    }
+    func removePurpleProgressBar() {
+        SKAction.removeFromParent()
+        removeChildren(in: [purpleProgressBar, purpleProgressBarBg, purpleCropNode])
+    }
+    func removeBlueProgressBar() {
+        SKAction.removeFromParent()
+        removeChildren(in: [blueProgressBar, blueProgressBarBg, blueCropNode])
+    }
+    func removeGreenProgressBar() {
+        SKAction.removeFromParent()
+        removeChildren(in: [greenProgressBar, greenProgressBarBg, greenCropNode])
     }
     
 }

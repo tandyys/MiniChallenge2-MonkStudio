@@ -67,22 +67,22 @@ extension GameScene: SKPhysicsContactDelegate {
         //Red Tower
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerRedNotActivated {
             activateRedTowerButtonAvailable = false
-            removeProgressBar()
+            removeRedProgressBar()
         }
         //Purple Tower
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated {
             activatePurpleTowerButtonAvailable = false
-            removeProgressBar()
+            removePurpleProgressBar()
         }
         //Blue Tower
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerBlueNotActivated {
             activateBlueTowerButtonAvailable = false
-            removeProgressBar()
+            removeBlueProgressBar()
         }
         //Green Tower
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerGreenNotActivated {
             activateGreenTowerButtonAvailable = false
-            removeProgressBar()
+            removeGreenProgressBar()
         }
     }
     
