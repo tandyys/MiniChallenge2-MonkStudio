@@ -23,13 +23,14 @@ class Projectile: SKSpriteNode{
         self.name = "Projectile"
         
         self.setScale(1.0)
+        self.zPosition = SKSpriteNode.Layer.projectile.rawValue
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.categoryBitMask = PhysicsCategory.projectile
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.monster |
-        PhysicsCategory.bos
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.bos
         self.physicsBody?.collisionBitMask = PhysicsCategory.none
+        self.physicsBody?.affectedByGravity = false
         
     }
     

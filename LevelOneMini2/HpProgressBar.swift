@@ -9,7 +9,7 @@ class HpProgressBarBos: SKNode {
     init(size: CGSize, backgroundImage: String, progressImage: String) {
         super.init()
         
-    let backgroundTexture = SKTexture(imageNamed: backgroundImage)
+        let backgroundTexture = SKTexture(imageNamed: backgroundImage)
         let progressBgTexture = SKTexture(imageNamed: progressImage)
         
         // Setup background bar with the texture
@@ -20,10 +20,10 @@ class HpProgressBarBos: SKNode {
         
         // Setup progress bar
         progressBar = SKSpriteNode(texture: progressBgTexture)
-        progressBar.zPosition = SKSpriteNode.Layer.label.rawValue
-        progressBar.size = CGSize(width: 0, height: size.height)
-        progressBar.anchorPoint = CGPoint(x: 1.0, y: 0.5)
-        progressBar.position = CGPoint(x: size.width / 2, y: 0) // Position at the start
+        progressBar.zPosition = SKSpriteNode.Layer.label.rawValue + 1
+        progressBar.size = CGSize(width: size.width, height: size.height)
+        progressBar.anchorPoint = CGPoint(x: 0.0, y: 0.5)
+        progressBar.position = CGPoint(x: -size.width / 2, y: 0) // Position at the start
         addChild(progressBar)
     }
     
@@ -32,9 +32,8 @@ class HpProgressBarBos: SKNode {
     }
     
     // Function to update progress
-    func setProgress(_ progress: CGFloat) {
-        self.progress = min(max(progress, 0.0), 1) // Clamp the value between 0 and 1
-        let newWidth = backgroundBar.size.width * self.progress
-        progressBar.size = CGSize(width: newWidth, height: progressBar.size.height)
+    func updateInnerBarWidth(health: CGFloat, totalHealth: CGFloat) {
+        let newWidth = (health / totalHealth) * backgroundBar.size.width // Calculate the new width based on health
+        progressBar.size.width = newWidth
     }
 }
