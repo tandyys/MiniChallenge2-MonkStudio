@@ -57,10 +57,19 @@ class GameScene: SKScene {
     var purplePressedTime:Double = 0.0
     var bluePressedTime:Double = 0.0
     var greenPressedTime:Double = 0.0
+    let maxPressedTime:Double = 900.0
     
     //Progress Bar node
-    var progressBar = SKShapeNode(rectOf: CGSize(width: 50, height: 50), cornerRadius: 5)
-    let border = SKShapeNode(rectOf: CGSize(width: 250, height: 50), cornerRadius: 5)
+    var progressBar: SKSpriteNode!
+    var progressBarBg: SKSpriteNode!
+    var progressBarMask: SKSpriteNode!
+    var cropNode: SKCropNode!
+    
+    //Deactive Time
+    var towerRedDeactiveTime: Double = 60.0
+    var towerPurpleDeactiveTime: Double = 60.0
+    var towerBlueDeactiveTime: Double = 60.0
+    var towerGreenDeactiveTime: Double = 60.0
 
     override func didMove(to view: SKView) {
         
@@ -98,47 +107,9 @@ class GameScene: SKScene {
         
         addChild(gendut)
         addChild(kecil)
-        
-        towerRed.position = CGPoint(x: 300, y: 1300)
-        towerRed.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
-        towerRed.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerRed.size.width/1.5, height: towerRed.size.height/4), center: CGPoint(x: 0, y: towerRed.size.height/2.5))
-        towerRed.physicsBody?.affectedByGravity = false
-        towerRed.physicsBody?.isDynamic = false
-        towerRed.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerRedNotActivated
-        towerRed.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
-        towerRed.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
         addChild(towerRed)
-//        createProgressBar(at: CGPoint(x: towerRed.position.x, y: towerRed.position.y))
-//        createNewProgressBar(at: CGPoint(x: towerRed.position.x, y: towerRed.position.y))
-        
-        towerPurple.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
-        towerPurple.position = CGPoint(x: 900, y: 20)
-        towerPurple.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerPurple.size.width/1.5, height: towerPurple.size.height/4), center: CGPoint(x: 0, y: towerPurple.size.height/5))
-        towerPurple.physicsBody?.affectedByGravity = false
-        towerPurple.physicsBody?.isDynamic = false
-        towerPurple.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerPurpleNotActivated
-        towerPurple.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
-        towerPurple.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
         addChild(towerPurple)
-        
-        towerBlue.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
-        towerBlue.position = CGPoint(x: 2750, y: 50)
-        towerBlue.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerBlue.size.width/1.5, height: towerBlue.size.height/4), center: CGPoint(x: 0, y: towerBlue.size.height/5))
-        towerBlue.physicsBody?.affectedByGravity = false
-        towerBlue.physicsBody?.isDynamic = false
-        towerBlue.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerBlueNotActivated
-        towerBlue.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
-        towerBlue.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
         addChild(towerBlue)
-        
-        towerGreen.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
-        towerGreen.position = CGPoint(x: 1700, y: 1180)
-        towerGreen.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerGreen.size.width/1.5, height: towerGreen.size.height/4), center: CGPoint(x: 0, y: towerGreen.size.height/2.5))
-        towerGreen.physicsBody?.affectedByGravity = false
-        towerGreen.physicsBody?.isDynamic = false
-        towerGreen.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerGreenNotActivated
-        towerGreen.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
-        towerGreen.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
         addChild(towerGreen)
 
         physicsWorld.contactDelegate = self
@@ -210,19 +181,15 @@ class GameScene: SKScene {
         case kVK_ANSI_Q:
             if activateRedTowerButtonPressed {
                 activateRedTowerButtonPressed = false
-//                self.removeAction(forKey: "redTowerActivation")
             }
             if activatePurpleTowerButtonPressed {
                 activatePurpleTowerButtonPressed = false
-//                self.removeAction(forKey: "purpleTowerActivation")
             }
             if activateBlueTowerButtonPressed {
                 activateBlueTowerButtonPressed = false
-//                self.removeAction(forKey: "blueTowerActivation")
             }
             if activateGreenTowerButtonPressed {
                 activateGreenTowerButtonPressed = false
-//                self.removeAction(forKey: "greenTowerActivation")
             }
         default:
             break
@@ -307,7 +274,8 @@ class GameScene: SKScene {
         //Tower Activation mechanism
         if activateRedTowerButtonPressed {
             redPressedTime += 1.0
-            if redPressedTime == 900.0 {
+            self.updateProgressBar(redPressedTime)
+            if redPressedTime == maxPressedTime {
                 self.towerRedActivate = true
             }
         } else if !activateRedTowerButtonPressed {
@@ -316,7 +284,8 @@ class GameScene: SKScene {
         
         if activatePurpleTowerButtonPressed {
             purplePressedTime += 1.0
-            if purplePressedTime == 900.0 {
+            self.updateProgressBar(purplePressedTime)
+            if purplePressedTime == maxPressedTime {
                 self.towerPurpleActivate = true
             }
         } else if !activatePurpleTowerButtonPressed {
@@ -325,7 +294,8 @@ class GameScene: SKScene {
         
         if activateBlueTowerButtonPressed {
             bluePressedTime += 1.0
-            if bluePressedTime == 900.0 {
+            self.updateProgressBar(bluePressedTime)
+            if bluePressedTime == maxPressedTime {
                 self.towerBlueActivate = true
             }
         } else if !activateBlueTowerButtonPressed {
@@ -334,13 +304,13 @@ class GameScene: SKScene {
         
         if activateGreenTowerButtonPressed {
             greenPressedTime += 1.0
-            if greenPressedTime == 900.0 {
+            self.updateProgressBar(greenPressedTime)
+            if greenPressedTime == maxPressedTime {
                 self.towerGreenActivate = true
             }
         } else if !activateGreenTowerButtonPressed {
             greenPressedTime = 0.0
         }
-        
         
 //        if activateRedTowerButtonPressed {
 //            let waitRed = SKAction.wait(forDuration: 15.0)
@@ -406,6 +376,7 @@ class GameScene: SKScene {
                 towerRedActivated.zPosition = zPos
                 parent.addChild(towerRedActivated)
             }
+            self.deactiveRedTower(towerRedDeactiveTime)
         }
         
         if towerPurpleActivate == true {
@@ -424,6 +395,7 @@ class GameScene: SKScene {
                 towerPurpleActivated.zPosition = zPos
                 parent.addChild(towerPurpleActivated)
             }
+//            self.deactivePurpleTower(towerPurpleDeactiveTime)
         }
 
         if towerBlueActivate == true {
@@ -442,6 +414,7 @@ class GameScene: SKScene {
                 towerBlueActivated.zPosition = zPos
                 parent.addChild(towerBlueActivated)
             }
+//            self.deactiveBlueTower(towerBlueDeactiveTime)
         }
         
         if towerGreenActivate == true {
@@ -460,8 +433,11 @@ class GameScene: SKScene {
                 towerGreenActivated.zPosition = zPos
                 parent.addChild(towerGreenActivated)
             }
+//            self.deactiveGreenTower(towerGreenDeactiveTime)
         }
-
+        
+//        print(towerRedActivate)
+        
     }
     
     func displayTextTower(at position: CGPoint) {
