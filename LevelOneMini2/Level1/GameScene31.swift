@@ -18,15 +18,55 @@ class GameScene31: SKScene {
     var kecilDownPressed:Bool = false
     var kecilLeftPressed:Bool = false
     var kecilRightPressed:Bool = false
+    var kecilQPressed:Bool = false
     
-    let towerWhite = Tower.towerWhite()
-    let towerWhiteBuilt = Tower.towerWhiteBuilt()
-    let towerWhiteActivated = Tower.towerWhiteActivated()
+    var white1BuiltPressedTime:Double = 0.0
+    var white2BuiltPressedTime:Double = 0.0
+    var white3BuiltPressedTime:Double = 0.0
     
+    var white1ActivatePressedTime:Double = 0.0
+    var white2ActivatePressedTime:Double = 0.0
+    var white3ActivatePressedTime:Double = 0.0
+    
+    let tower1White = Tower.tower1White()
+    let tower1WhiteBuilt = Tower.tower1WhiteBuilt()
+    let tower1WhiteActivated = Tower.tower1WhiteActivated()
+    
+    let tower2White = Tower.tower2White()
+    let tower2WhiteBuilt = Tower.tower2WhiteBuilt()
+    let tower2WhiteActivated = Tower.tower2WhiteActivated()
+    
+    let tower3White = Tower.tower3White()
+    let tower3WhiteBuilt = Tower.tower3WhiteBuilt()
+    let tower3WhiteActivated = Tower.tower3WhiteActivated()
+    
+    var buildWhite1TowerAvailable:Bool = false
+    var buildWhite1TowerPressed:Bool = false
+    var towerWhite1BuildBool:Bool = false
+    var activateWhite1TowerButtonAvailable:Bool = false
+    var activateWhite1TowerButtonPressed:Bool = false
+    var towerWhite1ActivateBool: Bool = false
+    
+    var buildWhite2TowerAvailable:Bool = false
+    var buildWhite2TowerPressed:Bool = false
+    var towerWhite2BuildBool:Bool = false
+    var activateWhite2TowerButtonAvailable:Bool = false
+    var activateWhite2TowerButtonPressed:Bool = false
+    var towerWhite2ActivateBool: Bool = false
+    
+    var buildWhite3TowerAvailable:Bool = false
+    var buildWhite3TowerPressed:Bool = false
+    var towerWhite3BuildBool:Bool = false
+    var activateWhite3TowerButtonAvailable:Bool = false
+    var activateWhite3TowerButtonPressed:Bool = false
+    var towerWhite3ActivateBool: Bool = false
 
     var connectedControllers: [GCController] = []
     var playerControllers: [Int: GCController] = [:]
     let maximumControllerCount = 2
+    
+    var progressBar = SKShapeNode(rectOf: CGSize(width: 50, height: 50), cornerRadius: 5)
+    let border = SKShapeNode(rectOf: CGSize(width: 250, height: 50), cornerRadius: 5)
     
     
     override func didMove(to view: SKView) {
@@ -46,15 +86,35 @@ class GameScene31: SKScene {
         addChild(foregroundNode)
         
         
-        towerWhite.position = CGPoint(x: 300, y: 1000)
-        towerWhite.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
-        towerWhite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerWhite.size.width/1.5, height: towerWhite.size.height/4), center: CGPoint(x: 0, y: towerWhite.size.height/2.5))
-        towerWhite.physicsBody?.affectedByGravity = false
-        towerWhite.physicsBody?.isDynamic = false
-        towerWhite.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhiteDestroyed
-        towerWhite.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
-        towerWhite.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
-        addChild(towerWhite)
+        tower1White.position = CGPoint(x: 500, y: 700)
+//        towerWhite.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+        tower1White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1White.size.width/1.5, height: tower1White.size.height/4), center: CGPoint(x: 0, y: tower1White.size.height/2.5))
+        tower1White.physicsBody?.affectedByGravity = false
+        tower1White.physicsBody?.isDynamic = false
+        tower1White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite1Destroyed
+        tower1White.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+        tower1White.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        addChild(tower1White)
+        
+        tower2White.position = CGPoint(x: 650, y: 200)
+//        towerWhite.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+        tower2White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/1.5, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height/2.5))
+        tower2White.physicsBody?.affectedByGravity = false
+        tower2White.physicsBody?.isDynamic = false
+        tower2White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite2Destroyed
+        tower2White.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+        tower2White.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        addChild(tower2White)
+        
+        tower3White.position = CGPoint(x: 2000, y: 100)
+//        towerWhite.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
+        tower3White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3White.size.width/1.5, height: tower3White.size.height/4), center: CGPoint(x: 0, y: tower3White.size.height/2.5))
+        tower3White.physicsBody?.affectedByGravity = false
+        tower3White.physicsBody?.isDynamic = false
+        tower3White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite3Destroyed
+        tower3White.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+        tower3White.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        addChild(tower3White)
         
         let boundaries = SKShapeNode(rectOf: CGSize(width: frame.width+1000, height: 20))
         boundaries.position = CGPoint(x: frame.size.width/2, y: size.height - frame.size.height/2 + 20 )
@@ -197,6 +257,27 @@ class GameScene31: SKScene {
     
     override func keyDown(with event: NSEvent) {
         switch Int(event.keyCode) {
+            case kVK_ANSI_Q:
+            print("Q pressed down")
+            if towerWhite1BuildBool == true && activateWhite1TowerButtonAvailable == true{
+                activateWhite1TowerButtonPressed = true
+            }
+            if towerWhite2BuildBool == true && activateWhite2TowerButtonAvailable == true{
+                activateWhite2TowerButtonPressed = true
+            }
+            if towerWhite3BuildBool == true && activateWhite3TowerButtonAvailable == true{
+                activateWhite3TowerButtonPressed = true
+            }
+                if buildWhite1TowerAvailable == true {
+                    buildWhite1TowerPressed = true
+                }
+                if activateWhite2TowerButtonAvailable == true {
+                    buildWhite2TowerPressed = true
+                }
+                if activateWhite3TowerButtonAvailable == true {
+                    buildWhite3TowerPressed = true
+                }
+    
             case kVK_ANSI_W:
                 gendutUpPressed = true
             case kVK_ANSI_A:
@@ -237,6 +318,33 @@ class GameScene31: SKScene {
     
     override func keyUp(with event: NSEvent) {
         switch Int(event.keyCode) {
+        case kVK_ANSI_Q:
+            if activateWhite1TowerButtonPressed{
+                activateWhite1TowerButtonPressed = false
+            }
+            if activateWhite2TowerButtonPressed{
+                activateWhite2TowerButtonPressed = false
+            }
+            if activateWhite3TowerButtonPressed{
+                activateWhite3TowerButtonPressed = false
+            }
+            
+            if buildWhite1TowerPressed {
+                buildWhite1TowerPressed = false
+//                self.removeAction(forKey: "redTowerActivation")
+            }
+            
+            if buildWhite1TowerPressed {
+                buildWhite1TowerPressed = false
+//                self.removeAction(forKey: "redTowerActivation")
+            }
+            
+            if buildWhite1TowerPressed {
+                buildWhite1TowerPressed = false
+//                self.removeAction(forKey: "redTowerActivation")
+            }
+            
+            
         case kVK_ANSI_W:
             gendutUpPressed = false
             gendut.stop()
@@ -267,6 +375,154 @@ class GameScene31: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if gendut.position.y < kecil.position.y && gendut.position.y < tower1White.position.y && kecil.position.y < tower1White.position.y{
+            gendut.zPosition = SKSpriteNode.Layer.gendutBackKecilBackTower.rawValue
+            print(gendut.zPosition)
+            kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutBackTower.rawValue
+            print(kecil.zPosition)
+            tower2White.zPosition = SKSpriteNode.Layer.towerFrontGendutFrontKecil.rawValue
+            print(tower2White.zPosition)
+        }
+        else if kecil.position.y < gendut.position.y && kecil.position.y < tower1White.position.y && gendut.position.y < tower1White.position.y{
+            kecil.zPosition = SKSpriteNode.Layer.kecilBackGendutBackTower.rawValue
+            gendut.zPosition = SKSpriteNode.Layer.gendutFrontKecilBackTower.rawValue
+            tower1White.zPosition = SKSpriteNode.Layer.towerFrontKecilFrontGendut.rawValue
+        }
+        else if kecil.position.y < tower1White.position.y && kecil.position.y < gendut.position.y && tower1White.position.y < gendut.position.y{
+            kecil.zPosition = SKSpriteNode.Layer.kecilBackTowerBackGendut.rawValue
+            tower1White.zPosition = SKSpriteNode.Layer.towerFrontKecilBackGendut.rawValue
+            gendut.zPosition = SKSpriteNode.Layer.gendutFrontKecilFrontTower.rawValue
+        }
+        else if tower1White.position.y < kecil.position.y && tower1White.position.y < gendut.position.y && kecil.position.y < gendut.position.y{
+            tower1White.zPosition = SKSpriteNode.Layer.towerBackKecilBackGendut.rawValue
+            kecil.zPosition = SKSpriteNode.Layer.kecilFrontTowerBackGendut.rawValue
+            gendut.zPosition = SKSpriteNode.Layer.gendutFrontTowerFrontKecil.rawValue
+        }
+        else if tower1White.position.y < gendut.position.y && tower1White.position.y < kecil.position.y && gendut.position.y < kecil.position.y{
+            tower1White.zPosition = SKSpriteNode.Layer.towerBackGendutBackKecil.rawValue
+            gendut.zPosition = SKSpriteNode.Layer.gendutFrontTowerBackKecil.rawValue
+            kecil.zPosition = SKSpriteNode.Layer.kecilFrontTowerFrontGendut.rawValue
+        }
+        else if gendut.position.y < tower1White.position.y && gendut.position.y < kecil.position.y && tower1White.position.y < kecil.position.y{
+            gendut.zPosition = SKSpriteNode.Layer.gendutBackTowerBackKecil.rawValue
+            tower1White.zPosition = SKSpriteNode.Layer.towerFrontGendutBackKecil.rawValue
+            kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutFrontTower.rawValue
+        }
+        
+//        print(towerWhite1ActivateBool)
+        print(towerWhite1BuildBool)
+        
+        if towerWhite1ActivateBool == true{
+            if let parent = tower1WhiteBuilt.parent {
+                let position = tower1WhiteBuilt.position
+                let zPos = tower1WhiteBuilt.zPosition
+                tower1WhiteActivated.position = position
+                tower1WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1WhiteBuilt.size.width/1.5, height: tower1WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower1WhiteBuilt.size.height/5))
+                tower1WhiteActivated.physicsBody?.affectedByGravity = false
+                tower1WhiteActivated.physicsBody?.isDynamic = false
+                tower1WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite1Activated
+                tower1WhiteActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+                tower1WhiteActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+                tower1WhiteBuilt.removeFromParent()
+                tower1WhiteActivated.size = CGSize(width: 300, height: 600)
+                tower1WhiteActivated.position = position
+                tower1WhiteActivated.zPosition = zPos
+                parent.addChild(tower1WhiteActivated)
+            }
+        }
+        
+        if towerWhite2ActivateBool == true{
+            if let parent = tower2WhiteBuilt.parent {
+                let position = tower2WhiteBuilt.position
+                let zPos = tower2WhiteBuilt.zPosition
+                tower2WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2WhiteBuilt.size.width/1.5, height: tower2WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower2WhiteBuilt.size.height/5))
+                tower2WhiteActivated.physicsBody?.affectedByGravity = false
+                tower2WhiteActivated.physicsBody?.isDynamic = false
+                tower2WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite2Activated
+                tower2WhiteActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+                tower2WhiteActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+                tower2WhiteBuilt.removeFromParent()
+                tower2WhiteActivated.size = CGSize(width: 300, height: 600)
+                tower2WhiteActivated.position = position
+                tower2WhiteActivated.zPosition = zPos
+                parent.addChild(tower2WhiteActivated)
+            }
+        }
+        
+        if towerWhite3ActivateBool == true{
+            if let parent = tower3WhiteBuilt.parent {
+                let position = tower3WhiteBuilt.position
+                let zPos = tower3WhiteBuilt.zPosition
+                tower3WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3WhiteBuilt.size.width/1.5, height: tower3WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower3WhiteBuilt.size.height/5))
+                tower3WhiteActivated.physicsBody?.affectedByGravity = false
+                tower3WhiteActivated.physicsBody?.isDynamic = false
+                tower3WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite3Activated
+                tower3WhiteActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+                tower3WhiteActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+                tower3WhiteBuilt.removeFromParent()
+                tower3WhiteActivated.size = CGSize(width: 300, height: 600)
+                tower3WhiteActivated.position = position
+                tower3WhiteActivated.zPosition = zPos
+                parent.addChild(tower3WhiteActivated)
+            }
+        }
+        
+        if towerWhite1BuildBool == true {
+            if let parent = tower1White.parent {
+                let position = tower1White.position
+                let zPos = tower1White.zPosition
+                tower1WhiteBuilt.position = position
+                tower1WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1White.size.width/1.5, height: tower1White.size.height/4), center: CGPoint(x: 0, y: tower1White.size.height/5))
+                tower1WhiteBuilt.physicsBody?.affectedByGravity = false
+                tower1WhiteBuilt.physicsBody?.isDynamic = false
+                tower1WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite1NotActivated
+                tower1WhiteBuilt.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+                tower1WhiteBuilt.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+                tower1White.removeFromParent()
+                tower1WhiteBuilt.size = CGSize(width: 300, height: 600)
+                tower1WhiteBuilt.position = position
+                tower1WhiteBuilt.zPosition = zPos
+                parent.addChild(tower1WhiteBuilt)
+            }
+        }
+        
+        if towerWhite2BuildBool == true {
+            if let parent = tower2White.parent {
+                let position = tower2White.position
+                let zPos = tower1White.zPosition
+                tower2WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/1.5, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height/5))
+                tower2WhiteBuilt.physicsBody?.affectedByGravity = false
+                tower2WhiteBuilt.physicsBody?.isDynamic = false
+                tower2WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
+                tower2WhiteBuilt.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+                tower2WhiteBuilt.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+                tower2White.removeFromParent()
+                tower2WhiteBuilt.size = CGSize(width: 300, height: 600)
+                tower2WhiteBuilt.position = position
+                tower2WhiteBuilt.zPosition = zPos
+                parent.addChild(tower2WhiteBuilt)
+            }
+        }
+        
+        if towerWhite3BuildBool == true {
+            if let parent = tower3White.parent {
+                let position = tower3White.position
+                let zPos = tower3White.zPosition
+                tower3WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3White.size.width/1.5, height: tower3White.size.height/4), center: CGPoint(x: 0, y: tower3White.size.height/5))
+                tower3WhiteBuilt.physicsBody?.affectedByGravity = false
+                tower3WhiteBuilt.physicsBody?.isDynamic = false
+                tower3WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
+                tower3WhiteBuilt.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
+                tower3WhiteBuilt.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+                tower3White.removeFromParent()
+                tower3WhiteBuilt.size = CGSize(width: 300, height: 600)
+                tower3WhiteBuilt.position = position
+                tower3WhiteBuilt.zPosition = zPos
+                parent.addChild(tower3WhiteBuilt)
+            }
+        }
+
+
         //Gendut
         //Case up-down
         if gendutUpPressed == true {
@@ -308,10 +564,95 @@ class GameScene31: SKScene {
             kecil.xScale = -1
             kecil.walk()
         }
+        
+        if buildWhite1TowerPressed {
+            white1BuiltPressedTime += 1.0
+            if white1BuiltPressedTime == 2.0 {
+                self.towerWhite1BuildBool = true
+            }
+        } else if !buildWhite1TowerPressed {
+            white1BuiltPressedTime = 0.0
+        }
+        if buildWhite2TowerPressed {
+            white2BuiltPressedTime += 1.0
+            progressBar
+            if white2BuiltPressedTime == 900.0 {
+                self.towerWhite2BuildBool = true
+            }
+        } else if !buildWhite2TowerPressed {
+            white2BuiltPressedTime = 0.0
+        }
+        if buildWhite3TowerPressed {
+            white3BuiltPressedTime += 1.0
+            if white3BuiltPressedTime == 900.0 {
+                self.towerWhite3BuildBool = true
+            }
+        } else if !buildWhite3TowerPressed {
+            white3BuiltPressedTime = 0.0
+        }
+        
+        if activateWhite1TowerButtonPressed{
+            white1ActivatePressedTime += 1.0
+            if white1ActivatePressedTime == 50.0 {
+                self.towerWhite1ActivateBool = true
+            }
+        } else if !activateWhite1TowerButtonPressed {
+            white1ActivatePressedTime = 0.0
+        }
+        
+        if activateWhite2TowerButtonPressed{
+            white2ActivatePressedTime += 1.0
+            if white2ActivatePressedTime == 900.0 {
+                self.towerWhite2ActivateBool = true
+            }
+        } else if !activateWhite2TowerButtonPressed {
+            white2ActivatePressedTime = 0.0
+        }
+        
+        if activateWhite3TowerButtonPressed{
+            white3ActivatePressedTime += 1.0
+            if white3ActivatePressedTime == 900.0 {
+                self.towerWhite3ActivateBool = true
+            }
+        } else if !activateWhite3TowerButtonPressed {
+            white3ActivatePressedTime = 0.0
+        }
+        
     }
     
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func displayBuildTextTower(at position: CGPoint) {
+        let text = SKLabelNode(text: "Press Q to build")
+        text.position = position
+        text.zPosition = SKSpriteNode.Layer.label.rawValue
+        text.fontName = "Helvetica-Bold"
+        text.fontSize = 36
+        text.fontColor = SKColor.white
+        addChild(text)
+        
+        text.run(SKAction.sequence([
+            SKAction.wait(forDuration: 2.0),
+            SKAction.removeFromParent()
+        ]))
+    }
+    
+    
+    func displayActivateTextTower(at position: CGPoint) {
+        let text = SKLabelNode(text: "Press Q to activate")
+        text.position = position
+        text.zPosition = SKSpriteNode.Layer.label.rawValue
+        text.fontName = "Helvetica-Bold"
+        text.fontSize = 36
+        text.fontColor = SKColor.white
+        addChild(text)
+        
+        text.run(SKAction.sequence([
+            SKAction.wait(forDuration: 2.0),
+            SKAction.removeFromParent()
+        ]))
     }
 }

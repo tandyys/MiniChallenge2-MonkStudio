@@ -9,6 +9,70 @@ import Foundation
 import SpriteKit
 
 class Tower: SKSpriteNode {
+    
+    class func tower1White() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Broken")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    
+    class func tower1WhiteBuilt() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Built")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    
+    class func tower1WhiteActivated() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Activated")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    
+    class func tower2White() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Broken")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    
+    class func tower2WhiteBuilt() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Built")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    
+    class func tower2WhiteActivated() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Activated")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    class func tower3White() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Broken")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    
+    class func tower3WhiteBuilt() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Built")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    
+    class func tower3WhiteActivated() -> Tower {
+        let tower = Tower(imageNamed: "Tower_Level 3_White Activated")
+        tower.anchorPoint = CGPoint(x: 0.5, y: 0)
+        tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        return tower
+    }
+    
+    
     class func towerRed() -> Tower {
         let tower = Tower(imageNamed: "Tower_Level 1_Red_Not Active")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)

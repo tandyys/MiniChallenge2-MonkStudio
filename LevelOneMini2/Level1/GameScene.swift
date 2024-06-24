@@ -303,7 +303,7 @@ class GameScene: SKScene {
         } else if kecil.position.y > gendut.position.y {
             kecil.zPosition = SKSpriteNode.Layer.characterKecilFront.rawValue
         }
-        
+                
         //Tower Activation mechanism
         if activateRedTowerButtonPressed {
             redPressedTime += 1.0

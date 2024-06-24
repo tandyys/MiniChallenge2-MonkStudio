@@ -12,29 +12,67 @@ extension SKSpriteNode {
     
     enum Layer: CGFloat {
         case background
+        case platform
         case tree
         case gate
         case towerUp
+        
         case characterKecilFront
         case characterGendut
         case characterKecilBack
+        
+        case towerFrontGendutFrontKecil
+        case kecilFrontGendutBackTower
+        case gendutBackKecilBackTower
+        
+        case towerFrontKecilFrontGendut
+        case gendutFrontKecilBackTower
+        case kecilBackGendutBackTower
+        
+        case gendutFrontKecilFrontTower
+        case towerFrontKecilBackGendut
+        case kecilBackTowerBackGendut
+        
+        case gendutFrontTowerFrontKecil
+        case kecilFrontTowerBackGendut
+        case towerBackKecilBackGendut
+        
+        case kecilFrontTowerFrontGendut
+        case gendutFrontTowerBackKecil
+        case towerBackGendutBackKecil
+        
+        case kecilFrontGendutFrontTower
+        case towerFrontGendutBackKecil
+        case gendutBackTowerBackKecil
+        
         case towerDown
         case decor
         case label
         case progressBar
+        case boundaries
     }
     
     enum PhysicsCategory {
-        static let none: UInt32 = 0
-        static let gendut: UInt32 = 0b1 //1
-        static let kecil: UInt32 = 0b10 //2
-        static let monster: UInt32 = 0b100 //4
-        static let towerRedNotActivated: UInt32 = 0b1000 //8
-        static let towerPurpleNotActivated: UInt32 = 0b10000 //16
-        static let towerBlueNotActivated:UInt32 = 0b100000 //32
-        static let towerGreenNotActivated:UInt32 = 0b1000000 //64
-        static let towerActivated: UInt32 = 0b10000000 //128
-        static let gate: UInt32 = 0b100000000 //256
+        static let none: UInt32                     = 0
+        static let gendut: UInt32                   = 0b1 //1
+        static let kecil: UInt32                    = 0b10 //2
+        static let monster: UInt32                  = 0b100 //4
+        static let towerRedNotActivated: UInt32     = 0b1000 //8
+        static let towerPurpleNotActivated: UInt32  = 0b10000 //16
+        static let towerBlueNotActivated:UInt32     = 0b100000 //32
+        static let towerGreenNotActivated:UInt32    = 0b1000000 //64
+        static let towerActivated: UInt32           = 0b10000000 //128
+        static let gate: UInt32                     = 0b100000000 //256
+        static let towerWhite1Destroyed: UInt32     = 0b1000000000
+        static let towerWhite1NotActivated: UInt32  = 0b10000000000
+        static let towerWhite1Activated: UInt32     = 0b100000000000
+        static let towerWhite2Destroyed: UInt32     = 0b1000000000000
+        static let towerWhite2NotActivated: UInt32  = 0b10000000000000
+        static let towerWhite2Activated: UInt32     = 0b100000000000000
+        static let towerWhite3Destroyed: UInt32     = 0b1000000000000000
+        static let towerWhite3NotActivated: UInt32  = 0b10000000000000000
+        static let towerWhite3Activated: UInt32     = 0b100000000000000000
+        static let platform: UInt32                 = 0b1000000000000000000
     }
     
     func loadAnimation(atlas: String, prefix: String, startAt: Int, stopAt: Int) -> [SKTexture] {

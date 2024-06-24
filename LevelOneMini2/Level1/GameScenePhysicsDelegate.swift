@@ -9,11 +9,109 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
+extension GameScene31: SKPhysicsContactDelegate{
+    func didBegin(_ contact: SKPhysicsContact) {
+        //Text Label mechanism
+        let towerContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        //White Tower
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed{
+            buildWhite1TowerAvailable = true
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite1Destroyed ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                displayBuildTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+            }
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite1NotActivated{
+            activateWhite1TowerButtonAvailable = true
+            createWhiteProgressBar(at: CGPoint(x: tower1White.position.x, y: tower1White.position.y))
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite1Activated ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                displayActivateTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+            }
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed{
+            buildWhite2TowerAvailable = true
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite2Destroyed ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                displayBuildTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+            }
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite2NotActivated{
+            activateWhite2TowerButtonAvailable = true
+            createWhiteProgressBar(at: CGPoint(x: tower2White.position.x, y: tower2White.position.y))
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite2NotActivated ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                displayActivateTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+            }
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed{
+            buildWhite3TowerAvailable = true
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite3Destroyed ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                displayBuildTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+            }
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated{
+            activateWhite3TowerButtonAvailable = true
+            createWhiteProgressBar(at: CGPoint(x: tower3White.position.x, y: tower3White.position.y))
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite3Destroyed ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                displayActivateTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+            }
+        }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        let towerContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed {
+            buildWhite1TowerAvailable = false
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite1NotActivated {
+            activateWhite1TowerButtonAvailable = false
+            removeProgressBar()
+            
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed {
+            buildWhite2TowerAvailable = false
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite2NotActivated {
+            activateWhite2TowerButtonAvailable = false
+            removeProgressBar()
+            
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed {
+            buildWhite3TowerAvailable = false
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated {
+            activateWhite3TowerButtonAvailable = false
+            removeProgressBar()
+            
+        }
+    }
+}
 extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         //Text Label mechanism
         let towerContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
         
         //Red Tower
         if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerRedNotActivated {

@@ -8,7 +8,33 @@
 import Foundation
 import SpriteKit
 
-extension GameScene {
+extension GameScene31{
+    
+    func createWhiteProgressBar(at position: CGPoint){
+        
+        border.fillColor = SKColor.black
+        border.position = position
+        border.lineWidth = 1
+        border.strokeColor = SKColor.black
+        border.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        addChild(border)
+        
+        progressBar.fillColor = SKColor.white
+        progressBar.position = CGPoint(x: 373, y: border.position.y)
+        print(progressBar.frame.minX)
+        print(progressBar.frame.maxX)
+        progressBar.zPosition = SKSpriteNode.Layer.progressBar.rawValue
+        progressBar.lineWidth = 1
+        progressBar.strokeColor = SKColor.white
+        addChild(progressBar)
+    }
+    func removeProgressBar() {
+        SKAction.removeFromParent()
+        removeChildren(in: [border, progressBar])
+    }
+}
+
+extension GameScene{
     
     func createRedProgressBar(at position: CGPoint) {
         border.fillColor = SKColor.black
