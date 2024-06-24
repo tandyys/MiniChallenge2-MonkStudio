@@ -14,8 +14,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "keyDown(with:)"
             landmarkType = "7">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "272"
-            endingLineNumber = "272"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "keyDown(with:)"
             landmarkType = "7">
             <Locations>
@@ -110,8 +110,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "update(_:)"
             landmarkType = "7">
             <Locations>
@@ -158,8 +158,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "471"
-            endingLineNumber = "471"
+            startingLineNumber = "483"
+            endingLineNumber = "483"
             landmarkName = "update(_:)"
             landmarkType = "7">
             <Locations>
@@ -206,8 +206,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "update(_:)"
             landmarkType = "7">
             <Locations>
@@ -254,8 +254,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "keyUp(with:)"
             landmarkType = "7">
             <Locations>
@@ -302,8 +302,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "569"
-            endingLineNumber = "569"
+            startingLineNumber = "581"
+            endingLineNumber = "581"
             landmarkName = "update(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,8 +318,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "595"
-            endingLineNumber = "595"
+            startingLineNumber = "607"
+            endingLineNumber = "607"
             landmarkName = "update(_:)"
             landmarkType = "7">
             <Locations>
@@ -366,8 +366,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "keyUp(with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,8 +382,8 @@
             filePath = "LevelOneMini2/Level1/GameScene31.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "571"
-            endingLineNumber = "571"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
             landmarkName = "update(_:)"
             landmarkType = "7">
             <Locations>
@@ -418,6 +418,102 @@
                   offsetFromSymbolStart = "18936">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AF593E90-BB4C-4275-9E3F-850215552C23"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Level1/Tower.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "tower1WhiteBuilt()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95A0F3E0-2CC0-4045-8AE7-5E6D1DEA3B36"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Level1/Tower.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "tower1WhiteActivated()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "88CD4B10-DAA8-42FD-8846-339DBDB08A09"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Level1/GameScenePhysicsDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "didBegin(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "88CD4B10-DAA8-42FD-8846-339DBDB08A09 - a818d992bd94eb36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.GameScene31.didBegin(__C.SKPhysicsContact) -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Work/Apple%20Projects/MiniChallenge2-MonkStudio/LevelOneMini2/Level1/GameScenePhysicsDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "948">
+               </Location>
+               <Location
+                  uuid = "88CD4B10-DAA8-42FD-8846-339DBDB08A09 - a818d992bd94eb36"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.GameScene31.didBegin(__C.SKPhysicsContact) -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Work/Apple%20Projects/MiniChallenge2-MonkStudio/LevelOneMini2/Level1/GameScenePhysicsDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "964">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ABBB24BB-CD28-47F4-B5D7-BF92962D87A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Level1/TowerProgressBar.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "createWhite1ProgressBar(at:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

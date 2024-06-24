@@ -27,6 +27,7 @@ class GameScene31: SKScene {
     var white1ActivatePressedTime:Double = 0.0
     var white2ActivatePressedTime:Double = 0.0
     var white3ActivatePressedTime:Double = 0.0
+    let maxPressedTime:Double = 900.0
     
     let tower1White = Tower.tower1White()
     let tower1WhiteBuilt = Tower.tower1WhiteBuilt()
@@ -65,11 +66,25 @@ class GameScene31: SKScene {
     var playerControllers: [Int: GCController] = [:]
     let maximumControllerCount = 2
     
-    var progressBar = SKShapeNode(rectOf: CGSize(width: 50, height: 50), cornerRadius: 5)
-    let border = SKShapeNode(rectOf: CGSize(width: 250, height: 50), cornerRadius: 5)
+    var white1ProgressBar: SKSpriteNode!
+    var white1ProgressBarBg: SKSpriteNode!
+    var white1ProgressBarMask: SKSpriteNode!
+    var white1CropNode: SKCropNode!
+        
+    var white2ProgressBar: SKSpriteNode!
+    var white2ProgressBarBg: SKSpriteNode!
+    var white2ProgressBarMask: SKSpriteNode!
+    var white2CropNode: SKCropNode!
+        
+    var white3ProgressBar: SKSpriteNode!
+    var white3ProgressBarBg: SKSpriteNode!
+    var white3ProgressBarMask: SKSpriteNode!
+    var white3CropNode: SKCropNode!
+    
     
     
     override func didMove(to view: SKView) {
+
         
         let physicsOutline = SKShapeNode(rect: CGRect(x: -50, y: -50, width: 100, height: 100))
         physicsOutline.strokeColor = SKColor.black
@@ -271,10 +286,10 @@ class GameScene31: SKScene {
                 if buildWhite1TowerAvailable == true {
                     buildWhite1TowerPressed = true
                 }
-                if activateWhite2TowerButtonAvailable == true {
+                if buildWhite2TowerAvailable == true {
                     buildWhite2TowerPressed = true
                 }
-                if activateWhite3TowerButtonAvailable == true {
+                if buildWhite3TowerAvailable == true {
                     buildWhite3TowerPressed = true
                 }
     
@@ -334,13 +349,13 @@ class GameScene31: SKScene {
 //                self.removeAction(forKey: "redTowerActivation")
             }
             
-            if buildWhite1TowerPressed {
-                buildWhite1TowerPressed = false
+            if buildWhite2TowerPressed {
+                buildWhite2TowerPressed = false
 //                self.removeAction(forKey: "redTowerActivation")
             }
             
-            if buildWhite1TowerPressed {
-                buildWhite1TowerPressed = false
+            if buildWhite3TowerPressed {
+                buildWhite3TowerPressed = false
 //                self.removeAction(forKey: "redTowerActivation")
             }
             
@@ -377,11 +392,8 @@ class GameScene31: SKScene {
     override func update(_ currentTime: TimeInterval) {
         if gendut.position.y < kecil.position.y && gendut.position.y < tower1White.position.y && kecil.position.y < tower1White.position.y{
             gendut.zPosition = SKSpriteNode.Layer.gendutBackKecilBackTower.rawValue
-            print(gendut.zPosition)
             kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutBackTower.rawValue
-            print(kecil.zPosition)
             tower2White.zPosition = SKSpriteNode.Layer.towerFrontGendutFrontKecil.rawValue
-            print(tower2White.zPosition)
         }
         else if kecil.position.y < gendut.position.y && kecil.position.y < tower1White.position.y && gendut.position.y < tower1White.position.y{
             kecil.zPosition = SKSpriteNode.Layer.kecilBackGendutBackTower.rawValue
@@ -409,7 +421,7 @@ class GameScene31: SKScene {
             kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutFrontTower.rawValue
         }
         
-//        print(towerWhite1ActivateBool)
+        //        print(towerWhite1ActivateBool)
         print(towerWhite1BuildBool)
         
         if towerWhite1ActivateBool == true{
@@ -489,7 +501,7 @@ class GameScene31: SKScene {
         if towerWhite2BuildBool == true {
             if let parent = tower2White.parent {
                 let position = tower2White.position
-                let zPos = tower1White.zPosition
+                let zPos = tower2White.zPosition
                 tower2WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/1.5, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height/5))
                 tower2WhiteBuilt.physicsBody?.affectedByGravity = false
                 tower2WhiteBuilt.physicsBody?.isDynamic = false
@@ -521,8 +533,8 @@ class GameScene31: SKScene {
                 parent.addChild(tower3WhiteBuilt)
             }
         }
-
-
+        
+        
         //Gendut
         //Case up-down
         if gendutUpPressed == true {
@@ -564,7 +576,7 @@ class GameScene31: SKScene {
             kecil.xScale = -1
             kecil.walk()
         }
-        
+    
         if buildWhite1TowerPressed {
             white1BuiltPressedTime += 1.0
             if white1BuiltPressedTime == 2.0 {
@@ -575,8 +587,8 @@ class GameScene31: SKScene {
         }
         if buildWhite2TowerPressed {
             white2BuiltPressedTime += 1.0
-            progressBar
-            if white2BuiltPressedTime == 900.0 {
+
+            if white2BuiltPressedTime == 2.0 {
                 self.towerWhite2BuildBool = true
             }
         } else if !buildWhite2TowerPressed {
@@ -584,7 +596,7 @@ class GameScene31: SKScene {
         }
         if buildWhite3TowerPressed {
             white3BuiltPressedTime += 1.0
-            if white3BuiltPressedTime == 900.0 {
+            if white3BuiltPressedTime == 2.0 {
                 self.towerWhite3BuildBool = true
             }
         } else if !buildWhite3TowerPressed {
@@ -593,7 +605,8 @@ class GameScene31: SKScene {
         
         if activateWhite1TowerButtonPressed{
             white1ActivatePressedTime += 1.0
-            if white1ActivatePressedTime == 50.0 {
+            self.updateWhite1ProgressBar(white1ActivatePressedTime)
+            if white1ActivatePressedTime == maxPressedTime {
                 self.towerWhite1ActivateBool = true
             }
         } else if !activateWhite1TowerButtonPressed {
@@ -602,22 +615,22 @@ class GameScene31: SKScene {
         
         if activateWhite2TowerButtonPressed{
             white2ActivatePressedTime += 1.0
-            if white2ActivatePressedTime == 900.0 {
+            self.updateWhite2ProgressBar(white2ActivatePressedTime)
+            if white2ActivatePressedTime == maxPressedTime {
                 self.towerWhite2ActivateBool = true
             }
         } else if !activateWhite2TowerButtonPressed {
             white2ActivatePressedTime = 0.0
         }
-        
         if activateWhite3TowerButtonPressed{
             white3ActivatePressedTime += 1.0
-            if white3ActivatePressedTime == 900.0 {
+            self.updateWhite3ProgressBar(white3ActivatePressedTime)
+            if white3ActivatePressedTime == maxPressedTime {
                 self.towerWhite3ActivateBool = true
             }
         } else if !activateWhite3TowerButtonPressed {
             white3ActivatePressedTime = 0.0
         }
-        
     }
     
     
