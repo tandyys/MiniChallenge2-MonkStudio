@@ -12,6 +12,8 @@ import GameplayKit
 
 extension GameScene: SKPhysicsContactDelegate {
     
+
+    
     func didBegin(_ contact: SKPhysicsContact) {
         //Text Label mechanism
         let canonContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
@@ -27,8 +29,8 @@ extension GameScene: SKPhysicsContactDelegate {
                     print("\(attackedBosHit)")
 
                     // Apply damage to the boss
-                    let damage = 200
-                    bosGotAttack(damage: CGFloat(damage))
+                    let damage = 50
+                    attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: Double(totalhpBos), damage: CGFloat(damage), attackedBosHit: &attackedBosHit)
                     //kecilGotAttack(damage: CGFloat(200))
                    // GendutGotAttack(damage: CGFloat(100))
                     nodeA.isHidden = true
@@ -38,7 +40,7 @@ extension GameScene: SKPhysicsContactDelegate {
 
                     // Apply damage to the boss
                     let damage = 200
-                    bosGotAttack(damage: CGFloat(damage))
+                    attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: Double(totalhpBos), damage: CGFloat(damage), attackedBosHit: &attackedBosHit)
                    // kecilGotAttack(damage: CGFloat(200))
                    // GendutGotAttack(damage: CGFloat(100))
                     nodeB.isHidden = true
@@ -49,15 +51,39 @@ extension GameScene: SKPhysicsContactDelegate {
         if contactJatuhanCharacterMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.jatuhan {
             if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
                 if nodeA.name == "jatuhan" && nodeB.name == "Kecil" {
-                    contactJatuhanCharacterKenaDariAtas = true
+                    contactObstacleFromBoss = true
                     let damage = 40
-                    kecilGotAttack(damage: CGFloat(damage))
-                    nodeA.isHidden = true
+                    print("kecil kena")
+                    
+                    // Create a sequence of actions
+                    let sequence = SKAction.sequence([
+                        SKAction.run {
+                            self.attackManager.kecilGotAttack(kecil: self.kecil, healthBarKecil: self.healthBarKecil, totalhpKecil: self.totalhpKecil, damage: CGFloat(damage), attackedKecilHit: &self.attackedKecilHit)
+                        },
+                        SKAction.run {
+                            nodeA.removeFromParent()
+                        }
+                    ])
+                    
+                    // Run the sequence action on nodeA
+                    nodeA.run(sequence)
                 } else if nodeA.name == "Kecil" && nodeB.name == "jatuhan" {
-                    contactJatuhanCharacterKenaDariAtas = true
+                    contactObstacleFromBoss = true
                     let damage = 40
-                    kecilGotAttack(damage: CGFloat(damage))
-                    nodeB.isHidden = true
+                    print("kecil kena")
+                    
+                    // Create a sequence of actions
+                    let sequence = SKAction.sequence([
+                        SKAction.run {
+                            self.attackManager.kecilGotAttack(kecil: self.kecil, healthBarKecil: self.healthBarKecil, totalhpKecil: self.totalhpKecil, damage: CGFloat(damage), attackedKecilHit: &self.attackedKecilHit)
+                        },
+                        SKAction.run {
+                            nodeB.removeFromParent()
+                        }
+                    ])
+                    
+                    // Run the sequence action on nodeA
+                    nodeA.run(sequence)
                 }
             }
         }
@@ -66,15 +92,36 @@ extension GameScene: SKPhysicsContactDelegate {
         if contactJatuhanCharacterMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.jatuhan {
             if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
                 if nodeA.name == "jatuhan" && nodeB.name == "Gendut" {
-                    contactJatuhanCharacterKenaDariAtas = true
                     let damage = 40
-                    GendutGotAttack(damage: CGFloat(damage))
-                    nodeA.isHidden = true
+                    print("gendut kena")
+                    
+                    // Create a sequence of actions
+                    let sequence = SKAction.sequence([
+                        SKAction.run {
+                            self.attackManager.gendutGotAttack(gendut: self.gendut, healthBarGendut: self.healthBarGendut, totalhpGendut: self.totalhpGendut, damage: CGFloat(damage), attackedGendutHit: &self.attackedGendutHit)
+                           
+                        },
+                        SKAction.run {
+                            nodeA.removeFromParent()
+                        }
+                    ])
+                    
+                    // Run the sequence action on nodeA
+                    nodeA.run(sequence)
                 } else if nodeA.name == "Gendut" && nodeB.name == "jatuhan" {
-                    contactJatuhanCharacterKenaDariAtas = true
                     let damage = 40
-                    GendutGotAttack(damage: CGFloat(damage))
-                    nodeB.isHidden = true
+                    print("gendut kena")
+                    
+                    // Create a sequence of actions
+                    let sequence = SKAction.sequence([
+                        SKAction.run {
+                            self.attackManager.gendutGotAttack(gendut: self.gendut, healthBarGendut: self.healthBarGendut, totalhpGendut: self.totalhpGendut, damage: CGFloat(damage), attackedGendutHit: &self.attackedGendutHit)
+                        },
+                        SKAction.run {
+                            nodeB.removeFromParent()
+                        }
+                    ])
+                    nodeA.run(sequence)
                 }
             }
         }
@@ -88,7 +135,8 @@ extension GameScene: SKPhysicsContactDelegate {
             let CanonLeftNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonLeft ? contact.bodyA.node : contact.bodyB.node
             
             if let CanonLeftPosition = CanonLeftNode?.position {
-                displayTextCanonLeft(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100))
+                displayManager.displayTextCanonLeft(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100))
+                displayManager.displayAmno(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 50), currentAmmo: canonLeft.currentAmmo, AmmoMax: canonLeft.maxAmmo)
                 CanonContactLeft = true
             }
         }
@@ -101,7 +149,8 @@ extension GameScene: SKPhysicsContactDelegate {
             let CanonLeftNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonLeft ? contact.bodyA.node : contact.bodyB.node
             
             if let CanonLeftPosition = CanonLeftNode?.position {
-                displayTextCanonLeft(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100 ))
+                displayManager.displayTextCanonLeft(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 100 ))
+                displayManager.displayAmno(at: CGPoint(x: CanonLeftPosition.x + 200, y: CanonLeftPosition.y - 150), currentAmmo: canonLeft.currentAmmo, AmmoMax: canonLeft.maxAmmo)
                 CanonContactLeft = true
                 
             }
@@ -116,7 +165,8 @@ extension GameScene: SKPhysicsContactDelegate {
             let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRight ? contact.bodyA.node : contact.bodyB.node
             
             if let CanonRightPosition = CanonRightNode?.position {
-                displayTextCanonRight(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+                displayManager.displayTextCanonRight(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+                displayManager.displayAmno(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 150 ), currentAmmo: canonLeft.currentAmmo, AmmoMax: canonLeft.maxAmmo)
                 CanonContactRight = true
             }
         }
@@ -130,7 +180,8 @@ extension GameScene: SKPhysicsContactDelegate {
             let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRight ? contact.bodyA.node : contact.bodyB.node
             
             if let CanonRightPosition = CanonRightNode?.position {
-                displayTextCanonRight(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+                displayManager.displayTextCanonRight(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
+                displayManager.displayAmno(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 150 ), currentAmmo: canonLeft.currentAmmo, AmmoMax: canonLeft.maxAmmo)
                 CanonContactRight = true
             }
         }

@@ -13,7 +13,7 @@ class Kecil: SKSpriteNode {
         case walk
     }
     
-    private var gendutWalkTexture: [SKTexture]?
+    private var KecilWalkTexture: [SKTexture]?
     var hp:Double = 500
     
     init() {
@@ -21,18 +21,18 @@ class Kecil: SKSpriteNode {
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.gendutWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "KecilWalk_", startAt: 0, stopAt: 5)
-        
+        self.KecilWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "KecilWalk_", startAt: 0, stopAt: 5)
         self.name = "Kecil"
         self.setScale(1.0)
 //        self.size = CGSize(width: 320, height: 360)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-       self.zPosition = SKSpriteNode.Layer.character.rawValue
+        self.zPosition = SKSpriteNode.Layer.character.rawValue
+        self.position = CGPoint(x: 100, y: 300)
         
         //Physics
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/2), center: CGPoint(x: 0, y: self.size.height/2))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/2), center: CGPoint(x: 0, y: self.size.height/5))
         self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.kecil
-        self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.tower | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated
+        self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.tower | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | PhysicsCategory.jatuhan
         self.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.tower | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | SKSpriteNode.PhysicsCategory.jatuhan
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
@@ -46,7 +46,7 @@ class Kecil: SKSpriteNode {
     
     func walk() {
         //Check the texture
-        guard let walkTexture = gendutWalkTexture else {
+        guard let walkTexture = KecilWalkTexture else {
             preconditionFailure("Cant find kecil texture")
         }
         

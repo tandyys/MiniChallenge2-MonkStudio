@@ -13,7 +13,7 @@ class AttackFromBos: SKSpriteNode{
         case jatuh
     }
     
-    private var jatuhan: [SKTexture]?
+    private var AttackingMaterialFromBos: [SKTexture]?
     
     class AttackFromBos: SKSpriteNode {
         
@@ -24,8 +24,8 @@ class AttackFromBos: SKSpriteNode{
             self.setScale(1.0)
             self.zPosition = SKSpriteNode.Layer.jatuhan.rawValue
             
-            let size = CGSize(width: self.size.width, height: self.size.height/3)
-            self.physicsBody = SKPhysicsBody(rectangleOf: size, center: CGPoint(x: 0, y: 0))
+            let size = CGSize(width: self.size.width/5, height: self.size.height/5)
+            self.physicsBody = SKPhysicsBody(rectangleOf: size, center: CGPoint(x: -50, y: 0))
             self.physicsBody?.isDynamic = false
             self.physicsBody?.categoryBitMask = PhysicsCategory.none
             self.physicsBody?.contactTestBitMask = PhysicsCategory.kecil | PhysicsCategory.gendut

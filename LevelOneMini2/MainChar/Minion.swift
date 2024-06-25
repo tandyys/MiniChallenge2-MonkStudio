@@ -5,12 +5,7 @@
 //  Created by Christian Gunawan on 25/06/24.
 //
 
-//
-//  Gendut.swift
-//  LevelOneMini2
-//
-//  Created by tandyys on 18/06/24.
-//
+
 
 import Foundation
 import SpriteKit
@@ -35,8 +30,9 @@ class Minion: SKSpriteNode {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.zPosition = SKSpriteNode.Layer.character.rawValue
         
+        
         //physics
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height), center: CGPoint(x: self.xScale, y: self.yScale+100))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height), center: CGPoint(x: self.xScale, y: self.yScale))
         self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.monster
         self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.shootFromKecil | SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.shootFromGendut | SKSpriteNode.PhysicsCategory.gendut
         self.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.shootFromKecil | SKSpriteNode.PhysicsCategory.shootFromGendut

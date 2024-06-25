@@ -11,15 +11,21 @@ class GameScene: SKScene {
     let kecil = Kecil()
     let minion = Minion()
     let bos = Bos()
-    let jatuhanAtas = AttackFromBos()
+    let attackManager = AttackManager()
     
-    private var healthBarBos: HpProgressBar!
-    private var healthBarGendut: HpProgressBar!
-    private var healthBarKecil: HpProgressBar!
+    var healthBarBos: HpProgressBar!
+    var healthBarGendut: HpProgressBar!
+    var healthBarKecil: HpProgressBar!
     let canonLeft = Canon_Left()
     let canonRight = Canon_Right()
+    let BosHpNameLabel = BossHpName()
     
-    var bosNgeTakLoh: Bool = false
+    let displayManager = DisplayTextManager()
+    var backgroundManager: BackgroundManager!
+    
+    var audioManager = AudioManager()
+    
+    var bosIsAttacking: Bool = false
     
     var canonLeftShoot: Bool = false
     var canonRightShoot: Bool = false
@@ -27,10 +33,9 @@ class GameScene: SKScene {
     var CanonContactRight: Bool = false
     
     let totalhpBos = 10000 // kalau ganti ini ganti juga ke class bos
-    let totalhpKecil = 500
-    let totalhpGendut = 1000
+    let totalhpKecil = 500.0
+    let totalhpGendut = 1000.0
 
-    let bosHpName =  SKSpriteNode(imageNamed: "hpBosLabel")
 
 
     var gendutUpPressed:Bool = false
@@ -46,7 +51,7 @@ class GameScene: SKScene {
     var activateCanonLeftButtonAvailable:Bool = false
     var activateCanonRightButtonAvailable:Bool = false
     
-    var contactJatuhanCharacterKenaDariAtas:Bool = false
+    var contactObstacleFromBoss:Bool = false
     
     var attackedBosHit:Bool = false
     var attackedKecilHit:Bool = false
@@ -61,32 +66,18 @@ class GameScene: SKScene {
     var playerControllers: [Int: GCController] = [:]
     let maximumControllerCount = 2
     
+    let progressBarSize = CGSize(width: 1264, height: 39)
+    let progressBarSizeGendut = CGSize(width: 195/1.4, height: 27.42/1.4)
+    let progressBarSizeKecil = CGSize(width: 195/1.4, height: 27.42/1.4)
+    
     override func didMove(to view: SKView) {
 
-        
-        playBackgroundMusic()
-   
-        backgroundImage.position = CGPoint(x: frame.midX, y: frame.midY)
-        backgroundImage.scale(to: CGSize(width: 2880, height: 1864))
-        backgroundImage.zPosition = SKSpriteNode.Layer.background.rawValue
 
-        foregroundImage.position = CGPoint(x: frame.midX, y: 400)
-        foregroundImage.setScale(1.0)
-        foregroundImage.zPosition = SKSpriteNode.Layer.foreground.rawValue
-        
-        
-        addChild(backgroundImage)
-        addChild(foregroundImage)
-        
-        gendut.position = CGPoint(x: 600, y: 900)
+        backgroundManager = BackgroundManager(scene: self)
+        audioManager.playBackgroundMusic(in: self)
         addChild(gendut)
-        
-        
-        kecil.position = CGPoint(x: 100, y: 300)
         addChild(kecil)
         
-        
-        canonLeft.position = CGPoint(x: 150, y: 450)
         addChild(canonLeft)
         
         canonRight.position = CGPoint(x: foregroundImage.size.width - 750, y: 450)
@@ -95,25 +86,18 @@ class GameScene: SKScene {
 
         bos.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100)
         addChild(bos)
-        bosHpName.size = CGSize(width: bosHpName.size.width * 0.4, height: bosHpName.size.height * 0.4)
-        bosHpName.position = CGPoint(x: self.frame.minX + 900, y: self.frame.maxY - 220)
-        bosHpName.zPosition = SKSpriteNode.Layer.label.rawValue
+
+        addChild(BosHpNameLabel)
+        addChild(displayManager)
         
-        addChild(bosHpName)
-        
-        let progressBarSize = CGSize(width: 1264, height: 39)
         healthBarBos = HpProgressBar(size: progressBarSize, backgroundImage: "HpProgressBarBos", progressImage: "hpProgressBarBosTexture")
         healthBarBos.position = CGPoint(x: size.width / 2, y: frame.maxY - 175)
-        addChild(healthBarBos)
-        
-        let progressBarSizeGendut = CGSize(width: 195/1.4, height: 27.42/1.4)
         healthBarGendut = HpProgressBar(size: progressBarSizeGendut, backgroundImage: "HpProgressBarCharacter", progressImage: "HpProgressBarCharacterTexture")
         healthBarGendut.position = CGPoint(x: gendut.position.x, y: gendut.position.y + 10)
-        
-        let progressBarSizeKecil = CGSize(width: 195/1.4, height: 27.42/1.4)
         healthBarKecil = HpProgressBar(size: progressBarSizeKecil, backgroundImage: "HpProgressBarCharacter", progressImage: "HpProgressBarCharacterTexture")
         healthBarKecil.position = CGPoint(x: kecil.position.x, y: kecil.position.y + 10)
         
+        addChild(healthBarBos)
         addChild(healthBarGendut)
         addChild(healthBarKecil)
         
@@ -121,13 +105,11 @@ class GameScene: SKScene {
         minion.walk()
         addChild(minion)
         bos.walk()
-        
+ 
 
-        
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
         physicsWorld.contactDelegate = self
         
-
     }
 
     @objc func didConnectController(_ notification: Notification) {
@@ -288,30 +270,13 @@ class GameScene: SKScene {
         if bos.BosLagiAttackKeCharacter == true {
             bos.stopWalk()
             bos.attackAnimation()
-            bosNgeTakLoh = true
+            bosIsAttacking = true
             
         } else {
-            bosNgeTakLoh = false
+            bosIsAttacking = false
             bos.stopAttack()
             bos.walk()
         }
-        
-       // if attackedBosHit == true{
-          //  bosGotAttack(damage: 10)
-       // }
-        
-        if bosNgeTakLoh == true{
-            spawnJatuhan()
-        }
-//
-//        if attackedKecilHit == true{          
-//            kecilGotAttack(damage: 10)
-//        }
-//        
-//        if attackedGendutHit == true{
-//            GendutGotAttack(damage: 10)
-//        }
-        
         if canonLeftShoot == true {
             canonLeft.shootAction(movementSpeed: 1000)
             canonLeftShoot = false
@@ -334,137 +299,5 @@ class GameScene: SKScene {
     }
     
 
-    func displayTextCanonLeft(at position: CGPoint) {
-        let text = SKLabelNode(text: "Press Y to activate")
-        text.position = position
-        text.zPosition = SKSpriteNode.Layer.label.rawValue
-        text.fontName = "Helvetica-Bold"
-        text.fontSize = 36
-        text.fontColor = SKColor.white
-        addChild(text)
-        
-        text.run(SKAction.sequence([
-            SKAction.wait(forDuration: 2.0),
-            SKAction.removeFromParent()
-        ]))
-    }
-    
-    func displayTextCanonRight(at position: CGPoint) {
-        let text = SKLabelNode(text: "Press U to activate")
-        text.position = position
-        text.zPosition = SKSpriteNode.Layer.label.rawValue
-        text.fontName = "Helvetica-Bold"
-        text.fontSize = 36
-        text.fontColor = SKColor.white
-        addChild(text)
-        
-        text.run(SKAction.sequence([
-            SKAction.wait(forDuration: 2.0),
-            SKAction.removeFromParent()
-        ]))
-    }
-    
 
-    func displayAmno(at position: CGPoint, currentAmmo: Int, AmmoMax:Int) {
-        let text = SKLabelNode(text: "(\(currentAmmo), / \(AmmoMax)")
-        text.position = position
-        text.zPosition = SKSpriteNode.Layer.label.rawValue
-        text.fontName = "Helvetica-Bold"
-        text.fontSize = 36
-        text.fontColor = SKColor.white
-        addChild(text)
-        
-        text.run(SKAction.sequence([
-            SKAction.wait(forDuration: 2.0),
-            SKAction.removeFromParent()
-        ]))
-    }
-    
-    
-    func bosGotAttack(damage: CGFloat) {
-        bos.hpBos -= damage
-        healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: CGFloat(totalhpBos))
-        print("\(bos.hpBos)")
-        attackedBosHit = false
-            if  bos.hpBos < 0 {
-                bos.hpBos = 0
-                healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: CGFloat(totalhpBos))
-                gameOver()
-           }
-        }
-        
-    func kecilGotAttack(damage: CGFloat){
-        kecil.hp -= damage
-        healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
-        print("\(kecil.hp)")
-        attackedKecilHit = false
-            if  kecil.hp < 0 {
-                kecil.hp = 0
-                gameOver()
-                healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
-           }
-        }
-    
-    func GendutGotAttack(damage: CGFloat){
-        gendut.hp -= damage
-        healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
-        print("\(gendut.hp)")
-        attackedGendutHit = false
-        if  gendut.hp < 0 {
-            gendut.hp = 0
-                gameOver()
-            healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
-           }
-        }
-    
-
-        func gameOver() {
-            print("Lu Mati")
-        }
-    
-    func playBackgroundMusic() {
-        if let musicURL = Bundle.main.url(forResource: "Francesco DAndrea - The Laboratory Claptraps", withExtension: "mp3") {
-            backgroundMusic = SKAudioNode(url: musicURL)
-            if let backgroundMusic = backgroundMusic {
-                backgroundMusic.autoplayLooped = true
-                addChild(backgroundMusic)
-            }
-        }
-    }
-    func spawnJatuhan() {
-
-        let numberOfJatuhan = Int.random(in: 1...10)
-        
-        print("Spawning \(numberOfJatuhan) jatuhan nodes")
-        
-        for _ in 0..<numberOfJatuhan {
-            let jatuhanTexture = SKTexture(imageNamed: "stalaktit1")
-            let jatuhan = SKSpriteNode(texture: jatuhanTexture)
-            let randomX = CGFloat.random(in: 100...2880)
-            let randomY = CGFloat.random(in: 2880...2880)
-            jatuhan.name = "jatuhan"
-            jatuhan.zPosition = SKSpriteNode.Layer.jatuhan.rawValue
-            jatuhan.physicsBody = SKPhysicsBody(rectangleOf: size, center: CGPoint(x: 0, y: 0))
-            jatuhan.physicsBody?.isDynamic = false
-            jatuhan.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.jatuhan
-            jatuhan.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
-            jatuhan.physicsBody?.affectedByGravity = false
-            
-            print("Random X: \(randomX), Random Y: \(randomY)")
-            jatuhan.position = CGPoint(x: randomX, y: randomY)
-            jatuhan.zPosition = SKSpriteNode.Layer.jatuhan.rawValue
-            scene?.addChild(jatuhan)
-            
-            // Add code here to animate the jatuhan falling down
-           let moveAction = SKAction.moveTo(y: 0, duration: 3)
-            jatuhan.run(moveAction)
-        }
-    }
-
-    
-    
-
-    
-    
-    
 }

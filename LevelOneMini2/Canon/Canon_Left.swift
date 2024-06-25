@@ -35,6 +35,7 @@ class Canon_Left: SKSpriteNode {
         self.setScale(1.0)
         self.anchorPoint = CGPoint(x: 0, y: 0.5)
         self.zPosition = SKSpriteNode.Layer.canon.rawValue
+        self.position = CGPoint(x: 150, y: 450)
         
         //physics
         
@@ -95,6 +96,8 @@ class Canon_Left: SKSpriteNode {
         
         // Decrease ammo count
         currentAmmo -= 1
+        
+        reload()
 
 
     }

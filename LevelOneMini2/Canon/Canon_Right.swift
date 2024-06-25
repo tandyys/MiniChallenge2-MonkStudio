@@ -38,7 +38,7 @@ class Canon_Right: SKSpriteNode {
         self.zPosition = SKSpriteNode.Layer.canon.rawValue
         
         //physics
-        
+       // self.position = CGPoint(x: foregroundImage.size.width - 750, y: 450)
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width/5, height: self.size.height/5), center: CGPoint(x: self.size.width/2, y: -25))
         self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.canonRightNotActivated
         self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.kecil
@@ -95,6 +95,7 @@ class Canon_Right: SKSpriteNode {
             print("Ini kluar ngak")
             
             currentAmmo -= 1
+            reload()
 
   
         }

@@ -14,7 +14,6 @@ extension SKSpriteNode {
         case bos
         case foreground
         case character
-       
         case projectile
         case canon
         case label
@@ -28,6 +27,7 @@ extension SKSpriteNode {
     
     enum PhysicsCategory {
         static let none: UInt32 = 0
+        static let jatuhan: UInt32 = 0b1000000000000
         static let gendut: UInt32 = 0b1 //1
         static let kecil: UInt32 = 0b10 //2
         static let monster: UInt32 = 0b100 //4
@@ -40,11 +40,7 @@ extension SKSpriteNode {
         static let projectile: UInt32 = 0b1000000000 
         static let shootFromGendut: UInt32 = 0b10000000000
         static let shootFromKecil: UInt32 = 0b100000000000
-        static let jatuhan: UInt32 = 0b1000000000000
-
-        
-        
-
+ 
         
     }
     

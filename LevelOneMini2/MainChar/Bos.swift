@@ -5,11 +5,13 @@ class Bos: SKSpriteNode {
         case move
         case attack
     }
+    
 
     private var bosMoveTexture: [SKTexture]?
     private var bosMoveTextureAttack: [SKTexture]?
     var hpBos: Double = 10000
     var BosLagiAttackKeCharacter: Bool = false
+    
     
     init() {
         let texture = SKTexture(imageNamed: "ratBoss_0")
@@ -56,12 +58,14 @@ class Bos: SKSpriteNode {
     
     func stopAttack() {
         removeAction(forKey: PlayerAnimationType.attack.rawValue)
+    
     }
     
     func startAttackCycle() {
         let wait = SKAction.wait(forDuration: 5.0)
         let startAttack = SKAction.run {
             self.BosLagiAttackKeCharacter = true
+            self.spawnAttackingMaterialFromBoss()
         }
         let attackDuration = SKAction.wait(forDuration: 2.0)
         let stopAttack = SKAction.run {
@@ -70,5 +74,46 @@ class Bos: SKSpriteNode {
         let sequence = SKAction.sequence([wait, startAttack, attackDuration, stopAttack])
         let repeatForever = SKAction.repeatForever(sequence)
         run(repeatForever, withKey: "attackCycle")
+    }
+    
+    func spawnAttackingMaterialFromBoss() {
+        
+        let minSpawn = 1
+        let maxSpawn = 10
+        let numberOfJatuhan = Int.random(in: minSpawn...maxSpawn )
+        print("Spawning \(numberOfJatuhan) jatuhan nodes")
+        
+        for _ in 0..<numberOfJatuhan {
+            
+            
+
+            let jatuhanTexture = SKTexture(imageNamed: "stalaktit1")
+            let jatuhan = SKSpriteNode(texture: jatuhanTexture)
+            let randomX = CGFloat.random(in: 100...2880)
+            let randomY = CGFloat.random(in: 2880...2880)
+            
+            jatuhan.size = CGSize(width: jatuhan.size.width * 2, height: jatuhan.size.height * 2)
+            let bodySize = CGSize(width: jatuhan.size.width * 0.7, height: jatuhan.size.height)
+            let bodyPosition = CGPoint(x: jatuhan.size.width-150, y: jatuhan.size.height - 150 )
+   
+            jatuhan.name = "jatuhan"
+            jatuhan.zPosition = SKSpriteNode.Layer.jatuhan.rawValue
+            jatuhan.physicsBody = SKPhysicsBody(rectangleOf: bodySize, center: bodyPosition)
+            jatuhan.physicsBody?.isDynamic = true
+            jatuhan.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.jatuhan
+            jatuhan.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
+            jatuhan.physicsBody?.affectedByGravity = false
+            
+            print("Random X: \(randomX), Random Y: \(randomY)")
+            jatuhan.position = CGPoint(x: randomX, y: randomY)
+            jatuhan.zPosition = SKSpriteNode.Layer.jatuhan.rawValue
+            scene?.addChild(jatuhan)
+            
+            // Add code here to animate the jatuhan falling down
+            let moveAction = SKAction.moveTo(y: -200, duration: 3)
+            jatuhan.run(moveAction)
+            
+            
+        }
     }
 }

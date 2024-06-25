@@ -24,12 +24,13 @@ class Gendut: SKSpriteNode {
         self.gendutWalkTexture = self.loadAnimation(atlas: "Gendut", prefix: "GendutWalk_", startAt: 0, stopAt: 5)
         self.name = "Gendut"
         self.setScale(1.0)
+        self.position = CGPoint(x: 600, y: 900)
 //        self.size = CGSize(width: 320, height: 360)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.zPosition = SKSpriteNode.Layer.character.rawValue
         
         //physics
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/3), center: CGPoint(x: 0, y: self.size.height/3))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width - 100 , height: self.size.height/2), center: CGPoint(x: 0, y: self.size.height/5))
         self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.gendut
         self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.tower | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | SKSpriteNode.PhysicsCategory.jatuhan
         self.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.tower | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | SKSpriteNode.PhysicsCategory.jatuhan
