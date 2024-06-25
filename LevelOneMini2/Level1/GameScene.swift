@@ -85,6 +85,11 @@ class GameScene: SKScene {
     var towerPurpleDeactiveTime: Double = 60.0
     var towerBlueDeactiveTime: Double = 60.0
     var towerGreenDeactiveTime: Double = 60.0
+    
+    var entityManager: EntityManager!
+    var monsterGenerator: MonsterGeneratorComponent!
+//    var redMinion: Minion!
+//    var purpleMinion: Minion!
 
     override func didMove(to view: SKView) {
         
@@ -126,7 +131,42 @@ class GameScene: SKScene {
         addChild(towerPurple)
         addChild(towerBlue)
         addChild(towerGreen)
-
+        
+        entityManager = EntityManager(scene: self)
+        
+        monsterGenerator = MonsterGeneratorComponent()
+        monsterGenerator.entityManager = entityManager
+        self.addChild(monsterGenerator.componentNode)
+                
+        // Set properties as needed
+        monsterGenerator.monsterType = "b"
+        monsterGenerator.maxMonsters = 50
+        monsterGenerator.monsterHealth = 100
+        monsterGenerator.waitTime = 3
+            
+        // Add MonsterGeneratorComponent to the entity
+        let entity = GKEntity()
+        entity.addComponent(monsterGenerator)
+        
+//        let healthBarSize = CGSize(width: 100, height: 20)
+//        let maxHealth: CGFloat = 100
+//        
+//        let redMinionTexture = SKTexture(imageNamed: "walk-r-1")
+//        redMinion = Minion(texture: redMinionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager)
+//        if let spriteComponent = redMinion.component(ofType: SpriteComponent.self) {
+//            spriteComponent.node.position = CGPoint(x: 2300, y: size.height/2)
+//            self.addChild(spriteComponent.node)
+//        }
+//        
+//        purpleMinion = Minion(texture: SKTexture(imageNamed: "walk-p-1"), healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager)
+//        if let spriteComponent = purpleMinion.component(ofType: SpriteComponent.self) {
+//            spriteComponent.node.position = CGPoint(x: spriteComponent.node.size.width * 4, y: size.height/3)
+//            entityManager.add(purpleMinion)
+//        }
+//        entityManager.add(purpleMinion)
+        
+        
+        
         physicsWorld.contactDelegate = self
         
     }
@@ -162,6 +202,10 @@ class GameScene: SKScene {
             if activateGreenTowerButtonAvailable == true {
                 activateGreenTowerButtonPressed = true
             }
+            
+//            redMinion.changeHealth(by: -10)
+//            purpleMinion.changeHealth(by: -10)
+            
             default:
                 break
         }
@@ -344,7 +388,6 @@ class GameScene: SKScene {
                 parent.addChild(towerRedActivated)
             }
             removeRedProgressBar()
-//            self.deactiveRedTower(towerRedDeactiveTime)
         }
         
         if towerPurpleActivate == true {
@@ -364,7 +407,6 @@ class GameScene: SKScene {
                 parent.addChild(towerPurpleActivated)
             }
             removePurpleProgressBar()
-//            self.deactivePurpleTower(towerPurpleDeactiveTime)
         }
 
         if towerBlueActivate == true {
@@ -384,7 +426,6 @@ class GameScene: SKScene {
                 parent.addChild(towerBlueActivated)
             }
             removeBlueProgressBar()
-//            self.deactiveBlueTower(towerBlueDeactiveTime)
         }
         
         if towerGreenActivate == true {
@@ -404,8 +445,9 @@ class GameScene: SKScene {
                 parent.addChild(towerGreenActivated)
             }
             removeGreenProgressBar()
-//            self.deactiveGreenTower(towerGreenDeactiveTime)
         }
+     
+        entityManager.update(currentTime)
         
     }
     
