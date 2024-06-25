@@ -18,7 +18,7 @@ class Minion: GKEntity {
     
     weak var entityManager: EntityManager?
     
-    init(texture: SKTexture,monsterType: String, healthBarSize: CGSize, maxHealth: CGFloat, entityManager: EntityManager) {
+    init(texture: SKTexture, healthBarSize: CGSize, maxHealth: CGFloat, entityManager: EntityManager) {
         super.init()
         
         self.entityManager = entityManager

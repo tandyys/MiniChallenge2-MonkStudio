@@ -18,6 +18,7 @@ extension SKSpriteNode {
         case characterKecilFront
         case characterGendut
         case characterKecilBack
+        case monster
         case towerDown
         case decor
         case label

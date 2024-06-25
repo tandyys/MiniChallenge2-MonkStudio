@@ -87,7 +87,7 @@ class GameScene: SKScene {
     var towerGreenDeactiveTime: Double = 60.0
     
     var entityManager: EntityManager!
-    var monsterGenerator: MonsterGeneratorComponent!
+//    var monsterGenerator: MonsterGeneratorComponent!
 //    var redMinion: Minion!
 //    var purpleMinion: Minion!
 
@@ -134,19 +134,19 @@ class GameScene: SKScene {
         
         entityManager = EntityManager(scene: self)
         
-        monsterGenerator = MonsterGeneratorComponent()
-        monsterGenerator.entityManager = entityManager
-        self.addChild(monsterGenerator.componentNode)
-                
-        // Set properties as needed
-        monsterGenerator.monsterType = "b"
-        monsterGenerator.maxMonsters = 50
-        monsterGenerator.monsterHealth = 100
-        monsterGenerator.waitTime = 3
-            
-        // Add MonsterGeneratorComponent to the entity
-        let entity = GKEntity()
-        entity.addComponent(monsterGenerator)
+//        monsterGenerator = MonsterGeneratorComponent()
+//        monsterGenerator.entityManager = entityManager
+//        self.addChild(monsterGenerator.componentNode)
+//                
+//        // Set properties as needed
+//        monsterGenerator.monsterType = "b"
+//        monsterGenerator.maxMonsters = 50
+//        monsterGenerator.monsterHealth = 100
+//        monsterGenerator.waitTime = 3
+//            
+//        // Add MonsterGeneratorComponent to the entity
+//        let entity = GKEntity()
+//        entity.addComponent(monsterGenerator)
         
 //        let healthBarSize = CGSize(width: 100, height: 20)
 //        let maxHealth: CGFloat = 100
@@ -165,7 +165,12 @@ class GameScene: SKScene {
 //        }
 //        entityManager.add(purpleMinion)
         
-        
+        run(SKAction.repeatForever(
+              SKAction.sequence([
+                SKAction.run(spawnMonster),
+                SKAction.wait(forDuration: 1.0)
+                ])
+            ))
         
         physicsWorld.contactDelegate = self
         
@@ -205,6 +210,7 @@ class GameScene: SKScene {
             
 //            redMinion.changeHealth(by: -10)
 //            purpleMinion.changeHealth(by: -10)
+            
             
             default:
                 break
