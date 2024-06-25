@@ -57,7 +57,8 @@ extension GameScene {
             spriteComponent.node.zPosition = SKSpriteNode.Layer.monster.rawValue
             entityManager.add(minion)
             // Determine speed of the monster
-            let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+//            let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
+            let actualDuration = 20.0
             
             // Create the actions
             let actionMove = SKAction.move(to: CGPoint(x: -minionTexture.size().width/2, y: actualY),
@@ -66,4 +67,5 @@ extension GameScene {
             spriteComponent.node.run(SKAction.sequence([actionMove, actionMoveDone]))
         }
     }
+    
 }

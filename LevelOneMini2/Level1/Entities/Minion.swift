@@ -10,11 +10,6 @@ import SpriteKit
 import GameplayKit
 
 class Minion: GKEntity {
-//    init(imageName: String) {
-//        super.init()
-//        let spriteComponent = SpriteComponent(texture: SKTexture(imageNamed: imageName))
-//        addComponent(spriteComponent)
-//    }
     
     weak var entityManager: EntityManager?
     

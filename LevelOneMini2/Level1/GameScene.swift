@@ -57,7 +57,7 @@ class GameScene: SKScene {
     var purplePressedTime:Double = 0.0
     var bluePressedTime:Double = 0.0
     var greenPressedTime:Double = 0.0
-    let maxPressedTime:Double = 1200.0
+    let maxPressedTime:Double = 1500.0
     
     //Progress Bar node
     var redProgressBar: SKSpriteNode!
