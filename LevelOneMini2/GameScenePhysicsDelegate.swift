@@ -16,6 +16,7 @@ extension GameScene: SKPhysicsContactDelegate {
         //Text Label mechanism
         let canonContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let contactProjectileMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        let contactJatuhanCharacterMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
                 
         
                
@@ -28,8 +29,8 @@ extension GameScene: SKPhysicsContactDelegate {
                     // Apply damage to the boss
                     let damage = 200
                     bosGotAttack(damage: CGFloat(damage))
-                    kecilGotAttack(damage: CGFloat(200))
-                    GendutGotAttack(damage: CGFloat(100))
+                    //kecilGotAttack(damage: CGFloat(200))
+                   // GendutGotAttack(damage: CGFloat(100))
                     nodeA.isHidden = true
                 } else if nodeA.name == "Bos" && nodeB.name == "Projectile" {
                     attackedBosHit = true
@@ -38,13 +39,49 @@ extension GameScene: SKPhysicsContactDelegate {
                     // Apply damage to the boss
                     let damage = 200
                     bosGotAttack(damage: CGFloat(damage))
-                    kecilGotAttack(damage: CGFloat(200))
-                    GendutGotAttack(damage: CGFloat(100))
+                   // kecilGotAttack(damage: CGFloat(200))
+                   // GendutGotAttack(damage: CGFloat(100))
                     nodeB.isHidden = true
                 }
             }
         }
+        //jatuhan kecil
+        if contactJatuhanCharacterMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.jatuhan {
+            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+                if nodeA.name == "jatuhan" && nodeB.name == "Kecil" {
+                    contactJatuhanCharacterKenaDariAtas = true
+                    let damage = 40
+                    kecilGotAttack(damage: CGFloat(damage))
+                    nodeA.isHidden = true
+                } else if nodeA.name == "Kecil" && nodeB.name == "jatuhan" {
+                    contactJatuhanCharacterKenaDariAtas = true
+                    let damage = 40
+                    kecilGotAttack(damage: CGFloat(damage))
+                    nodeB.isHidden = true
+                }
+            }
+        }
+
+        //jatuhan gendut
+        if contactJatuhanCharacterMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.jatuhan {
+            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+                if nodeA.name == "jatuhan" && nodeB.name == "Gendut" {
+                    contactJatuhanCharacterKenaDariAtas = true
+                    let damage = 40
+                    GendutGotAttack(damage: CGFloat(damage))
+                    nodeA.isHidden = true
+                } else if nodeA.name == "Gendut" && nodeB.name == "jatuhan" {
+                    contactJatuhanCharacterKenaDariAtas = true
+                    let damage = 40
+                    GendutGotAttack(damage: CGFloat(damage))
+                    nodeB.isHidden = true
+                }
+            }
+        }
+
+        
         //Canon Left kecil
+  
         if canonContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {
             activateCanonLeftButtonAvailable = true
             
@@ -55,6 +92,7 @@ extension GameScene: SKPhysicsContactDelegate {
                 CanonContactLeft = true
             }
         }
+        
         
         //canon left gendut
         if canonContactMask ==  SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {

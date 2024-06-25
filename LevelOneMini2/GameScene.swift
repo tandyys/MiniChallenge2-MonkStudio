@@ -11,13 +11,15 @@ class GameScene: SKScene {
     let kecil = Kecil()
     let minion = Minion()
     let bos = Bos()
-
+    let jatuhanAtas = AttackFromBos()
     
     private var healthBarBos: HpProgressBar!
     private var healthBarGendut: HpProgressBar!
     private var healthBarKecil: HpProgressBar!
     let canonLeft = Canon_Left()
     let canonRight = Canon_Right()
+    
+    var bosNgeTakLoh: Bool = false
     
     var canonLeftShoot: Bool = false
     var canonRightShoot: Bool = false
@@ -43,6 +45,8 @@ class GameScene: SKScene {
     
     var activateCanonLeftButtonAvailable:Bool = false
     var activateCanonRightButtonAvailable:Bool = false
+    
+    var contactJatuhanCharacterKenaDariAtas:Bool = false
     
     var attackedBosHit:Bool = false
     var attackedKecilHit:Bool = false
@@ -116,10 +120,9 @@ class GameScene: SKScene {
         minion.position = CGPoint(x: 1000, y: 800)
         minion.walk()
         addChild(minion)
-        
-        // Start the walk animation or any other initial animation
         bos.walk()
- 
+        
+
         
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
         physicsWorld.contactDelegate = self
@@ -285,22 +288,29 @@ class GameScene: SKScene {
         if bos.BosLagiAttackKeCharacter == true {
             bos.stopWalk()
             bos.attackAnimation()
+            bosNgeTakLoh = true
+            
         } else {
+            bosNgeTakLoh = false
             bos.stopAttack()
             bos.walk()
         }
         
-        if attackedBosHit == true{
-            bosGotAttack(damage: 10)
-        }
+       // if attackedBosHit == true{
+          //  bosGotAttack(damage: 10)
+       // }
         
-        if attackedKecilHit == true{          
-            kecilGotAttack(damage: 10)
+        if bosNgeTakLoh == true{
+            spawnJatuhan()
         }
-        
-        if attackedGendutHit == true{
-            GendutGotAttack(damage: 10)
-        }
+//
+//        if attackedKecilHit == true{          
+//            kecilGotAttack(damage: 10)
+//        }
+//        
+//        if attackedGendutHit == true{
+//            GendutGotAttack(damage: 10)
+//        }
         
         if canonLeftShoot == true {
             canonLeft.shootAction(movementSpeed: 1000)
@@ -421,6 +431,36 @@ class GameScene: SKScene {
             }
         }
     }
+    func spawnJatuhan() {
+
+        let numberOfJatuhan = Int.random(in: 1...10)
+        
+        print("Spawning \(numberOfJatuhan) jatuhan nodes")
+        
+        for _ in 0..<numberOfJatuhan {
+            let jatuhanTexture = SKTexture(imageNamed: "stalaktit1")
+            let jatuhan = SKSpriteNode(texture: jatuhanTexture)
+            let randomX = CGFloat.random(in: 100...2880)
+            let randomY = CGFloat.random(in: 2880...2880)
+            jatuhan.name = "jatuhan"
+            jatuhan.zPosition = SKSpriteNode.Layer.jatuhan.rawValue
+            jatuhan.physicsBody = SKPhysicsBody(rectangleOf: size, center: CGPoint(x: 0, y: 0))
+            jatuhan.physicsBody?.isDynamic = false
+            jatuhan.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.jatuhan
+            jatuhan.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
+            jatuhan.physicsBody?.affectedByGravity = false
+            
+            print("Random X: \(randomX), Random Y: \(randomY)")
+            jatuhan.position = CGPoint(x: randomX, y: randomY)
+            jatuhan.zPosition = SKSpriteNode.Layer.jatuhan.rawValue
+            scene?.addChild(jatuhan)
+            
+            // Add code here to animate the jatuhan falling down
+           let moveAction = SKAction.moveTo(y: 0, duration: 3)
+            jatuhan.run(moveAction)
+        }
+    }
+
     
     
 

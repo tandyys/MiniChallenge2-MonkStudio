@@ -14,10 +14,13 @@ extension SKSpriteNode {
         case bos
         case foreground
         case character
+       
         case projectile
         case canon
         case label
         case progressBar
+        case jatuhan
+     
 
       
         
@@ -37,6 +40,8 @@ extension SKSpriteNode {
         static let projectile: UInt32 = 0b1000000000 
         static let shootFromGendut: UInt32 = 0b10000000000
         static let shootFromKecil: UInt32 = 0b100000000000
+        static let jatuhan: UInt32 = 0b1000000000000
+
         
         
 
