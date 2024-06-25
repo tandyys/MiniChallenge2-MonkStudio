@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		273B6F782C214EB900A64CA0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 273B6F772C214EB900A64CA0 /* Base */; };
+		F84553582C2A7DE5004D966A /* Minion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84553572C2A7DE4004D966A /* Minion.swift */; };
+		F845535A2C2A8F88004D966A /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F84553592C2A8F88004D966A /* bg.mp3 */; };
+		F845535C2C2A9191004D966A /* Francesco DAndrea - The Laboratory Claptraps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F845535B2C2A9191004D966A /* Francesco DAndrea - The Laboratory Claptraps.mp3 */; };
+		F845535E2C2AB7F2004D966A /* AttackFromBos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F845535D2C2AB7EF004D966A /* AttackFromBos.swift */; };
 		F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F848446B2C286C2600BD64F4 /* Projectile.swift */; };
 		F8678A5C2C291EC7002521C1 /* AttackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8678A5B2C291EBB002521C1 /* AttackManager.swift */; };
 		F8A86B122C282195003C4282 /* Kecil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B0D2C282195003C4282 /* Kecil.swift */; };
@@ -34,6 +38,10 @@
 		273B6F672C214EB800A64CA0 /* LevelOneMini2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LevelOneMini2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		273B6F772C214EB900A64CA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		273B6F792C214EB900A64CA0 /* LevelOneMini2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LevelOneMini2.entitlements; sourceTree = "<group>"; };
+		F84553572C2A7DE4004D966A /* Minion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minion.swift; sourceTree = "<group>"; };
+		F84553592C2A8F88004D966A /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
+		F845535B2C2A9191004D966A /* Francesco DAndrea - The Laboratory Claptraps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Francesco DAndrea - The Laboratory Claptraps.mp3"; sourceTree = "<group>"; };
+		F845535D2C2AB7EF004D966A /* AttackFromBos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackFromBos.swift; sourceTree = "<group>"; };
 		F848446B2C286C2600BD64F4 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		F8678A5B2C291EBB002521C1 /* AttackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackManager.swift; sourceTree = "<group>"; };
 		F8A86AFF2C282195003C4282 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
@@ -88,9 +96,12 @@
 			children = (
 				F8A86AFF2C282195003C4282 /* MenuScene.swift */,
 				F8A86B002C282195003C4282 /* AppDelegate 2.swift */,
+				F845535B2C2A9191004D966A /* Francesco DAndrea - The Laboratory Claptraps.mp3 */,
 				F8A86B012C282195003C4282 /* GameScene.sks */,
 				F8A86B022C282195003C4282 /* Actions.sks */,
 				F8A86B032C282195003C4282 /* GameScene.swift */,
+				F845535D2C2AB7EF004D966A /* AttackFromBos.swift */,
+				F84553592C2A8F88004D966A /* bg.mp3 */,
 				F8678A5B2C291EBB002521C1 /* AttackManager.swift */,
 				F8E7CE2D2C28318F00FB8F74 /* HpProgressBar.swift */,
 				F848446B2C286C2600BD64F4 /* Projectile.swift */,
@@ -121,6 +132,7 @@
 		F8A86B0E2C282195003C4282 /* MainChar */ = {
 			isa = PBXGroup;
 			children = (
+				F84553572C2A7DE4004D966A /* Minion.swift */,
 				F8A86B0B2C282195003C4282 /* Bos.swift */,
 				F8A86B0C2C282195003C4282 /* Gendut.swift */,
 				F8A86B0D2C282195003C4282 /* Kecil.swift */,
@@ -186,9 +198,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F845535A2C2A8F88004D966A /* bg.mp3 in Resources */,
 				273B6F782C214EB900A64CA0 /* Base in Resources */,
 				F8A86B202C282195003C4282 /* GameScene.sks in Resources */,
 				F8A86B212C282195003C4282 /* Assets.xcassets in Resources */,
+				F845535C2C2A9191004D966A /* Francesco DAndrea - The Laboratory Claptraps.mp3 in Resources */,
 				F8A86B222C282195003C4282 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,8 +229,10 @@
 				F8A86B1C2C282195003C4282 /* GameScenePhysicsDelegate.swift in Sources */,
 				F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */,
 				F8A86B1D2C282195003C4282 /* MenuScene.swift in Sources */,
+				F845535E2C2AB7F2004D966A /* AttackFromBos.swift in Sources */,
 				F8A86B1E2C282195003C4282 /* Canon_Left.swift in Sources */,
 				F8A86B1F2C282195003C4282 /* Gendut.swift in Sources */,
+				F84553582C2A7DE5004D966A /* Minion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

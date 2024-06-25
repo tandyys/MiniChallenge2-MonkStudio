@@ -1,13 +1,17 @@
 import SpriteKit
 import GameController
 import Carbon
+import AVFoundation
 
 class GameScene: SKScene {
 
+    var backgroundMusic: SKAudioNode?
     let menuScene = MenuScene()
-    
     let gendut = Gendut()
     let kecil = Kecil()
+    let minion = Minion()
+    let bos = Bos()
+
     
     private var healthBarBos: HpProgressBar!
     private var healthBarGendut: HpProgressBar!
@@ -17,18 +21,15 @@ class GameScene: SKScene {
     
     var canonLeftShoot: Bool = false
     var canonRightShoot: Bool = false
-    
     var CanonContactLeft: Bool = false
     var CanonContactRight: Bool = false
-    
-    let bos = Bos()
-    
     
     let totalhpBos = 10000 // kalau ganti ini ganti juga ke class bos
     let totalhpKecil = 500
     let totalhpGendut = 1000
-    
+
     let bosHpName =  SKSpriteNode(imageNamed: "hpBosLabel")
+
 
     var gendutUpPressed:Bool = false
     var gendutDownPressed:Bool = false
@@ -47,6 +48,8 @@ class GameScene: SKScene {
     var attackedKecilHit:Bool = false
     var attackedGendutHit:Bool = false
     
+    var BosLagiAttackKeCharacter:Bool = false
+    
     let backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
     let foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
     
@@ -54,11 +57,10 @@ class GameScene: SKScene {
     var playerControllers: [Int: GCController] = [:]
     let maximumControllerCount = 2
     
-    
-    
-
     override func didMove(to view: SKView) {
 
+        
+        playBackgroundMusic()
    
         backgroundImage.position = CGPoint(x: frame.midX, y: frame.midY)
         backgroundImage.scale(to: CGSize(width: 2880, height: 1864))
@@ -87,16 +89,17 @@ class GameScene: SKScene {
         addChild(canonRight)
         
 
-        bos.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 50)
+        bos.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100)
         addChild(bos)
-        
-        bosHpName.position = CGPoint(x: self.frame.midX, y: self.frame.maxY - 200)
+        bosHpName.size = CGSize(width: bosHpName.size.width * 0.4, height: bosHpName.size.height * 0.4)
+        bosHpName.position = CGPoint(x: self.frame.minX + 900, y: self.frame.maxY - 220)
         bosHpName.zPosition = SKSpriteNode.Layer.label.rawValue
+        
         addChild(bosHpName)
         
         let progressBarSize = CGSize(width: 1264, height: 39)
         healthBarBos = HpProgressBar(size: progressBarSize, backgroundImage: "HpProgressBarBos", progressImage: "hpProgressBarBosTexture")
-        healthBarBos.position = CGPoint(x: size.width / 2, y: frame.maxY - 280)
+        healthBarBos.position = CGPoint(x: size.width / 2, y: frame.maxY - 175)
         addChild(healthBarBos)
         
         let progressBarSizeGendut = CGSize(width: 195/1.4, height: 27.42/1.4)
@@ -110,10 +113,18 @@ class GameScene: SKScene {
         addChild(healthBarGendut)
         addChild(healthBarKecil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
+        minion.position = CGPoint(x: 1000, y: 800)
+        minion.walk()
+        addChild(minion)
         
-        physicsWorld.contactDelegate = self
+        // Start the walk animation or any other initial animation
         bos.walk()
+ 
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
+        physicsWorld.contactDelegate = self
+        
+
     }
 
     @objc func didConnectController(_ notification: Notification) {
@@ -238,6 +249,7 @@ class GameScene: SKScene {
             canonRight.stop()
         case kVK_ANSI_W:
             gendutUpPressed = false
+            gendut.stop()
         case kVK_ANSI_A:
             gendutLeftPressed = false
             gendut.stop()
@@ -270,6 +282,14 @@ class GameScene: SKScene {
         healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 200)
         healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 140)
         
+        if bos.BosLagiAttackKeCharacter == true {
+            bos.stopWalk()
+            bos.attackAnimation()
+        } else {
+            bos.stopAttack()
+            bos.walk()
+        }
+        
         if attackedBosHit == true{
             bosGotAttack(damage: 10)
         }
@@ -295,13 +315,15 @@ class GameScene: SKScene {
         outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)
         movement.moveGendutAnimation(gendut: gendut,gendutUpPressed: gendutUpPressed, gendutDownPressed: gendutDownPressed, gendutLeftPressed: gendutLeftPressed, gendutRightPressed: gendutRightPressed)
         movement.moveKecilAnimation(kecil: kecil, kecilUpPressed: kecilUpPressed, kecilDownPressed: kecilDownPressed, kecilLeftPressed: kecilLeftPressed, kecilRightPressed: kecilRightPressed)
-         
+        
+ 
+
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    
+
     func displayTextCanonLeft(at position: CGPoint) {
         let text = SKLabelNode(text: "Press Y to activate")
         text.position = position
@@ -354,11 +376,8 @@ class GameScene: SKScene {
         healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: CGFloat(totalhpBos))
         print("\(bos.hpBos)")
         attackedBosHit = false
-            
-            // Check if player health is zero or less
             if  bos.hpBos < 0 {
                 bos.hpBos = 0
-                // Perform game over actions
                 healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: CGFloat(totalhpBos))
                 gameOver()
            }
@@ -369,11 +388,8 @@ class GameScene: SKScene {
         healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
         print("\(kecil.hp)")
         attackedKecilHit = false
-            
-            // Check if player health is zero or less
             if  kecil.hp < 0 {
                 kecil.hp = 0
-                // Perform game over actions
                 gameOver()
                 healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
            }
@@ -384,11 +400,8 @@ class GameScene: SKScene {
         healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
         print("\(gendut.hp)")
         attackedGendutHit = false
-            
-            // Check if player health is zero or less
         if  gendut.hp < 0 {
             gendut.hp = 0
-                // Perform game over actions
                 gameOver()
             healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
            }
@@ -396,9 +409,18 @@ class GameScene: SKScene {
     
 
         func gameOver() {
-            // Game over logic
             print("Lu Mati")
         }
+    
+    func playBackgroundMusic() {
+        if let musicURL = Bundle.main.url(forResource: "Francesco DAndrea - The Laboratory Claptraps", withExtension: "mp3") {
+            backgroundMusic = SKAudioNode(url: musicURL)
+            if let backgroundMusic = backgroundMusic {
+                backgroundMusic.autoplayLooped = true
+                addChild(backgroundMusic)
+            }
+        }
+    }
     
     
 
