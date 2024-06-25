@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "TowerGreenActivate_1.svg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "TowerGreenActivate_2.svg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "TowerGreenActivate_3.svg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

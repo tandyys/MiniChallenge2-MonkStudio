@@ -57,7 +57,7 @@ class GameScene: SKScene {
     var purplePressedTime:Double = 0.0
     var bluePressedTime:Double = 0.0
     var greenPressedTime:Double = 0.0
-    let maxPressedTime:Double = 900.0
+    let maxPressedTime:Double = 1200.0
     
     //Progress Bar node
     var redProgressBar: SKSpriteNode!
@@ -327,54 +327,6 @@ class GameScene: SKScene {
             greenPressedTime = 0.0
         }
         
-//        if activateRedTowerButtonPressed {
-//            let waitRed = SKAction.wait(forDuration: 15.0)
-//            let activatingRedTower = SKAction.run {
-//                self.towerRedActivate = true
-//            }
-//            let sequenceRed = SKAction.sequence([waitRed, activatingRedTower])
-//            self.run(sequenceRed, withKey: "redTowerActivation")
-//        }
-//        else {
-//            self.removeAction(forKey: "redTowerActivation")
-//        }
-        
-//        if activatePurpleTowerButtonPressed {
-//            let waitPurple = SKAction.wait(forDuration: 15.0)
-//            let activatingPurpleTower = SKAction.run {
-//                self.towerPurpleActivate = true
-//            }
-//            let sequencePurple = SKAction.sequence([waitPurple, activatingPurpleTower])
-//            self.run(sequencePurple, withKey: "purpleTowerActivation")
-//        }
-//        else {
-//            self.removeAction(forKey: "purpleTowerActivation")
-//        }
-        
-//        if activateBlueTowerButtonPressed {
-//            let waitBlue = SKAction.wait(forDuration: 15.0)
-//            let activatingBlueTower = SKAction.run {
-//                self.towerBlueActivate = true
-//            }
-//            let sequenceBlue = SKAction.sequence([waitBlue, activatingBlueTower])
-//            self.run(sequenceBlue, withKey: "blueTowerActivation")
-//        }
-//        else {
-//            self.removeAction(forKey: "blueTowerActivation")
-//        }
-        
-//        if activateGreenTowerButtonPressed {
-//            let waitGreen = SKAction.wait(forDuration: 15.0)
-//            let activatingGreenTower = SKAction.run {
-//                self.towerGreenActivate = true
-//            }
-//            let sequenceGreen = SKAction.sequence([waitGreen, activatingGreenTower])
-//            self.run(sequenceGreen, withKey: "greenTowerActivation")
-//        }
-//        else {
-//            self.removeAction(forKey: "greenTowerActivation")
-//        }
-        
         if towerRedActivate == true {
             if let parent = towerRed.parent {
                 let position = towerRed.position
@@ -391,7 +343,8 @@ class GameScene: SKScene {
                 towerRedActivated.zPosition = zPos
                 parent.addChild(towerRedActivated)
             }
-            self.deactiveRedTower(towerRedDeactiveTime)
+            removeRedProgressBar()
+//            self.deactiveRedTower(towerRedDeactiveTime)
         }
         
         if towerPurpleActivate == true {
@@ -410,7 +363,8 @@ class GameScene: SKScene {
                 towerPurpleActivated.zPosition = zPos
                 parent.addChild(towerPurpleActivated)
             }
-            self.deactivePurpleTower(towerPurpleDeactiveTime)
+            removePurpleProgressBar()
+//            self.deactivePurpleTower(towerPurpleDeactiveTime)
         }
 
         if towerBlueActivate == true {
@@ -429,7 +383,8 @@ class GameScene: SKScene {
                 towerBlueActivated.zPosition = zPos
                 parent.addChild(towerBlueActivated)
             }
-            self.deactiveBlueTower(towerBlueDeactiveTime)
+            removeBlueProgressBar()
+//            self.deactiveBlueTower(towerBlueDeactiveTime)
         }
         
         if towerGreenActivate == true {
@@ -448,10 +403,9 @@ class GameScene: SKScene {
                 towerGreenActivated.zPosition = zPos
                 parent.addChild(towerGreenActivated)
             }
-            self.deactiveGreenTower(towerGreenDeactiveTime)
+            removeGreenProgressBar()
+//            self.deactiveGreenTower(towerGreenDeactiveTime)
         }
-        
-//        print(towerRedActivate)
         
     }
     
