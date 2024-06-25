@@ -18,6 +18,11 @@ class Canon_Left: SKSpriteNode {
     var attack: Double = 10
     var hitBoss: Bool = false
     
+    var maxAmmo: Int = 1
+    var currentAmmo: Int = 1
+    var isReloading: Bool = false
+    let reloadTime: TimeInterval = 2.0
+    
     init() {
         let texture = SKTexture(imageNamed: "CanonLeft_0")
         
@@ -49,7 +54,7 @@ class Canon_Left: SKSpriteNode {
     }
     
     
-    func shoot() {
+    func shootAnimation() {
         //Check the textures
         guard let canonLeftTexture = canon_LeftTextures else {
             preconditionFailure("Cant find canon_Left texture")
@@ -60,6 +65,11 @@ class Canon_Left: SKSpriteNode {
     }
     
     func shootAction(movementSpeed: CGFloat) {
+        guard currentAmmo > 0 else {
+            print("Out of ammo, need to reload")
+            return
+        }
+        
         // Create a new instance of Projectile
         let projectile = Projectile()
         
@@ -82,13 +92,38 @@ class Canon_Left: SKSpriteNode {
         // Apply an impulse to the projectile to shoot it at a 45-degree angle with the specified movement speed
         let impulseVector = CGVector(dx: dx, dy: dy)
         projectile.physicsBody?.applyImpulse(impulseVector)
+        
+        // Decrease ammo count
+        currentAmmo -= 1
+
+
     }
+    
+    
+    func reload() {
+         guard !isReloading else { return }
+         isReloading = true
+         print("Reloading...")
+         
+         // Simulate reloading time
+         let waitAction = SKAction.wait(forDuration: reloadTime)
+         let reloadAction = SKAction.run { [weak self] in
+             self?.currentAmmo = self?.maxAmmo ?? 10
+             self?.isReloading = false
+             print("Reloaded")
+         }
+         
+         self.run(SKAction.sequence([waitAction, reloadAction]))
+     }
+    
     
     func stop() {
         
        removeAction(forKey: PlayerAnimationType.shoot.rawValue)
         
     }
+    
+    
     
     
 }

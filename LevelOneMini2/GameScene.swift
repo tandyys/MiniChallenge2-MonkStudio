@@ -86,6 +86,7 @@ class GameScene: SKScene {
         canonRight.position = CGPoint(x: foregroundImage.size.width - 750, y: 450)
         addChild(canonRight)
         
+
         bos.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 50)
         addChild(bos)
         
@@ -109,20 +110,12 @@ class GameScene: SKScene {
         addChild(healthBarGendut)
         addChild(healthBarKecil)
         
-     
-   
-//        canonLeft.shoot()
-//        canonRight.shoot()
-        
-
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
         
         physicsWorld.contactDelegate = self
+        bos.walk()
     }
-    
-    
-    
-    
+
     @objc func didConnectController(_ notification: Notification) {
         guard connectedControllers.count < maximumControllerCount else { return }
         if let controller = notification.object as? GCController {
@@ -168,9 +161,7 @@ class GameScene: SKScene {
             }
         }
     }
-
-
-    
+ 
     func setupGamepadInputKecil(for controller: GCController) {
         if let extendedGamepad = controller.extendedGamepad {
             let handlerInstance = Handler()
@@ -208,15 +199,13 @@ class GameScene: SKScene {
             case kVK_ANSI_Y:
             if CanonContactLeft == true{
                 canonLeftShoot = true
-                canonLeft.shoot()
+                canonLeft.shootAnimation()
             }
-  
             case kVK_ANSI_U:
             if CanonContactRight == true{
                 canonRightShoot = true
-                canonRight.shoot()
+                canonRight.shootAnimation()
             }
-            
             case kVK_ANSI_W:
                 gendutUpPressed = true
             case kVK_ANSI_A:
@@ -236,10 +225,7 @@ class GameScene: SKScene {
             default:
                 break
         }
-        
-
     }
-    
     override func keyUp(with event: NSEvent) {
         switch Int(event.keyCode) {
         case kVK_ANSI_Y:
@@ -278,12 +264,9 @@ class GameScene: SKScene {
             break
         }
     }
-    
     override func update(_ currentTime: TimeInterval) {
        
         let movement = Movement()
-        
-        
         healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 200)
         healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 140)
         
@@ -308,20 +291,12 @@ class GameScene: SKScene {
             canonRight.shootAction(movementSpeed: 1000)
             canonRightShoot = false
         }
-    
-        //healthBarBos.updateInnerBarWidth(health: 80, totalHealth: 100)
-        
-       // healthBarKecil.updateInnerBarWidth(health: 100, totalHealth: 100)
-        
-        //healthBarGendut.updateInnerBarWidth(health: 50, totalHealth: 100)
         
         outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)
         movement.moveGendutAnimation(gendut: gendut,gendutUpPressed: gendutUpPressed, gendutDownPressed: gendutDownPressed, gendutLeftPressed: gendutLeftPressed, gendutRightPressed: gendutRightPressed)
         movement.moveKecilAnimation(kecil: kecil, kecilUpPressed: kecilUpPressed, kecilDownPressed: kecilDownPressed, kecilLeftPressed: kecilLeftPressed, kecilRightPressed: kecilRightPressed)
          
     }
-    
-
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -342,7 +317,6 @@ class GameScene: SKScene {
         ]))
     }
     
-    
     func displayTextCanonRight(at position: CGPoint) {
         let text = SKLabelNode(text: "Press U to activate")
         text.position = position
@@ -358,9 +332,7 @@ class GameScene: SKScene {
         ]))
     }
     
-    
-    
-    
+
     func displayAmno(at position: CGPoint, currentAmmo: Int, AmmoMax:Int) {
         let text = SKLabelNode(text: "(\(currentAmmo), / \(AmmoMax)")
         text.position = position
@@ -422,8 +394,7 @@ class GameScene: SKScene {
            }
         }
     
-    
-    
+
         func gameOver() {
             // Game over logic
             print("Lu Mati")

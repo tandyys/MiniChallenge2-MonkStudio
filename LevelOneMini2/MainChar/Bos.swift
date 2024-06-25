@@ -24,10 +24,10 @@ class Bos: SKSpriteNode {
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.bosMoveTexture = self.loadAnimation(atlas: "Bos", prefix: "ratBos_", startAt: 0, stopAt: 5)
+        self.bosMoveTexture = self.loadAnimation(atlas: "bos", prefix: "ratBoss_", startAt: 0, stopAt: 5)
         
         self.name = "Bos"
-        self.setScale(1.5)
+        self.setScale(0.5)
 //        self.size = CGSize(width: 320, height: 360)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.zPosition = SKSpriteNode.Layer.bos.rawValue
@@ -55,7 +55,7 @@ class Bos: SKSpriteNode {
         }
         
         //Run animation
-        startAnimation(textures: bosTexture, speed: 0.135, name: PlayerAnimationType.move.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: bosTexture, speed: 0.25, name: PlayerAnimationType.move.rawValue, count: 0, resize: true, restore: true)
     }
     
     func stop() {
