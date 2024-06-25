@@ -21,6 +21,10 @@
 		B5AFD1442C286EDC006715F8 /* GameScene31.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1432C286EDC006715F8 /* GameScene31.swift */; };
 		B5AFD1462C286F1B006715F8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1452C286F1B006715F8 /* MenuScene.swift */; };
 		B5AFD1482C2917B7006715F8 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1472C2917B7006715F8 /* Handler.swift */; };
+		B5AFD14A2C2AA561006715F8 /* Bos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1492C2AA561006715F8 /* Bos.swift */; };
+		B5AFD14C2C2AB855006715F8 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */; };
+		B5AFD14E2C2AC47C006715F8 /* CharacterProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14D2C2AC47C006715F8 /* CharacterProjectile.swift */; };
+		B5AFD1502C2B0C77006715F8 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14F2C2B0C77006715F8 /* Monster.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		B5AFD1432C286EDC006715F8 /* GameScene31.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene31.swift; sourceTree = "<group>"; };
 		B5AFD1452C286F1B006715F8 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		B5AFD1472C2917B7006715F8 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
+		B5AFD1492C2AA561006715F8 /* Bos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bos.swift; sourceTree = "<group>"; };
+		B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressBar.swift; sourceTree = "<group>"; };
+		B5AFD14D2C2AC47C006715F8 /* CharacterProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProjectile.swift; sourceTree = "<group>"; };
+		B5AFD14F2C2B0C77006715F8 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +94,11 @@
 		273B6F9A2C217E7B00A64CA0 /* MainChar */ = {
 			isa = PBXGroup;
 			children = (
+				B5AFD14D2C2AC47C006715F8 /* CharacterProjectile.swift */,
 				273B6F962C217E6D00A64CA0 /* Gendut.swift */,
 				273B6F982C217E7300A64CA0 /* Kecil.swift */,
+				B5AFD1492C2AA561006715F8 /* Bos.swift */,
+				B5AFD14F2C2B0C77006715F8 /* Monster.swift */,
 			);
 			path = MainChar;
 			sourceTree = "<group>";
@@ -103,6 +114,7 @@
 				B5AFD1472C2917B7006715F8 /* Handler.swift */,
 				273B712A2C2297FC00A64CA0 /* Tower.swift */,
 				273B71432C28414300A64CA0 /* TowerProgressBar.swift */,
+				B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */,
 				273B6F9A2C217E7B00A64CA0 /* MainChar */,
 			);
 			path = Level1;
@@ -185,7 +197,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5AFD1502C2B0C77006715F8 /* Monster.swift in Sources */,
 				273B6F992C217E7300A64CA0 /* Kecil.swift in Sources */,
+				B5AFD14A2C2AA561006715F8 /* Bos.swift in Sources */,
 				B5AFD1442C286EDC006715F8 /* GameScene31.swift in Sources */,
 				B5AFD1462C286F1B006715F8 /* MenuScene.swift in Sources */,
 				273B6F732C214EB800A64CA0 /* ViewController.swift in Sources */,
@@ -194,6 +208,8 @@
 				B5AFD1482C2917B7006715F8 /* Handler.swift in Sources */,
 				273B71442C28414300A64CA0 /* TowerProgressBar.swift in Sources */,
 				273B6F972C217E6D00A64CA0 /* Gendut.swift in Sources */,
+				B5AFD14C2C2AB855006715F8 /* HpProgressBar.swift in Sources */,
+				B5AFD14E2C2AC47C006715F8 /* CharacterProjectile.swift in Sources */,
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,

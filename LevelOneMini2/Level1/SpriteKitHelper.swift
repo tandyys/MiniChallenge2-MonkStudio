@@ -12,6 +12,7 @@ extension SKSpriteNode {
     
     enum Layer: CGFloat {
         case background
+        case bos
         case platform
         case tree
         case gate
@@ -50,6 +51,8 @@ extension SKSpriteNode {
         case label
         case progressBar
         case boundaries
+        case monster
+        case projectile
     }
     
     enum PhysicsCategory {
@@ -73,6 +76,9 @@ extension SKSpriteNode {
         static let towerWhite3NotActivated: UInt32  = 0b10000000000000000
         static let towerWhite3Activated: UInt32     = 0b100000000000000000
         static let platform: UInt32                 = 0b1000000000000000000
+        static let bos: UInt32                      = 0b10000000000000000000
+        static let projectile: UInt32               = 0b100000000000000000000
+        static let projectileCharacter: UInt32      = 0b1000000000000000000000
     }
     
     func loadAnimation(atlas: String, prefix: String, startAt: Int, stopAt: Int) -> [SKTexture] {
