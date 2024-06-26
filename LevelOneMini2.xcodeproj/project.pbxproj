@@ -10,7 +10,6 @@
 		273B6F782C214EB900A64CA0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 273B6F772C214EB900A64CA0 /* Base */; };
 		F84553582C2A7DE5004D966A /* Minion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84553572C2A7DE4004D966A /* Minion.swift */; };
 		F845535E2C2AB7F2004D966A /* AttackFromBos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F845535D2C2AB7EF004D966A /* AttackFromBos.swift */; };
-		F84553682C2B015E004D966A /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F84553672C2B015E004D966A /* bg.mp3 */; };
 		F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F848446B2C286C2600BD64F4 /* Projectile.swift */; };
 		F8678A5C2C291EC7002521C1 /* AttackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8678A5B2C291EBB002521C1 /* AttackManager.swift */; };
 		F8A86B122C282195003C4282 /* Kecil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B0D2C282195003C4282 /* Kecil.swift */; };
@@ -38,6 +37,13 @@
 		F8D58A942C2BACCE000F3AFA /* RestartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A932C2BACCB000F3AFA /* RestartManager.swift */; };
 		F8D58A962C2BC468000F3AFA /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A952C2BC45A000F3AFA /* Overlay.swift */; };
 		F8D58A982C2BCA03000F3AFA /* CollectableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A972C2BC9FC000F3AFA /* CollectableItem.swift */; };
+		F8D58A9A2C2BFA84000F3AFA /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F8D58A992C2BFA84000F3AFA /* bg.mp3 */; };
+		F8D58A9C2C2BFEA2000F3AFA /* MinionGK.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A9B2C2BFE99000F3AFA /* MinionGK.swift */; };
+		F8D58A9E2C2BFED9000F3AFA /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A9D2C2BFED9000F3AFA /* EntityManager.swift */; };
+		F8D58AA02C2BFEF3000F3AFA /* MinionHealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A9F2C2BFEF3000F3AFA /* MinionHealthComponent.swift */; };
+		F8D58AA52C2BFF45000F3AFA /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58AA42C2BFF45000F3AFA /* SpriteComponent.swift */; };
+		F8D58AA72C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58AA62C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift */; };
+		F8D58AA92C2C07F5000F3AFA /* GKComponentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58AA82C2C07F5000F3AFA /* GKComponentExtension.swift */; };
 		F8E7CE2E2C28319300FB8F74 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7CE2D2C28318F00FB8F74 /* HpProgressBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +53,6 @@
 		273B6F792C214EB900A64CA0 /* LevelOneMini2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LevelOneMini2.entitlements; sourceTree = "<group>"; };
 		F84553572C2A7DE4004D966A /* Minion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minion.swift; sourceTree = "<group>"; };
 		F845535D2C2AB7EF004D966A /* AttackFromBos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackFromBos.swift; sourceTree = "<group>"; };
-		F84553672C2B015E004D966A /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
 		F848446B2C286C2600BD64F4 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		F8678A5B2C291EBB002521C1 /* AttackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackManager.swift; sourceTree = "<group>"; };
 		F8A86AFF2C282195003C4282 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
@@ -75,6 +80,13 @@
 		F8D58A932C2BACCB000F3AFA /* RestartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartManager.swift; sourceTree = "<group>"; };
 		F8D58A952C2BC45A000F3AFA /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
 		F8D58A972C2BC9FC000F3AFA /* CollectableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableItem.swift; sourceTree = "<group>"; };
+		F8D58A992C2BFA84000F3AFA /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
+		F8D58A9B2C2BFE99000F3AFA /* MinionGK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinionGK.swift; sourceTree = "<group>"; };
+		F8D58A9D2C2BFED9000F3AFA /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		F8D58A9F2C2BFEF3000F3AFA /* MinionHealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinionHealthComponent.swift; sourceTree = "<group>"; };
+		F8D58AA42C2BFF45000F3AFA /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		F8D58AA62C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterGeneratorSetUp.swift; sourceTree = "<group>"; };
+		F8D58AA82C2C07F5000F3AFA /* GKComponentExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKComponentExtension.swift; sourceTree = "<group>"; };
 		F8E7CE2D2C28318F00FB8F74 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +152,7 @@
 		F8A86B0E2C282195003C4282 /* MainChar */ = {
 			isa = PBXGroup;
 			children = (
+				F8D58AA32C2BFEFF000F3AFA /* MinionECS */,
 				F84553572C2A7DE4004D966A /* Minion.swift */,
 				F8D58A972C2BC9FC000F3AFA /* CollectableItem.swift */,
 				F8A86B0B2C282195003C4282 /* Bos.swift */,
@@ -188,9 +201,22 @@
 			isa = PBXGroup;
 			children = (
 				F8C8219B2C2B30FB00A3137E /* rock-falling-010-104938.mp3 */,
-				F84553672C2B015E004D966A /* bg.mp3 */,
+				F8D58A992C2BFA84000F3AFA /* bg.mp3 */,
 			);
 			path = Sound;
+			sourceTree = "<group>";
+		};
+		F8D58AA32C2BFEFF000F3AFA /* MinionECS */ = {
+			isa = PBXGroup;
+			children = (
+				F8D58A9F2C2BFEF3000F3AFA /* MinionHealthComponent.swift */,
+				F8D58AA42C2BFF45000F3AFA /* SpriteComponent.swift */,
+				F8D58A9B2C2BFE99000F3AFA /* MinionGK.swift */,
+				F8D58A9D2C2BFED9000F3AFA /* EntityManager.swift */,
+				F8D58AA62C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift */,
+				F8D58AA82C2C07F5000F3AFA /* GKComponentExtension.swift */,
+			);
+			path = MinionECS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,9 +278,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8C8219C2C2B30FB00A3137E /* rock-falling-010-104938.mp3 in Resources */,
-				F84553682C2B015E004D966A /* bg.mp3 in Resources */,
 				273B6F782C214EB900A64CA0 /* Base in Resources */,
 				F8A86B202C282195003C4282 /* GameScene.sks in Resources */,
+				F8D58A9A2C2BFA84000F3AFA /* bg.mp3 in Resources */,
 				F8A86B212C282195003C4282 /* Assets.xcassets in Resources */,
 				F8A86B222C282195003C4282 /* Actions.sks in Resources */,
 			);
@@ -268,7 +294,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8A86B122C282195003C4282 /* Kecil.swift in Sources */,
+				F8D58A9C2C2BFEA2000F3AFA /* MinionGK.swift in Sources */,
 				F8A86B132C282195003C4282 /* GameScene.swift in Sources */,
+				F8D58AA72C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift in Sources */,
 				F8D58A962C2BC468000F3AFA /* Overlay.swift in Sources */,
 				F8A86B142C282195003C4282 /* OutOfBound.swift in Sources */,
 				F8C8219A2C2B2EE900A3137E /* AudioManager.swift in Sources */,
@@ -282,12 +310,16 @@
 				F8C8218D2C2B195100A3137E /* DisplayTextManager.swift in Sources */,
 				F8678A5C2C291EC7002521C1 /* AttackManager.swift in Sources */,
 				F8A86B1A2C282195003C4282 /* Canon_Right.swift in Sources */,
+				F8D58AA52C2BFF45000F3AFA /* SpriteComponent.swift in Sources */,
 				F8A86B1B2C282195003C4282 /* AppDelegate.swift in Sources */,
 				F8C821912C2B1A6A00A3137E /* BossHpName.swift in Sources */,
 				F8A86B1C2C282195003C4282 /* GameScenePhysicsDelegate.swift in Sources */,
 				F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */,
 				F8C8218F2C2B1A1100A3137E /* BackgroundManager.swift in Sources */,
+				F8D58AA92C2C07F5000F3AFA /* GKComponentExtension.swift in Sources */,
+				F8D58AA02C2BFEF3000F3AFA /* MinionHealthComponent.swift in Sources */,
 				F8A86B1D2C282195003C4282 /* MenuScene.swift in Sources */,
+				F8D58A9E2C2BFED9000F3AFA /* EntityManager.swift in Sources */,
 				F845535E2C2AB7F2004D966A /* AttackFromBos.swift in Sources */,
 				F8A86B1E2C282195003C4282 /* Canon_Left.swift in Sources */,
 				F8A86B1F2C282195003C4282 /* Gendut.swift in Sources */,

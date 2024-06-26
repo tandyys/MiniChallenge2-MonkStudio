@@ -14,7 +14,6 @@ extension GameScene {
     
     func restartGameScene() {
         bos.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100) //
-        minion.position = CGPoint(x: 1000, y: 800)
         canonLeft.position =  CGPoint(x: 150, y: 450)
         canonRight.position = CGPoint(x: foregroundImage.size.width - 750, y: 450)
         bosIsAttacking = false

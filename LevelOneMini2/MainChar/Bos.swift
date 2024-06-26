@@ -108,7 +108,7 @@ class Bos: SKSpriteNode {
             scene?.addChild(jatuhan)
             
             // Add code here to animate the jatuhan falling down
-            let moveAction = SKAction.moveTo(y: -200, duration: 3)
+            let moveAction = SKAction.moveTo(y: -200, duration: 5)
             jatuhan.run(moveAction)
             
             

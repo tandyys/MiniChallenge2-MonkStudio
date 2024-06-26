@@ -2,15 +2,16 @@ import SpriteKit
 import GameController
 import Carbon
 import AVFoundation
+import GameplayKit
 
 class GameScene: SKScene {
 
-    
+    var entityManager: EntityManager!
     var backgroundMusic: SKAudioNode?
     let menuScene = MenuScene()
     let gendut = Gendut()
     let kecil = Kecil()
-    let minion = Minion()
+    //let minion = Minion()
     let bos = Bos()
     let attackManager = AttackManager()
     let bossHpLabel = BossHpName()
@@ -28,6 +29,13 @@ class GameScene: SKScene {
     var audioManager = AudioManager()
     
     var bosIsAttacking: Bool = false
+    
+    let blueMinion = "b"
+    let redMinion = "r"
+    let purpleMinion = "p"
+    
+    var minionCount = 0
+    var maxMinion = 24
     
     var canonLeftShoot: Bool = false
     var canonRightShoot: Bool = false
@@ -97,12 +105,46 @@ class GameScene: SKScene {
         addChild(healthBarGendut)
         addChild(healthBarKecil)
         
-        minion.position = CGPoint(x: 1000, y: 300)
-        minion.walk()
-        addChild(minion)
+        //minion.position = CGPoint(x: 1000, y: 300)
+        //minion.walk()
+        //addChild(minion)
         bos.walk()
         
-        minion.die()
+        entityManager = EntityManager(scene: self)
+        
+        //minion.walk()
+        //Limited Spawn Minion
+        let stopAction = SKAction.run { [self] in
+            if minionCount >= maxMinion {
+                self.removeAction(forKey: "Spawn")
+            }
+        }
+        
+        let spawnSequence = SKAction.sequence([
+            SKAction.run { [self] in
+                if minionCount < maxMinion {
+                    spawnMonster(blueMinion)
+                    minionCount += 1
+                }
+            },
+            SKAction.wait(forDuration: 5),
+            SKAction.run { [self] in
+                if minionCount < maxMinion {
+                    spawnMonster(redMinion)
+                    minionCount += 1
+                }
+            },
+            SKAction.wait(forDuration: 5),
+            SKAction.run { [self] in
+                if minionCount < maxMinion {
+                    spawnMonster(purpleMinion)
+                    minionCount += 1
+                }
+            },
+            SKAction.wait(forDuration: 5),
+            stopAction
+        ])
+        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
         
 
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
@@ -110,6 +152,8 @@ class GameScene: SKScene {
         
         attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: bos.hpTotalBos, damage: CGFloat(0), attackedBosHit: &attackedBosHit)
         
+        
+     
     }
 
     @objc func didConnectController(_ notification: Notification) {
@@ -298,6 +342,12 @@ class GameScene: SKScene {
         outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)
         movement.moveGendutAnimation(gendut: gendut,gendutUpPressed: gendutUpPressed, gendutDownPressed: gendutDownPressed, gendutLeftPressed: gendutLeftPressed, gendutRightPressed: gendutRightPressed)
         movement.moveKecilAnimation(kecil: kecil, kecilUpPressed: kecilUpPressed, kecilDownPressed: kecilDownPressed, kecilLeftPressed: kecilLeftPressed, kecilRightPressed: kecilRightPressed)
+        
+        entityManager.update(currentTime)
+        
+        if let kecilNode = self.childNode(withName: "Kecil") as? Kecil {
+            kecilNode.playerAgent.position = vector_float2(x: Float(kecilNode.position.x), y: Float(kecilNode.position.y))
+        }
 
     }
     deinit {

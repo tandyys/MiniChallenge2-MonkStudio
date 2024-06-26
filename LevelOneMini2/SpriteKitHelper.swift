@@ -13,6 +13,7 @@ extension SKSpriteNode {
         case label
         case progressBar
         case jatuhan
+        case minion
      
 
       
@@ -31,7 +32,7 @@ extension SKSpriteNode {
         static let canonRight: UInt32 = 0b1000000
         static let canonLeftNotActivated: UInt32 = 0b10000000
         static let canonRightNotActivated: UInt32 = 0b100000000
-        static let projectile: UInt32 = 0b1000000000 
+        static let projectile: UInt32 = 0b1000000000
         static let shootFromGendut: UInt32 = 0b10000000000
         static let shootFromKecil: UInt32 = 0b100000000000
  

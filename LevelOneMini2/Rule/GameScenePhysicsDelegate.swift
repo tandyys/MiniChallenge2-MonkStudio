@@ -189,7 +189,7 @@ extension GameScene: SKPhysicsContactDelegate {
             activateCanonRightButtonAvailable = true
             
             let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRight ? contact.bodyA.node : contact.bodyB.node
-            
+
             if let CanonRightPosition = CanonRightNode?.position {
                 displayManager.displayTextCanonRight(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 100 ))
                 displayManager.displayAmno(at: CGPoint(x: CanonRightPosition.x + 300, y: CanonRightPosition.y - 150 ), currentAmmo: canonLeft.currentAmmo, AmmoMax: canonLeft.maxAmmo)

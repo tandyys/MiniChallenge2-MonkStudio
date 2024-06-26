@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import GameplayKit
 
 class Kecil: SKSpriteNode {
     enum PlayerAnimationType:String {
@@ -14,18 +15,21 @@ class Kecil: SKSpriteNode {
     }
     
     private var KecilWalkTexture: [SKTexture]?
+    var playerAgent: GKAgent2D
     var hp:Double = 500
     var hpTotalKecil:Double = 500
+ 
+    
     
     init() {
         let texture = SKTexture(imageNamed: "KecilWalk_0")
+        self.playerAgent = GKAgent2D()
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
         self.KecilWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "KecilWalk_", startAt: 0, stopAt: 5)
         self.name = "Kecil"
         self.setScale(1.0)
-//        self.size = CGSize(width: 320, height: 360)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.zPosition = SKSpriteNode.Layer.character.rawValue
         self.position = CGPoint(x: 100, y: 300)
@@ -38,6 +42,8 @@ class Kecil: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
+        
+        playerAgent.position = SIMD2(Float(self.position.x), Float(self.position.y))
         
     }
     
