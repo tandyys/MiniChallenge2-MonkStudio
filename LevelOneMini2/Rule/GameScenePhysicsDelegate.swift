@@ -25,10 +25,10 @@ extension GameScene: SKPhysicsContactDelegate {
         if collectableItemsContactCanon == SKSpriteNode.PhysicsCategory.collectablesitem | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {
             let CanonLeftNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonLeft ? contact.bodyA.node : contact.bodyB.node
             if let CanonLeftPosition = CanonLeftNode?.position {
-                let item = CollectableItem()
                 print("kena left ama collectable")
                 canonLeft.reload()
-                minion.removeFromParentCollectableItems(item: item)
+                let itemNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.collectablesitem ? contact.bodyA.node : contact.bodyB.node
+                        itemNode?.removeFromParent()
             
             }
         }
@@ -36,11 +36,10 @@ extension GameScene: SKPhysicsContactDelegate {
         if collectableItemsContactCanon == SKSpriteNode.PhysicsCategory.collectablesitem | SKSpriteNode.PhysicsCategory.canonRightNotActivated {
             let CanonRightNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.canonRight ? contact.bodyA.node : contact.bodyB.node
             if let CanonRightPosition = CanonRightNode?.position {
-                let item = CollectableItem()
                 print("kena right ama collectable")
                 canonRight.reload()
-                minion.removeFromParentCollectableItems(item: item)
-              
+                let itemNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.collectablesitem ? contact.bodyA.node : contact.bodyB.node
+                        itemNode?.removeFromParent()
                 
             }
             

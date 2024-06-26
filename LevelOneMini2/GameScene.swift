@@ -103,10 +103,12 @@ class GameScene: SKScene {
         bos.walk()
         
         minion.die()
- 
+        
 
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
         physicsWorld.contactDelegate = self
+        
+        attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: bos.hpTotalBos, damage: CGFloat(0), attackedBosHit: &attackedBosHit)
         
     }
 

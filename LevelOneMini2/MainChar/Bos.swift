@@ -9,7 +9,7 @@ class Bos: SKSpriteNode {
 
     private var bosMoveTexture: [SKTexture]?
     private var bosMoveTextureAttack: [SKTexture]?
-    var hpBos: Double = 10000
+    var hpBos: Double = 5000
     var hpTotalBos: Double  = 10000
     var BosLagiAttackKeCharacter: Bool = false
     

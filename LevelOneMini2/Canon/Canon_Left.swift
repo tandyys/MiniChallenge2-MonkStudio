@@ -20,7 +20,7 @@ class Canon_Left: SKSpriteNode {
     var maxAmmo: Int = 1
     var currentAmmo: Int = 1
     var isReloading: Bool = false
-    let reloadTime: TimeInterval = 2.0
+    let reloadTime: TimeInterval = 0.1
     
     init() {
         let texture = SKTexture(imageNamed: "CanonLeft_0")

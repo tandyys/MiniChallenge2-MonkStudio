@@ -67,6 +67,7 @@ class Minion: SKSpriteNode {
           // Add the collectable item to the parent node
           if let parent = self.parent {
               parent.addChild(item)
+
           }
           
           // Remove the minion from its parent node

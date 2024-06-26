@@ -30,7 +30,7 @@ extension GameScene {
         attackedGendutHit = false
         BosLagiAttackKeCharacter = false
 
-        healthBarBos.updateInnerBarWidth(health: bos.hpTotalBos, totalHealth: bos.hpTotalBos)
+        healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: bos.hpTotalBos)
         healthBarGendut.updateInnerBarWidth(health: gendut.hpTotalGendut, totalHealth: gendut.hpTotalGendut)
         healthBarKecil.updateInnerBarWidth(health: kecil.hpTotalKecil, totalHealth: kecil.hpTotalKecil)
 
