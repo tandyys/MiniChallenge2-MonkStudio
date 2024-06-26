@@ -9,9 +9,17 @@ class GameScene31: SKScene {
     let gendut = Gendut()
     let kecil = Kecil()
     let bos = Bos()
-    var monster : Monster?
     var gedeProjectile : GedeProjectile?
     var kecilProjectile : KecilProjectile?
+    
+    let attackManager = AttackManager()
+    var healthBarBos: HpProgressBar!
+     var healthBarGendut: HpProgressBar!
+     var healthBarKecil: HpProgressBar!
+    let BosHpNameLabel = BossHpName()
+    var tower1WhiteCountBuild = TowerWhite1Label()
+    var tower2WhiteCountBuild = TowerWhite2Label()
+    var tower3WhiteCountBuild = TowerWhite3Label()
     
     var gendutShoot: Bool = false
     var kecilShoot: Bool = false
@@ -24,6 +32,10 @@ class GameScene31: SKScene {
     var gendutLeftPressed:Bool = false
     var gendutRightPressed:Bool = false
     
+    var collectibleItemsTower1:Double = 0
+    var collectibleItemsTower2:Double = 0
+    var collectibleItemsTower3:Double = 0
+    
     var keysProjectile:CGPoint = CGPoint(x: 0, y: 0)
     var aimXKecil: Double = 0
     var aimYKecil: Double = 0
@@ -35,6 +47,7 @@ class GameScene31: SKScene {
     
     var viewWidth:Double = 0.0
     var viewHeight:Double = 0.0
+    
     var kecilUpPressed:Bool = false
     var kecilDownPressed:Bool = false
     var kecilLeftPressed:Bool = false
@@ -106,10 +119,26 @@ class GameScene31: SKScene {
     var white3ProgressBarBg: SKSpriteNode!
     var white3ProgressBarMask: SKSpriteNode!
     var white3CropNode: SKCropNode!
+    let progressBarSize = CGSize(width: 1264, height: 39)
+    let progressBarSizeGendut = CGSize(width: 195/1.4, height: 27.42/1.4)
+    let progressBarSizeKecil = CGSize(width: 195/1.4, height: 27.42/1.4)
+    var attackedBosHit:Bool = false
+       var attackedKecilHit:Bool = false
+       var attackedGendutHit:Bool = false
     
-    private var healthBarBos: HpProgressBar!
-    private var healthBarGendut: HpProgressBar!
-    private var healthBarKecil: HpProgressBar!
+//    private var healthBarBos: HpProgressBar!
+//    private var healthBarGendut: HpProgressBar!
+//    private var healthBarKecil: HpProgressBar!
+    
+    var entityManager: EntityManager!
+
+        //Minion spawn set up
+        let blueMinion = "b"
+        let redMinion = "r"
+        let purpleMinion = "p"
+        
+        var minionCount = 0
+        var maxMinion = 24
     
     let totalhpBos = 10000 // kalau ganti ini ganti juga ke class bos
     let totalhpKecil = 500
@@ -143,6 +172,7 @@ class GameScene31: SKScene {
     }
 
     override func didMove(to view: SKView) {
+        entityManager = EntityManager(scene: self)
         viewWidth = view.frame.width
         viewHeight = view.frame.height
         
@@ -249,54 +279,81 @@ class GameScene31: SKScene {
         addChild(kecil)
         
         bos.position = CGPoint(x: frame.maxX - frame.maxX * 0.325, y: self.frame.midY + 150)
+        bos.color = NSColor.black
         addChild(bos)
         
 //        addMonster()
+        addChild(towerWhite1CountBuild)
+        addChild(towerWhite2CountBuild)
+        addChild(towerWhite3CountBuild)
+        addChild(BosHpNameLabel)
         
-        bosHpName.size = CGSize(width: bosHpName.size.width * 0.4, height: bosHpName.size.height * 0.4)
-                bosHpName.position = CGPoint(x: self.frame.minX + 900, y: self.frame.maxY - 220)
-                bosHpName.zPosition = SKSpriteNode.Layer.label.rawValue
-                
-                addChild(bosHpName)
-                
-                let progressBarSize = CGSize(width: 1264, height: 39)
-                healthBarBos = HpProgressBar(size: progressBarSize, backgroundImage: "HpProgressBarBos", progressImage: "hpProgressBarBosTexture")
-                healthBarBos.position = CGPoint(x: size.width / 2, y: frame.maxY - 175)
-                addChild(healthBarBos)
-                
-                let progressBarSizeGendut = CGSize(width: 195/1.4, height: 27.42/1.4)
-                healthBarGendut = HpProgressBar(size: progressBarSizeGendut, backgroundImage: "HpProgressBarCharacter", progressImage: "HpProgressBarCharacterTexture")
-                healthBarGendut.position = CGPoint(x: gendut.position.x, y: gendut.position.y + 10)
-                
-                let progressBarSizeKecil = CGSize(width: 195/1.4, height: 27.42/1.4)
-                healthBarKecil = HpProgressBar(size: progressBarSizeKecil, backgroundImage: "HpProgressBarCharacter", progressImage: "HpProgressBarCharacterTexture")
-                healthBarKecil.position = CGPoint(x: kecil.position.x, y: kecil.position.y + 10)
-                
-                addChild(healthBarGendut)
-                addChild(healthBarKecil)
+        healthBarBos = HpProgressBar(size: progressBarSize, backgroundImage: "HpProgressBarBos", progressImage: "hpProgressBarBosTexture")
+        healthBarBos.position = CGPoint(x: size.width / 2, y: frame.maxY - 175)
+        healthBarGendut = HpProgressBar(size: progressBarSizeGendut, backgroundImage: "HpProgressBarCharacter", progressImage: "HpProgressBarCharacterTexture")
+        healthBarGendut.position = CGPoint(x: gendut.position.x, y: gendut.position.y + 1000)
+        healthBarKecil = HpProgressBar(size: progressBarSizeKecil, backgroundImage: "HpProgressBarCharacter", progressImage: "HpProgressBarCharacterTexture")
+        healthBarKecil.position = CGPoint(x: kecil.position.x, y: kecil.position.y + 1000)
+        
+        addChild(healthBarBos)
+        addChild(healthBarGendut)
+        addChild(healthBarKecil)
         
         physicsWorld.contactDelegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
+        let stopAction = SKAction.run { [self] in
+                    if minionCount >= maxMinion {
+                        self.removeAction(forKey: "Spawn")
+                    }
+                }
+                
+                let spawnSequence = SKAction.sequence([
+                    SKAction.run { [self] in
+                        if minionCount < maxMinion {
+                            spawnMonster(blueMinion)
+                            minionCount += 1
+                        }
+                    },
+                    SKAction.wait(forDuration: 5),
+                    SKAction.run { [self] in
+                        if minionCount < maxMinion {
+                            spawnMonster(redMinion)
+                            minionCount += 1
+                        }
+                    },
+                    SKAction.wait(forDuration: 5),
+                    SKAction.run { [self] in
+                        if minionCount < maxMinion {
+                            spawnMonster(purpleMinion)
+                            minionCount += 1
+                        }
+                    },
+                    SKAction.wait(forDuration: 5),
+                    stopAction
+                ])
+                run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
+                
+                physicsWorld.contactDelegate = self
         
     }
     
     
-    @objc func didConnectController(_ notification: Notification) {
-        guard connectedControllers.count < maximumControllerCount else { return }
-        if let controller = notification.object as? GCController {
-            connectedControllers.append(controller)
-            if playerControllers[0] == nil {
-                playerControllers[0] = controller
-                print("Controller connected and assigned to Player 1 (Gendut).")
-                setupGamepadInputGendut(for: controller)
-                
-            } else if playerControllers[1] == nil {
-                playerControllers[1] = controller
-                print("Controller connected and assigned to Player 2 (Kecil). ")
-                setupGamepadInputKecil(for: controller)
-            }
-        }
-    }
+//    @objc func didConnectController(_ notification: Notification) {
+//        guard connectedControllers.count < maximumControllerCount else { return }
+//        if let controller = notification.object as? GCController {
+//            connectedControllers.append(controller)
+//            if playerControllers[0] == nil {
+//                playerControllers[0] = controller
+//                print("Controller connected and assigned to Player 1 (Gendut).")
+//                setupGamepadInputGendut(for: controller)
+//                
+//            } else if playerControllers[1] == nil {
+//                playerControllers[1] = controller
+//                print("Controller connected and assigned to Player 2 (Kecil). ")
+//                setupGamepadInputKecil(for: controller)
+//            }
+//        }
+//    }
     
     func setupGamepadInputGendut(for controller: GCController) {
         if let extendedGamepad = controller.extendedGamepad {
@@ -330,38 +387,38 @@ class GameScene31: SKScene {
 
 
     
-    func setupGamepadInputKecil(for controller: GCController) {
-
-        if let extendedGamepad = controller.extendedGamepad {
-            let handlerInstance = Handler()
-            extendedGamepad.buttonMenu.valueChangedHandler = handlerInstance.buttonMenuValueChangedHandler
-            extendedGamepad.buttonX.valueChangedHandler = handlerInstance.buttonXValueChangedHandler
-            extendedGamepad.leftThumbstick.valueChangedHandler = { (thumbstick, xValue, yValue) in
-                if controller == self.playerControllers[1] {
-                    if xValue < -0.5 {
-                        self.kecilRightPressed = true
-                    } else if xValue > 0.5 {
-                        self.kecilLeftPressed = true
-                    } else {
-                        self.kecilLeftPressed = false
-                        self.kecilRightPressed = false
-     
-                    }
-                    if yValue < -0.5 {
-                        self.kecilDownPressed = true
-                    } else if yValue > 0.5 {
-                        self.kecilUpPressed = true
-                    } else {
-                        self.kecilDownPressed = false
-                        self.kecilUpPressed = false
-                    }
-                    self.kecil.stop()
-                
-                }
-                
-            }
-        }
-    }
+//    func setupGamepadInputKecil(for controller: GCController) {
+//
+//        if let extendedGamepad = controller.extendedGamepad {
+//            let handlerInstance = Handler()
+//            extendedGamepad.buttonMenu.valueChangedHandler = handlerInstance.buttonMenuValueChangedHandler
+//            extendedGamepad.buttonX.valueChangedHandler = handlerInstance.buttonXValueChangedHandler
+//            extendedGamepad.leftThumbstick.valueChangedHandler = { (thumbstick, xValue, yValue) in
+//                if controller == self.playerControllers[1] {
+//                    if xValue < -0.5 {
+//                        self.kecilRightPressed = true
+//                    } else if xValue > 0.5 {
+//                        self.kecilLeftPressed = true
+//                    } else {
+//                        self.kecilLeftPressed = false
+//                        self.kecilRightPressed = false
+//     
+//                    }
+//                    if yValue < -0.5 {
+//                        self.kecilDownPressed = true
+//                    } else if yValue > 0.5 {
+//                        self.kecilUpPressed = true
+//                    } else {
+//                        self.kecilDownPressed = false
+//                        self.kecilUpPressed = false
+//                    }
+//                    self.kecil.stop()
+//                
+//                }
+//                
+//            }
+//        }
+//    }
     
     override func keyDown(with event: NSEvent) {
         func getKeysPressed() -> Set<Int> {
@@ -457,7 +514,6 @@ class GameScene31: SKScene {
                     
                 case kVK_LeftArrow:
                     kecilLeftPressed = true
-                    
                 case kVK_RightArrow:
                     kecilRightPressed = true
                 
@@ -532,10 +588,11 @@ class GameScene31: SKScene {
             kecilDownPressed = false
             kecil.stop()
         case kVK_LeftArrow:
-            kecilRightPressed = false
+            kecilLeftPressed = false
+
             kecil.stop()
         case kVK_RightArrow:
-            kecilLeftPressed = false
+            kecilRightPressed = false
             kecil.stop()
         default:
             break
@@ -543,39 +600,11 @@ class GameScene31: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-//        if gendutShoot == true{
-//            shootGedeProjectile(keysProjectile:aimDestinationGendut)
-//            gendutShoot = false
-//            
-//        }else if kecilShoot == true{
-////            shootKecilProjectile(keysPressed: getKeysPressed())
-//            kecilShoot = false
-//            
-//        }
-        aimXGendut = gendut.position.x
-        aimYGendut = gendut.position.y
-        
-        aimDestinationGendut = CGPoint(x: aimXGendut, y: aimYGendut)
-        
-        aimXKecil = kecil.position.x
-        aimYKecil = kecil.position.y
-        
-        aimDestinationKecil = CGPoint(x: aimXKecil, y: aimYKecil)
-        
-        if aimKecil{
-            monster?.moveTowardsPlayer(playerPosition: kecil.position)
-        }else{
-            monster?.moveTowardsPlayer(playerPosition: gendut.position)
-        }
-        if totalMonsterOnScreen<5{
-            DispatchQueue.main.asyncAfter(deadline: .now() + monsterDelay * 0) {
-                self.addMonster()
-                self.totalMonsterOnScreen += 1
-            }
-        }
-        
         healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 350)
-        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 220)
+                healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 220)
+        
+//        healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 350)
+//        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 220)
         
         if gendut.position.y < kecil.position.y && gendut.position.y < tower1White.position.y && kecil.position.y < tower1White.position.y{
             gendut.zPosition = SKSpriteNode.Layer.gendutBackKecilBackTower.rawValue
@@ -760,12 +789,12 @@ class GameScene31: SKScene {
         
         //Case left-right
         if kecilLeftPressed == true {
-            kecil.position.x += 5
-            kecil.xScale = 1
-            kecil.walk()
-        } else if kecilRightPressed == true {
             kecil.position.x -= 5
             kecil.xScale = -1
+            kecil.walk()
+        } else if kecilRightPressed == true {
+            kecil.position.x += 5
+            kecil.xScale = 1
             kecil.walk()
         }
     
@@ -831,6 +860,17 @@ class GameScene31: SKScene {
             white3ActivatePressedTime = 0.0
         }
         
+        if let entityManager = entityManager {
+            entityManager.update(currentTime)
+        } else {
+            print("entityManager is nil. Unable to update.")
+        }
+        
+        if let kecilNode = self.childNode(withName: "Kecil") as? Kecil {
+            kecilNode.playerAgent.position = vector_float2(x: Float(kecilNode.position.x), y: Float(kecilNode.position.y))
+            kecilNode.playerAgent.update(deltaTime: currentTime)
+        }
+        
     }
     
     
@@ -872,16 +912,6 @@ class GameScene31: SKScene {
         }
         
     }
-    func addMonster(){
-    
-            
-            aimKecil = Bool.random()
-            //        if let parentNode = monster?.parent{
-            //            print(parentNode.name as Any)
-            //        }
-            monster = Monster(frameWidth: viewWidth, frameHeight: viewHeight)
-            addChild(monster!)
-    }
     
     func shootGedeProjectile(keysPressed: Set<Int>){
         let projectile = GedeProjectile()
@@ -905,25 +935,27 @@ class GameScene31: SKScene {
         
         if direction != CGVector.zero {
             let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
-            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            let normalizedDirection = CGVector(dx: direction.dx / length * 10, dy: direction.dy / length * 10)
             
             let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
             
             let realDest = CGVector(dx: gendut.position.x + shootAmount.dx, dy: gendut.position.y + shootAmount.dy)
             
-            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
             let actionMoveDone = SKAction.removeFromParent()
             projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+            direction.dx = 0
+            direction.dy = 0
         }else{
             direction = CGVector(dx: 10, dy: 0)
             let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
-            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            let normalizedDirection = CGVector(dx: direction.dx / length * 10, dy: direction.dy / length * 10)
             
             let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
             
             let realDest = CGVector(dx: gendut.position.x + shootAmount.dx, dy: gendut.position.y + shootAmount.dy)
             
-            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
             let actionMoveDone = SKAction.removeFromParent()
             projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
         }
@@ -936,40 +968,40 @@ class GameScene31: SKScene {
         
         var direction = CGVector(dx: 0, dy: 0)
         
-        if keysPressed.contains(kVK_ANSI_W) {
+        if keysPressed.contains(kVK_UpArrow) {
             direction.dy += 1
         }
-        if keysPressed.contains(kVK_ANSI_A) {
+        if keysPressed.contains(kVK_LeftArrow) {
             direction.dx -= 1
         }
-        if keysPressed.contains(kVK_ANSI_S) {
+        if keysPressed.contains(kVK_DownArrow) {
             direction.dy -= 1
         }
-        if keysPressed.contains(kVK_ANSI_D) {
+        if keysPressed.contains(kVK_RightArrow) {
             direction.dx += 1
         }
         
         if direction != CGVector.zero {
             let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
-            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            let normalizedDirection = CGVector(dx: direction.dx / length * 10, dy: direction.dy / length * 10)
             
             let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
             
             let realDest = CGVector(dx: kecil.position.x + shootAmount.dx, dy: kecil.position.y + shootAmount.dy)
             
-            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
             let actionMoveDone = SKAction.removeFromParent()
             projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
         }else{
             direction = CGVector(dx: 10, dy: 0)
             let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
-            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            let normalizedDirection = CGVector(dx: direction.dx / length * 10, dy: direction.dy / length * 10)
             
             let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
             
             let realDest = CGVector(dx: kecil.position.x + shootAmount.dx, dy: kecil.position.y + shootAmount.dy)
             
-            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
             let actionMoveDone = SKAction.removeFromParent()
             projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
         }

@@ -22,14 +22,24 @@
 		B5AFD1462C286F1B006715F8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1452C286F1B006715F8 /* MenuScene.swift */; };
 		B5AFD1482C2917B7006715F8 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1472C2917B7006715F8 /* Handler.swift */; };
 		B5AFD14A2C2AA561006715F8 /* Bos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1492C2AA561006715F8 /* Bos.swift */; };
-		B5AFD14C2C2AB855006715F8 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */; };
 		B5AFD14E2C2AC47C006715F8 /* GedeProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14D2C2AC47C006715F8 /* GedeProjectile.swift */; };
-		B5AFD1502C2B0C77006715F8 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14F2C2B0C77006715F8 /* Monster.swift */; };
 		B5AFD1522C2BB964006715F8 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1512C2BB964006715F8 /* GameOverScene.swift */; };
 		B5AFD1542C2BCF9F006715F8 /* PauseMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */; };
 		B5AFD1562C2BD5C8006715F8 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1552C2BD5C8006715F8 /* Intro.swift */; };
 		B5AFD1582C2BDF82006715F8 /* ChooseCharacterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */; };
 		B5AFD15A2C2BF773006715F8 /* KecilProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1592C2BF773006715F8 /* KecilProjectile.swift */; };
+		B5AFD15C2C2C2CBD006715F8 /* Minion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD15B2C2C2CBD006715F8 /* Minion.swift */; };
+		B5AFD15E2C2C2CE3006715F8 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD15D2C2C2CE3006715F8 /* EntityManager.swift */; };
+		B5AFD1602C2C2D1D006715F8 /* SprintComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD15F2C2C2D1D006715F8 /* SprintComponent.swift */; };
+		B5AFD1622C2C2D4C006715F8 /* MinionHealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1612C2C2D4C006715F8 /* MinionHealthComponent.swift */; };
+		B5AFD1642C2C2D66006715F8 /* GKComponentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1632C2C2D66006715F8 /* GKComponentExtension.swift */; };
+		B5AFD1662C2C2FA8006715F8 /* MonsterGeneratorSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1652C2C2FA8006715F8 /* MonsterGeneratorSetUp.swift */; };
+		B5AFD1682C2C3B12006715F8 /* CollectableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1672C2C3B12006715F8 /* CollectableItem.swift */; };
+		B5AFD16A2C2C3D3E006715F8 /* AttackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1692C2C3D3E006715F8 /* AttackManager.swift */; };
+		B5AFD16C2C2C3DB5006715F8 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD16B2C2C3DB5006715F8 /* AudioManager.swift */; };
+		B5AFD16E2C2C3E14006715F8 /* BosHpName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD16D2C2C3E14006715F8 /* BosHpName.swift */; };
+		B5AFD1702C2C3E28006715F8 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD16F2C2C3E28006715F8 /* HpProgressBar.swift */; };
+		B5AFD1722C2C7EDC006715F8 /* TowerWhite1Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1712C2C7EDC006715F8 /* TowerWhite1Label.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,14 +60,24 @@
 		B5AFD1452C286F1B006715F8 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		B5AFD1472C2917B7006715F8 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		B5AFD1492C2AA561006715F8 /* Bos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bos.swift; sourceTree = "<group>"; };
-		B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressBar.swift; sourceTree = "<group>"; };
 		B5AFD14D2C2AC47C006715F8 /* GedeProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GedeProjectile.swift; sourceTree = "<group>"; };
-		B5AFD14F2C2B0C77006715F8 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		B5AFD1512C2BB964006715F8 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuScene.swift; sourceTree = "<group>"; };
 		B5AFD1552C2BD5C8006715F8 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCharacterScene.swift; sourceTree = "<group>"; };
 		B5AFD1592C2BF773006715F8 /* KecilProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KecilProjectile.swift; sourceTree = "<group>"; };
+		B5AFD15B2C2C2CBD006715F8 /* Minion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minion.swift; sourceTree = "<group>"; };
+		B5AFD15D2C2C2CE3006715F8 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
+		B5AFD15F2C2C2D1D006715F8 /* SprintComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SprintComponent.swift; sourceTree = "<group>"; };
+		B5AFD1612C2C2D4C006715F8 /* MinionHealthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinionHealthComponent.swift; sourceTree = "<group>"; };
+		B5AFD1632C2C2D66006715F8 /* GKComponentExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKComponentExtension.swift; sourceTree = "<group>"; };
+		B5AFD1652C2C2FA8006715F8 /* MonsterGeneratorSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterGeneratorSetUp.swift; sourceTree = "<group>"; };
+		B5AFD1672C2C3B12006715F8 /* CollectableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableItem.swift; sourceTree = "<group>"; };
+		B5AFD1692C2C3D3E006715F8 /* AttackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackManager.swift; sourceTree = "<group>"; };
+		B5AFD16B2C2C3DB5006715F8 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		B5AFD16D2C2C3E14006715F8 /* BosHpName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BosHpName.swift; sourceTree = "<group>"; };
+		B5AFD16F2C2C3E28006715F8 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HpProgressBar.swift; path = ../../HpProgressBar.swift; sourceTree = "<group>"; };
+		B5AFD1712C2C7EDC006715F8 /* TowerWhite1Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerWhite1Label.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,11 +124,11 @@
 		273B6F9A2C217E7B00A64CA0 /* MainChar */ = {
 			isa = PBXGroup;
 			children = (
+				B5AFD15B2C2C2CBD006715F8 /* Minion.swift */,
 				B5AFD14D2C2AC47C006715F8 /* GedeProjectile.swift */,
 				273B6F962C217E6D00A64CA0 /* Gendut.swift */,
 				273B6F982C217E7300A64CA0 /* Kecil.swift */,
 				B5AFD1492C2AA561006715F8 /* Bos.swift */,
-				B5AFD14F2C2B0C77006715F8 /* Monster.swift */,
 				B5AFD1592C2BF773006715F8 /* KecilProjectile.swift */,
 			);
 			path = MainChar;
@@ -117,6 +137,17 @@
 		273B71422C2703B400A64CA0 /* Level1 */ = {
 			isa = PBXGroup;
 			children = (
+				B5AFD1712C2C7EDC006715F8 /* TowerWhite1Label.swift */,
+				B5AFD16B2C2C3DB5006715F8 /* AudioManager.swift */,
+				B5AFD16D2C2C3E14006715F8 /* BosHpName.swift */,
+				B5AFD16F2C2C3E28006715F8 /* HpProgressBar.swift */,
+				B5AFD1672C2C3B12006715F8 /* CollectableItem.swift */,
+				B5AFD1692C2C3D3E006715F8 /* AttackManager.swift */,
+				B5AFD1652C2C2FA8006715F8 /* MonsterGeneratorSetUp.swift */,
+				B5AFD1632C2C2D66006715F8 /* GKComponentExtension.swift */,
+				B5AFD1612C2C2D4C006715F8 /* MinionHealthComponent.swift */,
+				B5AFD15F2C2C2D1D006715F8 /* SprintComponent.swift */,
+				B5AFD15D2C2C2CE3006715F8 /* EntityManager.swift */,
 				B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */,
 				B5AFD1552C2BD5C8006715F8 /* Intro.swift */,
 				B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */,
@@ -129,7 +160,6 @@
 				B5AFD1472C2917B7006715F8 /* Handler.swift */,
 				273B712A2C2297FC00A64CA0 /* Tower.swift */,
 				273B71432C28414300A64CA0 /* TowerProgressBar.swift */,
-				B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */,
 				273B6F9A2C217E7B00A64CA0 /* MainChar */,
 			);
 			path = Level1;
@@ -212,9 +242,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5AFD1502C2B0C77006715F8 /* Monster.swift in Sources */,
+				B5AFD15E2C2C2CE3006715F8 /* EntityManager.swift in Sources */,
+				B5AFD1622C2C2D4C006715F8 /* MinionHealthComponent.swift in Sources */,
 				273B6F992C217E7300A64CA0 /* Kecil.swift in Sources */,
+				B5AFD1682C2C3B12006715F8 /* CollectableItem.swift in Sources */,
 				B5AFD14A2C2AA561006715F8 /* Bos.swift in Sources */,
+				B5AFD16E2C2C3E14006715F8 /* BosHpName.swift in Sources */,
+				B5AFD1722C2C7EDC006715F8 /* TowerWhite1Label.swift in Sources */,
+				B5AFD16A2C2C3D3E006715F8 /* AttackManager.swift in Sources */,
 				B5AFD1442C286EDC006715F8 /* GameScene31.swift in Sources */,
 				B5AFD1542C2BCF9F006715F8 /* PauseMenuScene.swift in Sources */,
 				B5AFD1462C286F1B006715F8 /* MenuScene.swift in Sources */,
@@ -223,16 +258,21 @@
 				273B6F732C214EB800A64CA0 /* ViewController.swift in Sources */,
 				B5AFD1582C2BDF82006715F8 /* ChooseCharacterScene.swift in Sources */,
 				273B6F712C214EB800A64CA0 /* GameScene.swift in Sources */,
+				B5AFD16C2C2C3DB5006715F8 /* AudioManager.swift in Sources */,
 				273B712B2C2297FC00A64CA0 /* Tower.swift in Sources */,
+				B5AFD1602C2C2D1D006715F8 /* SprintComponent.swift in Sources */,
 				B5AFD1482C2917B7006715F8 /* Handler.swift in Sources */,
+				B5AFD1642C2C2D66006715F8 /* GKComponentExtension.swift in Sources */,
 				273B71442C28414300A64CA0 /* TowerProgressBar.swift in Sources */,
 				273B6F972C217E6D00A64CA0 /* Gendut.swift in Sources */,
-				B5AFD14C2C2AB855006715F8 /* HpProgressBar.swift in Sources */,
 				B5AFD15A2C2BF773006715F8 /* KecilProjectile.swift in Sources */,
 				B5AFD14E2C2AC47C006715F8 /* GedeProjectile.swift in Sources */,
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
+				B5AFD1662C2C2FA8006715F8 /* MonsterGeneratorSetUp.swift in Sources */,
+				B5AFD1702C2C3E28006715F8 /* HpProgressBar.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,
+				B5AFD15C2C2C2CBD006715F8 /* Minion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,9 @@ class Bos: SKSpriteNode {
     }
     
     private var bosMoveTexture: [SKTexture]?
-    var hpBos: Double = 10000
+        var hpBos: Double = 5000
+        var hpTotalBos: Double  = 10000
+        var BosLagiAttackKeCharacter: Bool = false
 
     
     
@@ -24,7 +26,7 @@ class Bos: SKSpriteNode {
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.bosMoveTexture = self.loadAnimation(atlas: "Bos", prefix: "RatBoss_", startAt: 0, stopAt: 5)
+        self.bosMoveTexture = self.loadAnimation(atlas: "Bos", prefix: "RatBoss_", startAt: 1, stopAt: 5)
         
         self.name = "Bos"
         self.setScale(1.2)

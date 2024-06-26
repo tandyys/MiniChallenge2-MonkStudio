@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import GameplayKit
 
 class Gendut: SKSpriteNode {
     enum PlayerAnimationType:String {
@@ -14,13 +15,18 @@ class Gendut: SKSpriteNode {
     }
     
     private var gendutWalkTexture: [SKTexture]?
+    var playerAgent: GKAgent2D
+    var hp:Double = 1000
+    var hpTotalGendut:Double = 1000
     
     init() {
-        let texture = SKTexture(imageNamed: "GendutWalk_0")
+        let texture = SKTexture(imageNamed: "run-b-1")
+ 
+        self.playerAgent = GKAgent2D()
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.gendutWalkTexture = self.loadAnimation(atlas: "Gendut", prefix: "GendutWalk_", startAt: 0, stopAt: 5)
+        self.gendutWalkTexture = self.loadAnimation(atlas: "Gendut", prefix: "run-b-", startAt: 1, stopAt: 17)
         
         self.name = "gendut"
         self.setScale(1.0)
@@ -48,6 +54,8 @@ class Gendut: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
+        
+        playerAgent.position = SIMD2(Float(self.position.x), Float(self.position.y))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,7 +69,7 @@ class Gendut: SKSpriteNode {
         }
         
         //Run animation
-        startAnimation(textures: walkTexture, speed: 0.135, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: walkTexture, speed: 0.07, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
     }
     
     func stop() {

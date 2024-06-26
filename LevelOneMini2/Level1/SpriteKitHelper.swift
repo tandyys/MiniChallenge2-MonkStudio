@@ -82,8 +82,10 @@ extension SKSpriteNode {
         case towerFrontGendutBackKecil
         case gendutBackTowerBackKecil
         
+        case character
         case towerDown
         case decor
+        case minion
         case label
         case progressBar
         case boundaries
@@ -115,6 +117,12 @@ extension SKSpriteNode {
         static let bos: UInt32                      = 0b10000000000000000000
         static let projectile: UInt32               = 0b100000000000000000000
         static let projectileCharacter: UInt32      = 0b1000000000000000000000
+        static let ammo: UInt32                     = 0b10000000000000000000000
+        static let collectablesitem: UInt32         = 0b100000000000000000000000
+        static let canonLeftNotActivated: UInt32    = 0b1000000000000000000000000
+        static let canonLeft: UInt32                = 0b10000000000000000000000000
+        static let canonRight: UInt32               = 0b100000000000000000000000000
+        static let canonRightNotActivated: UInt32   = 0b1000000000000000000000000000
     }
     
     func loadAnimation(atlas: String, prefix: String, startAt: Int, stopAt: Int) -> [SKTexture] {
