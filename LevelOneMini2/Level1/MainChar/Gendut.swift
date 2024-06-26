@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import GameplayKit
 
 class Gendut: SKSpriteNode {
     enum PlayerAnimationType:String {
@@ -14,9 +15,11 @@ class Gendut: SKSpriteNode {
     }
     
     private var gendutWalkTexture: [SKTexture]?
+    var playerAgent: GKAgent2D
     
     init() {
         let texture = SKTexture(imageNamed: "GendutWalk_0")
+        self.playerAgent = GKAgent2D()
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
@@ -36,6 +39,9 @@ class Gendut: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
+        
+        playerAgent.position = SIMD2(Float(self.position.x), Float(self.position.y))
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

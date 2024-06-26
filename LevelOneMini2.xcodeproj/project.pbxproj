@@ -677,9 +677,9 @@
 				273B6F722C214EB800A64CA0 /* ViewController.swift */,
 				273B6F702C214EB800A64CA0 /* GameScene.swift */,
 				273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */,
-				273B712A2C2297FC00A64CA0 /* Tower.swift */,
 				273B71432C28414300A64CA0 /* TowerProgressBar.swift */,
 				27200BA42C2AE3FD007F0408 /* MonsterGeneratorSetUp.swift */,
+				273B712A2C2297FC00A64CA0 /* Tower.swift */,
 				27200A752C2A6A5E007F0408 /* Towers */,
 				273B6F9A2C217E7B00A64CA0 /* MainChar */,
 			);
