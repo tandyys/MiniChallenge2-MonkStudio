@@ -27,7 +27,7 @@ class Minion: GKEntity, GKAgentDelegate {
         spriteComponent.node.zPosition = SKSpriteNode.Layer.monster.rawValue
         spriteComponent.node.position = CGPoint(x: 3000, y: 800)
         spriteComponent.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: spriteComponent.node.size.width/2, height: spriteComponent.node.size.height/2), center: CGPoint(x: 0, y: spriteComponent.node.size.height/2))
-//        spriteComponent.node.physicsBody?.isDynamic = true
+        spriteComponent.node.physicsBody?.isDynamic = true
         spriteComponent.node.physicsBody?.affectedByGravity = false
         spriteComponent.node.physicsBody?.allowsRotation = false
         spriteComponent.node.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.monster

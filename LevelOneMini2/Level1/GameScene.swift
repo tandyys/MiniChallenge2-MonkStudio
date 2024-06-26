@@ -88,9 +88,13 @@ class GameScene: SKScene {
     
     var entityManager: EntityManager!
 
+    //Minion spawn set up
     let blueMinion = "b"
     let redMinion = "r"
     let purpleMinion = "p"
+    
+    var minionCount = 0
+    var maxMinion = 24
     
     override func didMove(to view: SKView) {
         
@@ -135,16 +139,50 @@ class GameScene: SKScene {
         
         entityManager = EntityManager(scene: self)
         
-        run(SKAction.repeatForever(
-              SKAction.sequence([
-                SKAction.run({ [self] in spawnMonster(blueMinion)}),
-                SKAction.wait(forDuration: 3),
-                SKAction.run({ [self] in spawnMonster(redMinion)}),
-                SKAction.wait(forDuration: 3),
-                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
-                SKAction.wait(forDuration: 3)
-                ])
-            ))
+        //Unlimited Spawn Minion
+//        run(SKAction.repeatForever(
+//              SKAction.sequence([
+//                SKAction.run({ [self] in spawnMonster(blueMinion)}),
+//                SKAction.wait(forDuration: 3),
+//                SKAction.run({ [self] in spawnMonster(redMinion)}),
+//                SKAction.wait(forDuration: 3),
+//                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
+//                SKAction.wait(forDuration: 3)
+//                ])
+//            ))
+        
+        //Limited Spawn Minion
+        let stopAction = SKAction.run { [self] in
+            if minionCount >= maxMinion {
+                self.removeAction(forKey: "Spawn")
+            }
+        }
+        
+        let spawnSequence = SKAction.sequence([
+            SKAction.run { [self] in
+                if minionCount < maxMinion {
+                    spawnMonster(blueMinion)
+                    minionCount += 1
+                }
+            },
+            SKAction.wait(forDuration: 3),
+            SKAction.run { [self] in
+                if minionCount < maxMinion {
+                    spawnMonster(redMinion)
+                    minionCount += 1
+                }
+            },
+            SKAction.wait(forDuration: 3),
+            SKAction.run { [self] in
+                if minionCount < maxMinion {
+                    spawnMonster(purpleMinion)
+                    minionCount += 1
+                }
+            },
+            SKAction.wait(forDuration: 3),
+            stopAction
+        ])
+        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
         
         physicsWorld.contactDelegate = self
         

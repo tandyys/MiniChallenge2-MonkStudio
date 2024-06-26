@@ -10,13 +10,6 @@ import SpriteKit
 import GameplayKit
 
 extension GameScene {
-    func random() -> CGFloat {
-      return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-    }
-
-    func random(min: CGFloat, max: CGFloat) -> CGFloat {
-      return random() * (max - min) + min
-    }
     
     func spawnMonster(_ imageCode: String) {
         let minionTexture = SKTexture(imageNamed: "walk-\(imageCode)-1")
@@ -25,7 +18,7 @@ extension GameScene {
         let minion = Minion(texture: minionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager)
         
         if let spriteComponent = minion.component(ofType: SpriteComponent.self) {
-
+    
             entityManager.add(minion)
 
             minion.setTargetAgent(kecil.playerAgent)
