@@ -35,6 +35,9 @@
 		F8C821912C2B1A6A00A3137E /* BossHpName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C821902C2B1A6100A3137E /* BossHpName.swift */; };
 		F8C8219A2C2B2EE900A3137E /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C821992C2B2EE600A3137E /* AudioManager.swift */; };
 		F8C8219C2C2B30FB00A3137E /* rock-falling-010-104938.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F8C8219B2C2B30FB00A3137E /* rock-falling-010-104938.mp3 */; };
+		F8D58A942C2BACCE000F3AFA /* RestartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A932C2BACCB000F3AFA /* RestartManager.swift */; };
+		F8D58A962C2BC468000F3AFA /* Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A952C2BC45A000F3AFA /* Overlay.swift */; };
+		F8D58A982C2BCA03000F3AFA /* CollectableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58A972C2BC9FC000F3AFA /* CollectableItem.swift */; };
 		F8E7CE2E2C28319300FB8F74 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7CE2D2C28318F00FB8F74 /* HpProgressBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		F8C821902C2B1A6100A3137E /* BossHpName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossHpName.swift; sourceTree = "<group>"; };
 		F8C821992C2B2EE600A3137E /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		F8C8219B2C2B30FB00A3137E /* rock-falling-010-104938.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "rock-falling-010-104938.mp3"; sourceTree = "<group>"; };
+		F8D58A932C2BACCB000F3AFA /* RestartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartManager.swift; sourceTree = "<group>"; };
+		F8D58A952C2BC45A000F3AFA /* Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlay.swift; sourceTree = "<group>"; };
+		F8D58A972C2BC9FC000F3AFA /* CollectableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableItem.swift; sourceTree = "<group>"; };
 		F8E7CE2D2C28318F00FB8F74 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				F84553572C2A7DE4004D966A /* Minion.swift */,
+				F8D58A972C2BC9FC000F3AFA /* CollectableItem.swift */,
 				F8A86B0B2C282195003C4282 /* Bos.swift */,
 				F8A86B0C2C282195003C4282 /* Gendut.swift */,
 				F8A86B0D2C282195003C4282 /* Kecil.swift */,
@@ -145,6 +152,8 @@
 		F8C821942C2B1F3800A3137E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				F8D58A952C2BC45A000F3AFA /* Overlay.swift */,
+				F8D58A932C2BACCB000F3AFA /* RestartManager.swift */,
 				F8C821992C2B2EE600A3137E /* AudioManager.swift */,
 				F8678A5B2C291EBB002521C1 /* AttackManager.swift */,
 				F8C8218E2C2B1A0C00A3137E /* BackgroundManager.swift */,
@@ -168,8 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				F8A86B042C282195003C4282 /* OutOfBound.swift */,
-				F8A86B062C282195003C4282 /* Handler.swift */,
 				F8A86B072C282195003C4282 /* GameScenePhysicsDelegate.swift */,
+				F8A86B062C282195003C4282 /* Handler.swift */,
 				F8A86B052C282195003C4282 /* Movement.swift */,
 			);
 			path = Rule;
@@ -260,10 +269,12 @@
 			files = (
 				F8A86B122C282195003C4282 /* Kecil.swift in Sources */,
 				F8A86B132C282195003C4282 /* GameScene.swift in Sources */,
+				F8D58A962C2BC468000F3AFA /* Overlay.swift in Sources */,
 				F8A86B142C282195003C4282 /* OutOfBound.swift in Sources */,
 				F8C8219A2C2B2EE900A3137E /* AudioManager.swift in Sources */,
 				F8A86B152C282195003C4282 /* SpriteKitHelper.swift in Sources */,
 				F8A86B162C282195003C4282 /* Bos.swift in Sources */,
+				F8D58A982C2BCA03000F3AFA /* CollectableItem.swift in Sources */,
 				F8A86B172C282195003C4282 /* Movement.swift in Sources */,
 				F8A86B182C282195003C4282 /* ViewController.swift in Sources */,
 				F8E7CE2E2C28319300FB8F74 /* HpProgressBar.swift in Sources */,
@@ -281,6 +292,7 @@
 				F8A86B1E2C282195003C4282 /* Canon_Left.swift in Sources */,
 				F8A86B1F2C282195003C4282 /* Gendut.swift in Sources */,
 				F84553582C2A7DE5004D966A /* Minion.swift in Sources */,
+				F8D58A942C2BACCE000F3AFA /* RestartManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

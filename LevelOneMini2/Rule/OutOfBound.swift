@@ -1,9 +1,3 @@
-//
-//  OutOfBound.swift
-//  MonkGames
-//
-//  Created by Christian Gunawan on 22/06/24.
-//
 
 import SpriteKit
 

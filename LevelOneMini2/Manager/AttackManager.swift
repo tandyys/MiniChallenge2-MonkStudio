@@ -3,13 +3,19 @@ import SpriteKit
 
 class AttackManager {
     
+    let bos = Bos()
+    let kecil = Kecil()
+    let gendut = Gendut()
+    var gameOverState:Bool = false
+    var youWinState:Bool = false
+    
+
+    
     func performAttack(damageAmount: Double, currentHealth: Double) -> Double {
         
-        var updatedHealth = currentHealth // Use a different variable name to avoid redeclaration
+        var updatedHealth = currentHealth
         
         updatedHealth -= damageAmount
-        
-        // Ensure health doesn't go below 0
         if updatedHealth < 0 {
             updatedHealth = 0
         }
@@ -26,7 +32,7 @@ class AttackManager {
         if bos.hpBos < 0 {
             bos.hpBos = 0
             healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: CGFloat(totalhpBos))
-            gameOver()
+            youWin()
         }
     }
     
@@ -35,10 +41,9 @@ class AttackManager {
         healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
         print("\(kecil.hp)")
         attackedKecilHit = false
-        if kecil.hp < 0 {
+        if kecil.hp < 1 {
             kecil.hp = 0
             gameOver()
-            print("kecil")
             healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
         }
     }
@@ -48,16 +53,19 @@ class AttackManager {
         healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
         print("\(gendut.hp)")
         attackedGendutHit = false
-        if gendut.hp < 0 {
+        if gendut.hp < 1 {
             gendut.hp = 0
             gameOver()
-            print("gendut")
             healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
         }
     }
-    
     func gameOver() {
-        print("Lu Mati")
+        gameOverState = true
+    }
+    
+    func youWin(){
+        youWinState = true
+        
     }
 
 }

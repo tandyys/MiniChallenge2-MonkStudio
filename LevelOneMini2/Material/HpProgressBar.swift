@@ -12,13 +12,11 @@ class HpProgressBar: SKNode {
         let backgroundTexture = SKTexture(imageNamed: backgroundImage)
         let progressBgTexture = SKTexture(imageNamed: progressImage)
         
-        // Setup background bar with the texture
         self.backgroundBar = SKSpriteNode(texture: backgroundTexture)
         self.backgroundBar.size = size
         self.backgroundBar.zPosition = SKSpriteNode.Layer.label.rawValue
         addChild(backgroundBar)
         
-        // Setup progress bar
         progressBar = SKSpriteNode(texture: progressBgTexture)
         progressBar.zPosition = SKSpriteNode.Layer.label.rawValue + 1
         progressBar.size = CGSize(width: size.width, height: size.height)
@@ -31,7 +29,6 @@ class HpProgressBar: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Function to update progress
     func updateInnerBarWidth(health: CGFloat, totalHealth: CGFloat) {
          let newWidth = (health / totalHealth) * backgroundBar.size.width
          progressBar.size.width = newWidth

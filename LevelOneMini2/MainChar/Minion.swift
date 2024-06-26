@@ -48,18 +48,33 @@ class Minion: SKSpriteNode {
     }
     
     func walk() {
-        //Check the texture
+
         guard let walkTexture = MinionWalkTexture else {
             preconditionFailure("Cant find Minions texture")
         }
-        
-        //Run animation
         startAnimation(textures: walkTexture, speed: 0.135, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
     }
     
     func stop() {
         removeAction(forKey: PlayerAnimationType.walk.rawValue)
-//        removeAllActions()
+    }
+    
+    func die() {
+          // Create a collectable item
+          let item = CollectableItem()
+          item.position = self.position  // Adjust the position if needed
+          
+          // Add the collectable item to the parent node
+          if let parent = self.parent {
+              parent.addChild(item)
+          }
+          
+          // Remove the minion from its parent node
+          self.removeFromParent()
+      }
+    
+    func removeFromParentCollectableItems(item: CollectableItem) {
+        item.removeFromParent()
     }
     
     

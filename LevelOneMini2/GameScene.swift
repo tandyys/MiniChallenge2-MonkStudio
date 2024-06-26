@@ -5,6 +5,7 @@ import AVFoundation
 
 class GameScene: SKScene {
 
+    
     var backgroundMusic: SKAudioNode?
     let menuScene = MenuScene()
     let gendut = Gendut()
@@ -12,13 +13,14 @@ class GameScene: SKScene {
     let minion = Minion()
     let bos = Bos()
     let attackManager = AttackManager()
-    
+    let bossHpLabel = BossHpName()
     var healthBarBos: HpProgressBar!
     var healthBarGendut: HpProgressBar!
     var healthBarKecil: HpProgressBar!
     let canonLeft = Canon_Left()
     let canonRight = Canon_Right()
     let BosHpNameLabel = BossHpName()
+        
     
     let displayManager = DisplayTextManager()
     var backgroundManager: BackgroundManager!
@@ -32,12 +34,6 @@ class GameScene: SKScene {
     var CanonContactLeft: Bool = false
     var CanonContactRight: Bool = false
     
-    let totalhpBos = 10000 // kalau ganti ini ganti juga ke class bos
-    let totalhpKecil = 500.0
-    let totalhpGendut = 1000.0
-
-
-
     var gendutUpPressed:Bool = false
     var gendutDownPressed:Bool = false
     var gendutLeftPressed:Bool = false
@@ -101,10 +97,12 @@ class GameScene: SKScene {
         addChild(healthBarGendut)
         addChild(healthBarKecil)
         
-        minion.position = CGPoint(x: 1000, y: 800)
+        minion.position = CGPoint(x: 1000, y: 300)
         minion.walk()
         addChild(minion)
         bos.walk()
+        
+        minion.die()
  
 
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
@@ -287,11 +285,17 @@ class GameScene: SKScene {
             canonRightShoot = false
         }
         
+        if attackManager.gameOverState == true {
+            restartGameScene()
+        }
+        
+        if attackManager.youWinState == true {
+            print("You Win")
+        }
+        
         outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)
         movement.moveGendutAnimation(gendut: gendut,gendutUpPressed: gendutUpPressed, gendutDownPressed: gendutDownPressed, gendutLeftPressed: gendutLeftPressed, gendutRightPressed: gendutRightPressed)
         movement.moveKecilAnimation(kecil: kecil, kecilUpPressed: kecilUpPressed, kecilDownPressed: kecilDownPressed, kecilLeftPressed: kecilLeftPressed, kecilRightPressed: kecilRightPressed)
-        
- 
 
     }
     deinit {

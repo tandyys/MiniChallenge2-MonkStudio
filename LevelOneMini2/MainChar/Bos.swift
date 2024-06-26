@@ -10,6 +10,7 @@ class Bos: SKSpriteNode {
     private var bosMoveTexture: [SKTexture]?
     private var bosMoveTextureAttack: [SKTexture]?
     var hpBos: Double = 10000
+    var hpTotalBos: Double  = 10000
     var BosLagiAttackKeCharacter: Bool = false
     
     
@@ -82,11 +83,8 @@ class Bos: SKSpriteNode {
         let maxSpawn = 10
         let numberOfJatuhan = Int.random(in: minSpawn...maxSpawn )
         print("Spawning \(numberOfJatuhan) jatuhan nodes")
-        
-        for _ in 0..<numberOfJatuhan {
-            
-            
 
+        for _ in 0..<numberOfJatuhan {
             let jatuhanTexture = SKTexture(imageNamed: "stalaktit1")
             let jatuhan = SKSpriteNode(texture: jatuhanTexture)
             let randomX = CGFloat.random(in: 100...2880)

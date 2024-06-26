@@ -1,25 +1,21 @@
-//
-//  BossHpName.swift
-//  LevelOneMini2
-//
-//  Created by Christian Gunawan on 25/06/24.
-//
-
+// Import necessary libraries
 import Foundation
 import SpriteKit
 
+// Define the BossHpName class
 class BossHpName: SKSpriteNode {
     
+    // Initialize the BossHpName class
     init() {
         let texture = SKTexture(imageNamed: "hpBosLabel")
         super.init(texture: texture, color: .clear, size: CGSize(width: texture.size().width * 0.4, height: texture.size().height * 0.4))
         
-        self.position = CGPoint(x: self.frame.minX + 900, y: self.frame.maxY - 220)
+        self.position = CGPoint(x: 900, y: 1640) 
         self.zPosition = CGFloat(SKSpriteNode.Layer.label.rawValue)
     }
     
+    // Required initializer for NSCoder
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
-    
 }

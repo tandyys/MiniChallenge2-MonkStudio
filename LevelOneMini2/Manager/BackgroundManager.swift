@@ -13,7 +13,7 @@ class BackgroundManager {
     
     init(scene: SKScene) {
         backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
-       backgroundImage.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
+        backgroundImage.position = CGPoint(x: scene.frame.midX, y: scene.frame.midY)
         backgroundImage.zPosition = SKSpriteNode.Layer.background.rawValue
         
         foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
@@ -25,3 +25,5 @@ class BackgroundManager {
         scene.addChild(foregroundImage)
     }
 }
+
+// 2880, height: 1864))
