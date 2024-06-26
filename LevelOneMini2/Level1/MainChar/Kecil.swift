@@ -12,23 +12,26 @@ import GameplayKit
 class Kecil: SKSpriteNode {
     enum PlayerAnimationType:String {
         case walk
+        case idle
     }
     
-    private var gendutWalkTexture: [SKTexture]?
+    private var kecilWalkTexture: [SKTexture]?
+    private var kecilIdleTexture: [SKTexture]?
     var playerAgent: GKAgent2D
     
     init() {
-        let texture = SKTexture(imageNamed: "KecilWalk_0")
+        let texture = SKTexture(imageNamed: "k-idle-0")
         self.playerAgent = GKAgent2D()
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.gendutWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "KecilWalk_", startAt: 0, stopAt: 5)
+        self.kecilIdleTexture = self.loadAnimation(atlas: "KecilIdle", prefix: "k-idle-", startAt: 0, stopAt: 1)
+        self.kecilWalkTexture = self.loadAnimation(atlas: "KecilWalk", prefix: "k-walk-", startAt: 0, stopAt: 4)
         
         self.name = "Kecil"
         self.setScale(1.0)
         self.anchorPoint = CGPoint(x: 0.5, y: 0)
-        self.position = CGPoint(x: self.size.width - self.size.width/2, y: 650)
+        self.position = CGPoint(x: self.size.width - self.size.width/2, y: 300)
         
         //Physics body settings
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/2), center: CGPoint(x: 0, y: self.size.height/2))
@@ -49,12 +52,22 @@ class Kecil: SKSpriteNode {
     
     func walk() {
         //Check the texture
-        guard let walkTexture = gendutWalkTexture else {
+        guard let walkTexture = kecilWalkTexture else {
             preconditionFailure("Cant find kecil texture")
         }
         
         //Run animation
-        startAnimation(textures: walkTexture, speed: 0.150, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: walkTexture, speed: 0.250, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
+    }
+    
+    func idle() {
+        //Check the texture
+        guard let idleTexture = kecilIdleTexture else {
+            preconditionFailure("Cant find kecil texture")
+        }
+        
+        //Run animation
+        startAnimation(textures: idleTexture, speed: 0.400, name: PlayerAnimationType.idle.rawValue, count: 0, resize: true, restore: true)
     }
     
     func stop() {

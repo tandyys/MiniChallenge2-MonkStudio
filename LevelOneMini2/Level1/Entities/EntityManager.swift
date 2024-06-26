@@ -26,6 +26,7 @@ class EntityManager {
         entities.insert(entity)
         
         if let spriteNode = entity.component(ofType: SpriteComponent.self)?.node {
+            spriteNode.name = UUID().uuidString 
             scene.addChild(spriteNode)
         }
         
@@ -53,4 +54,13 @@ class EntityManager {
             }
         }
     }
+    
+    func getEntity(for node: SKNode) -> GKEntity? {
+        return entities.first { entity in
+            if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
+                return spriteComponent.node == node
+            }
+                return false
+            }
+        }
 }

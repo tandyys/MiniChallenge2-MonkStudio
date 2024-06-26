@@ -18,11 +18,11 @@ extension GameScene: SKPhysicsContactDelegate {
         //Red Tower
         if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerRedNotActivated {
             activateRedTowerButtonAvailable = true
-            createRedProgressBar(at: CGPoint(x: towerRed.position.x, y: towerRed.position.y))
+            createRedProgressBar(at: CGPoint(x: towerRed.position.x, y: towerRed.frame.minY + 150))
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerRedNotActivated ? contact.bodyA.node : contact.bodyB.node
             
             if let towerPosition = towerNode?.position {
-                displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+                displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 400))
             }
         }
         
@@ -51,11 +51,11 @@ extension GameScene: SKPhysicsContactDelegate {
         //Green Tower
         if towerContactMask ==  SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerGreenNotActivated {
             activateGreenTowerButtonAvailable = true
-            createGreenProgressBar(at: CGPoint(x: towerGreen.position.x, y: towerGreen.position.y))
+            createGreenProgressBar(at: CGPoint(x: towerGreen.position.x, y: towerGreen.frame.minY + 150))
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerGreenNotActivated ? contact.bodyA.node : contact.bodyB.node
             
             if let towerPosition = towerNode?.position {
-                displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
+                displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 400))
             }
         }
         
@@ -72,21 +72,57 @@ extension GameScene: SKPhysicsContactDelegate {
         }
         
         // Check if the contact is between a projectile and a monster
+//        if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.ammo != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) {
+//            if let projectile = firstBody.node as? SKSpriteNode {
+//                projectileDidCollideWithMonster(projectile: projectile, monster: secondBody.node! as! SKSpriteNode)
+//        
+//            }
+//        } else if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.ammo != 0) {
+//            if let projectile = secondBody.node as? SKSpriteNode {
+//                projectileDidCollideWithMonster(projectile: projectile, monster: firstBody.node! as! SKSpriteNode)
+//            }
+//        }
+        
+        //New shoot mechanics
+//        if towerContactMask == SKSpriteNode.PhysicsCategory.ammo | SKSpriteNode.PhysicsCategory.monster {
+//            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+//                if nodeA.name == "Projectile" && nodeB.name == "Minion" {
+//                    if let minion = entityManager.getEntity(for: nodeB) as? Minion {
+////                        nodeA.removeFromParent()
+//                        projectileDidCollideWithMonster(projectile: nodeA as! SKSpriteNode, monster: nodeB as! SKSpriteNode)
+//                        minion.changeHealth(by: -25)
+//                    }
+//                    nodeA.isHidden = true
+//                } else if nodeA.name == "Minion" && nodeB.name == "Projectile" {
+//                    if let minion = entityManager.getEntity(for: nodeA) as? Minion {
+////                        nodeB.removeFromParent()
+//                        projectileDidCollideWithMonster(projectile: nodeB as! SKSpriteNode, monster: nodeA as! SKSpriteNode)
+//                        minion.changeHealth(by: -25)
+//                    }
+//                    nodeB.isHidden = true
+//                }
+//            }
+//        }
+        
         if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.ammo != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) {
-            if let projectile = firstBody.node as? SKSpriteNode {
-                projectileDidCollideWithMonster(projectile: projectile, monster: secondBody.node! as! SKSpriteNode)
+                if let projectile = firstBody.node as? SKSpriteNode, let minionNode = secondBody.node as? SKSpriteNode {
+                    projectileDidCollideWithMonster(projectile: projectile, monster: minionNode)
+                }
+            } else if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.ammo != 0) {
+                if let minionNode = firstBody.node as? SKSpriteNode, let projectile = secondBody.node as? SKSpriteNode {
+                    projectileDidCollideWithMonster(projectile: projectile, monster: minionNode)
+                }
             }
-        } else if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.ammo != 0) {
-            if let projectile = secondBody.node as? SKSpriteNode {
-                projectileDidCollideWithMonster(projectile: projectile, monster: firstBody.node! as! SKSpriteNode)
-            }
-        }
+        
     }
     
     func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
-            print("Hit!")
-            projectile.removeFromParent()
-            //Reducing Health
+        print("Hit!")
+        projectile.removeFromParent()
+        
+        if let minionEntity = entityManager.getEntity(for: monster) as? Minion {
+            minionEntity.changeHealth(by: -25)  // Reduce health by 25 points
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {

@@ -130,26 +130,25 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        let ground = SKSpriteNode(imageNamed: "ground_new")
+        let ground = SKSpriteNode(imageNamed: "Mid")
         ground.anchorPoint = CGPoint.zero
-        ground.zPosition = SKSpriteNode.Layer.background.rawValue
+        ground.zPosition = SKSpriteNode.Layer.mid.rawValue
         addChild(ground)
         
-        let tree = SKSpriteNode(imageNamed: "tree_new")
-        tree.size = CGSize(width: 3000, height: 800)
+        let tree = SKSpriteNode(imageNamed: "Back")
+        tree.size = CGSize(width: 3000, height: 1000)
         tree.anchorPoint = CGPoint(x: 0, y: 1.0)
-        tree.position = CGPoint(x: 0, y: frame.maxY)
-        tree.zPosition = SKSpriteNode.Layer.tree.rawValue
+        tree.position = CGPoint(x: 0, y: frame.maxY - 30)
+        tree.zPosition = SKSpriteNode.Layer.background.rawValue
         addChild(tree)
         
-        let decor = SKSpriteNode(imageNamed: "decor")
-        decor.scale(to: CGSize(width: 2800, height: 800))
-        decor.anchorPoint = CGPoint(x: 0.12, y: 0.18)
+        let decor = SKSpriteNode(imageNamed: "Front")
+        decor.anchorPoint = CGPoint.zero
         decor.position = CGPoint.zero
         decor.zPosition = SKSpriteNode.Layer.decor.rawValue
         addChild(decor)
         
-        let gate = SKSpriteNode(imageNamed: "gate")
+        let gate = SKSpriteNode(imageNamed: "Gate")
         gate.size = CGSize(width: 1100, height: 800)
         gate.anchorPoint = CGPoint(x: 0, y: 0.5)
         gate.position = CGPoint(x: 1750, y: 1480)
@@ -163,7 +162,10 @@ class GameScene: SKScene {
         addChild(gate)
         
         addChild(gendut)
+        gendut.idle()
         addChild(kecil)
+        kecil.idle()
+        
         addChild(towerRed)
         addChild(towerPurple)
         addChild(towerBlue)
@@ -172,49 +174,50 @@ class GameScene: SKScene {
         entityManager = EntityManager(scene: self)
         
         //Unlimited Spawn Minion
-//        run(SKAction.repeatForever(
-//              SKAction.sequence([
-//                SKAction.run({ [self] in spawnMonster(blueMinion)}),
-//                SKAction.wait(forDuration: 3),
-//                SKAction.run({ [self] in spawnMonster(redMinion)}),
-//                SKAction.wait(forDuration: 3),
-//                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
-//                SKAction.wait(forDuration: 3)
-//                ])
-//            ))
+        //Fix This Code! Biar ga ilang 1 wave!
+        run(SKAction.repeatForever(
+              SKAction.sequence([
+                SKAction.run({ [self] in spawnMonster(blueMinion)}),
+                SKAction.wait(forDuration: 3),
+                SKAction.run({ [self] in spawnMonster(redMinion)}),
+                SKAction.wait(forDuration: 3),
+                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
+                SKAction.wait(forDuration: 3)
+                ])
+            ))
         
         //Limited Spawn Minion
-        let stopAction = SKAction.run { [self] in
-            if minionCount >= maxMinion {
-                self.removeAction(forKey: "Spawn")
-            }
-        }
-        
-        let spawnSequence = SKAction.sequence([
-            SKAction.run { [self] in
-                if minionCount < maxMinion {
-                    spawnMonster(blueMinion)
-                    minionCount += 1
-                }
-            },
-            SKAction.wait(forDuration: 5),
-            SKAction.run { [self] in
-                if minionCount < maxMinion {
-                    spawnMonster(redMinion)
-                    minionCount += 1
-                }
-            },
-            SKAction.wait(forDuration: 5),
-            SKAction.run { [self] in
-                if minionCount < maxMinion {
-                    spawnMonster(purpleMinion)
-                    minionCount += 1
-                }
-            },
-            SKAction.wait(forDuration: 5),
-            stopAction
-        ])
-        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
+//        let stopAction = SKAction.run { [self] in
+//            if minionCount >= maxMinion {
+//                self.removeAction(forKey: "Spawn")
+//            }
+//        }
+//        
+//        let spawnSequence = SKAction.sequence([
+//            SKAction.run { [self] in
+//                if minionCount < maxMinion {
+//                    spawnMonster(blueMinion)
+//                    minionCount += 1
+//                }
+//            },
+//            SKAction.wait(forDuration: 5),
+//            SKAction.run { [self] in
+//                if minionCount < maxMinion {
+//                    spawnMonster(redMinion)
+//                    minionCount += 1
+//                }
+//            },
+//            SKAction.wait(forDuration: 5),
+//            SKAction.run { [self] in
+//                if minionCount < maxMinion {
+//                    spawnMonster(purpleMinion)
+//                    minionCount += 1
+//                }
+//            },
+//            SKAction.wait(forDuration: 5),
+//            stopAction
+//        ])
+//        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
         
         physicsWorld.contactDelegate = self
         
@@ -265,27 +268,35 @@ class GameScene: SKScene {
         case kVK_ANSI_W:
             gendutUpPressed = false
             gendut.stop()
+            gendut.idle()
         case kVK_ANSI_A:
             gendutLeftPressed = false
             gendut.stop()
+            gendut.idle()
         case kVK_ANSI_S:
             gendutDownPressed = false
             gendut.stop()
+            gendut.idle()
         case kVK_ANSI_D:
             gendutRightPressed = false
             gendut.stop()
+            gendut.idle()
         case kVK_UpArrow:
             kecilUpPressed = false
             kecil.stop()
+            kecil.idle()
         case kVK_DownArrow:
             kecilDownPressed = false
             kecil.stop()
+            kecil.idle()
         case kVK_LeftArrow:
             kecilRightPressed = false
             kecil.stop()
+            kecil.idle()
         case kVK_RightArrow:
             kecilLeftPressed = false
             kecil.stop()
+            kecil.idle()
         case kVK_ANSI_Q:
             if activateRedTowerButtonPressed {
                 activateRedTowerButtonPressed = false
@@ -307,7 +318,9 @@ class GameScene: SKScene {
     override func mouseDown(with event: NSEvent) {
         let touchLocation = event.location(in: self)
         let projectile = SKSpriteNode(imageNamed: "gendutAtt")
+        projectile.name = "Projectile"
         projectile.position = CGPoint(x: gendut.position.x, y: gendut.position.y + gendut.position.y/6)
+        projectile.zPosition = SKSpriteNode.Layer.projectile.rawValue
         projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
         projectile.physicsBody?.isDynamic = true
         projectile.physicsBody?.affectedByGravity = false
@@ -388,8 +401,15 @@ class GameScene: SKScene {
 
         if gendut.position.y < 0 {
             gendut.position.y = 0
-        } else if gendut.position.y > frame.maxY - 500 {
-            gendut.position.y = frame.maxY - 500
+        }
+        if gendut.position.x > self.size.width/2 {
+            if gendut.position.y > frame.maxY - 700 {
+                gendut.position.y = frame.maxY - 700
+            }
+        } else if gendut.position.x < self.size.width/2 {
+            if gendut.position.y > frame.maxY - 850 {
+                gendut.position.y = frame.maxY - 850
+            }
         }
         
         if kecil.position.x < 0 {
@@ -400,8 +420,16 @@ class GameScene: SKScene {
         
         if kecil.position.y < 0 {
             kecil.position.y = 0
-        } else if kecil.position.y > frame.maxY - 500 {
-            kecil.position.y = frame.maxY - 500
+        }
+        
+        if kecil.position.x > self.size.width/2 {
+            if kecil.position.y > frame.maxY - 700 {
+                kecil.position.y = frame.maxY - 700
+            }
+        } else if kecil.position.x < self.size.width/2 {
+            if kecil.position.y > frame.maxY - 850 {
+                kecil.position.y = frame.maxY - 850
+            }
         }
         
         //Overlaying character
@@ -456,14 +484,13 @@ class GameScene: SKScene {
             if let parent = towerRed.parent {
                 let position = towerRed.position
                 let zPos = towerRed.zPosition
-                towerRedActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerRed.size.width/1.5, height: towerRed.size.height/4), center: CGPoint(x: 0, y: towerRed.size.height/5))
+                towerRedActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerRed.size.width/4, height: towerRed.size.height/4), center: CGPoint(x: 0, y: towerRed.size.height/1.9))
                 towerRedActivated.physicsBody?.affectedByGravity = false
                 towerRedActivated.physicsBody?.isDynamic = false
                 towerRedActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerActivated
                 towerRedActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
                 towerRedActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
                 towerRed.removeFromParent()
-                towerRedActivated.size = CGSize(width: 300, height: 600)
                 towerRedActivated.position = position
                 towerRedActivated.zPosition = zPos
                 parent.addChild(towerRedActivated)
@@ -475,14 +502,14 @@ class GameScene: SKScene {
             if let parent = towerPurple.parent {
                 let position = towerPurple.position
                 let zPos = towerPurple.zPosition
-                towerPurpleActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerPurple.size.width/1.5, height: towerPurple.size.height/4), center: CGPoint(x: 0, y: towerPurple.size.height/5))
+                towerPurpleActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerPurple.size.width/3, height: towerPurple.size.height/4), center: CGPoint(x: 0, y: towerPurple.size.height/2.5))
                 towerPurpleActivated.physicsBody?.affectedByGravity = false
                 towerPurpleActivated.physicsBody?.isDynamic = false
                 towerPurpleActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerActivated
                 towerPurpleActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
                 towerPurpleActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
                 towerPurple.removeFromParent()
-                towerPurpleActivated.size = CGSize(width: 300, height: 600)
+//                towerPurpleActivated.size = CGSize(width: 300, height: 600)
                 towerPurpleActivated.position = position
                 towerPurpleActivated.zPosition = zPos
                 parent.addChild(towerPurpleActivated)
@@ -494,14 +521,13 @@ class GameScene: SKScene {
             if let parent = towerBlue.parent {
                 let position = towerBlue.position
                 let zPos = towerBlue.zPosition
-                towerBlueActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerBlue.size.width/1.5, height: towerBlue.size.height/4), center: CGPoint(x: 0, y: towerBlue.size.height/5))
+                towerBlueActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerBlue.size.width/3, height: towerBlue.size.height/4), center: CGPoint(x: 0, y: towerBlue.size.height/2.5))
                 towerBlueActivated.physicsBody?.affectedByGravity = false
                 towerBlueActivated.physicsBody?.isDynamic = false
                 towerBlueActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerActivated
                 towerBlueActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
                 towerBlueActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
                 towerBlue.removeFromParent()
-                towerBlueActivated.size = CGSize(width: 300, height: 600)
                 towerBlueActivated.position = position
                 towerBlueActivated.zPosition = zPos
                 parent.addChild(towerBlueActivated)
@@ -513,14 +539,13 @@ class GameScene: SKScene {
             if let parent = towerGreen.parent {
                 let position = towerGreen.position
                 let zPos = towerGreen.zPosition
-                towerGreenActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerGreen.size.width/1.5, height: towerGreen.size.height/4), center: CGPoint(x: 0, y: towerGreen.size.height/5))
+                towerGreenActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: towerGreen.size.width/4, height: towerGreen.size.height/4), center: CGPoint(x: 0, y: towerGreen.size.height/1.9))
                 towerGreenActivated.physicsBody?.affectedByGravity = false
                 towerGreenActivated.physicsBody?.isDynamic = false
                 towerGreenActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerActivated
                 towerGreenActivated.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.none
                 towerGreenActivated.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
                 towerGreen.removeFromParent()
-                towerGreenActivated.size = CGSize(width: 300, height: 600)
                 towerGreenActivated.position = position
                 towerGreenActivated.zPosition = zPos
                 parent.addChild(towerGreenActivated)

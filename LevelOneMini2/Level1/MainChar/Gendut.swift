@@ -12,24 +12,27 @@ import GameplayKit
 class Gendut: SKSpriteNode {
     enum PlayerAnimationType:String {
         case walk
+        case idle
     }
     
     private var gendutWalkTexture: [SKTexture]?
+    private var gendutIdleTexture: [SKTexture]?
     var playerAgent: GKAgent2D
     
     init() {
-        let texture = SKTexture(imageNamed: "GendutWalk_0")
+        let texture = SKTexture(imageNamed: "g-idle-0")
         self.playerAgent = GKAgent2D()
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.gendutWalkTexture = self.loadAnimation(atlas: "Gendut", prefix: "GendutWalk_", startAt: 0, stopAt: 5)
+        self.gendutIdleTexture = self.loadAnimation(atlas: "GendutIdle", prefix: "g-idle-", startAt: 0, stopAt: 1)
+        self.gendutWalkTexture = self.loadAnimation(atlas: "GendutWalk", prefix: "g-walk-", startAt: 0, stopAt: 5)
         
         self.name = "gendut"
         self.setScale(1.0)
         self.anchorPoint = CGPoint(x: 0.5, y: 0)
         self.zPosition = SKSpriteNode.Layer.characterGendut.rawValue
-        self.position = CGPoint(x: self.size.width - self.size.width/2, y: 900)
+        self.position = CGPoint(x: self.size.width - self.size.width/2, y: 500)
         
         //Physics body settings
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width - 120, height: self.size.height/3), center: CGPoint(x: self.size.width - 250, y: self.size.height/3))
@@ -55,7 +58,17 @@ class Gendut: SKSpriteNode {
         }
         
         //Run animation
-        startAnimation(textures: walkTexture, speed: 0.135, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: walkTexture, speed: 0.250, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
+    }
+    
+    func idle() {
+        //Check the texture
+        guard let idleTexture = gendutIdleTexture else {
+            preconditionFailure("Cant find gendut texture")
+        }
+        
+        //Run animation
+        startAnimation(textures: idleTexture, speed: 0.400, name: PlayerAnimationType.idle.rawValue, count: 0, resize: true, restore: true)
     }
     
     func stop() {

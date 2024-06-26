@@ -12,7 +12,7 @@ extension SKSpriteNode {
     
     enum Layer: CGFloat {
         case background
-        case tree
+        case mid
         case gate
         case towerUp
         case characterKecilFront
@@ -23,6 +23,7 @@ extension SKSpriteNode {
         case decor
         case label
         case progressBar
+        case projectile
     }
     
     enum PhysicsCategory {

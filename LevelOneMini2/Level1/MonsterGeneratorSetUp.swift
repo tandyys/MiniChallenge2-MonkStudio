@@ -18,8 +18,8 @@ extension GameScene {
         let minion = Minion(texture: minionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager)
         
         if let spriteComponent = minion.component(ofType: SpriteComponent.self) {
-    
-            entityManager.add(minion)
+            
+            spriteComponent.node.name = UUID().uuidString
 
             minion.setTargetAgent(kecil.playerAgent)
             
@@ -38,6 +38,7 @@ extension GameScene {
             
             run(updateLoop)
         }
+        entityManager.add(minion)
     }
     
 }
