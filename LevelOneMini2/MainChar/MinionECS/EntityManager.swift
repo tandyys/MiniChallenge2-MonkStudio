@@ -53,5 +53,14 @@ class EntityManager {
             }
         }
     }
+    
+    func getEntity(for node: SKNode) -> GKEntity? {
+           return entities.first { entity in
+               if let spriteComponent = entity.component(ofType: SpriteComponent.self) {
+                   return spriteComponent.node == node
+               }
+               return false
+           }
+       }
 }
 

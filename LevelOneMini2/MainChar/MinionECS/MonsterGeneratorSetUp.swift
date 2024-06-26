@@ -22,6 +22,7 @@ extension GameScene {
             entityManager.add(minion)
             
             minion.setTargetAgent(kecil.playerAgent)
+
             
             
             let updateAction = SKAction.run { [self] in

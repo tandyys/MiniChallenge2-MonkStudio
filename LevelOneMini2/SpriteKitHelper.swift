@@ -7,13 +7,15 @@ extension SKSpriteNode {
         case background
         case bos
         case foreground
+        case tembakanDariKucing
         case character
         case projectile
+        case minion
         case canon
         case label
         case progressBar
         case jatuhan
-        case minion
+        
      
 
       

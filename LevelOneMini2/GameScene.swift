@@ -8,10 +8,14 @@ class GameScene: SKScene {
 
     var entityManager: EntityManager!
     var backgroundMusic: SKAudioNode?
-    let menuScene = MenuScene()
+    let pauseScene = PauseMenuScene()
+    
     let gendut = Gendut()
     let kecil = Kecil()
     //let minion = Minion()
+    
+    var gendutShoot: Bool = false
+    var kecilShoot: Bool = false
     let bos = Bos()
     let attackManager = AttackManager()
     let bossHpLabel = BossHpName()
@@ -35,7 +39,7 @@ class GameScene: SKScene {
     let purpleMinion = "p"
     
     var minionCount = 0
-    var maxMinion = 24
+    var maxMinion = 10000000000
     
     var canonLeftShoot: Bool = false
     var canonRightShoot: Bool = false
@@ -114,37 +118,48 @@ class GameScene: SKScene {
         
         //minion.walk()
         //Limited Spawn Minion
-        let stopAction = SKAction.run { [self] in
-            if minionCount >= maxMinion {
-                self.removeAction(forKey: "Spawn")
-            }
-        }
+//        let stopAction = SKAction.run { [self] in
+//            if minionCount >= maxMinion {
+//                self.removeAction(forKey: "Spawn")
+//            }
+//        }
+//        
+//        let spawnSequence = SKAction.sequence([
+//            SKAction.run { [self] in
+//                if minionCount < maxMinion {
+//                    spawnMonster(blueMinion)
+//                    minionCount += 1
+//                }
+//            },
+//            SKAction.wait(forDuration: 5),
+//            SKAction.run { [self] in
+//                if minionCount < maxMinion {
+//                    spawnMonster(redMinion)
+//                    minionCount += 1
+//                }
+//            },
+//            SKAction.wait(forDuration: 5),
+//            SKAction.run { [self] in
+//                if minionCount < maxMinion {
+//                    spawnMonster(purpleMinion)
+//                    minionCount += 1
+//                }
+//            },
+//            SKAction.wait(forDuration: 5),
+//            stopAction
+//        ])
+//        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
         
-        let spawnSequence = SKAction.sequence([
-            SKAction.run { [self] in
-                if minionCount < maxMinion {
-                    spawnMonster(blueMinion)
-                    minionCount += 1
-                }
-            },
-            SKAction.wait(forDuration: 5),
-            SKAction.run { [self] in
-                if minionCount < maxMinion {
-                    spawnMonster(redMinion)
-                    minionCount += 1
-                }
-            },
-            SKAction.wait(forDuration: 5),
-            SKAction.run { [self] in
-                if minionCount < maxMinion {
-                    spawnMonster(purpleMinion)
-                    minionCount += 1
-                }
-            },
-            SKAction.wait(forDuration: 5),
-            stopAction
-        ])
-        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
+                run(SKAction.repeatForever(
+                      SKAction.sequence([
+                        SKAction.run({ [self] in spawnMonster(blueMinion)}),
+                        SKAction.wait(forDuration: 3),
+                        SKAction.run({ [self] in spawnMonster(redMinion)}),
+                        SKAction.wait(forDuration: 3),
+                        SKAction.run({ [self] in spawnMonster(purpleMinion)}),
+                        SKAction.wait(forDuration: 3)
+                        ])
+                    ))
         
 
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
@@ -236,6 +251,7 @@ class GameScene: SKScene {
     
     override func keyDown(with event: NSEvent) {
         switch Int(event.keyCode) {
+
             case kVK_ANSI_Y:
             if CanonContactLeft == true{
                 canonLeftShoot = true
@@ -267,6 +283,36 @@ class GameScene: SKScene {
         }
     }
     override func keyUp(with event: NSEvent) {
+        func getKeysPressed() -> Set<Int> {
+                var keysPressed = Set<Int>()
+                
+                if gendutUpPressed {
+                    keysPressed.insert(kVK_ANSI_W)
+                }
+                if gendutLeftPressed {
+                    keysPressed.insert(kVK_ANSI_A)
+                }
+                if gendutDownPressed {
+                    keysPressed.insert(kVK_ANSI_S)
+                }
+                if gendutRightPressed {
+                    keysPressed.insert(kVK_ANSI_D)
+                }
+                if kecilUpPressed {
+                    keysPressed.insert(kVK_UpArrow)
+                }
+                if kecilDownPressed {
+                    keysPressed.insert(kVK_DownArrow)
+                }
+                if kecilLeftPressed {
+                    keysPressed.insert(kVK_LeftArrow)
+                }
+                if kecilRightPressed {
+                    keysPressed.insert(kVK_RightArrow)
+                }
+                
+                return keysPressed
+            }
         switch Int(event.keyCode) {
         case kVK_ANSI_Y:
             canonLeftShoot = false
@@ -301,10 +347,21 @@ class GameScene: SKScene {
         case kVK_RightArrow:
             kecilLeftPressed = false
             kecil.stop()
+            
+        case kVK_ANSI_X:
+        gendutShoot = true
+        shootGedeProjectile(keysPressed: getKeysPressed())
+        
+        
+//        case kVK_ANSI_U:
+//        kecilShoot = true
+//        shootKecilProjectile(keysPressed: getKeysPressed())
+            
         default:
             break
         }
     }
+    
     override func update(_ currentTime: TimeInterval) {
        
         let movement = Movement()
@@ -352,6 +409,53 @@ class GameScene: SKScene {
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    func shootGedeProjectile(keysPressed: Set<Int>){
+        let projectile = GedeProjectile()
+        projectile.position = CGPoint(x: gendut.position.x, y: gendut.position.y)
+        addChild(projectile)
+        
+        var direction = CGVector(dx: 0, dy: 0)
+        
+        if keysPressed.contains(kVK_ANSI_W) {
+            direction.dy += 1
+        }
+        if keysPressed.contains(kVK_ANSI_A) {
+            direction.dx -= 1
+        }
+        if keysPressed.contains(kVK_ANSI_S) {
+            direction.dy -= 1
+        }
+        if keysPressed.contains(kVK_ANSI_D) {
+            direction.dx += 1
+        }
+        
+        if direction != CGVector.zero {
+            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
+            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            
+            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
+            
+            let realDest = CGVector(dx: gendut.position.x + shootAmount.dx, dy: gendut.position.y + shootAmount.dy)
+            
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMoveDone = SKAction.removeFromParent()
+            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+        }else{
+            direction = CGVector(dx: 10, dy: 0)
+            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
+            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            
+            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
+            
+            let realDest = CGVector(dx: gendut.position.x + shootAmount.dx, dy: gendut.position.y + shootAmount.dy)
+            
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMoveDone = SKAction.removeFromParent()
+            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+        }
     }
     
 

@@ -20,6 +20,57 @@ extension GameScene: SKPhysicsContactDelegate {
         let contactJatuhanCharacterMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let collectableItemsContactCharacter = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let collectableItemsContactCanon = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        let contactMonsterAndWeapon = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        
+        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.monster {
+            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+                if nodeA.name == "Gendut" && nodeB.name == "Minion" {
+                    // Minion is hit by projectile
+                    let damage = 5
+                    attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
+                } else if nodeA.name == "Gendut" && nodeB.name == "ProjectileShoot" {
+                    // Minion is hit by projectile
+                    let damage = 5
+                    attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
+                }
+            }
+        }
+        
+        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
+            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+                if nodeA.name == "Kecil" && nodeB.name == "Minion" {
+                    // Minion is hit by projectile
+                    let damage = 10
+                    attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
+                } else if nodeA.name == "Kecil" && nodeB.name == "ProjectileShoot" {
+                    // Minion is hit by projectile
+                    let damage = 10
+                    attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
+
+                }
+            }
+        }
+        
+        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.shootFromGendut | SKSpriteNode.PhysicsCategory.monster {
+            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+                if nodeA.name == "ProjectileShoot" && nodeB.name == "Minion" {
+                    // Minion is hit by projectile
+                    if let minion = entityManager.getEntity(for: nodeB) as? Minion {
+                        minion.applyDamage(50)
+                    }
+                    nodeA.isHidden = true
+                } else if nodeA.name == "Minion" && nodeB.name == "ProjectileShoot" {
+                    // Minion is hit by projectile
+                    if let minion = entityManager.getEntity(for: nodeA) as? Minion {
+                        minion.applyDamage(50)
+                    }
+                    nodeB.isHidden = true
+                }
+            }
+        }
+
+        
         
         
         if collectableItemsContactCanon == SKSpriteNode.PhysicsCategory.collectablesitem | SKSpriteNode.PhysicsCategory.canonLeftNotActivated {

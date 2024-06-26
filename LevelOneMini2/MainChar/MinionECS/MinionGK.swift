@@ -22,6 +22,7 @@ class Minion: GKEntity, GKAgentDelegate {
         super.init()
        
         let spriteComponent = SpriteComponent(texture: texture)
+        spriteComponent.node.name = "Minion"
         spriteComponent.node.size = CGSize(width: 180, height: 150)
         spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0)
         spriteComponent.node.zPosition = SKSpriteNode.Layer.minion.rawValue
@@ -98,6 +99,10 @@ class Minion: GKEntity, GKAgentDelegate {
      func removeFromParentCollectableItems(item: CollectableItem) {
          item.removeFromParent()
      }
+    
+    func applyDamage(_ damage: CGFloat) {
+        changeHealth(by: -damage)
+    }
     
     
 }

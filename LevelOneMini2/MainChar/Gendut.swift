@@ -26,9 +26,9 @@ class Gendut: SKSpriteNode {
         self.playerAgent = GKAgent2D()
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.gendutWalkTexture = self.loadAnimation(atlas: "Gendut", prefix: "GendutWalk_", startAt: 0, stopAt: 5)
+        self.gendutWalkTexture = self.loadAnimation(atlas: "Gendut", prefix: "GendutWalk_", startAt: 0, stopAt: 16)
         self.name = "Gendut"
-        self.setScale(1.0)
+        self.setScale(1)
         self.position = CGPoint(x: 600, y: 900)
 //        self.size = CGSize(width: 320, height: 360)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -55,7 +55,7 @@ class Gendut: SKSpriteNode {
         }
         
         //Run animation
-        startAnimation(textures: walkTexture, speed: 0.135, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: walkTexture, speed: 0.135, name: PlayerAnimationType.walk.rawValue, count: 0, resize: false, restore: false)
     }
     
     func stop() {

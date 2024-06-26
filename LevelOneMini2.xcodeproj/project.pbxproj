@@ -23,7 +23,7 @@
 		F8A86B1A2C282195003C4282 /* Canon_Right.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B092C282195003C4282 /* Canon_Right.swift */; };
 		F8A86B1B2C282195003C4282 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B002C282195003C4282 /* AppDelegate.swift */; };
 		F8A86B1C2C282195003C4282 /* GameScenePhysicsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B072C282195003C4282 /* GameScenePhysicsDelegate.swift */; };
-		F8A86B1D2C282195003C4282 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86AFF2C282195003C4282 /* MenuScene.swift */; };
+		F8A86B1D2C282195003C4282 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86AFF2C282195003C4282 /* PauseScene.swift */; };
 		F8A86B1E2C282195003C4282 /* Canon_Left.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B082C282195003C4282 /* Canon_Left.swift */; };
 		F8A86B1F2C282195003C4282 /* Gendut.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B0C2C282195003C4282 /* Gendut.swift */; };
 		F8A86B202C282195003C4282 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F8A86B012C282195003C4282 /* GameScene.sks */; };
@@ -44,6 +44,7 @@
 		F8D58AA52C2BFF45000F3AFA /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58AA42C2BFF45000F3AFA /* SpriteComponent.swift */; };
 		F8D58AA72C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58AA62C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift */; };
 		F8D58AA92C2C07F5000F3AFA /* GKComponentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58AA82C2C07F5000F3AFA /* GKComponentExtension.swift */; };
+		F8D58AAD2C2C2746000F3AFA /* GedeProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D58AAC2C2C2746000F3AFA /* GedeProjectile.swift */; };
 		F8E7CE2E2C28319300FB8F74 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7CE2D2C28318F00FB8F74 /* HpProgressBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +56,7 @@
 		F845535D2C2AB7EF004D966A /* AttackFromBos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackFromBos.swift; sourceTree = "<group>"; };
 		F848446B2C286C2600BD64F4 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		F8678A5B2C291EBB002521C1 /* AttackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackManager.swift; sourceTree = "<group>"; };
-		F8A86AFF2C282195003C4282 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		F8A86AFF2C282195003C4282 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		F8A86B002C282195003C4282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8A86B012C282195003C4282 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		F8A86B022C282195003C4282 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 		F8D58AA42C2BFF45000F3AFA /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		F8D58AA62C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterGeneratorSetUp.swift; sourceTree = "<group>"; };
 		F8D58AA82C2C07F5000F3AFA /* GKComponentExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKComponentExtension.swift; sourceTree = "<group>"; };
+		F8D58AAC2C2C2746000F3AFA /* GedeProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GedeProjectile.swift; sourceTree = "<group>"; };
 		F8E7CE2D2C28318F00FB8F74 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A86B032C282195003C4282 /* GameScene.swift */,
-				F8A86AFF2C282195003C4282 /* MenuScene.swift */,
+				F8A86AFF2C282195003C4282 /* PauseScene.swift */,
 				F8A86B002C282195003C4282 /* AppDelegate.swift */,
 				F8C8219D2C2B30FF00A3137E /* Sound */,
 				F8A86B012C282195003C4282 /* GameScene.sks */,
@@ -154,6 +156,7 @@
 			children = (
 				F8D58AA32C2BFEFF000F3AFA /* MinionECS */,
 				F84553572C2A7DE4004D966A /* Minion.swift */,
+				F8D58AAC2C2C2746000F3AFA /* GedeProjectile.swift */,
 				F8D58A972C2BC9FC000F3AFA /* CollectableItem.swift */,
 				F8A86B0B2C282195003C4282 /* Bos.swift */,
 				F8A86B0C2C282195003C4282 /* Gendut.swift */,
@@ -298,6 +301,7 @@
 				F8A86B132C282195003C4282 /* GameScene.swift in Sources */,
 				F8D58AA72C2BFF79000F3AFA /* MonsterGeneratorSetUp.swift in Sources */,
 				F8D58A962C2BC468000F3AFA /* Overlay.swift in Sources */,
+				F8D58AAD2C2C2746000F3AFA /* GedeProjectile.swift in Sources */,
 				F8A86B142C282195003C4282 /* OutOfBound.swift in Sources */,
 				F8C8219A2C2B2EE900A3137E /* AudioManager.swift in Sources */,
 				F8A86B152C282195003C4282 /* SpriteKitHelper.swift in Sources */,
@@ -318,7 +322,7 @@
 				F8C8218F2C2B1A1100A3137E /* BackgroundManager.swift in Sources */,
 				F8D58AA92C2C07F5000F3AFA /* GKComponentExtension.swift in Sources */,
 				F8D58AA02C2BFEF3000F3AFA /* MinionHealthComponent.swift in Sources */,
-				F8A86B1D2C282195003C4282 /* MenuScene.swift in Sources */,
+				F8A86B1D2C282195003C4282 /* PauseScene.swift in Sources */,
 				F8D58A9E2C2BFED9000F3AFA /* EntityManager.swift in Sources */,
 				F845535E2C2AB7F2004D966A /* AttackFromBos.swift in Sources */,
 				F8A86B1E2C282195003C4282 /* Canon_Left.swift in Sources */,
@@ -395,6 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.adventure-games";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -453,6 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.adventure-games";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;

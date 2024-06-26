@@ -27,9 +27,9 @@ class Kecil: SKSpriteNode {
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.KecilWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "KecilWalk_", startAt: 0, stopAt: 5)
+        self.KecilWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "KecilWalk_", startAt: 0, stopAt: 15)
         self.name = "Kecil"
-        self.setScale(1.0)
+        self.setScale(1)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.zPosition = SKSpriteNode.Layer.character.rawValue
         self.position = CGPoint(x: 100, y: 300)
@@ -58,7 +58,7 @@ class Kecil: SKSpriteNode {
         }
         
         //Run animation
-        startAnimation(textures: walkTexture, speed: 0.150, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: walkTexture, speed: 0.150, name: PlayerAnimationType.walk.rawValue, count: 0, resize: false, restore: true)
     }
     
     func stop() {
