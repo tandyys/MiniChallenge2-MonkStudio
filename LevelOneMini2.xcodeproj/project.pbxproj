@@ -109,7 +109,6 @@
 		27200B962C2A91FB007F0408 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200B952C2A91FB007F0408 /* SpriteComponent.swift */; };
 		27200B9B2C2A9375007F0408 /* Minion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200B9A2C2A9375007F0408 /* Minion.swift */; };
 		27200B9D2C2AAA8B007F0408 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200B9C2C2AAA8B007F0408 /* EntityManager.swift */; };
-		27200BA12C2ADCBD007F0408 /* MonsterGeneratorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200BA02C2ADCBD007F0408 /* MonsterGeneratorComponent.swift */; };
 		27200BA32C2ADD12007F0408 /* GKComponentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200BA22C2ADD12007F0408 /* GKComponentExtension.swift */; };
 		27200BA52C2AE3FD007F0408 /* MonsterGeneratorSetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27200BA42C2AE3FD007F0408 /* MonsterGeneratorSetUp.swift */; };
 		273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B6F6A2C214EB800A64CA0 /* AppDelegate.swift */; };
@@ -276,7 +275,6 @@
 		27200B952C2A91FB007F0408 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		27200B9A2C2A9375007F0408 /* Minion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minion.swift; sourceTree = "<group>"; };
 		27200B9C2C2AAA8B007F0408 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
-		27200BA02C2ADCBD007F0408 /* MonsterGeneratorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterGeneratorComponent.swift; sourceTree = "<group>"; };
 		27200BA22C2ADD12007F0408 /* GKComponentExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GKComponentExtension.swift; sourceTree = "<group>"; };
 		27200BA42C2AE3FD007F0408 /* MonsterGeneratorSetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterGeneratorSetUp.swift; sourceTree = "<group>"; };
 		273B6F672C214EB800A64CA0 /* LevelOneMini2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LevelOneMini2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -505,7 +503,6 @@
 			children = (
 				27200B8F2C2A8C4D007F0408 /* MinionHealthComponent.swift */,
 				27200B952C2A91FB007F0408 /* SpriteComponent.swift */,
-				27200BA02C2ADCBD007F0408 /* MonsterGeneratorComponent.swift */,
 				27200BA22C2ADD12007F0408 /* GKComponentExtension.swift */,
 			);
 			path = Components;
@@ -915,7 +912,6 @@
 				273B6F972C217E6D00A64CA0 /* Gendut.swift in Sources */,
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
-				27200BA12C2ADCBD007F0408 /* MonsterGeneratorComponent.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,
 				27200A772C2A6A6A007F0408 /* TowerRed.swift in Sources */,
 			);

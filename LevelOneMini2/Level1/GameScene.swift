@@ -165,21 +165,21 @@ class GameScene: SKScene {
                     minionCount += 1
                 }
             },
-            SKAction.wait(forDuration: 3),
+            SKAction.wait(forDuration: 5),
             SKAction.run { [self] in
                 if minionCount < maxMinion {
                     spawnMonster(redMinion)
                     minionCount += 1
                 }
             },
-            SKAction.wait(forDuration: 3),
+            SKAction.wait(forDuration: 5),
             SKAction.run { [self] in
                 if minionCount < maxMinion {
                     spawnMonster(purpleMinion)
                     minionCount += 1
                 }
             },
-            SKAction.wait(forDuration: 3),
+            SKAction.wait(forDuration: 5),
             stopAction
         ])
         run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
@@ -222,7 +222,6 @@ class GameScene: SKScene {
             
 //            redMinion.changeHealth(by: -10)
 //            purpleMinion.changeHealth(by: -10)
-            
             
             default:
                 break
@@ -471,13 +470,6 @@ class GameScene: SKScene {
             kecilNode.playerAgent.position = vector_float2(x: Float(kecilNode.position.x), y: Float(kecilNode.position.y))
             kecilNode.playerAgent.update(deltaTime: currentTime)
         }
-            
-//            // Perbarui minionAgent agar selalu mengejar playerAgent
-//            for entity in entityManager.entities where entity is Minion {
-//                if let minion = entity as? Minion {
-//                    minion.minionAgent.update(deltaTime: currentTime)
-//                }
-//            }
         
     }
     

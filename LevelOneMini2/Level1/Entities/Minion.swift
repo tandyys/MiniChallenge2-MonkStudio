@@ -22,7 +22,7 @@ class Minion: GKEntity, GKAgentDelegate {
         super.init()
        
         let spriteComponent = SpriteComponent(texture: texture)
-        spriteComponent.node.size = CGSize(width: 240, height: 200)
+        spriteComponent.node.size = CGSize(width: 180, height: 150)
         spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0)
         spriteComponent.node.zPosition = SKSpriteNode.Layer.monster.rawValue
         spriteComponent.node.position = CGPoint(x: 3000, y: 800)
@@ -37,8 +37,8 @@ class Minion: GKEntity, GKAgentDelegate {
         //Minion Agent
         minionAgent.delegate = self
         minionAgent.position = SIMD2(Float(spriteComponent.node.position.x), Float(spriteComponent.node.position.y))
-        minionAgent.maxSpeed = 200
-        minionAgent.maxAcceleration = 100
+        minionAgent.maxSpeed = 150
+        minionAgent.maxAcceleration = 50
         
         self.addComponent(spriteComponent)
         
