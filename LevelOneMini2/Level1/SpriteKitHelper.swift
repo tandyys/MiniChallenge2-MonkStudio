@@ -36,6 +36,7 @@ extension SKSpriteNode {
         static let towerGreenNotActivated:UInt32 = 0b1000000 //64
         static let towerActivated: UInt32 = 0b10000000 //128
         static let gate: UInt32 = 0b100000000 //256
+        static let ammo: UInt32 = 0b1000000000 //512
     }
     
     func loadAnimation(atlas: String, prefix: String, startAt: Int, stopAt: Int) -> [SKTexture] {

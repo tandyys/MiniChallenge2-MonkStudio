@@ -9,6 +9,38 @@ import SpriteKit
 import GameplayKit
 import Carbon
 
+func +(left: CGPoint, right: CGPoint) -> CGPoint {
+  return CGPoint(x: left.x + right.x, y: left.y + right.y)
+}
+
+func -(left: CGPoint, right: CGPoint) -> CGPoint {
+  return CGPoint(x: left.x - right.x, y: left.y - right.y)
+}
+
+func *(point: CGPoint, scalar: CGFloat) -> CGPoint {
+  return CGPoint(x: point.x * scalar, y: point.y * scalar)
+}
+
+func /(point: CGPoint, scalar: CGFloat) -> CGPoint {
+  return CGPoint(x: point.x / scalar, y: point.y / scalar)
+}
+
+#if !(arch(x86_64) || arch(arm64))
+  func sqrt(a: CGFloat) -> CGFloat {
+    return CGFloat(sqrtf(Float(a)))
+  }
+#endif
+
+extension CGPoint {
+  func length() -> CGFloat {
+    return sqrt(x*x + y*y)
+  }
+  
+  func normalized() -> CGPoint {
+    return self / length()
+  }
+}
+
 class GameScene: SKScene {
     
     let gendut = Gendut()
@@ -270,6 +302,38 @@ class GameScene: SKScene {
         default:
             break
         }
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        let touchLocation = event.location(in: self)
+        let projectile = SKSpriteNode(imageNamed: "gendutAtt")
+        projectile.position = CGPoint(x: gendut.position.x, y: gendut.position.y + gendut.position.y/6)
+        projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
+        projectile.physicsBody?.isDynamic = true
+        projectile.physicsBody?.affectedByGravity = false
+        projectile.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.ammo
+        projectile.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.monster
+        projectile.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        
+        let offset = touchLocation - projectile.position
+        
+        if offset.x < 0 {
+            gendut.xScale = -1
+        } else {
+            gendut.xScale = 1
+        }
+        
+        addChild(projectile)
+        
+        let direction = offset.normalized()
+        
+        let shootAmount = direction * 1000
+        
+        let realDest = shootAmount + projectile.position
+        
+        let actionMove = SKAction.move(to: realDest, duration: 0.75)
+        let actionMoveDone = SKAction.removeFromParent()
+        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
     
     override func update(_ currentTime: TimeInterval) {

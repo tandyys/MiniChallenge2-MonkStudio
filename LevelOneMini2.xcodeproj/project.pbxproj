@@ -170,6 +170,7 @@
 		273B713C2C258FD500A64CA0 /* ProgressBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 273B713A2C258FD500A64CA0 /* ProgressBar.png */; };
 		273B713D2C258FD500A64CA0 /* ProgressBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 273B713B2C258FD500A64CA0 /* ProgressBarBG.png */; };
 		273B71442C28414300A64CA0 /* TowerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B71432C28414300A64CA0 /* TowerProgressBar.swift */; };
+		279B4E272C2C0F6700E273A1 /* gendutAtt.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4E262C2C0F6700E273A1 /* gendutAtt.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -342,6 +343,7 @@
 		273B713A2C258FD500A64CA0 /* ProgressBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgressBar.png; sourceTree = "<group>"; };
 		273B713B2C258FD500A64CA0 /* ProgressBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProgressBarBG.png; sourceTree = "<group>"; };
 		273B71432C28414300A64CA0 /* TowerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerProgressBar.swift; sourceTree = "<group>"; };
+		279B4E262C2C0F6700E273A1 /* gendutAtt.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gendutAtt.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -558,6 +560,7 @@
 		273B700A2C2180EA00A64CA0 /* Level_1_Assets */ = {
 			isa = PBXGroup;
 			children = (
+				279B4E262C2C0F6700E273A1 /* gendutAtt.svg */,
 				27200B482C2A8A82007F0408 /* Minion */,
 				273B70D42C21879400A64CA0 /* Cat */,
 				273B70312C2180F900A64CA0 /* Scene1 */,
@@ -668,11 +671,11 @@
 		273B71422C2703B400A64CA0 /* Level1 */ = {
 			isa = PBXGroup;
 			children = (
+				273B6F702C214EB800A64CA0 /* GameScene.swift */,
 				27200B992C2A936A007F0408 /* Entities */,
 				27200B8E2C2A8C0E007F0408 /* Components */,
 				273B6F902C215B0C00A64CA0 /* SpriteKitHelper.swift */,
 				273B6F722C214EB800A64CA0 /* ViewController.swift */,
-				273B6F702C214EB800A64CA0 /* GameScene.swift */,
 				273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */,
 				273B71432C28414300A64CA0 /* TowerProgressBar.swift */,
 				27200BA42C2AE3FD007F0408 /* MonsterGeneratorSetUp.swift */,
@@ -756,6 +759,7 @@
 				27200A6C2C2A6790007F0408 /* TowerRedActivate_5.svg in Resources */,
 				273B70ED2C21879400A64CA0 /* Kecil-walk-7.png in Resources */,
 				27200B5E2C2A8A82007F0408 /* att-r-6.png in Resources */,
+				279B4E272C2C0F6700E273A1 /* gendutAtt.svg in Resources */,
 				273B71282C22854500A64CA0 /* Tower_Level 1_Red.png in Resources */,
 				273B70E92C21879400A64CA0 /* Kecil-walk-3.png in Resources */,
 				273B70F02C21879400A64CA0 /* Kecil-walk-10.png in Resources */,
