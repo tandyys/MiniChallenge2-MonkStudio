@@ -10,6 +10,11 @@ class GameScene31: SKScene {
     let kecil = Kecil()
     let bos = Bos()
     var monster : Monster?
+    var gedeProjectile : GedeProjectile?
+    var kecilProjectile : KecilProjectile?
+    
+    var gendutShoot: Bool = false
+    var kecilShoot: Bool = false
     
     var totalMonsterOnScreen: Int = 0
     var monsterDelay: TimeInterval = 2.0
@@ -18,6 +23,15 @@ class GameScene31: SKScene {
     var gendutDownPressed:Bool = false
     var gendutLeftPressed:Bool = false
     var gendutRightPressed:Bool = false
+    
+    var keysProjectile:CGPoint = CGPoint(x: 0, y: 0)
+    var aimXKecil: Double = 0
+    var aimYKecil: Double = 0
+    var aimXGendut: Double = 0
+    var aimYGendut: Double = 0
+    
+    var aimDestinationKecil: CGPoint = CGPoint(x: 0, y: 0)
+    var aimDestinationGendut: CGPoint = CGPoint(x: 0, y: 0)
     
     var viewWidth:Double = 0.0
     var viewHeight:Double = 0.0
@@ -350,13 +364,45 @@ class GameScene31: SKScene {
     }
     
     override func keyDown(with event: NSEvent) {
+        func getKeysPressed() -> Set<Int> {
+                var keysPressed = Set<Int>()
+                
+                if gendutUpPressed {
+                    keysPressed.insert(kVK_ANSI_W)
+                }
+                if gendutLeftPressed {
+                    keysPressed.insert(kVK_ANSI_A)
+                }
+                if gendutDownPressed {
+                    keysPressed.insert(kVK_ANSI_S)
+                }
+                if gendutRightPressed {
+                    keysPressed.insert(kVK_ANSI_D)
+                }
+                if kecilUpPressed {
+                    keysPressed.insert(kVK_UpArrow)
+                }
+                if kecilDownPressed {
+                    keysPressed.insert(kVK_DownArrow)
+                }
+                if kecilLeftPressed {
+                    keysPressed.insert(kVK_LeftArrow)
+                }
+                if kecilRightPressed {
+                    keysPressed.insert(kVK_RightArrow)
+                }
+                
+                return keysPressed
+            }
         switch Int(event.keyCode) {
-//            case kVK_ANSI_Y:
-//            CharacterProjectile(texture: "")
-//            
-//            
-//            case kVK_ANSI_U:
-//            CharacterProjectile(texture: )
+            case kVK_ANSI_Y:
+            gendutShoot = true
+            shootGedeProjectile(keysPressed: getKeysPressed())
+            
+            
+            case kVK_ANSI_U:
+            kecilShoot = true
+            shootKecilProjectile(keysPressed: getKeysPressed())
             
             case kVK_Escape:
             
@@ -382,34 +428,41 @@ class GameScene31: SKScene {
             if towerWhite3BuildBool == true && activateWhite3TowerButtonAvailable == true{
                 activateWhite3TowerButtonPressed = true
             }
-                if buildWhite1TowerAvailable == true {
+            if buildWhite1TowerAvailable == true {
                     buildWhite1TowerPressed = true
-                }
-                if buildWhite2TowerAvailable == true {
+            }
+            if buildWhite2TowerAvailable == true {
                     buildWhite2TowerPressed = true
-                }
-                if buildWhite3TowerAvailable == true {
+            }
+            if buildWhite3TowerAvailable == true {
                     buildWhite3TowerPressed = true
-                }
+            }
     
-            case kVK_ANSI_W:
-                gendutUpPressed = true
-            case kVK_ANSI_A:
-                gendutLeftPressed = true
-            case kVK_ANSI_S:
-                gendutDownPressed = true
-            case kVK_ANSI_D:
-                gendutRightPressed = true
-            case kVK_UpArrow:
-                kecilUpPressed = true
-            case kVK_DownArrow:
-                kecilDownPressed = true
-            case kVK_LeftArrow:
-                kecilRightPressed = true
-            case kVK_RightArrow:
-                kecilLeftPressed = true
-            default:
-                break
+                case kVK_ANSI_W:
+                    gendutUpPressed = true
+                case kVK_ANSI_A:
+                    gendutLeftPressed = true
+                    
+                case kVK_ANSI_S:
+                    gendutDownPressed = true
+                    
+                case kVK_ANSI_D:
+                    gendutRightPressed = true
+                    
+                case kVK_UpArrow:
+                    kecilUpPressed = true
+                    
+                case kVK_DownArrow:
+                    kecilDownPressed = true
+                    
+                case kVK_LeftArrow:
+                    kecilLeftPressed = true
+                    
+                case kVK_RightArrow:
+                    kecilRightPressed = true
+                
+                default:
+                    break
         }
         
         
@@ -490,6 +543,24 @@ class GameScene31: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+//        if gendutShoot == true{
+//            shootGedeProjectile(keysProjectile:aimDestinationGendut)
+//            gendutShoot = false
+//            
+//        }else if kecilShoot == true{
+////            shootKecilProjectile(keysPressed: getKeysPressed())
+//            kecilShoot = false
+//            
+//        }
+        aimXGendut = gendut.position.x
+        aimYGendut = gendut.position.y
+        
+        aimDestinationGendut = CGPoint(x: aimXGendut, y: aimYGendut)
+        
+        aimXKecil = kecil.position.x
+        aimYKecil = kecil.position.y
+        
+        aimDestinationKecil = CGPoint(x: aimXKecil, y: aimYKecil)
         
         if aimKecil{
             monster?.moveTowardsPlayer(playerPosition: kecil.position)
@@ -810,5 +881,97 @@ class GameScene31: SKScene {
             //        }
             monster = Monster(frameWidth: viewWidth, frameHeight: viewHeight)
             addChild(monster!)
+    }
+    
+    func shootGedeProjectile(keysPressed: Set<Int>){
+        let projectile = GedeProjectile()
+        projectile.position = CGPoint(x: gendut.position.x + 200, y: gendut.position.y + 200)
+        addChild(projectile)
+        
+        var direction = CGVector(dx: 0, dy: 0)
+        
+        if keysPressed.contains(kVK_ANSI_W) {
+            direction.dy += 1
+        }
+        if keysPressed.contains(kVK_ANSI_A) {
+            direction.dx -= 1
+        }
+        if keysPressed.contains(kVK_ANSI_S) {
+            direction.dy -= 1
+        }
+        if keysPressed.contains(kVK_ANSI_D) {
+            direction.dx += 1
+        }
+        
+        if direction != CGVector.zero {
+            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
+            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            
+            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
+            
+            let realDest = CGVector(dx: gendut.position.x + shootAmount.dx, dy: gendut.position.y + shootAmount.dy)
+            
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMoveDone = SKAction.removeFromParent()
+            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+        }else{
+            direction = CGVector(dx: 10, dy: 0)
+            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
+            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            
+            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
+            
+            let realDest = CGVector(dx: gendut.position.x + shootAmount.dx, dy: gendut.position.y + shootAmount.dy)
+            
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMoveDone = SKAction.removeFromParent()
+            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+        }
+    }
+    
+    func shootKecilProjectile(keysPressed: Set<Int>) {
+        let projectile = KecilProjectile()
+        projectile.position = CGPoint(x: kecil.position.x + 100, y: kecil.position.y + 100)
+        addChild(projectile)
+        
+        var direction = CGVector(dx: 0, dy: 0)
+        
+        if keysPressed.contains(kVK_ANSI_W) {
+            direction.dy += 1
+        }
+        if keysPressed.contains(kVK_ANSI_A) {
+            direction.dx -= 1
+        }
+        if keysPressed.contains(kVK_ANSI_S) {
+            direction.dy -= 1
+        }
+        if keysPressed.contains(kVK_ANSI_D) {
+            direction.dx += 1
+        }
+        
+        if direction != CGVector.zero {
+            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
+            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            
+            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
+            
+            let realDest = CGVector(dx: kecil.position.x + shootAmount.dx, dy: kecil.position.y + shootAmount.dy)
+            
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMoveDone = SKAction.removeFromParent()
+            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+        }else{
+            direction = CGVector(dx: 10, dy: 0)
+            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
+            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            
+            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
+            
+            let realDest = CGVector(dx: kecil.position.x + shootAmount.dx, dy: kecil.position.y + shootAmount.dy)
+            
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMoveDone = SKAction.removeFromParent()
+            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+        }
     }
 }

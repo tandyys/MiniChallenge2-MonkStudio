@@ -23,12 +23,13 @@
 		B5AFD1482C2917B7006715F8 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1472C2917B7006715F8 /* Handler.swift */; };
 		B5AFD14A2C2AA561006715F8 /* Bos.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1492C2AA561006715F8 /* Bos.swift */; };
 		B5AFD14C2C2AB855006715F8 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */; };
-		B5AFD14E2C2AC47C006715F8 /* CharacterProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14D2C2AC47C006715F8 /* CharacterProjectile.swift */; };
+		B5AFD14E2C2AC47C006715F8 /* GedeProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14D2C2AC47C006715F8 /* GedeProjectile.swift */; };
 		B5AFD1502C2B0C77006715F8 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14F2C2B0C77006715F8 /* Monster.swift */; };
 		B5AFD1522C2BB964006715F8 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1512C2BB964006715F8 /* GameOverScene.swift */; };
 		B5AFD1542C2BCF9F006715F8 /* PauseMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */; };
 		B5AFD1562C2BD5C8006715F8 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1552C2BD5C8006715F8 /* Intro.swift */; };
 		B5AFD1582C2BDF82006715F8 /* ChooseCharacterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */; };
+		B5AFD15A2C2BF773006715F8 /* KecilProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1592C2BF773006715F8 /* KecilProjectile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,12 +51,13 @@
 		B5AFD1472C2917B7006715F8 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
 		B5AFD1492C2AA561006715F8 /* Bos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bos.swift; sourceTree = "<group>"; };
 		B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressBar.swift; sourceTree = "<group>"; };
-		B5AFD14D2C2AC47C006715F8 /* CharacterProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProjectile.swift; sourceTree = "<group>"; };
+		B5AFD14D2C2AC47C006715F8 /* GedeProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GedeProjectile.swift; sourceTree = "<group>"; };
 		B5AFD14F2C2B0C77006715F8 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		B5AFD1512C2BB964006715F8 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuScene.swift; sourceTree = "<group>"; };
 		B5AFD1552C2BD5C8006715F8 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCharacterScene.swift; sourceTree = "<group>"; };
+		B5AFD1592C2BF773006715F8 /* KecilProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KecilProjectile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,11 +104,12 @@
 		273B6F9A2C217E7B00A64CA0 /* MainChar */ = {
 			isa = PBXGroup;
 			children = (
-				B5AFD14D2C2AC47C006715F8 /* CharacterProjectile.swift */,
+				B5AFD14D2C2AC47C006715F8 /* GedeProjectile.swift */,
 				273B6F962C217E6D00A64CA0 /* Gendut.swift */,
 				273B6F982C217E7300A64CA0 /* Kecil.swift */,
 				B5AFD1492C2AA561006715F8 /* Bos.swift */,
 				B5AFD14F2C2B0C77006715F8 /* Monster.swift */,
+				B5AFD1592C2BF773006715F8 /* KecilProjectile.swift */,
 			);
 			path = MainChar;
 			sourceTree = "<group>";
@@ -225,7 +228,8 @@
 				273B71442C28414300A64CA0 /* TowerProgressBar.swift in Sources */,
 				273B6F972C217E6D00A64CA0 /* Gendut.swift in Sources */,
 				B5AFD14C2C2AB855006715F8 /* HpProgressBar.swift in Sources */,
-				B5AFD14E2C2AC47C006715F8 /* CharacterProjectile.swift in Sources */,
+				B5AFD15A2C2BF773006715F8 /* KecilProjectile.swift in Sources */,
+				B5AFD14E2C2AC47C006715F8 /* GedeProjectile.swift in Sources */,
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,

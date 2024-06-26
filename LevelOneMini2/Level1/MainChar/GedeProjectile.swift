@@ -8,13 +8,13 @@
 import Foundation
 import SpriteKit
 
-class CharacterProjectile: SKSpriteNode{
+class GedeProjectile: SKSpriteNode{
     enum CharacterProjectileAnimationType:String {
         case shoot
     }
     
-    init(texture:String){
-        let projectiles = SKTexture(imageNamed: texture)
+    init(){
+        let projectiles = SKTexture(imageNamed: "gedeProjectile")
                 
         super.init(texture: projectiles, color: .clear, size: projectiles.size())
                 
@@ -31,6 +31,7 @@ class CharacterProjectile: SKSpriteNode{
         self.physicsBody?.affectedByGravity = false
                 
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
