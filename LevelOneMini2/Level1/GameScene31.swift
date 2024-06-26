@@ -103,6 +103,31 @@ class GameScene31: SKScene {
 
     let bosHpName =  SKSpriteNode(imageNamed: "GiantRatLabel")
     
+    var isGamePaused = false
+    var pauseMenuScene: PauseMenuScene?
+    
+    func pauseGame() {
+            isGamePaused = true
+            self.view?.isPaused = true
+            
+            // Present the pause menu
+            pauseMenuScene = PauseMenuScene(size: self.size)
+            pauseMenuScene?.gameScene = self
+            self.view?.presentScene(pauseMenuScene)
+        }
+        
+        func resumeGame() {
+            isGamePaused = false
+            self.view?.isPaused = false
+            
+            // Remove the pause menu
+            pauseMenuScene?.removeFromParent()
+            pauseMenuScene = nil
+        }
+    
+    override func touchesBegan(with event: NSEvent) {
+    }
+
     override func didMove(to view: SKView) {
         viewWidth = view.frame.width
         viewHeight = view.frame.height
@@ -326,6 +351,26 @@ class GameScene31: SKScene {
     
     override func keyDown(with event: NSEvent) {
         switch Int(event.keyCode) {
+//            case kVK_ANSI_Y:
+//            CharacterProjectile(texture: "")
+//            
+//            
+//            case kVK_ANSI_U:
+//            CharacterProjectile(texture: )
+            
+            case kVK_Escape:
+            
+//            let scene = self
+//            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+//            let gameOverScene = GameOverScene(size: scene.size, won: false)
+//            scene.view?.presentScene(gameOverScene, transition: reveal)
+//            
+            let scene = self
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let pauseMenuScene = PauseMenuScene(size: scene.size)
+            scene.view?.presentScene(pauseMenuScene, transition: reveal)
+
+            
             case kVK_ANSI_Q:
             print("Q pressed down")
             if towerWhite1BuildBool == true && activateWhite1TowerButtonAvailable == true{

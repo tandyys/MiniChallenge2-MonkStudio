@@ -8,26 +8,26 @@
 import Cocoa
 import SpriteKit
 import GameplayKit
+//import UIKit
 
 class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         if let view = self.view as? SKView {
             // Load the SKScene from 'GameScene.sks'
 //            let scene = GameScene(size: view.bounds.size)
-            let scene = GameScene31(size: view.bounds.size)
+            let scene = Intro(size: view.bounds.size)
             // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
+            scene.scaleMode = .aspectFit
                 
             // Present the scene
-            view.presentScene(scene)
             
-            view.ignoresSiblingOrder = false
+            view.ignoresSiblingOrder = true
             view.showsFPS = true
             view.showsNodeCount = true
             view.showsPhysics = false
+            view.presentScene(scene)
         }
     }
     

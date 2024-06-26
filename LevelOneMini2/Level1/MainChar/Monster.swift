@@ -45,8 +45,8 @@ class Monster: SKSpriteNode{
         
         | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed | SKSpriteNode.PhysicsCategory.towerWhite3Activated | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
         
-        print(frame.size.height/2)
-        print(self.size.height/2)
+//        print(frame.size.height/2)
+//        print(self.size.height/2)
         
         let spawnFromSide = Bool.random()
         
@@ -85,6 +85,7 @@ class Monster: SKSpriteNode{
         let angle = atan2(playerPosition.y - self.position.y, playerPosition.x - self.position.y)
         let dx = movementSpeed * cos(angle)
         let dy = movementSpeed * sin(angle)
+        
         self.position.x += dx
         self.position.y += dy
     }

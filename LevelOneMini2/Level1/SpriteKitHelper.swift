@@ -11,6 +11,10 @@ import SpriteKit
 extension SKSpriteNode {
     
     enum Layer: CGFloat {
+        case backMenu
+        case buttonMenu
+        case logoMenu
+        
         case background
         case bos
         case platform

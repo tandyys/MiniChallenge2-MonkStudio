@@ -25,6 +25,10 @@
 		B5AFD14C2C2AB855006715F8 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */; };
 		B5AFD14E2C2AC47C006715F8 /* CharacterProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14D2C2AC47C006715F8 /* CharacterProjectile.swift */; };
 		B5AFD1502C2B0C77006715F8 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD14F2C2B0C77006715F8 /* Monster.swift */; };
+		B5AFD1522C2BB964006715F8 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1512C2BB964006715F8 /* GameOverScene.swift */; };
+		B5AFD1542C2BCF9F006715F8 /* PauseMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */; };
+		B5AFD1562C2BD5C8006715F8 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1552C2BD5C8006715F8 /* Intro.swift */; };
+		B5AFD1582C2BDF82006715F8 /* ChooseCharacterScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		B5AFD14B2C2AB855006715F8 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HpProgressBar.swift; sourceTree = "<group>"; };
 		B5AFD14D2C2AC47C006715F8 /* CharacterProjectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProjectile.swift; sourceTree = "<group>"; };
 		B5AFD14F2C2B0C77006715F8 /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		B5AFD1512C2BB964006715F8 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuScene.swift; sourceTree = "<group>"; };
+		B5AFD1552C2BD5C8006715F8 /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCharacterScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,11 +114,15 @@
 		273B71422C2703B400A64CA0 /* Level1 */ = {
 			isa = PBXGroup;
 			children = (
+				B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */,
+				B5AFD1552C2BD5C8006715F8 /* Intro.swift */,
+				B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */,
 				273B6F902C215B0C00A64CA0 /* SpriteKitHelper.swift */,
 				273B6F722C214EB800A64CA0 /* ViewController.swift */,
 				273B6F702C214EB800A64CA0 /* GameScene.swift */,
 				273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */,
 				B5AFD1432C286EDC006715F8 /* GameScene31.swift */,
+				B5AFD1512C2BB964006715F8 /* GameOverScene.swift */,
 				B5AFD1472C2917B7006715F8 /* Handler.swift */,
 				273B712A2C2297FC00A64CA0 /* Tower.swift */,
 				273B71432C28414300A64CA0 /* TowerProgressBar.swift */,
@@ -201,8 +213,12 @@
 				273B6F992C217E7300A64CA0 /* Kecil.swift in Sources */,
 				B5AFD14A2C2AA561006715F8 /* Bos.swift in Sources */,
 				B5AFD1442C286EDC006715F8 /* GameScene31.swift in Sources */,
+				B5AFD1542C2BCF9F006715F8 /* PauseMenuScene.swift in Sources */,
 				B5AFD1462C286F1B006715F8 /* MenuScene.swift in Sources */,
+				B5AFD1522C2BB964006715F8 /* GameOverScene.swift in Sources */,
+				B5AFD1562C2BD5C8006715F8 /* Intro.swift in Sources */,
 				273B6F732C214EB800A64CA0 /* ViewController.swift in Sources */,
+				B5AFD1582C2BDF82006715F8 /* ChooseCharacterScene.swift in Sources */,
 				273B6F712C214EB800A64CA0 /* GameScene.swift in Sources */,
 				273B712B2C2297FC00A64CA0 /* Tower.swift in Sources */,
 				B5AFD1482C2917B7006715F8 /* Handler.swift in Sources */,
@@ -367,6 +383,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.goku.LevelOneMini2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -394,6 +411,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.goku.LevelOneMini2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
