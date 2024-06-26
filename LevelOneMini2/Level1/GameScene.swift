@@ -313,7 +313,7 @@ class GameScene: SKScene {
         projectile.physicsBody?.affectedByGravity = false
         projectile.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.ammo
         projectile.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.monster
-        projectile.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        projectile.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.monster
         
         let offset = touchLocation - projectile.position
         

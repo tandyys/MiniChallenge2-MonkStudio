@@ -31,8 +31,8 @@ class Minion: GKEntity, GKAgentDelegate {
         spriteComponent.node.physicsBody?.affectedByGravity = false
         spriteComponent.node.physicsBody?.allowsRotation = false
         spriteComponent.node.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.monster
-        spriteComponent.node.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut
-        spriteComponent.node.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        spriteComponent.node.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.ammo
+        spriteComponent.node.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.ammo
         
         //Minion Agent
         minionAgent.delegate = self

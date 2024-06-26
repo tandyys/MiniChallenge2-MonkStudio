@@ -58,6 +58,35 @@ extension GameScene: SKPhysicsContactDelegate {
                 displayTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))
             }
         }
+        
+        //Projectile contact
+        let firstBody: SKPhysicsBody
+        let secondBody: SKPhysicsBody
+               
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        // Check if the contact is between a projectile and a monster
+        if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.ammo != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) {
+            if let projectile = firstBody.node as? SKSpriteNode {
+                projectileDidCollideWithMonster(projectile: projectile, monster: secondBody.node! as! SKSpriteNode)
+            }
+        } else if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.ammo != 0) {
+            if let projectile = secondBody.node as? SKSpriteNode {
+                projectileDidCollideWithMonster(projectile: projectile, monster: firstBody.node! as! SKSpriteNode)
+            }
+        }
+    }
+    
+    func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
+            print("Hit!")
+            projectile.removeFromParent()
+            //Reducing Health
     }
     
     func didEnd(_ contact: SKPhysicsContact) {

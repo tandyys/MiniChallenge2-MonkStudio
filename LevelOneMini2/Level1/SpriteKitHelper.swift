@@ -30,13 +30,13 @@ extension SKSpriteNode {
         static let gendut: UInt32 = 0b1 //1
         static let kecil: UInt32 = 0b10 //2
         static let monster: UInt32 = 0b100 //4
-        static let towerRedNotActivated: UInt32 = 0b1000 //8
+        static let ammo: UInt32 = 0b1000 //8
         static let towerPurpleNotActivated: UInt32 = 0b10000 //16
         static let towerBlueNotActivated:UInt32 = 0b100000 //32
         static let towerGreenNotActivated:UInt32 = 0b1000000 //64
         static let towerActivated: UInt32 = 0b10000000 //128
         static let gate: UInt32 = 0b100000000 //256
-        static let ammo: UInt32 = 0b1000000000 //512
+        static let towerRedNotActivated: UInt32 = 0b1000000000 //512
     }
     
     func loadAnimation(atlas: String, prefix: String, startAt: Int, stopAt: Int) -> [SKTexture] {
