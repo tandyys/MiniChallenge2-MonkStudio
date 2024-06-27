@@ -17,7 +17,7 @@ class BackgroundManager {
         backgroundImage.zPosition = SKSpriteNode.Layer.background.rawValue
         
         foregroundImage = SKSpriteNode(imageNamed: "final-foreground1x")
-        foregroundImage.position = CGPoint(x: scene.frame.midX, y: 400)
+        foregroundImage.position = CGPoint(x: scene.frame.midX, y: 370)
         foregroundImage.setScale(1.0)
         foregroundImage.zPosition = SKSpriteNode.Layer.foreground.rawValue
         

@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "paused_name 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "paused_name 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

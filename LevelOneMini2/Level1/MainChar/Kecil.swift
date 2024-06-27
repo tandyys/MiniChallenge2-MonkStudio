@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class Kecil: SKSpriteNode {
     enum PlayerAnimationType:String {
@@ -17,6 +18,7 @@ class Kecil: SKSpriteNode {
     
     private var kecilWalkTexture: [SKTexture]?
     private var kecilIdleTexture: [SKTexture]?
+    var audioPlayer: AVAudioPlayer?
     
     var playerAgent: GKAgent2D
     var hp:Double = 500
@@ -27,6 +29,7 @@ class Kecil: SKSpriteNode {
         self.playerAgent = GKAgent2D()
         
         super.init(texture: texture, color: .clear, size: texture.size())
+        loadSoundEffect()
         
         self.kecilWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "run-k-", startAt: 1, stopAt: 16)
         self.kecilIdleTexture = self.loadAnimation(atlas: "KecilIdle", prefix: "idle-k-", startAt: 1, stopAt: 6)
@@ -71,6 +74,19 @@ class Kecil: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
+    func loadSoundEffect() {
+        if let soundURL = Bundle.main.url(forResource: "walking", withExtension: "mp3") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.volume = 0.5
+            } catch {
+                print("Error loading sound file: \(error.localizedDescription)")
+            }
+        } else {
+            print("Sound file not found")
+        }
+    }
     
     func walk() {
         //Check the texture
@@ -79,12 +95,14 @@ class Kecil: SKSpriteNode {
         }
         
         //Run animation
+        audioPlayer?.play()
         startAnimation(textures: walkTexture, speed: 0.05, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
     }
     
     func stop() {
         removeAction(forKey: PlayerAnimationType.walk.rawValue)
 //        removeAllActions()
+        audioPlayer?.stop()
     }
     
     func idle(){

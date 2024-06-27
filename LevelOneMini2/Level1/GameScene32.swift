@@ -67,8 +67,8 @@ class GameScene32: SKScene {
     
     var BosLagiAttackKeCharacter:Bool = false
     
-    let backgroundImage = SKSpriteNode(imageNamed: "cave-background1x")
-    let foregroundImage = SKSpriteNode(imageNamed: "cave-foreground1x")
+    let backgroundImage = SKSpriteNode(imageNamed: "final-background1x")
+    let foregroundImage = SKSpriteNode(imageNamed: "final-foreground1x")
     
     var connectedControllers: [GCController] = []
     var playerControllers: [Int: GCController] = [:]
@@ -374,7 +374,7 @@ class GameScene32: SKScene {
             
         case kVK_Escape:
             let scene = self
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let reveal = SKTransition.fade(withDuration: 0.5)
             let pauseMenuScene = PauseMenuScene(size: scene.size)
             scene.view?.presentScene(pauseMenuScene, transition: reveal)
             
@@ -389,10 +389,26 @@ class GameScene32: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if kecil.hp < 1{
+            let scene = self
+            let reveal = SKTransition.fade(withDuration: 0.5)
+            let gameOverScene = GameOverSceneSena(size: scene.size)
+            view?.scene?.scaleMode = .aspectFit
+            scene.view?.presentScene(gameOverScene, transition: reveal)
+            
+        }
+        if gendut.hp < 1{
+            let scene = self
+            let reveal = SKTransition.fade(withDuration: 0.5)
+            let gameOverScene = GameOverSceneSena(size: scene.size)
+            view?.scene?.scaleMode = .aspectFit
+            scene.view?.presentScene(gameOverScene, transition: reveal)
+            
+        }   
         
         let movement = Movement()
-        healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 200)
-        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 140)
+        healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 300)
+        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 180)
         
         if bos.BosLagiAttackKeCharacter == true {
             bos.stopWalk()
@@ -440,7 +456,7 @@ class GameScene32: SKScene {
     
     func shootGedeProjectile(keysPressed: Set<Int>){
         let projectile = GedeProjectile()
-        projectile.position = CGPoint(x: gendut.position.x, y: gendut.position.y)
+        projectile.position = CGPoint(x: gendut.position.x + 100, y: gendut.position.y + 150)
         addChild(projectile)
         
         var direction = CGVector(dx: 0, dy: 0)
@@ -460,25 +476,25 @@ class GameScene32: SKScene {
         
         if direction != CGVector.zero {
             let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
-            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            let normalizedDirection = CGVector(dx: direction.dx / length * 5, dy: direction.dy / length * 5)
             
             let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
             
             let realDest = CGVector(dx: gendut.position.x + shootAmount.dx, dy: gendut.position.y + shootAmount.dy)
             
-            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
             let actionMoveDone = SKAction.removeFromParent()
             projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
         }else{
             direction = CGVector(dx: 10, dy: 0)
             let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
-            let normalizedDirection = CGVector(dx: direction.dx / length, dy: direction.dy / length)
+            let normalizedDirection = CGVector(dx: direction.dx / length * 5, dy: direction.dy / length * 5)
             
             let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
             
             let realDest = CGVector(dx: gendut.position.x + shootAmount.dx, dy: gendut.position.y + shootAmount.dy)
             
-            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 2.0)
+            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
             let actionMoveDone = SKAction.removeFromParent()
             projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
         }
@@ -499,10 +515,13 @@ class GameScene32: SKScene {
     }
     
     func spawnMonster(_ imageCode: String) {
+        let minSpawn = 100
+        let maxSpawn = 4000
+        let position = Int.random(in: minSpawn...maxSpawn )
         let minionTexture = SKTexture(imageNamed: "walk-\(imageCode)-1")
         let healthBarSize = CGSize(width: 100, height: 20)
         let maxHealth = 100.0
-        let minion = Minion(texture: minionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager)
+        let minion = Minion(texture: minionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager, position: position)
         
         if let spriteComponent = minion.component(ofType: SpriteComponent.self) {
     
@@ -510,7 +529,6 @@ class GameScene32: SKScene {
             
             minion.setTargetAgent(kecil.playerAgent)
 
-            
             
             let updateAction = SKAction.run { [self] in
                 minion.minionAgent.update(deltaTime: 1.0/60.0)

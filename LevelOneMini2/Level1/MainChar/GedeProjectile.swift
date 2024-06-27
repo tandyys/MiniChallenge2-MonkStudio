@@ -18,7 +18,7 @@ class GedeProjectile: SKSpriteNode{
                 
         super.init(texture: projectiles, color: .clear, size: projectiles.size())
                 
-        self.name = "Projectile"
+        self.name = "gedeProjectile"
                 
         self.setScale(1.0)
         self.zPosition = SKSpriteNode.Layer.projectile.rawValue

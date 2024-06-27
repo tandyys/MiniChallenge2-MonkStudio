@@ -90,7 +90,6 @@ extension SKSpriteNode {
         case canon
         case progressBar
         case boundaries
-        case tembakanDariKucing
         case monster
         case projectile
         case jatuhan

@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class Gendut: SKSpriteNode {
     enum PlayerAnimationType:String {
@@ -20,6 +21,8 @@ class Gendut: SKSpriteNode {
     private var gendutWalkTexture: [SKTexture]?
     private var gendutIdleTexture: [SKTexture]?
     private var gendutAttackTexture: [SKTexture]?
+    var audioPlayer: AVAudioPlayer?
+    var attackAudio: AVAudioPlayer?
     
     var playerAgent: GKAgent2D
     var hp:Double = 1000
@@ -31,6 +34,8 @@ class Gendut: SKSpriteNode {
         self.playerAgent = GKAgent2D()
         
         super.init(texture: texture, color: .clear, size: texture.size())
+        loadSoundEffect()
+        loadAttackEffect()
         
         self.gendutWalkTexture = self.loadAnimation(atlas: "Gendut", prefix: "run-b-", startAt: 1, stopAt: 17)
         self.gendutAttackTexture = self.loadAnimation(atlas: "GendutAtt", prefix: "attack-b-", startAt: 1, stopAt: 1)
@@ -70,6 +75,32 @@ class Gendut: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
+    func loadSoundEffect() {
+        if let soundURL = Bundle.main.url(forResource: "walking", withExtension: "mp3") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.volume = 0.5
+            } catch {
+                print("Error loading sound file: \(error.localizedDescription)")
+            }
+        } else {
+            print("Sound file not found")
+        }
+    }
+    func loadAttackEffect() {
+        if let soundURL = Bundle.main.url(forResource: "whoosh", withExtension: "mp3") {
+            do {
+                attackAudio = try AVAudioPlayer(contentsOf: soundURL)
+                attackAudio?.prepareToPlay()
+                attackAudio?.volume = 0.5
+            } catch {
+                print("Error loading sound file: \(error.localizedDescription)")
+            }
+        } else {
+            print("Sound file not found")
+        }
+    }
     
     func walk() {
         //Check the texture
@@ -78,6 +109,7 @@ class Gendut: SKSpriteNode {
         }
         
         //Run animation
+        audioPlayer?.play()
         startAnimation(textures: walkTexture, speed: 0.07, name: PlayerAnimationType.walk.rawValue, count: 0, resize: true, restore: true)
     }
     
@@ -85,6 +117,7 @@ class Gendut: SKSpriteNode {
         removeAction(forKey: PlayerAnimationType.walk.rawValue)
         removeAction(forKey: PlayerAnimationType.idle.rawValue)
         removeAction(forKey: PlayerAnimationType.attack.rawValue)
+        audioPlayer?.stop()
 //        removeAllActions()
     }
     

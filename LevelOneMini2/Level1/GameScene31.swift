@@ -5,6 +5,7 @@ import Carbon
 class GameScene31: SKScene {
 
     let menuScene = MenuScene()
+    var audioManager = AudioManager()
     
     var messageTemp:String = ""
     
@@ -56,7 +57,8 @@ class GameScene31: SKScene {
     var aimKecil :Bool = true
     
     let buildText = SKLabelNode(text: "Press Q to build")
-    let activateText = SKLabelNode(text: "Press Q to activate")
+    let activateText = SKLabelNode(text: "Hold Q to activate")
+    let collectText = SKLabelNode(text: "Collect 4")
     var damage = 200
     
     var white1BuiltPressedTime:Double = 0.0
@@ -177,6 +179,7 @@ class GameScene31: SKScene {
     }
 
     override func didMove(to view: SKView) {
+        audioManager.playBackgroundMusic(in: self)
         kecil.position = CGPoint(x: kecil.size.width - kecil.size.width/2, y: 650)
         gendut.position = CGPoint(x: gendut.size.width - gendut.size.width/2, y: 900)
         
@@ -305,9 +308,7 @@ class GameScene31: SKScene {
         
         physicsWorld.contactDelegate = self
         print(String(collectibleItemsTower1))
-        addLabelTowerWhite(message: String(collectibleItemsTower1), position: tower1White.position)
-        addLabelTowerWhite(message: String(collectibleItemsTower2), position: tower2White.position)
-        addLabelTowerWhite(message: String(collectibleItemsTower3), position: tower3White.position)
+
 //        NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
         let stopAction = SKAction.run { [self] in
                     if minionCount >= maxMinion {
@@ -322,21 +323,22 @@ class GameScene31: SKScene {
                             minionCount += 1
                         }
                     },
-                    SKAction.wait(forDuration: 5),
+                    SKAction.wait(forDuration: 2),
                     SKAction.run { [self] in
                         if minionCount < maxMinion {
                             spawnMonster(redMinion)
                             minionCount += 1
                         }
                     },
-                    SKAction.wait(forDuration: 5),
+                    
+                    SKAction.wait(forDuration: 2),
                     SKAction.run { [self] in
                         if minionCount < maxMinion {
                             spawnMonster(purpleMinion)
                             minionCount += 1
                         }
                     },
-                    SKAction.wait(forDuration: 5),
+                    SKAction.wait(forDuration: 2),
                     stopAction
                 ])
                 run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
@@ -467,7 +469,7 @@ class GameScene31: SKScene {
             
             case kVK_ANSI_U:
             kecilShoot = true
-            shootKecilProjectile(keysPressed: getKeysPressed())
+//            shootKecilProjectile(keysPressed: getKeysPressed())
             
             case kVK_Escape:
             
@@ -477,7 +479,7 @@ class GameScene31: SKScene {
 //            scene.view?.presentScene(gameOverScene, transition: reveal)
 //            
             let scene = self
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let reveal = SKTransition.fade(withDuration: 0.5)
             let pauseMenuScene = PauseMenuScene(size: scene.size)
             scene.view?.presentScene(pauseMenuScene, transition: reveal)
 
@@ -608,12 +610,28 @@ class GameScene31: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if bos.hpBos < 5000{
+        if bos.hpBos < 1{
             let scene = self
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let reveal = SKTransition.fade(withDuration: 0.5)
             let gameScene32 = GameScene32(size: scene.size)
             view?.scene?.scaleMode = .aspectFit
             scene.view?.presentScene(gameScene32, transition: reveal)
+            
+        }
+        if kecil.hp < 1{
+            let scene = self
+            let reveal = SKTransition.fade(withDuration: 0.5)
+            let gameOverScene = GameOverSceneSena(size: scene.size)
+            view?.scene?.scaleMode = .aspectFit
+            scene.view?.presentScene(gameOverScene, transition: reveal)
+            
+        }
+        if gendut.hp < 1{
+            let scene = self
+            let reveal = SKTransition.fade(withDuration: 0.5)
+            let gameOverScene = GameOverSceneSena(size: scene.size)
+            view?.scene?.scaleMode = .aspectFit
+            scene.view?.presentScene(gameOverScene, transition: reveal)
             
         }
         
@@ -624,43 +642,6 @@ class GameScene31: SKScene {
                 } else if kecil.position.y > gendut.position.y {
                     kecil.zPosition = SKSpriteNode.Layer.characterKecilFront.rawValue
                 }
-        
-//        healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 350)
-//        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 220)
-        
-//        if gendut.position.y < kecil.position.y && gendut.position.y < tower1White.position.y && kecil.position.y < tower1White.position.y{
-//            gendut.zPosition = SKSpriteNode.Layer.gendutBackKecilBackTower.rawValue
-//            kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutBackTower.rawValue
-//            tower2White.zPosition = SKSpriteNode.Layer.towerFrontGendutFrontKecil.rawValue
-//        }
-//        else if kecil.position.y < gendut.position.y && kecil.position.y < tower1White.position.y && gendut.position.y < tower1White.position.y{
-//            kecil.zPosition = SKSpriteNode.Layer.kecilBackGendutBackTower.rawValue
-//            gendut.zPosition = SKSpriteNode.Layer.gendutFrontKecilBackTower.rawValue
-//            tower1White.zPosition = SKSpriteNode.Layer.towerFrontKecilFrontGendut.rawValue
-//        }
-//        else if kecil.position.y < tower1White.position.y && kecil.position.y < gendut.position.y && tower1White.position.y < gendut.position.y{
-//            kecil.zPosition = SKSpriteNode.Layer.kecilBackTowerBackGendut.rawValue
-//            tower1White.zPosition = SKSpriteNode.Layer.towerFrontKecilBackGendut.rawValue
-//            gendut.zPosition = SKSpriteNode.Layer.gendutFrontKecilFrontTower.rawValue
-//        }
-//        else if tower1White.position.y < kecil.position.y && tower1White.position.y < gendut.position.y && kecil.position.y < gendut.position.y{
-//            tower1White.zPosition = SKSpriteNode.Layer.towerBackKecilBackGendut.rawValue
-//            kecil.zPosition = SKSpriteNode.Layer.kecilFrontTowerBackGendut.rawValue
-//            gendut.zPosition = SKSpriteNode.Layer.gendutFrontTowerFrontKecil.rawValue
-//        }
-//        else if tower1White.position.y < gendut.position.y && tower1White.position.y < kecil.position.y && gendut.position.y < kecil.position.y{
-//            tower1White.zPosition = SKSpriteNode.Layer.towerBackGendutBackKecil.rawValue
-//            gendut.zPosition = SKSpriteNode.Layer.gendutFrontTowerBackKecil.rawValue
-//            kecil.zPosition = SKSpriteNode.Layer.kecilFrontTowerFrontGendut.rawValue
-//        }
-//        else if gendut.position.y < tower1White.position.y && gendut.position.y < kecil.position.y && tower1White.position.y < kecil.position.y{
-//            gendut.zPosition = SKSpriteNode.Layer.gendutBackTowerBackKecil.rawValue
-//            tower1White.zPosition = SKSpriteNode.Layer.towerFrontGendutBackKecil.rawValue
-//            kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutFrontTower.rawValue
-//        }
-        
-        //        print(towerWhite1ActivateBool)]
-//        print(towerWhite1BuildBool)
         
         if plusAllDamage == true{
             damage = 300
@@ -673,7 +654,7 @@ class GameScene31: SKScene {
             if let parent = tower1WhiteBuilt.parent {
                 let position = tower1WhiteBuilt.position
                 let zPos = tower1WhiteBuilt.zPosition
-                tower1WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1WhiteBuilt.size.width/1.5, height: tower1WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower1WhiteBuilt.size.height/5))
+                tower1WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1WhiteBuilt.size.width/2, height: tower1WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower1WhiteBuilt.size.height/5))
                 tower1WhiteActivated.physicsBody?.affectedByGravity = false
                 tower1WhiteActivated.physicsBody?.isDynamic = false
                 tower1WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite1Activated
@@ -706,8 +687,8 @@ class GameScene31: SKScene {
             removeActivateTextTower()
             if let parent = tower2WhiteBuilt.parent {
                 let position = tower2WhiteBuilt.position
-                let zPos = tower2WhiteBuilt.zPosition
-                tower2WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2WhiteBuilt.size.width/1.5, height: tower2WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower2WhiteBuilt.size.height/5))
+                var zPos = tower2WhiteBuilt.zPosition
+                tower2WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2WhiteBuilt.size.width/2, height: tower2WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower2WhiteBuilt.size.height/5))
                 tower2WhiteActivated.physicsBody?.affectedByGravity = false
                 tower2WhiteActivated.physicsBody?.isDynamic = false
                 tower2WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite2Activated
@@ -740,7 +721,7 @@ class GameScene31: SKScene {
             if let parent = tower3WhiteBuilt.parent {
                 let position = tower3WhiteBuilt.position
                 let zPos = tower3WhiteBuilt.zPosition
-                tower3WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3WhiteBuilt.size.width/1.5, height: tower3WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower3WhiteBuilt.size.height/5))
+                tower3WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3WhiteBuilt.size.width/2, height: tower3WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower3WhiteBuilt.size.height/5))
                 tower3WhiteActivated.physicsBody?.affectedByGravity = false
                 tower3WhiteActivated.physicsBody?.isDynamic = false
                 tower3WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite3Activated
@@ -773,7 +754,7 @@ class GameScene31: SKScene {
                 let position = tower1White.position
                 let zPos = tower1White.zPosition
                 tower1WhiteBuilt.position = position
-                tower1WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1White.size.width/1.5, height: tower1White.size.height/4), center: CGPoint(x: 0, y: tower1White.size.height/5))
+                tower1WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1White.size.width/2, height: tower1White.size.height/4), center: CGPoint(x: 0, y: tower1White.size.height/3))
                 tower1WhiteBuilt.physicsBody?.affectedByGravity = false
                 tower1WhiteBuilt.physicsBody?.isDynamic = false
                 tower1WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite1NotActivated
@@ -792,7 +773,7 @@ class GameScene31: SKScene {
             if let parent = tower2White.parent {
                 let position = tower2White.position
                 let zPos = tower2White.zPosition
-                tower2WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/1.5, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height/5))
+                tower2WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/2, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height/3))
                 tower2WhiteBuilt.physicsBody?.affectedByGravity = false
                 tower2WhiteBuilt.physicsBody?.isDynamic = false
                 tower2WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
@@ -811,7 +792,7 @@ class GameScene31: SKScene {
             if let parent = tower3White.parent {
                 let position = tower3White.position
                 let zPos = tower3White.zPosition
-                tower3WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3White.size.width/1.5, height: tower3White.size.height/4), center: CGPoint(x: 0, y: tower3White.size.height/5))
+                tower3WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3White.size.width/2, height: tower3White.size.height/4), center: CGPoint(x: 0, y: tower3White.size.height/3))
                 tower3WhiteBuilt.physicsBody?.affectedByGravity = false
                 tower3WhiteBuilt.physicsBody?.isDynamic = false
                 tower3WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
@@ -980,6 +961,11 @@ class GameScene31: SKScene {
         removeChildren(in: [activateText])
     }
     
+    func removecollectTextTower() {
+        SKAction.removeFromParent()
+        removeChildren(in: [collectText])
+    }
+    
     
     func displayActivateTextTower(at position: CGPoint) {
         activateText.position = position
@@ -994,15 +980,23 @@ class GameScene31: SKScene {
         
     }
     
-    func addLabelTowerWhite(message: String, position: CGPoint){
-        let label = TowerWhite1Label(message: message, position: position)
-        self.messageTemp = message
-        print(message)
+    func addLabelTowerWhite(position: CGPoint){
+        collectText.position = position
+        collectText.zPosition = SKSpriteNode.Layer.label.rawValue
+        collectText.fontName = "Helvetica-Bold"
+        collectText.fontSize = 36
+        collectText.fontColor = SKColor.white
         
+        if collectText.parent == nil {
+            addChild(collectText)
+        }
     }
     
     func shootGedeProjectile(keysPressed: Set<Int>){
         gendut.attack()
+        gendut.attackAudio?.stop()
+        gendut.attackAudio?.currentTime = 0
+        gendut.attackAudio?.play()
         let projectile = GedeProjectile()
         projectile.position = CGPoint(x: gendut.position.x + 200, y: gendut.position.y + 200)
         addChild(projectile)
@@ -1050,49 +1044,49 @@ class GameScene31: SKScene {
         }
     }
     
-    func shootKecilProjectile(keysPressed: Set<Int>) {
-        let projectile = KecilProjectile()
-        projectile.position = CGPoint(x: kecil.position.x + 100, y: kecil.position.y + 100)
-        addChild(projectile)
-        
-        var direction = CGVector(dx: 0, dy: 0)
-        
-        if keysPressed.contains(kVK_UpArrow) {
-            direction.dy += 1
-        }
-        if keysPressed.contains(kVK_LeftArrow) {
-            direction.dx -= 1
-        }
-        if keysPressed.contains(kVK_DownArrow) {
-            direction.dy -= 1
-        }
-        if keysPressed.contains(kVK_RightArrow) {
-            direction.dx += 1
-        }
-        
-        if direction != CGVector.zero {
-            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
-            let normalizedDirection = CGVector(dx: direction.dx / length * 10, dy: direction.dy / length * 10)
-            
-            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
-            
-            let realDest = CGVector(dx: kecil.position.x + shootAmount.dx, dy: kecil.position.y + shootAmount.dy)
-            
-            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
-            let actionMoveDone = SKAction.removeFromParent()
-            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
-        }else{
-            direction = CGVector(dx: 10, dy: 0)
-            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
-            let normalizedDirection = CGVector(dx: direction.dx / length * 10, dy: direction.dy / length * 10)
-            
-            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
-            
-            let realDest = CGVector(dx: kecil.position.x + shootAmount.dx, dy: kecil.position.y + shootAmount.dy)
-            
-            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
-            let actionMoveDone = SKAction.removeFromParent()
-            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
-        }
-    }
+//    func shootKecilProjectile(keysPressed: Set<Int>) {
+//        let projectile = KecilProjectile()
+//        projectile.position = CGPoint(x: kecil.position.x + 100, y: kecil.position.y + 100)
+//        addChild(projectile)
+//        
+//        var direction = CGVector(dx: 0, dy: 0)
+//        
+//        if keysPressed.contains(kVK_UpArrow) {
+//            direction.dy += 1
+//        }
+//        if keysPressed.contains(kVK_LeftArrow) {
+//            direction.dx -= 1
+//        }
+//        if keysPressed.contains(kVK_DownArrow) {
+//            direction.dy -= 1
+//        }
+//        if keysPressed.contains(kVK_RightArrow) {
+//            direction.dx += 1
+//        }
+//        
+//        if direction != CGVector.zero {
+//            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
+//            let normalizedDirection = CGVector(dx: direction.dx / length * 10, dy: direction.dy / length * 10)
+//            
+//            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
+//            
+//            let realDest = CGVector(dx: kecil.position.x + shootAmount.dx, dy: kecil.position.y + shootAmount.dy)
+//            
+//            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
+//            let actionMoveDone = SKAction.removeFromParent()
+//            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+//        }else{
+//            direction = CGVector(dx: 10, dy: 0)
+//            let length = sqrt(direction.dx * direction.dx + direction.dy * direction.dy)
+//            let normalizedDirection = CGVector(dx: direction.dx / length * 10, dy: direction.dy / length * 10)
+//            
+//            let shootAmount = CGVector(dx: normalizedDirection.dx * 1000, dy: normalizedDirection.dy * 1000)
+//            
+//            let realDest = CGVector(dx: kecil.position.x + shootAmount.dx, dy: kecil.position.y + shootAmount.dy)
+//            
+//            let actionMove = SKAction.move(to: CGPoint(x: realDest.dx, y: realDest.dy), duration: 10.0)
+//            let actionMoveDone = SKAction.removeFromParent()
+//            projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+//        }
+//    }
 }

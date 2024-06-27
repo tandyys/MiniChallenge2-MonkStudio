@@ -12,10 +12,13 @@ import GameplayKit
 extension GameScene31 {
     
     func spawnMonster(_ imageCode: String) {
+        let minSpawn = -1000
+        let maxSpawn = 4000
         let minionTexture = SKTexture(imageNamed: "walk-\(imageCode)-1")
         let healthBarSize = CGSize(width: 100, height: 20)
         let maxHealth = 100.0
-        let minion = Minion(texture: minionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager)
+        let position = Int.random(in: minSpawn...maxSpawn )
+        let minion = Minion(texture: minionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager, position: position)
         
         if let spriteComponent = minion.component(ofType: SpriteComponent.self) {
     

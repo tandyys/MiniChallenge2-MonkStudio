@@ -7,12 +7,13 @@ class PauseMenuScene: SKScene {
     override func didMove(to view: SKView) {
         // Setup your pause menu UI here
         let background = SKSpriteNode(imageNamed: "mainMenu_bg")
-          background.position = CGPoint(x: frame.midX, y: frame.midY+200)
+          background.position = CGPoint(x: frame.midX, y: frame.midY)
             background.zPosition = -1
           addChild(background)
         
         let gameOverLabel = SKSpriteNode(imageNamed: "Paused")
           gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY+200)
+        gameOverLabel.setScale(2)
           addChild(gameOverLabel)
         
         let resumeButton = SKSpriteNode(imageNamed: "Resume")
@@ -27,7 +28,7 @@ class PauseMenuScene: SKScene {
         let touchedNode = self.atPoint(location)
         
         if touchedNode.name == "resumeButton" {
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let reveal = SKTransition.fade(withDuration: 0.5)
             let scene = GameScene31(size: size)
             view?.scene?.scaleMode = .aspectFit
             self.view?.presentScene(scene, transition:reveal)

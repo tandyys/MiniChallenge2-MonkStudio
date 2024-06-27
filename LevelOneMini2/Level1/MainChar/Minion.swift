@@ -8,25 +8,30 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class Minion: GKEntity, GKAgentDelegate {
     
+    var dieEffect: AVAudioPlayer?
+    var stoneEffect: AVAudioPlayer?
     weak var entityManager: EntityManager?
     var minionAgent: GKAgent2D
     
-    init(texture: SKTexture, healthBarSize: CGSize, maxHealth: CGFloat, entityManager: EntityManager) {
+    init(texture: SKTexture, healthBarSize: CGSize, maxHealth: CGFloat, entityManager: EntityManager, position: Int) {
         
         self.entityManager = entityManager
         self.minionAgent = GKAgent2D()
         
         super.init()
+        loadDieEffect()
+        loadDropEffect()
        
         let spriteComponent = SpriteComponent(texture: texture)
         spriteComponent.node.name = "Minion"
         spriteComponent.node.size = CGSize(width: 180, height: 150)
         spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0)
         spriteComponent.node.zPosition = SKSpriteNode.Layer.minion.rawValue
-        spriteComponent.node.position = CGPoint(x: 3000, y: -100)
+        spriteComponent.node.position = CGPoint(x: position, y: -300)
         spriteComponent.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: spriteComponent.node.size.width/2, height: spriteComponent.node.size.height/2), center: CGPoint(x: 0, y: spriteComponent.node.size.height/2))
         spriteComponent.node.physicsBody?.isDynamic = true
         spriteComponent.node.physicsBody?.affectedByGravity = false
@@ -80,8 +85,37 @@ class Minion: GKEntity, GKAgentDelegate {
         self.minionAgent.behavior = behavior
     }
     
+    func loadDropEffect(){
+        if let soundURL = Bundle.main.url(forResource: "stoneDrop", withExtension: ".wav"){
+            do {
+                stoneEffect = try AVAudioPlayer(contentsOf: soundURL)
+                stoneEffect?.prepareToPlay()
+                stoneEffect?.volume = 1
+            } catch {
+                print("Error loading sound file: \(error.localizedDescription)")
+            }
+        } else {
+            print("Sound file not found")
+        }
+    }
+    func loadDieEffect(){
+        if let soundURL = Bundle.main.url(forResource: "dieMinion", withExtension: ".wav"){
+            do {
+                dieEffect = try AVAudioPlayer(contentsOf: soundURL)
+                dieEffect?.prepareToPlay()
+                dieEffect?.volume = 0.2
+            } catch {
+                print("Error loading sound file: \(error.localizedDescription)")
+            }
+        } else {
+            print("Sound file not found")
+        }
+    }
+    
     func die() {
+        dieEffect?.play()
          if let spriteComponent = component(ofType: SpriteComponent.self) {
+             stoneEffect?.play()
              let item = CollectableItem()
              item.position = spriteComponent.node.position
              if let parent = spriteComponent.node.parent {

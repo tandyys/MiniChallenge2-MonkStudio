@@ -29,7 +29,7 @@ extension GameScene32: SKPhysicsContactDelegate {
                     // Minion is hit by projectile
                     let damage = 10
                     attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
-                } else if nodeA.name == "Gendut" && nodeB.name == "ProjectileShoot" {
+                } else if nodeA.name == "Minion" && nodeB.name == "Gendut" {
                     // Minion is hit by projectile
                     let damage = 10
                     attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
@@ -43,7 +43,7 @@ extension GameScene32: SKPhysicsContactDelegate {
                     // Minion is hit by projectile
                     let damage = 10
                     attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
-                } else if nodeA.name == "Kecil" && nodeB.name == "ProjectileShoot" {
+                } else if nodeA.name == "Monster" && nodeB.name == "Kecil" {
                     // Minion is hit by projectile
                     let damage = 10
                     attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
@@ -54,13 +54,13 @@ extension GameScene32: SKPhysicsContactDelegate {
         
         if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.projectileCharacter | SKSpriteNode.PhysicsCategory.monster {
             if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
-                if nodeA.name == "ProjectileShoot" && nodeB.name == "Minion" {
+                if nodeA.name == "gedeProjectile" && nodeB.name == "Minion" {
                     // Minion is hit by projectile
                     if let minion = entityManager.getEntity(for: nodeB) as? Minion {
                         minion.applyDamage(50)
                     }
                     nodeA.isHidden = true
-                } else if nodeA.name == "Minion" && nodeB.name == "ProjectileShoot" {
+                } else if nodeA.name == "Minion" && nodeB.name == "gedeProjectile" {
                     // Minion is hit by projectile
                     if let minion = entityManager.getEntity(for: nodeA) as? Minion {
                         minion.applyDamage(50)
