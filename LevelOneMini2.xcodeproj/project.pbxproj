@@ -236,6 +236,8 @@
 		279B4ED22C2D338A00E273A1 /* AppLogo128.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECC2C2D338A00E273A1 /* AppLogo128.png */; };
 		279B4ED32C2D338A00E273A1 /* AppLogo32.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECD2C2D338A00E273A1 /* AppLogo32.png */; };
 		279B4ED42C2D338A00E273A1 /* AppLogo16.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECE2C2D338A00E273A1 /* AppLogo16.png */; };
+		279B4ED82C2D5C2900E273A1 /* Attack-b.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ED72C2D5C2900E273A1 /* Attack-b.svg */; };
+		279B4EDA2C2D64ED00E273A1 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4ED92C2D64ED00E273A1 /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -475,6 +477,8 @@
 		279B4ECC2C2D338A00E273A1 /* AppLogo128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo128.png; sourceTree = "<group>"; };
 		279B4ECD2C2D338A00E273A1 /* AppLogo32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo32.png; sourceTree = "<group>"; };
 		279B4ECE2C2D338A00E273A1 /* AppLogo16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo16.png; sourceTree = "<group>"; };
+		279B4ED72C2D5C2900E273A1 /* Attack-b.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Attack-b.svg"; sourceTree = "<group>"; };
+		279B4ED92C2D64ED00E273A1 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -691,6 +695,7 @@
 		273B700A2C2180EA00A64CA0 /* Level_1_Assets */ = {
 			isa = PBXGroup;
 			children = (
+				279B4ED72C2D5C2900E273A1 /* Attack-b.svg */,
 				279B4EC42C2D0F1D00E273A1 /* PrologGame.mp4 */,
 				279B4EB62C2D04BF00E273A1 /* AppLogo.png */,
 				279B4ECE2C2D338A00E273A1 /* AppLogo16.png */,
@@ -815,6 +820,7 @@
 			isa = PBXGroup;
 			children = (
 				273B6F702C214EB800A64CA0 /* GameScene.swift */,
+				279B4ED92C2D64ED00E273A1 /* GameOverScene.swift */,
 				279B4EC72C2D131B00E273A1 /* PrologVideoScene.swift */,
 				27200B992C2A936A007F0408 /* Entities */,
 				27200B8E2C2A8C0E007F0408 /* Components */,
@@ -1211,6 +1217,7 @@
 				273B70E22C21879400A64CA0 /* Gendut-run-14.png in Resources */,
 				279B4E552C2C77F100E273A1 /* TowerRedActive.svg in Resources */,
 				27200A722C2A6919007F0408 /* TowerGreenActivate_6.svg in Resources */,
+				279B4ED82C2D5C2900E273A1 /* Attack-b.svg in Resources */,
 				27200B622C2A8A82007F0408 /* dead-b-2.png in Resources */,
 				273B70F52C21879400A64CA0 /* Kecil-walk-15.png in Resources */,
 				27200B512C2A8A82007F0408 /* att-p-1.png in Resources */,
@@ -1243,6 +1250,7 @@
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,
+				279B4EDA2C2D64ED00E273A1 /* GameOverScene.swift in Sources */,
 				27200A772C2A6A6A007F0408 /* TowerRed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

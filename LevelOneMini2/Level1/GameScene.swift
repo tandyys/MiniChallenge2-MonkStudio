@@ -177,25 +177,14 @@ class GameScene: SKScene {
         entityManager = EntityManager(scene: self)
         
         //Unlimited Spawn Minion
-        //Fix This Code! Biar ga ilang 1 wave!
-//        run(SKAction.repeatForever(
-//              SKAction.sequence([
-//                SKAction.run({ [self] in spawnMonster(blueMinion)}),
-//                SKAction.wait(forDuration: 3),
-//                SKAction.run({ [self] in spawnMonster(redMinion)}),
-//                SKAction.wait(forDuration: 3),
-//                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
-//                SKAction.wait(forDuration: 3)
-//                ])
-//            ))
         run(SKAction.repeatForever(
               SKAction.sequence([
                 SKAction.run({ [unowned self] in spawnRedMonster()}),
-                SKAction.wait(forDuration: 0.5),
+                SKAction.wait(forDuration: 1),
                 SKAction.run({ [unowned self] in spawnBlueMonster()}),
-                SKAction.wait(forDuration: 0.5),
+                SKAction.wait(forDuration: 1),
                 SKAction.run({ [unowned self] in spawnPurpleMonster()}),
-                SKAction.wait(forDuration: 0.5)
+                SKAction.wait(forDuration: 1)
                 ])
             ))
         
@@ -267,10 +256,8 @@ class GameScene: SKScene {
             if activateGreenTowerButtonAvailable == true {
                 activateGreenTowerButtonPressed = true
             }
-            
 //            redMinion.changeHealth(by: -10)
 //            purpleMinion.changeHealth(by: -10)
-            
             default:
                 break
         }
@@ -280,19 +267,19 @@ class GameScene: SKScene {
         switch Int(event.keyCode) {
         case kVK_ANSI_W:
             gendutUpPressed = false
-            gendut.stop()
+            gendut.stopWalk()
             gendut.idle()
         case kVK_ANSI_A:
             gendutLeftPressed = false
-            gendut.stop()
+            gendut.stopWalk()
             gendut.idle()
         case kVK_ANSI_S:
             gendutDownPressed = false
-            gendut.stop()
+            gendut.stopWalk()
             gendut.idle()
         case kVK_ANSI_D:
             gendutRightPressed = false
-            gendut.stop()
+            gendut.stopWalk()
             gendut.idle()
         case kVK_UpArrow:
             kecilUpPressed = false
@@ -334,6 +321,7 @@ class GameScene: SKScene {
             return
         }
         
+        gendut.attack()
         activateCooldown(duration: 1.0)
         
         let touchLocation = event.location(in: self)
@@ -367,6 +355,10 @@ class GameScene: SKScene {
         let actionMove = SKAction.move(to: realDest, duration: 0.75)
         let actionMoveDone = SKAction.removeFromParent()
         projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+        gendut.stopAttack()
     }
     
     func activateCooldown(duration: TimeInterval) {
@@ -590,6 +582,8 @@ class GameScene: SKScene {
             kecilNode.playerAgent.update(deltaTime: currentTime)
         }
         
+        print(kecil.kecilHealth)
+        
     }
     
     func displayTextTower(at position: CGPoint) {
@@ -605,6 +599,31 @@ class GameScene: SKScene {
             SKAction.wait(forDuration: 2.0),
             SKAction.removeFromParent()
         ]))
+    }
+    
+    func applyRedFilter() {
+        kecil.color = .red
+        kecil.colorBlendFactor = 0.25
+    }
+    
+    func removeRedFilter() {
+        kecil.colorBlendFactor = 0
+    }
+    
+    func checkGameOver() {
+        if kecil.kecilHealth <= 0 {
+            triggerGameOver()
+        }
+    }
+
+    func triggerGameOver() {
+        // Option 1: Transition to a game over scene
+        let gameOverScene = GameOverScene(size: self.size)
+        let transition = SKTransition.crossFade(withDuration: 1.0)
+        self.view?.presentScene(gameOverScene, transition: transition)
+    
+        self.isPaused = true
+        
     }
     
 }

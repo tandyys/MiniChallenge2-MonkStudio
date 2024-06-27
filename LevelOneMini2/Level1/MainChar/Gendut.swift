@@ -13,10 +13,12 @@ class Gendut: SKSpriteNode {
     enum PlayerAnimationType:String {
         case walk
         case idle
+        case attack
     }
     
     private var gendutWalkTexture: [SKTexture]?
     private var gendutIdleTexture: [SKTexture]?
+    private var gendutAttackTecture: [SKTexture]?
     var playerAgent: GKAgent2D
     
     init() {
@@ -27,6 +29,7 @@ class Gendut: SKSpriteNode {
         
         self.gendutIdleTexture = self.loadAnimation(atlas: "GendutIdle", prefix: "g-idle-", startAt: 0, stopAt: 1)
         self.gendutWalkTexture = self.loadAnimation(atlas: "GendutWalk", prefix: "g-walk-", startAt: 0, stopAt: 5)
+        self.gendutAttackTecture = self.loadAnimation(atlas: "GendutAttack", prefix: "attack-b-", startAt: 0, stopAt: 1)
         
         self.name = "gendut"
         self.setScale(1.0)
@@ -71,8 +74,23 @@ class Gendut: SKSpriteNode {
         startAnimation(textures: idleTexture, speed: 0.400, name: PlayerAnimationType.idle.rawValue, count: 0, resize: true, restore: true)
     }
     
-    func stop() {
+    func attack() {
+        //Check the texture
+        guard let attackTexture = gendutAttackTecture else {
+            preconditionFailure("Cant find gendut texture")
+        }
+        
+        //Run animation
+        startAnimation(textures: attackTexture, speed: 0.400, name: PlayerAnimationType.attack.rawValue, count: 0, resize: true, restore: true)
+    }
+    
+    func stopWalk() {
         removeAction(forKey: PlayerAnimationType.walk.rawValue)
+//        removeAllActions()
+    }
+    
+    func stopAttack() {
+        removeAction(forKey: PlayerAnimationType.attack.rawValue)
 //        removeAllActions()
     }
 }

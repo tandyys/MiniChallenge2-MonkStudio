@@ -48,12 +48,12 @@ class Minion: GKEntity, GKAgentDelegate {
         
         self.addComponent(minionAgent)
         
-        let healthBarComponent = MinionHealthComponent(size: healthBarSize, maxHealth: maxHealth)
-        self.addComponent(healthBarComponent)
-        
-        healthBarComponent.healthBackgroundNode.position = CGPoint(x: 0, y: spriteComponent.node.size.height + 10)
-        
-        spriteComponent.node.addChild(healthBarComponent.healthBackgroundNode)
+//        let healthBarComponent = MinionHealthComponent(size: healthBarSize, maxHealth: maxHealth)
+//        self.addComponent(healthBarComponent)
+//        
+//        healthBarComponent.healthBackgroundNode.position = CGPoint(x: 0, y: spriteComponent.node.size.height + 10)
+//        
+//        spriteComponent.node.addChild(healthBarComponent.healthBackgroundNode)
         
     }
     required init?(coder aDecoder: NSCoder) {

@@ -18,6 +18,7 @@ class Kecil: SKSpriteNode {
     private var kecilWalkTexture: [SKTexture]?
     private var kecilIdleTexture: [SKTexture]?
     var playerAgent: GKAgent2D
+    var kecilHealth:CGFloat = 100.0
     
     init() {
         let texture = SKTexture(imageNamed: "k-idle-0")
@@ -74,4 +75,5 @@ class Kecil: SKSpriteNode {
         removeAction(forKey: PlayerAnimationType.walk.rawValue)
 //        removeAllActions()
     }
+    
 }

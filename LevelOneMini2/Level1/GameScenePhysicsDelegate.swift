@@ -81,6 +81,13 @@ extension GameScene: SKPhysicsContactDelegate {
                 }
             }
         
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
+            applyRedFilter()
+            kecil.kecilHealth -= 20
+            
+            checkGameOver()
+        }
+        
     }
     
     func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
@@ -116,6 +123,11 @@ extension GameScene: SKPhysicsContactDelegate {
             activateGreenTowerButtonAvailable = false
             removeGreenProgressBar()
         }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
+            removeRedFilter()
+        }
+        
     }
     
 }
