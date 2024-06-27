@@ -3,4 +3,102 @@
    uuid = "D37FF76C-56A0-4011-BF41-AF7833DDD4D7"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA1D07A1-7F81-4610-83D9-098A3A518B93"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Level1/GameScene31.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FA1D07A1-7F81-4610-83D9-098A3A518B93 - 94681a0eeeb97bf8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.GameScene31.didMove(to: __C.SKView) -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Work/Apple%20Projects/MiniChallenge2-MonkStudio/LevelOneMini2/Level1/GameScene31.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "11080">
+               </Location>
+               <Location
+                  uuid = "FA1D07A1-7F81-4610-83D9-098A3A518B93 - 94681a0eeeb97bf8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.GameScene31.didMove(to: __C.SKView) -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Work/Apple%20Projects/MiniChallenge2-MonkStudio/LevelOneMini2/Level1/GameScene31.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "11292">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "39BF5014-17E4-48CE-9284-D8BBCC34641E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Level1/TowerWhite1Label.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "init(message:position:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "39BF5014-17E4-48CE-9284-D8BBCC34641E - eb6cd0a3c781e39b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.TowerWhite1Label.init(message: Swift.String) -&gt; LevelOneMini2.TowerWhite1Label"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Work/Apple%20Projects/MiniChallenge2-MonkStudio/LevelOneMini2/Level1/TowerWhite1Label.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "39BF5014-17E4-48CE-9284-D8BBCC34641E - f93165ba6ee20b7c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.TowerWhite1Label.init(message: Swift.String, position: __C.CGPoint) -&gt; LevelOneMini2.TowerWhite1Label"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Work/Apple%20Projects/MiniChallenge2-MonkStudio/LevelOneMini2/Level1/TowerWhite1Label.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "448">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -40,6 +40,7 @@
 		B5AFD16E2C2C3E14006715F8 /* BosHpName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD16D2C2C3E14006715F8 /* BosHpName.swift */; };
 		B5AFD1702C2C3E28006715F8 /* HpProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD16F2C2C3E28006715F8 /* HpProgressBar.swift */; };
 		B5AFD1722C2C7EDC006715F8 /* TowerWhite1Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1712C2C7EDC006715F8 /* TowerWhite1Label.swift */; };
+		B5AFD1742C2CDFEE006715F8 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1732C2CDFEE006715F8 /* Domain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		B5AFD16D2C2C3E14006715F8 /* BosHpName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BosHpName.swift; sourceTree = "<group>"; };
 		B5AFD16F2C2C3E28006715F8 /* HpProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HpProgressBar.swift; path = ../../HpProgressBar.swift; sourceTree = "<group>"; };
 		B5AFD1712C2C7EDC006715F8 /* TowerWhite1Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerWhite1Label.swift; sourceTree = "<group>"; };
+		B5AFD1732C2CDFEE006715F8 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */,
 				B5AFD1432C286EDC006715F8 /* GameScene31.swift */,
 				B5AFD1512C2BB964006715F8 /* GameOverScene.swift */,
+				B5AFD1732C2CDFEE006715F8 /* Domain.swift */,
 				B5AFD1472C2917B7006715F8 /* Handler.swift */,
 				273B712A2C2297FC00A64CA0 /* Tower.swift */,
 				273B71432C28414300A64CA0 /* TowerProgressBar.swift */,
@@ -273,6 +276,7 @@
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,
 				B5AFD15C2C2C2CBD006715F8 /* Minion.swift in Sources */,
+				B5AFD1742C2CDFEE006715F8 /* Domain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

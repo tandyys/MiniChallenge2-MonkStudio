@@ -20,18 +20,35 @@ extension GameScene31: SKPhysicsContactDelegate{
         let collectableItemsContactTower = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let contactMonsterAndWeapon = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let towerContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        let catDomainContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
         
         if collectableItemsContactTower == SKSpriteNode.PhysicsCategory.collectablesitem | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed{
             collectibleItemsTower1 += 1.0
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite1Destroyed ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                addLabelTowerWhite(message: String(collectibleItemsTower1), position: towerPosition)
+            }
         }
         if collectableItemsContactTower == SKSpriteNode.PhysicsCategory.collectablesitem | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed{
             collectibleItemsTower2 += 1.0
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite2Destroyed ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                addLabelTowerWhite(message: String(collectibleItemsTower2), position: towerPosition)
+            }
         }
         if collectableItemsContactTower == SKSpriteNode.PhysicsCategory.collectablesitem | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed{
             collectibleItemsTower3 += 1.0
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite3Destroyed ? contact.bodyA.node : contact.bodyB.node
+            
+            if let towerPosition = towerNode?.position{
+                addLabelTowerWhite(message: String(collectibleItemsTower3), position: towerPosition)
+            }
         }
         
-        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed && collectibleItemsTower1 > 4.0{
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed && collectibleItemsTower1 > 3.0{
             buildWhite1TowerAvailable = true
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite1Destroyed ? contact.bodyA.node : contact.bodyB.node
             
@@ -50,7 +67,31 @@ extension GameScene31: SKPhysicsContactDelegate{
             }
         }
         
-        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed && collectibleItemsTower2 > 4.0{
+        if catDomainContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.domain1White{
+            plusAllDamage = true
+        }
+        
+        if catDomainContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.domain2White{
+            plusAllDamage = true
+        }
+        
+        if catDomainContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.domain3White{
+            plusAllDamage = true
+        }
+        
+        if catDomainContactMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.domain1White{
+            plusAllDamage = true
+        }
+        
+        if catDomainContactMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.domain2White{
+            plusAllDamage = true
+        }
+        
+        if catDomainContactMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.domain3White{
+            plusAllDamage =  true
+        }
+        
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed && collectibleItemsTower2 > 3.0{
             buildWhite2TowerAvailable = true
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite2Destroyed ? contact.bodyA.node : contact.bodyB.node
             
@@ -69,7 +110,7 @@ extension GameScene31: SKPhysicsContactDelegate{
             }
         }
         
-        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed && collectibleItemsTower3 > 4{
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed && collectibleItemsTower3 > 3.0{
             buildWhite3TowerAvailable = true
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite3Destroyed ? contact.bodyA.node : contact.bodyB.node
             
@@ -80,7 +121,7 @@ extension GameScene31: SKPhysicsContactDelegate{
         
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated{
             activateWhite3TowerButtonAvailable = true
-            createWhite3ProgressBar(at: CGPoint(x: tower1White.position.x, y: tower1White.frame.maxY))
+            createWhite3ProgressBar(at: CGPoint(x: tower3White.position.x, y: tower3White.frame.maxY))
             let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite3Destroyed ? contact.bodyB.node : contact.bodyA.node
             
             if let towerPosition = towerNode?.position{
@@ -88,19 +129,17 @@ extension GameScene31: SKPhysicsContactDelegate{
             }
         }
         
-        if contactProjectileMask == SKSpriteNode.PhysicsCategory.projectile | SKSpriteNode.PhysicsCategory.bos {
+        if contactProjectileMask == SKSpriteNode.PhysicsCategory.projectileCharacter | SKSpriteNode.PhysicsCategory.bos {
             let totalhpBos = bos.hpTotalBos
             if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
                 if nodeA.name == "Projectile" && nodeB.name == "Bos" {
                     attackedBosHit = true
-                    print("\(attackedBosHit)")
-                    let damage = 200
+//                    print("\(attackedBosHit)")
                     attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: totalhpBos, damage: CGFloat(damage), attackedBosHit: &attackedBosHit)
                     nodeA.isHidden = true
                 } else if nodeA.name == "Bos" && nodeB.name == "Projectile" {
                     attackedBosHit = true
-                    print("\(attackedBosHit)")
-                    let damage = 200
+//                    print("\(attackedBosHit)")
                     attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: totalhpBos, damage: CGFloat(damage), attackedBosHit: &attackedBosHit)
                     nodeB.isHidden = true
                 }
@@ -189,6 +228,32 @@ extension GameScene31: SKPhysicsContactDelegate{
         
         func didEnd(_ contact: SKPhysicsContact) {
             let towerContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+            let catDomainContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+            
+            if catDomainContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.domain1White{
+                plusAllDamage = false
+            }
+            
+            if catDomainContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.domain2White{
+                plusAllDamage = false
+            }
+            
+            if catDomainContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.domain3White{
+                plusAllDamage = false
+            }
+            
+            if catDomainContactMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.domain1White{
+                plusAllDamage = false
+            }
+            
+            if catDomainContactMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.domain2White{
+                plusAllDamage = false
+            }
+            
+            if catDomainContactMask == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.domain3White{
+                plusAllDamage = false
+            }
+            
             if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed {
                 //            let towerNode = towerContactMask == SKSpriteNode.PhysicsCategory.towerWhite1Destroyed ?
                 //            contact.bodyA.node : contact.bodyB.node

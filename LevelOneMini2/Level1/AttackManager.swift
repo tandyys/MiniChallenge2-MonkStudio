@@ -25,9 +25,12 @@ class AttackManager {
     
     
     func bosGotAttack(bos: Bos, healthBarBos: HpProgressBar, totalhpBos: Double, damage: CGFloat, attackedBosHit: inout Bool) {
+//        print(damage)
+        print(bos.hpBos)
         bos.hpBos -= damage
+        print(bos.hpBos)
         healthBarBos.updateInnerBarWidth(health: bos.hpBos, totalHealth: CGFloat(totalhpBos))
-        print("\(bos.hpBos)")
+//        print("\(bos.hpBos)")
         attackedBosHit = false
         if bos.hpBos < 0 {
             bos.hpBos = 0
@@ -39,7 +42,7 @@ class AttackManager {
     func kecilGotAttack(kecil: Kecil, healthBarKecil: HpProgressBar, totalhpKecil: Double, damage: CGFloat, attackedKecilHit: inout Bool) {
         kecil.hp -= damage
         healthBarKecil.updateInnerBarWidth(health: kecil.hp, totalHealth: CGFloat(totalhpKecil))
-        print("\(kecil.hp)")
+//        print("\(kecil.hp)")
         attackedKecilHit = false
         if kecil.hp < 1 {
             kecil.hp = 0
@@ -51,7 +54,7 @@ class AttackManager {
     func gendutGotAttack(gendut: Gendut, healthBarGendut: HpProgressBar, totalhpGendut: Double, damage: CGFloat, attackedGendutHit: inout Bool) {
         gendut.hp -= damage
         healthBarGendut.updateInnerBarWidth(health: gendut.hp, totalHealth: CGFloat(totalhpGendut))
-        print("\(gendut.hp)")
+//        print("\(gendut.hp)")
         attackedGendutHit = false
         if gendut.hp < 1 {
             gendut.hp = 0

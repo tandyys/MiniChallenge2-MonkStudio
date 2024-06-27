@@ -86,11 +86,11 @@ extension SKSpriteNode {
         case towerDown
         case decor
         case minion
-        case label
         case progressBar
         case boundaries
         case monster
         case projectile
+        case label
     }
     
     enum PhysicsCategory {
@@ -123,6 +123,9 @@ extension SKSpriteNode {
         static let canonLeft: UInt32                = 0b10000000000000000000000000
         static let canonRight: UInt32               = 0b100000000000000000000000000
         static let canonRightNotActivated: UInt32   = 0b1000000000000000000000000000
+        static let domain1White: UInt32             = 0b10000000000000000000000000000
+        static let domain2White: UInt32             = 0b100000000000000000000000000000
+        static let domain3White: UInt32             = 0b1000000000000000000000000000000
     }
     
     func loadAnimation(atlas: String, prefix: String, startAt: Int, stopAt: Int) -> [SKTexture] {
