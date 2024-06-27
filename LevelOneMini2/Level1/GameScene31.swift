@@ -462,7 +462,7 @@ class GameScene31: SKScene {
                 return keysPressed
             }
         switch Int(event.keyCode) {
-            case kVK_ANSI_Y:
+            case kVK_ANSI_F:
             gendutShoot = true
             shootGedeProjectile(keysPressed: getKeysPressed())
             

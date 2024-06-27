@@ -368,7 +368,7 @@ class GameScene32: SKScene {
             kecil.stop()
             kecil.idle()
             
-        case kVK_ANSI_X:
+        case kVK_ANSI_F:
             gendutShoot = true
             shootGedeProjectile(keysPressed: getKeysPressed())
             
