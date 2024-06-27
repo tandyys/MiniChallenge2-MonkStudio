@@ -832,6 +832,10 @@ class GameScene31: SKScene {
             gendut.walk()
         }
         
+        if gendutUpPressed == false && gendutDownPressed == false && gendutLeftPressed == false && gendutRightPressed == false{
+            gendut.idle()
+        }
+        
         //Kecil
         //Case up-down
         if kecilUpPressed == true {
@@ -851,6 +855,9 @@ class GameScene31: SKScene {
             kecil.position.x += 5
             kecil.xScale = 1
             kecil.walk()
+        }
+        if kecilUpPressed == false && kecilDownPressed == false && kecilLeftPressed == false && kecilRightPressed == false{
+            kecil.idle()
         }
     
         if buildWhite1TowerPressed {
@@ -980,6 +987,7 @@ class GameScene31: SKScene {
     }
     
     func shootGedeProjectile(keysPressed: Set<Int>){
+        gendut.attack()
         let projectile = GedeProjectile()
         projectile.position = CGPoint(x: gendut.position.x + 200, y: gendut.position.y + 200)
         addChild(projectile)

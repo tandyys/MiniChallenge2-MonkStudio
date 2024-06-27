@@ -170,6 +170,21 @@ extension GameScene31: SKPhysicsContactDelegate{
             }
         }
         
+        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
+            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+                if nodeA.name == "Kecil" && nodeB.name == "Minion" {
+                    // Minion is hit by projectile
+                    let damage = 10
+                    attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
+                } else if nodeA.name == "Minion" && nodeB.name == "Kecil" {
+                    // Minion is hit by projectile
+                    let damage = 10
+                    attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
+                    
+                }
+            }
+        }
+        
         if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.projectileCharacter | SKSpriteNode.PhysicsCategory.monster {
             if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
                 if nodeA.name == "Projectile" && nodeB.name == "Minion" {
@@ -187,20 +202,6 @@ extension GameScene31: SKPhysicsContactDelegate{
                 }
             }
             
-            if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
-                if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
-                    if nodeA.name == "Kecil" && nodeB.name == "Minion" {
-                        // Minion is hit by projectile
-                        let damage = 10
-                        attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
-                    } else if nodeA.name == "Minion" && nodeB.name == "Kecil" {
-                        // Minion is hit by projectile
-                        let damage = 10
-                        attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
-                        
-                    }
-                }
-            }
             
             //White Tower
             

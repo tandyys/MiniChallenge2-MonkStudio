@@ -12,9 +12,12 @@ import GameplayKit
 class Kecil: SKSpriteNode {
     enum PlayerAnimationType:String {
         case walk
+        case idle
     }
     
-    private var gendutWalkTexture: [SKTexture]?
+    private var kecilWalkTexture: [SKTexture]?
+    private var kecilIdleTexture: [SKTexture]?
+    
     var playerAgent: GKAgent2D
     var hp:Double = 500
     var hpTotalKecil:Double = 500
@@ -25,7 +28,8 @@ class Kecil: SKSpriteNode {
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        self.gendutWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "run-k-", startAt: 1, stopAt: 16)
+        self.kecilWalkTexture = self.loadAnimation(atlas: "Kecil", prefix: "run-k-", startAt: 1, stopAt: 16)
+        self.kecilIdleTexture = self.loadAnimation(atlas: "KecilIdle", prefix: "idle-k-", startAt: 1, stopAt: 6)
         
         self.name = "Kecil"
         self.setScale(1.0)
@@ -68,7 +72,7 @@ class Kecil: SKSpriteNode {
     
     func walk() {
         //Check the texture
-        guard let walkTexture = gendutWalkTexture else {
+        guard let walkTexture = kecilWalkTexture else {
             preconditionFailure("Cant find kecil texture")
         }
         
@@ -79,5 +83,13 @@ class Kecil: SKSpriteNode {
     func stop() {
         removeAction(forKey: PlayerAnimationType.walk.rawValue)
 //        removeAllActions()
+    }
+    
+    func idle(){
+        guard let idleTexture = kecilIdleTexture else{
+            preconditionFailure("Cant find kecil idle texture")
+        }
+        
+        startAnimation(textures: idleTexture, speed: 0.2, name: PlayerAnimationType.idle.rawValue, count: 0, resize: true, restore: true)
     }
 }
