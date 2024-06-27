@@ -228,6 +228,13 @@
 		279B4EB32C2C80A200E273A1 /* run-k-14.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4E842C2C80A200E273A1 /* run-k-14.png */; };
 		279B4EB42C2C80A200E273A1 /* run-k-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4E852C2C80A200E273A1 /* run-k-15.png */; };
 		279B4EB52C2C80A200E273A1 /* run-k-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4E862C2C80A200E273A1 /* run-k-16.png */; };
+		279B4EB72C2D04BF00E273A1 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EB62C2D04BF00E273A1 /* AppLogo.png */; };
+		279B4EB92C2D04FF00E273A1 /* logoApps.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EB82C2D04FF00E273A1 /* logoApps.png */; };
+		279B4EBF2C2D062F00E273A1 /* AppLogo32.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBA2C2D062E00E273A1 /* AppLogo32.png */; };
+		279B4EC02C2D062F00E273A1 /* AppLogo256.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBB2C2D062F00E273A1 /* AppLogo256.png */; };
+		279B4EC12C2D062F00E273A1 /* AppLogo64.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBC2C2D062F00E273A1 /* AppLogo64.png */; };
+		279B4EC22C2D062F00E273A1 /* AppLogo16.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBD2C2D062F00E273A1 /* AppLogo16.png */; };
+		279B4EC32C2D062F00E273A1 /* AppLogo128.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBE2C2D062F00E273A1 /* AppLogo128.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -458,6 +465,13 @@
 		279B4E842C2C80A200E273A1 /* run-k-14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "run-k-14.png"; sourceTree = "<group>"; };
 		279B4E852C2C80A200E273A1 /* run-k-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "run-k-15.png"; sourceTree = "<group>"; };
 		279B4E862C2C80A200E273A1 /* run-k-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "run-k-16.png"; sourceTree = "<group>"; };
+		279B4EB62C2D04BF00E273A1 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
+		279B4EB82C2D04FF00E273A1 /* logoApps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoApps.png; sourceTree = "<group>"; };
+		279B4EBA2C2D062E00E273A1 /* AppLogo32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo32.png; sourceTree = "<group>"; };
+		279B4EBB2C2D062F00E273A1 /* AppLogo256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo256.png; sourceTree = "<group>"; };
+		279B4EBC2C2D062F00E273A1 /* AppLogo64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo64.png; sourceTree = "<group>"; };
+		279B4EBD2C2D062F00E273A1 /* AppLogo16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo16.png; sourceTree = "<group>"; };
+		279B4EBE2C2D062F00E273A1 /* AppLogo128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo128.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,6 +688,13 @@
 		273B700A2C2180EA00A64CA0 /* Level_1_Assets */ = {
 			isa = PBXGroup;
 			children = (
+				279B4EBD2C2D062F00E273A1 /* AppLogo16.png */,
+				279B4EBA2C2D062E00E273A1 /* AppLogo32.png */,
+				279B4EBC2C2D062F00E273A1 /* AppLogo64.png */,
+				279B4EBE2C2D062F00E273A1 /* AppLogo128.png */,
+				279B4EBB2C2D062F00E273A1 /* AppLogo256.png */,
+				279B4EB82C2D04FF00E273A1 /* logoApps.png */,
+				279B4EB62C2D04BF00E273A1 /* AppLogo.png */,
 				279B4E6F2C2C80A200E273A1 /* Gendut */,
 				279B4E882C2C80A200E273A1 /* Kecil */,
 				279B4E4D2C2C77F100E273A1 /* Tower */,
@@ -1020,11 +1041,13 @@
 				273B70EF2C21879400A64CA0 /* Kecil-walk-9.png in Resources */,
 				27200A582C2A6790007F0408 /* TowerBlueActivate_3.svg in Resources */,
 				279B4E9B2C2C80A200E273A1 /* run-b-13.png in Resources */,
+				279B4EC22C2D062F00E273A1 /* AppLogo16.png in Resources */,
 				27200B6B2C2A8A82007F0408 /* dead-p-3.png in Resources */,
 				273B70E62C21879400A64CA0 /* Gendut-run-18.png in Resources */,
 				27200B752C2A8A82007F0408 /* dead-r-5.png in Resources */,
 				27200B492C2A8A82007F0408 /* att-b-1.png in Resources */,
 				27200B822C2A8A82007F0408 /* walk-p-4.png in Resources */,
+				279B4EC02C2D062F00E273A1 /* AppLogo256.png in Resources */,
 				27200B7A2C2A8A82007F0408 /* walk-b-2.png in Resources */,
 				27200A652C2A6790007F0408 /* TowerPurpleActivate_4.svg in Resources */,
 				279B4EB12C2C80A200E273A1 /* run-k-12.png in Resources */,
@@ -1049,6 +1072,8 @@
 				279B4EA02C2C80A200E273A1 /* Idle-k-1.png in Resources */,
 				279B4E8A2C2C80A200E273A1 /* Idle-b-2.png in Resources */,
 				279B4EB22C2C80A200E273A1 /* run-k-13.png in Resources */,
+				279B4EB92C2D04FF00E273A1 /* logoApps.png in Resources */,
+				279B4EBF2C2D062F00E273A1 /* AppLogo32.png in Resources */,
 				27200B5B2C2A8A82007F0408 /* att-r-3.png in Resources */,
 				27200A5F2C2A6790007F0408 /* TowerGreenActivate_4.svg in Resources */,
 				279B4E9E2C2C80A200E273A1 /* run-b-16.png in Resources */,
@@ -1065,6 +1090,7 @@
 				27200B4D2C2A8A82007F0408 /* att-b-5.png in Resources */,
 				273B71322C22AF2000A64CA0 /* Tower_Level 1_Purple_Not Active.png in Resources */,
 				27200B5A2C2A8A82007F0408 /* att-r-2.png in Resources */,
+				279B4EB72C2D04BF00E273A1 /* AppLogo.png in Resources */,
 				27200B5F2C2A8A82007F0408 /* att-r-7.png in Resources */,
 				27200B872C2A8A82007F0408 /* walk-r-3.png in Resources */,
 				27200A6B2C2A6790007F0408 /* TowerRedActivate_4.svg in Resources */,
@@ -1121,6 +1147,7 @@
 				27200A5B2C2A6790007F0408 /* TowerGreenActivate_0.svg in Resources */,
 				273B6F752C214EB900A64CA0 /* Assets.xcassets in Resources */,
 				279B4E912C2C80A200E273A1 /* run-b-3.png in Resources */,
+				279B4EC12C2D062F00E273A1 /* AppLogo64.png in Resources */,
 				27200A692C2A6790007F0408 /* TowerRedActivate_2.svg in Resources */,
 				273B70E12C21879400A64CA0 /* Gendut-run-13.png in Resources */,
 				273B70F62C21879400A64CA0 /* Kecil-walk-16.png in Resources */,
@@ -1135,6 +1162,7 @@
 				279B4E892C2C80A200E273A1 /* Idle b-1.png in Resources */,
 				27200B502C2A8A82007F0408 /* att-b-8.png in Resources */,
 				279B4E522C2C77F100E273A1 /* TowerPurple.svg in Resources */,
+				279B4EC32C2D062F00E273A1 /* AppLogo128.png in Resources */,
 				279B4E512C2C77F100E273A1 /* TowerGreenActive.svg in Resources */,
 				273B70EB2C21879400A64CA0 /* Kecil-walk-5.png in Resources */,
 				27200B522C2A8A82007F0408 /* att-p-2.png in Resources */,

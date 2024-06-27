@@ -175,13 +175,23 @@ class GameScene: SKScene {
         
         //Unlimited Spawn Minion
         //Fix This Code! Biar ga ilang 1 wave!
+//        run(SKAction.repeatForever(
+//              SKAction.sequence([
+//                SKAction.run({ [self] in spawnMonster(blueMinion)}),
+//                SKAction.wait(forDuration: 3),
+//                SKAction.run({ [self] in spawnMonster(redMinion)}),
+//                SKAction.wait(forDuration: 3),
+//                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
+//                SKAction.wait(forDuration: 3)
+//                ])
+//            ))
         run(SKAction.repeatForever(
               SKAction.sequence([
-                SKAction.run({ [self] in spawnMonster(blueMinion)}),
+                SKAction.run({ [self] in spawnRedMonster()}),
                 SKAction.wait(forDuration: 3),
-                SKAction.run({ [self] in spawnMonster(redMinion)}),
+                SKAction.run({ [self] in spawnBlueMonster()}),
                 SKAction.wait(forDuration: 3),
-                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
+                SKAction.run({ [self] in spawnPurpleMonster()}),
                 SKAction.wait(forDuration: 3)
                 ])
             ))
