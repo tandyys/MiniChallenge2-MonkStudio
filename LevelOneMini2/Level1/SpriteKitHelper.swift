@@ -49,6 +49,7 @@ extension SKSpriteNode {
         
         case background
         case bos
+        case foreground
         case platform
         case tree
         case gate
@@ -86,10 +87,13 @@ extension SKSpriteNode {
         case towerDown
         case decor
         case minion
+        case canon
         case progressBar
         case boundaries
+        case tembakanDariKucing
         case monster
         case projectile
+        case jatuhan
         case label
     }
     
@@ -126,6 +130,8 @@ extension SKSpriteNode {
         static let domain1White: UInt32             = 0b10000000000000000000000000000
         static let domain2White: UInt32             = 0b100000000000000000000000000000
         static let domain3White: UInt32             = 0b1000000000000000000000000000000
+        static let jatuhan: UInt32                  = 0b10000000000000000000000000000000
+
     }
     
     func loadAnimation(atlas: String, prefix: String, startAt: Int, stopAt: Int) -> [SKTexture] {

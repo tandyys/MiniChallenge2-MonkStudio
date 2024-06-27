@@ -177,6 +177,8 @@ class GameScene31: SKScene {
     }
 
     override func didMove(to view: SKView) {
+        kecil.position = CGPoint(x: kecil.size.width - kecil.size.width/2, y: 650)
+        gendut.position = CGPoint(x: gendut.size.width - gendut.size.width/2, y: 900)
         
         entityManager = EntityManager(scene: self)
         viewWidth = view.frame.width
@@ -606,43 +608,56 @@ class GameScene31: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if bos.hpBos < 5000{
+            let scene = self
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let gameScene32 = GameScene32(size: scene.size)
+            view?.scene?.scaleMode = .aspectFit
+            scene.view?.presentScene(gameScene32, transition: reveal)
+            
+        }
         
         healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 350)
-                healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 220)
+        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 220)
+        if kecil.position.y < gendut.position.y {
+                    kecil.zPosition = SKSpriteNode.Layer.characterKecilBack.rawValue
+                } else if kecil.position.y > gendut.position.y {
+                    kecil.zPosition = SKSpriteNode.Layer.characterKecilFront.rawValue
+                }
         
 //        healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 350)
 //        healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 220)
         
-        if gendut.position.y < kecil.position.y && gendut.position.y < tower1White.position.y && kecil.position.y < tower1White.position.y{
-            gendut.zPosition = SKSpriteNode.Layer.gendutBackKecilBackTower.rawValue
-            kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutBackTower.rawValue
-            tower2White.zPosition = SKSpriteNode.Layer.towerFrontGendutFrontKecil.rawValue
-        }
-        else if kecil.position.y < gendut.position.y && kecil.position.y < tower1White.position.y && gendut.position.y < tower1White.position.y{
-            kecil.zPosition = SKSpriteNode.Layer.kecilBackGendutBackTower.rawValue
-            gendut.zPosition = SKSpriteNode.Layer.gendutFrontKecilBackTower.rawValue
-            tower1White.zPosition = SKSpriteNode.Layer.towerFrontKecilFrontGendut.rawValue
-        }
-        else if kecil.position.y < tower1White.position.y && kecil.position.y < gendut.position.y && tower1White.position.y < gendut.position.y{
-            kecil.zPosition = SKSpriteNode.Layer.kecilBackTowerBackGendut.rawValue
-            tower1White.zPosition = SKSpriteNode.Layer.towerFrontKecilBackGendut.rawValue
-            gendut.zPosition = SKSpriteNode.Layer.gendutFrontKecilFrontTower.rawValue
-        }
-        else if tower1White.position.y < kecil.position.y && tower1White.position.y < gendut.position.y && kecil.position.y < gendut.position.y{
-            tower1White.zPosition = SKSpriteNode.Layer.towerBackKecilBackGendut.rawValue
-            kecil.zPosition = SKSpriteNode.Layer.kecilFrontTowerBackGendut.rawValue
-            gendut.zPosition = SKSpriteNode.Layer.gendutFrontTowerFrontKecil.rawValue
-        }
-        else if tower1White.position.y < gendut.position.y && tower1White.position.y < kecil.position.y && gendut.position.y < kecil.position.y{
-            tower1White.zPosition = SKSpriteNode.Layer.towerBackGendutBackKecil.rawValue
-            gendut.zPosition = SKSpriteNode.Layer.gendutFrontTowerBackKecil.rawValue
-            kecil.zPosition = SKSpriteNode.Layer.kecilFrontTowerFrontGendut.rawValue
-        }
-        else if gendut.position.y < tower1White.position.y && gendut.position.y < kecil.position.y && tower1White.position.y < kecil.position.y{
-            gendut.zPosition = SKSpriteNode.Layer.gendutBackTowerBackKecil.rawValue
-            tower1White.zPosition = SKSpriteNode.Layer.towerFrontGendutBackKecil.rawValue
-            kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutFrontTower.rawValue
-        }
+//        if gendut.position.y < kecil.position.y && gendut.position.y < tower1White.position.y && kecil.position.y < tower1White.position.y{
+//            gendut.zPosition = SKSpriteNode.Layer.gendutBackKecilBackTower.rawValue
+//            kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutBackTower.rawValue
+//            tower2White.zPosition = SKSpriteNode.Layer.towerFrontGendutFrontKecil.rawValue
+//        }
+//        else if kecil.position.y < gendut.position.y && kecil.position.y < tower1White.position.y && gendut.position.y < tower1White.position.y{
+//            kecil.zPosition = SKSpriteNode.Layer.kecilBackGendutBackTower.rawValue
+//            gendut.zPosition = SKSpriteNode.Layer.gendutFrontKecilBackTower.rawValue
+//            tower1White.zPosition = SKSpriteNode.Layer.towerFrontKecilFrontGendut.rawValue
+//        }
+//        else if kecil.position.y < tower1White.position.y && kecil.position.y < gendut.position.y && tower1White.position.y < gendut.position.y{
+//            kecil.zPosition = SKSpriteNode.Layer.kecilBackTowerBackGendut.rawValue
+//            tower1White.zPosition = SKSpriteNode.Layer.towerFrontKecilBackGendut.rawValue
+//            gendut.zPosition = SKSpriteNode.Layer.gendutFrontKecilFrontTower.rawValue
+//        }
+//        else if tower1White.position.y < kecil.position.y && tower1White.position.y < gendut.position.y && kecil.position.y < gendut.position.y{
+//            tower1White.zPosition = SKSpriteNode.Layer.towerBackKecilBackGendut.rawValue
+//            kecil.zPosition = SKSpriteNode.Layer.kecilFrontTowerBackGendut.rawValue
+//            gendut.zPosition = SKSpriteNode.Layer.gendutFrontTowerFrontKecil.rawValue
+//        }
+//        else if tower1White.position.y < gendut.position.y && tower1White.position.y < kecil.position.y && gendut.position.y < kecil.position.y{
+//            tower1White.zPosition = SKSpriteNode.Layer.towerBackGendutBackKecil.rawValue
+//            gendut.zPosition = SKSpriteNode.Layer.gendutFrontTowerBackKecil.rawValue
+//            kecil.zPosition = SKSpriteNode.Layer.kecilFrontTowerFrontGendut.rawValue
+//        }
+//        else if gendut.position.y < tower1White.position.y && gendut.position.y < kecil.position.y && tower1White.position.y < kecil.position.y{
+//            gendut.zPosition = SKSpriteNode.Layer.gendutBackTowerBackKecil.rawValue
+//            tower1White.zPosition = SKSpriteNode.Layer.towerFrontGendutBackKecil.rawValue
+//            kecil.zPosition = SKSpriteNode.Layer.kecilFrontGendutFrontTower.rawValue
+//        }
         
         //        print(towerWhite1ActivateBool)]
 //        print(towerWhite1BuildBool)

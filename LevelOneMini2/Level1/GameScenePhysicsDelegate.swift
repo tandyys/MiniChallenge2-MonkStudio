@@ -60,7 +60,7 @@ extension GameScene31: SKPhysicsContactDelegate{
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.towerWhite1NotActivated{
             activateWhite1TowerButtonAvailable = true
             createWhite1ProgressBar(at: CGPoint(x: tower1White.position.x, y: tower1White.frame.maxY))
-            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite1Activated ? contact.bodyB.node : contact.bodyA.node
+            let towerNode = contact.bodyA.categoryBitMask == SKSpriteNode.PhysicsCategory.towerWhite1NotActivated ? contact.bodyB.node : contact.bodyA.node
             
             if let towerPosition = towerNode?.position{
                 displayActivateTextTower(at: CGPoint(x: towerPosition.x, y: towerPosition.y + 200))

@@ -31,8 +31,6 @@ class HpProgressBar: SKNode {
     
     func updateInnerBarWidth(health: CGFloat, totalHealth: CGFloat) {
          let newWidth = (health / totalHealth) * backgroundBar.size.width
-//            print(newWidth)
-//        print(progressBar.size.width)
          progressBar.size.width = newWidth
      }
 }

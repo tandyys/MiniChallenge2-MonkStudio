@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class GameOverScene: SKScene {
+class GameOverSceneSena: SKScene {
     init(size: CGSize, won:Bool) {
     super.init(size: size)
     

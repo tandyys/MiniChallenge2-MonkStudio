@@ -34,7 +34,7 @@ class Kecil: SKSpriteNode {
         self.name = "Kecil"
         self.setScale(1.0)
         self.anchorPoint = CGPoint(x: 0.5, y: 0)
-        self.position = CGPoint(x: self.size.width - self.size.width/2, y: 650)
+        self.zPosition = SKSpriteNode.Layer.character.rawValue
         
         //Physics body settings
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width, height: self.size.height/2), center: CGPoint(x: 0, y: self.size.height/2))
@@ -45,6 +45,7 @@ class Kecil: SKSpriteNode {
         | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed | SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
         
         | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
+        | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | SKSpriteNode.PhysicsCategory.jatuhan
         
         self.physicsBody?.collisionBitMask =
         SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.monster
@@ -59,6 +60,7 @@ class Kecil: SKSpriteNode {
         | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed | SKSpriteNode.PhysicsCategory.towerWhite2Activated | SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
         
         | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed | SKSpriteNode.PhysicsCategory.towerWhite3Activated | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
+        | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | SKSpriteNode.PhysicsCategory.jatuhan
         
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
