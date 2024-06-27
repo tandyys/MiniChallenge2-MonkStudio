@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		273B6F782C214EB900A64CA0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 273B6F772C214EB900A64CA0 /* Base */; };
+		F83D227D2C2D3E6A007F1489 /* ending.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F83D227C2C2D3E6A007F1489 /* ending.mp4 */; };
 		F84553582C2A7DE5004D966A /* Minion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84553572C2A7DE4004D966A /* Minion.swift */; };
 		F845535E2C2AB7F2004D966A /* AttackFromBos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F845535D2C2AB7EF004D966A /* AttackFromBos.swift */; };
 		F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F848446B2C286C2600BD64F4 /* Projectile.swift */; };
@@ -53,6 +54,7 @@
 		273B6F672C214EB800A64CA0 /* LevelOneMini2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LevelOneMini2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		273B6F772C214EB900A64CA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		273B6F792C214EB900A64CA0 /* LevelOneMini2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LevelOneMini2.entitlements; sourceTree = "<group>"; };
+		F83D227C2C2D3E6A007F1489 /* ending.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ending.mp4; sourceTree = "<group>"; };
 		F84553572C2A7DE4004D966A /* Minion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minion.swift; sourceTree = "<group>"; };
 		F845535D2C2AB7EF004D966A /* AttackFromBos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackFromBos.swift; sourceTree = "<group>"; };
 		F848446B2C286C2600BD64F4 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				F8A86B032C282195003C4282 /* GameScene.swift */,
+				F83D227C2C2D3E6A007F1489 /* ending.mp4 */,
 				F8A86AFF2C282195003C4282 /* PauseScene.swift */,
 				F86E9A4B2C2CFDD700FF2D8B /* GameOverScene.swift */,
 				F8A86B002C282195003C4282 /* AppDelegate.swift */,
@@ -288,6 +291,7 @@
 				F8A86B202C282195003C4282 /* GameScene.sks in Resources */,
 				F8D58A9A2C2BFA84000F3AFA /* bg.mp3 in Resources */,
 				F8A86B212C282195003C4282 /* Assets.xcassets in Resources */,
+				F83D227D2C2D3E6A007F1489 /* ending.mp4 in Resources */,
 				F8A86B222C282195003C4282 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

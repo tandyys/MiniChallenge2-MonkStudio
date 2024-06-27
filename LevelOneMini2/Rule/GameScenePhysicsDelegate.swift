@@ -27,11 +27,11 @@ extension GameScene: SKPhysicsContactDelegate {
             if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
                 if nodeA.name == "Gendut" && nodeB.name == "Minion" {
                     // Minion is hit by projectile
-                    let damage = 5
+                    let damage = 10
                     attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
                 } else if nodeA.name == "Gendut" && nodeB.name == "ProjectileShoot" {
                     // Minion is hit by projectile
-                    let damage = 5
+                    let damage = 10
                     attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
                 }
             }

@@ -5,7 +5,7 @@ import AVFoundation
 import GameplayKit
 
 class GameScene: SKScene {
-
+    
     var entityManager: EntityManager!
     var backgroundMusic: SKAudioNode?
     let pauseScene = PauseMenuScene()
@@ -25,7 +25,7 @@ class GameScene: SKScene {
     let canonLeft = Canon_Left()
     let canonRight = Canon_Right()
     let BosHpNameLabel = BossHpName()
-        
+    
     
     let displayManager = DisplayTextManager()
     var backgroundManager: BackgroundManager!
@@ -79,8 +79,8 @@ class GameScene: SKScene {
     let progressBarSizeKecil = CGSize(width: 195/1.4, height: 27.42/1.4)
     
     override func didMove(to view: SKView) {
-
-
+        
+        
         backgroundManager = BackgroundManager(scene: self)
         audioManager.playBackgroundMusic(in: self)
         addChild(gendut)
@@ -91,10 +91,10 @@ class GameScene: SKScene {
         canonRight.position = CGPoint(x: foregroundImage.size.width - 750, y: 450)
         addChild(canonRight)
         
-
+        
         bos.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 100)
         addChild(bos)
-
+        
         addChild(BosHpNameLabel)
         addChild(displayManager)
         
@@ -118,59 +118,59 @@ class GameScene: SKScene {
         
         //minion.walk()
         //Limited Spawn Minion
-//        let stopAction = SKAction.run { [self] in
-//            if minionCount >= maxMinion {
-//                self.removeAction(forKey: "Spawn")
-//            }
-//        }
-//        
-//        let spawnSequence = SKAction.sequence([
-//            SKAction.run { [self] in
-//                if minionCount < maxMinion {
-//                    spawnMonster(blueMinion)
-//                    minionCount += 1
-//                }
-//            },
-//            SKAction.wait(forDuration: 5),
-//            SKAction.run { [self] in
-//                if minionCount < maxMinion {
-//                    spawnMonster(redMinion)
-//                    minionCount += 1
-//                }
-//            },
-//            SKAction.wait(forDuration: 5),
-//            SKAction.run { [self] in
-//                if minionCount < maxMinion {
-//                    spawnMonster(purpleMinion)
-//                    minionCount += 1
-//                }
-//            },
-//            SKAction.wait(forDuration: 5),
-//            stopAction
-//        ])
-//        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
+        //        let stopAction = SKAction.run { [self] in
+        //            if minionCount >= maxMinion {
+        //                self.removeAction(forKey: "Spawn")
+        //            }
+        //        }
+        //
+        //        let spawnSequence = SKAction.sequence([
+        //            SKAction.run { [self] in
+        //                if minionCount < maxMinion {
+        //                    spawnMonster(blueMinion)
+        //                    minionCount += 1
+        //                }
+        //            },
+        //            SKAction.wait(forDuration: 5),
+        //            SKAction.run { [self] in
+        //                if minionCount < maxMinion {
+        //                    spawnMonster(redMinion)
+        //                    minionCount += 1
+        //                }
+        //            },
+        //            SKAction.wait(forDuration: 5),
+        //            SKAction.run { [self] in
+        //                if minionCount < maxMinion {
+        //                    spawnMonster(purpleMinion)
+        //                    minionCount += 1
+        //                }
+        //            },
+        //            SKAction.wait(forDuration: 5),
+        //            stopAction
+        //        ])
+        //        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
         
-                run(SKAction.repeatForever(
-                      SKAction.sequence([
-                        SKAction.run({ [self] in spawnMonster(blueMinion)}),
-                        SKAction.wait(forDuration: 3),
-                        SKAction.run({ [self] in spawnMonster(redMinion)}),
-                        SKAction.wait(forDuration: 3),
-                        SKAction.run({ [self] in spawnMonster(purpleMinion)}),
-                        SKAction.wait(forDuration: 3)
-                        ])
-                    ))
+        run(SKAction.repeatForever(
+            SKAction.sequence([
+                SKAction.run({ [self] in spawnMonster(blueMinion)}),
+                SKAction.wait(forDuration: 3),
+                SKAction.run({ [self] in spawnMonster(redMinion)}),
+                SKAction.wait(forDuration: 3),
+                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
+                SKAction.wait(forDuration: 3)
+            ])
+        ))
         
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
         physicsWorld.contactDelegate = self
         
         attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: bos.hpTotalBos, damage: CGFloat(0), attackedBosHit: &attackedBosHit)
         
         
-     
+        
     }
-
+    
     @objc func didConnectController(_ notification: Notification) {
         guard connectedControllers.count < maximumControllerCount else { return }
         if let controller = notification.object as? GCController {
@@ -216,7 +216,7 @@ class GameScene: SKScene {
             }
         }
     }
- 
+    
     func setupGamepadInputKecil(for controller: GCController) {
         if let extendedGamepad = controller.extendedGamepad {
             let handlerInstance = Handler()
@@ -231,7 +231,7 @@ class GameScene: SKScene {
                     } else {
                         self.kecilLeftPressed = false
                         self.kecilRightPressed = false
-     
+                        
                     }
                     if yValue < -0.5 {
                         self.kecilDownPressed = true
@@ -242,7 +242,7 @@ class GameScene: SKScene {
                         self.kecilUpPressed = false
                     }
                     self.kecil.stop()
-                
+                    
                 }
                 
             }
@@ -251,68 +251,76 @@ class GameScene: SKScene {
     
     override func keyDown(with event: NSEvent) {
         switch Int(event.keyCode) {
-
-            case kVK_ANSI_Y:
+            
+        case kVK_ANSI_Y:
             if CanonContactLeft == true{
                 canonLeftShoot = true
                 canonLeft.shootAnimation()
             }
-            case kVK_ANSI_U:
+        case kVK_ANSI_U:
             if CanonContactRight == true{
                 canonRightShoot = true
                 canonRight.shootAnimation()
             }
-            case kVK_ANSI_W:
-                gendutUpPressed = true
-            case kVK_ANSI_A:
-                gendutLeftPressed = true
-            case kVK_ANSI_S:
-                gendutDownPressed = true
-            case kVK_ANSI_D:
-                gendutRightPressed = true
-            case kVK_UpArrow:
-                kecilUpPressed = true
-            case kVK_DownArrow:
-                kecilDownPressed = true
-            case kVK_LeftArrow:
-                kecilRightPressed = true
-            case kVK_RightArrow:
-                kecilLeftPressed = true
-            default:
-                break
+        case kVK_ANSI_W:
+            gendut.stop()
+            gendutUpPressed = true
+        case kVK_ANSI_A:
+            gendut.stop()
+            gendutLeftPressed = true
+        case kVK_ANSI_S:
+            gendut.stop()
+            gendutDownPressed = true
+        case kVK_ANSI_D:
+            gendut.stop()
+            gendutRightPressed = true
+        case kVK_UpArrow:
+            kecil.stop()
+            kecilUpPressed = true
+        case kVK_DownArrow:
+            kecil.stop()
+            kecilDownPressed = true
+        case kVK_LeftArrow:
+            kecil.stop()
+            kecilRightPressed = true
+        case kVK_RightArrow:
+            kecil.stop()
+            kecilLeftPressed = true
+        default:
+            break
         }
     }
     override func keyUp(with event: NSEvent) {
         func getKeysPressed() -> Set<Int> {
-                var keysPressed = Set<Int>()
-                
-                if gendutUpPressed {
-                    keysPressed.insert(kVK_ANSI_W)
-                }
-                if gendutLeftPressed {
-                    keysPressed.insert(kVK_ANSI_A)
-                }
-                if gendutDownPressed {
-                    keysPressed.insert(kVK_ANSI_S)
-                }
-                if gendutRightPressed {
-                    keysPressed.insert(kVK_ANSI_D)
-                }
-                if kecilUpPressed {
-                    keysPressed.insert(kVK_UpArrow)
-                }
-                if kecilDownPressed {
-                    keysPressed.insert(kVK_DownArrow)
-                }
-                if kecilLeftPressed {
-                    keysPressed.insert(kVK_LeftArrow)
-                }
-                if kecilRightPressed {
-                    keysPressed.insert(kVK_RightArrow)
-                }
-                
-                return keysPressed
+            var keysPressed = Set<Int>()
+            
+            if gendutUpPressed {
+                keysPressed.insert(kVK_ANSI_W)
             }
+            if gendutLeftPressed {
+                keysPressed.insert(kVK_ANSI_A)
+            }
+            if gendutDownPressed {
+                keysPressed.insert(kVK_ANSI_S)
+            }
+            if gendutRightPressed {
+                keysPressed.insert(kVK_ANSI_D)
+            }
+            if kecilUpPressed {
+                keysPressed.insert(kVK_UpArrow)
+            }
+            if kecilDownPressed {
+                keysPressed.insert(kVK_DownArrow)
+            }
+            if kecilLeftPressed {
+                keysPressed.insert(kVK_LeftArrow)
+            }
+            if kecilRightPressed {
+                keysPressed.insert(kVK_RightArrow)
+            }
+            
+            return keysPressed
+        }
         switch Int(event.keyCode) {
         case kVK_ANSI_Y:
             canonLeftShoot = false
@@ -325,43 +333,51 @@ class GameScene: SKScene {
         case kVK_ANSI_W:
             gendutUpPressed = false
             gendut.stop()
+            gendut.idle()
         case kVK_ANSI_A:
             gendutLeftPressed = false
             gendut.stop()
+            gendut.idle()
             canonRight.stop()
         case kVK_ANSI_S:
             gendutDownPressed = false
             gendut.stop()
+            gendut.idle()
         case kVK_ANSI_D:
             gendutRightPressed = false
             gendut.stop()
+            gendut.idle()
         case kVK_UpArrow:
             kecilUpPressed = false
             kecil.stop()
+            kecil.idle()
         case kVK_DownArrow:
             kecilDownPressed = false
             kecil.stop()
+            kecil.idle()
         case kVK_LeftArrow:
             kecilRightPressed = false
             kecil.stop()
+            kecil.idle()
         case kVK_RightArrow:
             kecilLeftPressed = false
             kecil.stop()
+            kecil.idle()
             
         case kVK_ANSI_X:
-        gendutShoot = true
-        shootGedeProjectile(keysPressed: getKeysPressed())
+            gendutShoot = true
+            shootGedeProjectile(keysPressed: getKeysPressed())
             
         case kVK_Escape:
             let scene = self
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             let pauseMenuScene = PauseMenuScene(size: scene.size)
             scene.view?.presentScene(pauseMenuScene, transition: reveal)
-        
-        
-//        case kVK_ANSI_U:
-//        kecilShoot = true
-//        shootKecilProjectile(keysPressed: getKeysPressed())
+            
+            
+            //        case kVK_ANSI_U:
+            //        kecilShoot = true
+            //        shootKecilProjectile(keysPressed: getKeysPressed())
             
         default:
             break
@@ -369,7 +385,7 @@ class GameScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
-       
+        
         let movement = Movement()
         healthBarGendut.position = CGPoint(x: gendut.position.x + 19, y: gendut.position.y + 200)
         healthBarKecil.position = CGPoint(x: kecil.position.x + 19, y: kecil.position.y + 140)
@@ -398,12 +414,8 @@ class GameScene: SKScene {
             restartGameScene()
         }
         
-        if attackManager.youWinState == true {
-            if let videoURL = Bundle.main.url(forResource: "videoFileName", withExtension: "mp4") {
-                GameManager.shared.playVideo(videoURL: videoURL, view: self.view!)
-            } else {
-                print("Video file not found.")
-            }
+        if attackManager.youWinState == false {
+            playVideo()
         }
         
         outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)
@@ -415,7 +427,7 @@ class GameScene: SKScene {
         if let kecilNode = self.childNode(withName: "Kecil") as? Kecil {
             kecilNode.playerAgent.position = vector_float2(x: Float(kecilNode.position.x), y: Float(kecilNode.position.y))
         }
-
+        
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -468,6 +480,18 @@ class GameScene: SKScene {
         }
     }
     
-
-
+    func playVideo(){
+        if let videoURL = Bundle.main.url(forResource: "ending", withExtension: "mp4") {
+            let gameManager = GameManager.shared
+            gameManager.closeCurrentScene()
+            gameManager.playVideo(videoURL: videoURL, view: self.view!)
+                
+        } else {
+            print("Video file not found.")
+        }
+        
+        
+        
+    }
+    
 }
