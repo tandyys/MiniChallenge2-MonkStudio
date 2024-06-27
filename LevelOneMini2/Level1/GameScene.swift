@@ -68,6 +68,12 @@ class GameScene: SKScene {
     let towerBlueActivated = Tower.towerBlueActivated()
     let towerGreenActivated = Tower.towerGreenActivated()
     
+    //Gate Symbol
+    let redGateSymbol = GateSymbol.symbolRed()
+    let purpleGateSymbol = GateSymbol.symbolPurple()
+    let blueGateSymbol = GateSymbol.symbolBlue()
+    let greenGateSymbol = GateSymbol.symbolGreen()
+    
     //Tower activating
     //Does the tower is active?
     var towerRedActivate:Bool = false
@@ -187,40 +193,7 @@ class GameScene: SKScene {
                 SKAction.wait(forDuration: 1)
                 ])
             ))
-        
-        //Limited Spawn Minion
-//        let stopAction = SKAction.run { [self] in
-//            if minionCount >= maxMinion {
-//                self.removeAction(forKey: "Spawn")
-//            }
-//        }
-//        
-//        let spawnSequence = SKAction.sequence([
-//            SKAction.run { [self] in
-//                if minionCount < maxMinion {
-//                    spawnMonster(blueMinion)
-//                    minionCount += 1
-//                }
-//            },
-//            SKAction.wait(forDuration: 5),
-//            SKAction.run { [self] in
-//                if minionCount < maxMinion {
-//                    spawnMonster(redMinion)
-//                    minionCount += 1
-//                }
-//            },
-//            SKAction.wait(forDuration: 5),
-//            SKAction.run { [self] in
-//                if minionCount < maxMinion {
-//                    spawnMonster(purpleMinion)
-//                    minionCount += 1
-//                }
-//            },
-//            SKAction.wait(forDuration: 5),
-//            stopAction
-//        ])
-//        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
-        
+
         physicsWorld.contactDelegate = self
         
     }
@@ -256,8 +229,6 @@ class GameScene: SKScene {
             if activateGreenTowerButtonAvailable == true {
                 activateGreenTowerButtonPressed = true
             }
-//            redMinion.changeHealth(by: -10)
-//            purpleMinion.changeHealth(by: -10)
             default:
                 break
         }
@@ -516,6 +487,7 @@ class GameScene: SKScene {
                 towerRedActivated.position = position
                 towerRedActivated.zPosition = zPos
                 parent.addChild(towerRedActivated)
+                addChild(redGateSymbol)
             }
             removeRedProgressBar()
         }
@@ -535,6 +507,7 @@ class GameScene: SKScene {
                 towerPurpleActivated.position = position
                 towerPurpleActivated.zPosition = zPos
                 parent.addChild(towerPurpleActivated)
+                addChild(purpleGateSymbol)
             }
             removePurpleProgressBar()
         }
@@ -553,6 +526,7 @@ class GameScene: SKScene {
                 towerBlueActivated.position = position
                 towerBlueActivated.zPosition = zPos
                 parent.addChild(towerBlueActivated)
+                addChild(blueGateSymbol)
             }
             removeBlueProgressBar()
         }
@@ -571,6 +545,7 @@ class GameScene: SKScene {
                 towerGreenActivated.position = position
                 towerGreenActivated.zPosition = zPos
                 parent.addChild(towerGreenActivated)
+                addChild(greenGateSymbol)
             }
             removeGreenProgressBar()
         }

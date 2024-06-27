@@ -238,6 +238,11 @@
 		279B4ED42C2D338A00E273A1 /* AppLogo16.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECE2C2D338A00E273A1 /* AppLogo16.png */; };
 		279B4ED82C2D5C2900E273A1 /* Attack-b.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ED72C2D5C2900E273A1 /* Attack-b.svg */; };
 		279B4EDA2C2D64ED00E273A1 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4ED92C2D64ED00E273A1 /* GameOverScene.swift */; };
+		279B4EDF2C2D6C5D00E273A1 /* symbol-b.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EDB2C2D6C5D00E273A1 /* symbol-b.svg */; };
+		279B4EE02C2D6C5D00E273A1 /* symbol-p.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EDC2C2D6C5D00E273A1 /* symbol-p.svg */; };
+		279B4EE12C2D6C5D00E273A1 /* symbol-r.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EDD2C2D6C5D00E273A1 /* symbol-r.svg */; };
+		279B4EE22C2D6C5D00E273A1 /* symbol-g.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EDE2C2D6C5D00E273A1 /* symbol-g.svg */; };
+		279B4EE42C2D6C8500E273A1 /* GateSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4EE32C2D6C8500E273A1 /* GateSymbol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -479,6 +484,11 @@
 		279B4ECE2C2D338A00E273A1 /* AppLogo16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo16.png; sourceTree = "<group>"; };
 		279B4ED72C2D5C2900E273A1 /* Attack-b.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Attack-b.svg"; sourceTree = "<group>"; };
 		279B4ED92C2D64ED00E273A1 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		279B4EDB2C2D6C5D00E273A1 /* symbol-b.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "symbol-b.svg"; sourceTree = "<group>"; };
+		279B4EDC2C2D6C5D00E273A1 /* symbol-p.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "symbol-p.svg"; sourceTree = "<group>"; };
+		279B4EDD2C2D6C5D00E273A1 /* symbol-r.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "symbol-r.svg"; sourceTree = "<group>"; };
+		279B4EDE2C2D6C5D00E273A1 /* symbol-g.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "symbol-g.svg"; sourceTree = "<group>"; };
+		279B4EE32C2D6C8500E273A1 /* GateSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateSymbol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -695,6 +705,10 @@
 		273B700A2C2180EA00A64CA0 /* Level_1_Assets */ = {
 			isa = PBXGroup;
 			children = (
+				279B4EDB2C2D6C5D00E273A1 /* symbol-b.svg */,
+				279B4EDE2C2D6C5D00E273A1 /* symbol-g.svg */,
+				279B4EDC2C2D6C5D00E273A1 /* symbol-p.svg */,
+				279B4EDD2C2D6C5D00E273A1 /* symbol-r.svg */,
 				279B4ED72C2D5C2900E273A1 /* Attack-b.svg */,
 				279B4EC42C2D0F1D00E273A1 /* PrologGame.mp4 */,
 				279B4EB62C2D04BF00E273A1 /* AppLogo.png */,
@@ -830,6 +844,7 @@
 				273B71432C28414300A64CA0 /* TowerProgressBar.swift */,
 				27200BA42C2AE3FD007F0408 /* MonsterGeneratorSetUp.swift */,
 				273B712A2C2297FC00A64CA0 /* Tower.swift */,
+				279B4EE32C2D6C8500E273A1 /* GateSymbol.swift */,
 				27200A752C2A6A5E007F0408 /* Towers */,
 				273B6F9A2C217E7B00A64CA0 /* MainChar */,
 			);
@@ -1026,6 +1041,7 @@
 				279B4E8C2C2C80A200E273A1 /* Idle-b-4.png in Resources */,
 				273B71212C2280BC00A64CA0 /* SetScene_Forest_Background.png in Resources */,
 				279B4E932C2C80A200E273A1 /* run-b-5.png in Resources */,
+				279B4EE12C2D6C5D00E273A1 /* symbol-r.svg in Resources */,
 				27200B4B2C2A8A82007F0408 /* att-b-3.png in Resources */,
 				273B71272C22854500A64CA0 /* Tower_Level 1_Purple.png in Resources */,
 				27200A6C2C2A6790007F0408 /* TowerRedActivate_5.svg in Resources */,
@@ -1118,8 +1134,10 @@
 				279B4EB42C2C80A200E273A1 /* run-k-15.png in Resources */,
 				27200B4E2C2A8A82007F0408 /* att-b-6.png in Resources */,
 				273B713C2C258FD500A64CA0 /* ProgressBar.png in Resources */,
+				279B4EE02C2D6C5D00E273A1 /* symbol-p.svg in Resources */,
 				27200B6C2C2A8A82007F0408 /* dead-p-4.png in Resources */,
 				27200A5E2C2A6790007F0408 /* TowerGreenActivate_3.svg in Resources */,
+				279B4EE22C2D6C5D00E273A1 /* symbol-g.svg in Resources */,
 				27200B632C2A8A82007F0408 /* dead-b-3.png in Resources */,
 				27200A662C2A6790007F0408 /* TowerPurpleActivate_5.svg in Resources */,
 				279B4EA32C2C80A200E273A1 /* Idle-k-4.png in Resources */,
@@ -1132,6 +1150,7 @@
 				27200B762C2A8A82007F0408 /* dead-r-6.png in Resources */,
 				27200B842C2A8A82007F0408 /* walk-p-6.png in Resources */,
 				27200B7C2C2A8A82007F0408 /* walk-b-4.png in Resources */,
+				279B4EDF2C2D6C5D00E273A1 /* symbol-b.svg in Resources */,
 				27200B4F2C2A8A82007F0408 /* att-b-7.png in Resources */,
 				279B4E542C2C77F100E273A1 /* TowerRed.svg in Resources */,
 				279B4EA62C2C80A200E273A1 /* run-k-1.png in Resources */,
@@ -1252,6 +1271,7 @@
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,
 				279B4EDA2C2D64ED00E273A1 /* GameOverScene.swift in Sources */,
 				27200A772C2A6A6A007F0408 /* TowerRed.swift in Sources */,
+				279B4EE42C2D6C8500E273A1 /* GateSymbol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
