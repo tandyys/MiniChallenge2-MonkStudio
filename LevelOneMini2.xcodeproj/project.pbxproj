@@ -243,6 +243,9 @@
 		279B4EE12C2D6C5D00E273A1 /* symbol-r.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EDD2C2D6C5D00E273A1 /* symbol-r.svg */; };
 		279B4EE22C2D6C5D00E273A1 /* symbol-g.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EDE2C2D6C5D00E273A1 /* symbol-g.svg */; };
 		279B4EE42C2D6C8500E273A1 /* GateSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4EE32C2D6C8500E273A1 /* GateSymbol.swift */; };
+		279B4EE62C2D7A9D00E273A1 /* SKTextureLoadTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4EE52C2D7A9D00E273A1 /* SKTextureLoadTexture.swift */; };
+		279B4EE82C2D7AF200E273A1 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4EE72C2D7AF200E273A1 /* AnimationComponent.swift */; };
+		279B4EEC2C2D7EDD00E273A1 /* Attack-b.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EEB2C2D7EDD00E273A1 /* Attack-b.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -489,6 +492,9 @@
 		279B4EDD2C2D6C5D00E273A1 /* symbol-r.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "symbol-r.svg"; sourceTree = "<group>"; };
 		279B4EDE2C2D6C5D00E273A1 /* symbol-g.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "symbol-g.svg"; sourceTree = "<group>"; };
 		279B4EE32C2D6C8500E273A1 /* GateSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GateSymbol.swift; sourceTree = "<group>"; };
+		279B4EE52C2D7A9D00E273A1 /* SKTextureLoadTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTextureLoadTexture.swift; sourceTree = "<group>"; };
+		279B4EE72C2D7AF200E273A1 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
+		279B4EEB2C2D7EDD00E273A1 /* Attack-b.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Attack-b.svg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -651,6 +657,7 @@
 				27200B8F2C2A8C4D007F0408 /* MinionHealthComponent.swift */,
 				27200B952C2A91FB007F0408 /* SpriteComponent.swift */,
 				27200BA22C2ADD12007F0408 /* GKComponentExtension.swift */,
+				279B4EE72C2D7AF200E273A1 /* AnimationComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -705,6 +712,7 @@
 		273B700A2C2180EA00A64CA0 /* Level_1_Assets */ = {
 			isa = PBXGroup;
 			children = (
+				279B4EEB2C2D7EDD00E273A1 /* Attack-b.svg */,
 				279B4EDB2C2D6C5D00E273A1 /* symbol-b.svg */,
 				279B4EDE2C2D6C5D00E273A1 /* symbol-g.svg */,
 				279B4EDC2C2D6C5D00E273A1 /* symbol-p.svg */,
@@ -834,6 +842,7 @@
 			isa = PBXGroup;
 			children = (
 				273B6F702C214EB800A64CA0 /* GameScene.swift */,
+				279B4EE52C2D7A9D00E273A1 /* SKTextureLoadTexture.swift */,
 				279B4ED92C2D64ED00E273A1 /* GameOverScene.swift */,
 				279B4EC72C2D131B00E273A1 /* PrologVideoScene.swift */,
 				27200B992C2A936A007F0408 /* Entities */,
@@ -1127,6 +1136,7 @@
 				279B4E8F2C2C80A200E273A1 /* run-b-1.png in Resources */,
 				279B4EAB2C2C80A200E273A1 /* run-k-6.png in Resources */,
 				279B4E9D2C2C80A200E273A1 /* run-b-15.png in Resources */,
+				279B4EEC2C2D7EDD00E273A1 /* Attack-b.svg in Resources */,
 				279B4E8B2C2C80A200E273A1 /* Idle-b-3.png in Resources */,
 				27200B862C2A8A82007F0408 /* walk-r-2.png in Resources */,
 				273B70EC2C21879400A64CA0 /* Kecil-walk-6.png in Resources */,
@@ -1266,10 +1276,12 @@
 				27200BA52C2AE3FD007F0408 /* MonsterGeneratorSetUp.swift in Sources */,
 				273B6F972C217E6D00A64CA0 /* Gendut.swift in Sources */,
 				279B4EC82C2D131B00E273A1 /* PrologVideoScene.swift in Sources */,
+				279B4EE62C2D7A9D00E273A1 /* SKTextureLoadTexture.swift in Sources */,
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,
 				279B4EDA2C2D64ED00E273A1 /* GameOverScene.swift in Sources */,
+				279B4EE82C2D7AF200E273A1 /* AnimationComponent.swift in Sources */,
 				27200A772C2A6A6A007F0408 /* TowerRed.swift in Sources */,
 				279B4EE42C2D6C8500E273A1 /* GateSymbol.swift in Sources */,
 			);

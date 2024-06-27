@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "walk-p-2.png",
+      "filename" : "walk-p-4.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "walk-p-5.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "walk-p-6.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

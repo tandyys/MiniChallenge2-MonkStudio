@@ -83,8 +83,7 @@ extension GameScene: SKPhysicsContactDelegate {
         
         if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
             applyRedFilter()
-            kecil.kecilHealth -= 20
-            
+            kecil.kecilHealth -= 10
             checkGameOver()
         }
         

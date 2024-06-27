@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "walk-b-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "walk-b-3.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
