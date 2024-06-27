@@ -351,6 +351,12 @@ class GameScene: SKScene {
         case kVK_ANSI_X:
         gendutShoot = true
         shootGedeProjectile(keysPressed: getKeysPressed())
+            
+        case kVK_Escape:
+            let scene = self
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let pauseMenuScene = PauseMenuScene(size: scene.size)
+            scene.view?.presentScene(pauseMenuScene, transition: reveal)
         
         
 //        case kVK_ANSI_U:
@@ -393,7 +399,11 @@ class GameScene: SKScene {
         }
         
         if attackManager.youWinState == true {
-            print("You Win")
+            if let videoURL = Bundle.main.url(forResource: "videoFileName", withExtension: "mp4") {
+                GameManager.shared.playVideo(videoURL: videoURL, view: self.view!)
+            } else {
+                print("Video file not found.")
+            }
         }
         
         outOfBounds(gendut: gendut, kecil: kecil, foregroundImage: foregroundImage)

@@ -12,6 +12,7 @@
 		F845535E2C2AB7F2004D966A /* AttackFromBos.swift in Sources */ = {isa = PBXBuildFile; fileRef = F845535D2C2AB7EF004D966A /* AttackFromBos.swift */; };
 		F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F848446B2C286C2600BD64F4 /* Projectile.swift */; };
 		F8678A5C2C291EC7002521C1 /* AttackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8678A5B2C291EBB002521C1 /* AttackManager.swift */; };
+		F86E9A4C2C2CFDDB00FF2D8B /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86E9A4B2C2CFDD700FF2D8B /* GameOverScene.swift */; };
 		F8A86B122C282195003C4282 /* Kecil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B0D2C282195003C4282 /* Kecil.swift */; };
 		F8A86B132C282195003C4282 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B032C282195003C4282 /* GameScene.swift */; };
 		F8A86B142C282195003C4282 /* OutOfBound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A86B042C282195003C4282 /* OutOfBound.swift */; };
@@ -56,6 +57,7 @@
 		F845535D2C2AB7EF004D966A /* AttackFromBos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackFromBos.swift; sourceTree = "<group>"; };
 		F848446B2C286C2600BD64F4 /* Projectile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projectile.swift; sourceTree = "<group>"; };
 		F8678A5B2C291EBB002521C1 /* AttackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackManager.swift; sourceTree = "<group>"; };
+		F86E9A4B2C2CFDD700FF2D8B /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		F8A86AFF2C282195003C4282 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		F8A86B002C282195003C4282 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8A86B012C282195003C4282 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				F8A86B032C282195003C4282 /* GameScene.swift */,
 				F8A86AFF2C282195003C4282 /* PauseScene.swift */,
+				F86E9A4B2C2CFDD700FF2D8B /* GameOverScene.swift */,
 				F8A86B002C282195003C4282 /* AppDelegate.swift */,
 				F8C8219D2C2B30FF00A3137E /* Sound */,
 				F8A86B012C282195003C4282 /* GameScene.sks */,
@@ -318,6 +321,7 @@
 				F8A86B1B2C282195003C4282 /* AppDelegate.swift in Sources */,
 				F8C821912C2B1A6A00A3137E /* BossHpName.swift in Sources */,
 				F8A86B1C2C282195003C4282 /* GameScenePhysicsDelegate.swift in Sources */,
+				F86E9A4C2C2CFDDB00FF2D8B /* GameOverScene.swift in Sources */,
 				F848446C2C286C2900BD64F4 /* Projectile.swift in Sources */,
 				F8C8218F2C2B1A1100A3137E /* BackgroundManager.swift in Sources */,
 				F8D58AA92C2C07F5000F3AFA /* GKComponentExtension.swift in Sources */,

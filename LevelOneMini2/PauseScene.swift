@@ -7,7 +7,7 @@ class PauseMenuScene: SKScene {
     override func didMove(to view: SKView) {
         // Setup your pause menu UI here
         let background = SKSpriteNode(imageNamed: "mainMenu_bg")
-          background.position = CGPoint(x: frame.midX, y: frame.midY+200)
+          background.position = CGPoint(x: frame.midX, y: frame.midY)
             background.zPosition = -1
           addChild(background)
         
