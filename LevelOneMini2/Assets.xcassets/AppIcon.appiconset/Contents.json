@@ -43,19 +43,19 @@
       "size" : "256x256"
     },
     {
-      "filename" : "AppLogo.png",
+      "filename" : "AppLogo512.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "AppLogo 1.png",
+      "filename" : "AppLogo512 1.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "logoApps.png",
+      "filename" : "AppLogo.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"

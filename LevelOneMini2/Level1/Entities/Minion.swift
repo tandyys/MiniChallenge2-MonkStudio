@@ -26,7 +26,10 @@ class Minion: GKEntity, GKAgentDelegate {
         spriteComponent.node.size = CGSize(width: 180, height: 150)
         spriteComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0)
         spriteComponent.node.zPosition = SKSpriteNode.Layer.monster.rawValue
-        spriteComponent.node.position = CGPoint(x: 3000, y: 800)
+        
+        let randomY = random(min: 10, max: 1000)
+        spriteComponent.node.position = CGPoint(x: 3000, y: randomY)
+        
         spriteComponent.node.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: spriteComponent.node.size.width/2, height: spriteComponent.node.size.height/2), center: CGPoint(x: 0, y: spriteComponent.node.size.height/2))
         spriteComponent.node.physicsBody?.isDynamic = true
         spriteComponent.node.physicsBody?.affectedByGravity = false
@@ -38,8 +41,8 @@ class Minion: GKEntity, GKAgentDelegate {
         //Minion Agent
         minionAgent.delegate = self
         minionAgent.position = SIMD2(Float(spriteComponent.node.position.x), Float(spriteComponent.node.position.y))
-        minionAgent.maxSpeed = 150
-        minionAgent.maxAcceleration = 50
+        minionAgent.maxSpeed = 300
+        minionAgent.maxAcceleration = 150
         
         self.addComponent(spriteComponent)
         
@@ -81,6 +84,14 @@ class Minion: GKEntity, GKAgentDelegate {
         let setGoal = GKGoal(toSeekAgent: target)
         let behavior = GKBehavior(goals: [setGoal], andWeights: [NSNumber(value: 1.0)])
         self.minionAgent.behavior = behavior
+    }
+    
+    func random() -> CGFloat {
+      return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+    }
+
+    func random(min: CGFloat, max: CGFloat) -> CGFloat {
+      return random() * (max - min) + min
     }
     
 }

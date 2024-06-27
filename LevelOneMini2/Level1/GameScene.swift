@@ -5,6 +5,7 @@
 //  Created by tandyys on 18/06/24.
 //
 
+import Foundation
 import SpriteKit
 import GameplayKit
 import Carbon
@@ -128,6 +129,8 @@ class GameScene: SKScene {
     var minionCount = 0
     var maxMinion = 24
     
+    var attackCooldownActive: Bool = false
+    
     override func didMove(to view: SKView) {
         
         let ground = SKSpriteNode(imageNamed: "Mid")
@@ -187,12 +190,12 @@ class GameScene: SKScene {
 //            ))
         run(SKAction.repeatForever(
               SKAction.sequence([
-                SKAction.run({ [self] in spawnRedMonster()}),
-                SKAction.wait(forDuration: 3),
-                SKAction.run({ [self] in spawnBlueMonster()}),
-                SKAction.wait(forDuration: 3),
-                SKAction.run({ [self] in spawnPurpleMonster()}),
-                SKAction.wait(forDuration: 3)
+                SKAction.run({ [unowned self] in spawnRedMonster()}),
+                SKAction.wait(forDuration: 0.5),
+                SKAction.run({ [unowned self] in spawnBlueMonster()}),
+                SKAction.wait(forDuration: 0.5),
+                SKAction.run({ [unowned self] in spawnPurpleMonster()}),
+                SKAction.wait(forDuration: 0.5)
                 ])
             ))
         
@@ -326,6 +329,13 @@ class GameScene: SKScene {
     }
     
     override func mouseDown(with event: NSEvent) {
+        
+        if attackCooldownActive {
+            return
+        }
+        
+        activateCooldown(duration: 1.0)
+        
         let touchLocation = event.location(in: self)
         let projectile = SKSpriteNode(imageNamed: "gendutAtt")
         projectile.name = "Projectile"
@@ -359,24 +369,34 @@ class GameScene: SKScene {
         projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
     
+    func activateCooldown(duration: TimeInterval) {
+        // Aktifkan cooldown
+        attackCooldownActive = true
+        
+        // Setelah durasi cooldown selesai, matikan cooldown
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
+            self?.attackCooldownActive = false
+        }
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         //Gendut movement
         //Case up-down
         if gendutUpPressed == true {
-            gendut.position.y += 1.5
+            gendut.position.y += 2
             gendut.walk()
         } else if gendutDownPressed == true {
-            gendut.position.y -= 1.5
+            gendut.position.y -= 2
             gendut.walk()
         }
         
         //Case left-right
         if gendutLeftPressed == true {
-            gendut.position.x -= 1.5
+            gendut.position.x -= 2
             gendut.xScale = -1
             gendut.walk()
         } else if gendutRightPressed == true {
-            gendut.position.x += 1.5
+            gendut.position.x += 2
             gendut.xScale = 1
             gendut.walk()
         }
@@ -384,20 +404,20 @@ class GameScene: SKScene {
         //Kecil movement
         //Case up-down
         if kecilUpPressed == true {
-            kecil.position.y += 3
+            kecil.position.y += 4
             kecil.walk()
         } else if kecilDownPressed == true {
-            kecil.position.y -= 3
+            kecil.position.y -= 4
             kecil.walk()
         }
         
         //Case left-right
         if kecilLeftPressed == true {
-            kecil.position.x += 3
+            kecil.position.x += 4
             kecil.xScale = 1
             kecil.walk()
         } else if kecilRightPressed == true {
-            kecil.position.x -= 3
+            kecil.position.x -= 4
             kecil.xScale = -1
             kecil.walk()
         }

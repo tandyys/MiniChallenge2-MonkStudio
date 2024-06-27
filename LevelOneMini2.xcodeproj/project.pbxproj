@@ -229,12 +229,13 @@
 		279B4EB42C2C80A200E273A1 /* run-k-15.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4E852C2C80A200E273A1 /* run-k-15.png */; };
 		279B4EB52C2C80A200E273A1 /* run-k-16.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4E862C2C80A200E273A1 /* run-k-16.png */; };
 		279B4EB72C2D04BF00E273A1 /* AppLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EB62C2D04BF00E273A1 /* AppLogo.png */; };
-		279B4EB92C2D04FF00E273A1 /* logoApps.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EB82C2D04FF00E273A1 /* logoApps.png */; };
-		279B4EBF2C2D062F00E273A1 /* AppLogo32.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBA2C2D062E00E273A1 /* AppLogo32.png */; };
-		279B4EC02C2D062F00E273A1 /* AppLogo256.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBB2C2D062F00E273A1 /* AppLogo256.png */; };
-		279B4EC12C2D062F00E273A1 /* AppLogo64.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBC2C2D062F00E273A1 /* AppLogo64.png */; };
-		279B4EC22C2D062F00E273A1 /* AppLogo16.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBD2C2D062F00E273A1 /* AppLogo16.png */; };
-		279B4EC32C2D062F00E273A1 /* AppLogo128.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EBE2C2D062F00E273A1 /* AppLogo128.png */; };
+		279B4EC82C2D131B00E273A1 /* PrologVideoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4EC72C2D131B00E273A1 /* PrologVideoScene.swift */; };
+		279B4ECF2C2D338A00E273A1 /* AppLogo512.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EC92C2D338A00E273A1 /* AppLogo512.png */; };
+		279B4ED02C2D338A00E273A1 /* AppLogo256.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECA2C2D338A00E273A1 /* AppLogo256.png */; };
+		279B4ED12C2D338A00E273A1 /* AppLogo64.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECB2C2D338A00E273A1 /* AppLogo64.png */; };
+		279B4ED22C2D338A00E273A1 /* AppLogo128.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECC2C2D338A00E273A1 /* AppLogo128.png */; };
+		279B4ED32C2D338A00E273A1 /* AppLogo32.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECD2C2D338A00E273A1 /* AppLogo32.png */; };
+		279B4ED42C2D338A00E273A1 /* AppLogo16.png in Resources */ = {isa = PBXBuildFile; fileRef = 279B4ECE2C2D338A00E273A1 /* AppLogo16.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -466,12 +467,14 @@
 		279B4E852C2C80A200E273A1 /* run-k-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "run-k-15.png"; sourceTree = "<group>"; };
 		279B4E862C2C80A200E273A1 /* run-k-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "run-k-16.png"; sourceTree = "<group>"; };
 		279B4EB62C2D04BF00E273A1 /* AppLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo.png; sourceTree = "<group>"; };
-		279B4EB82C2D04FF00E273A1 /* logoApps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoApps.png; sourceTree = "<group>"; };
-		279B4EBA2C2D062E00E273A1 /* AppLogo32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo32.png; sourceTree = "<group>"; };
-		279B4EBB2C2D062F00E273A1 /* AppLogo256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo256.png; sourceTree = "<group>"; };
-		279B4EBC2C2D062F00E273A1 /* AppLogo64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo64.png; sourceTree = "<group>"; };
-		279B4EBD2C2D062F00E273A1 /* AppLogo16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo16.png; sourceTree = "<group>"; };
-		279B4EBE2C2D062F00E273A1 /* AppLogo128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo128.png; sourceTree = "<group>"; };
+		279B4EC42C2D0F1D00E273A1 /* PrologGame.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrologGame.mp4; sourceTree = "<group>"; };
+		279B4EC72C2D131B00E273A1 /* PrologVideoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrologVideoScene.swift; sourceTree = "<group>"; };
+		279B4EC92C2D338A00E273A1 /* AppLogo512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo512.png; sourceTree = "<group>"; };
+		279B4ECA2C2D338A00E273A1 /* AppLogo256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo256.png; sourceTree = "<group>"; };
+		279B4ECB2C2D338A00E273A1 /* AppLogo64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo64.png; sourceTree = "<group>"; };
+		279B4ECC2C2D338A00E273A1 /* AppLogo128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo128.png; sourceTree = "<group>"; };
+		279B4ECD2C2D338A00E273A1 /* AppLogo32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo32.png; sourceTree = "<group>"; };
+		279B4ECE2C2D338A00E273A1 /* AppLogo16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppLogo16.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -688,13 +691,14 @@
 		273B700A2C2180EA00A64CA0 /* Level_1_Assets */ = {
 			isa = PBXGroup;
 			children = (
-				279B4EBD2C2D062F00E273A1 /* AppLogo16.png */,
-				279B4EBA2C2D062E00E273A1 /* AppLogo32.png */,
-				279B4EBC2C2D062F00E273A1 /* AppLogo64.png */,
-				279B4EBE2C2D062F00E273A1 /* AppLogo128.png */,
-				279B4EBB2C2D062F00E273A1 /* AppLogo256.png */,
-				279B4EB82C2D04FF00E273A1 /* logoApps.png */,
+				279B4EC42C2D0F1D00E273A1 /* PrologGame.mp4 */,
 				279B4EB62C2D04BF00E273A1 /* AppLogo.png */,
+				279B4ECE2C2D338A00E273A1 /* AppLogo16.png */,
+				279B4ECD2C2D338A00E273A1 /* AppLogo32.png */,
+				279B4ECB2C2D338A00E273A1 /* AppLogo64.png */,
+				279B4ECC2C2D338A00E273A1 /* AppLogo128.png */,
+				279B4ECA2C2D338A00E273A1 /* AppLogo256.png */,
+				279B4EC92C2D338A00E273A1 /* AppLogo512.png */,
 				279B4E6F2C2C80A200E273A1 /* Gendut */,
 				279B4E882C2C80A200E273A1 /* Kecil */,
 				279B4E4D2C2C77F100E273A1 /* Tower */,
@@ -811,6 +815,7 @@
 			isa = PBXGroup;
 			children = (
 				273B6F702C214EB800A64CA0 /* GameScene.swift */,
+				279B4EC72C2D131B00E273A1 /* PrologVideoScene.swift */,
 				27200B992C2A936A007F0408 /* Entities */,
 				27200B8E2C2A8C0E007F0408 /* Components */,
 				273B6F902C215B0C00A64CA0 /* SpriteKitHelper.swift */,
@@ -1032,6 +1037,9 @@
 				279B4E9F2C2C80A200E273A1 /* run-b-17.png in Resources */,
 				27200B702C2A8A82007F0408 /* dead-p-8.png in Resources */,
 				27200B882C2A8A82007F0408 /* walk-r-4.png in Resources */,
+				279B4ED02C2D338A00E273A1 /* AppLogo256.png in Resources */,
+				279B4ED12C2D338A00E273A1 /* AppLogo64.png in Resources */,
+				279B4ED22C2D338A00E273A1 /* AppLogo128.png in Resources */,
 				27200A632C2A6790007F0408 /* TowerPurpleActivate_2.svg in Resources */,
 				27200B6D2C2A8A82007F0408 /* dead-p-5.png in Resources */,
 				279B4EAF2C2C80A200E273A1 /* run-k-10.png in Resources */,
@@ -1041,13 +1049,12 @@
 				273B70EF2C21879400A64CA0 /* Kecil-walk-9.png in Resources */,
 				27200A582C2A6790007F0408 /* TowerBlueActivate_3.svg in Resources */,
 				279B4E9B2C2C80A200E273A1 /* run-b-13.png in Resources */,
-				279B4EC22C2D062F00E273A1 /* AppLogo16.png in Resources */,
 				27200B6B2C2A8A82007F0408 /* dead-p-3.png in Resources */,
+				279B4ED32C2D338A00E273A1 /* AppLogo32.png in Resources */,
 				273B70E62C21879400A64CA0 /* Gendut-run-18.png in Resources */,
 				27200B752C2A8A82007F0408 /* dead-r-5.png in Resources */,
 				27200B492C2A8A82007F0408 /* att-b-1.png in Resources */,
 				27200B822C2A8A82007F0408 /* walk-p-4.png in Resources */,
-				279B4EC02C2D062F00E273A1 /* AppLogo256.png in Resources */,
 				27200B7A2C2A8A82007F0408 /* walk-b-2.png in Resources */,
 				27200A652C2A6790007F0408 /* TowerPurpleActivate_4.svg in Resources */,
 				279B4EB12C2C80A200E273A1 /* run-k-12.png in Resources */,
@@ -1072,8 +1079,6 @@
 				279B4EA02C2C80A200E273A1 /* Idle-k-1.png in Resources */,
 				279B4E8A2C2C80A200E273A1 /* Idle-b-2.png in Resources */,
 				279B4EB22C2C80A200E273A1 /* run-k-13.png in Resources */,
-				279B4EB92C2D04FF00E273A1 /* logoApps.png in Resources */,
-				279B4EBF2C2D062F00E273A1 /* AppLogo32.png in Resources */,
 				27200B5B2C2A8A82007F0408 /* att-r-3.png in Resources */,
 				27200A5F2C2A6790007F0408 /* TowerGreenActivate_4.svg in Resources */,
 				279B4E9E2C2C80A200E273A1 /* run-b-16.png in Resources */,
@@ -1147,7 +1152,6 @@
 				27200A5B2C2A6790007F0408 /* TowerGreenActivate_0.svg in Resources */,
 				273B6F752C214EB900A64CA0 /* Assets.xcassets in Resources */,
 				279B4E912C2C80A200E273A1 /* run-b-3.png in Resources */,
-				279B4EC12C2D062F00E273A1 /* AppLogo64.png in Resources */,
 				27200A692C2A6790007F0408 /* TowerRedActivate_2.svg in Resources */,
 				273B70E12C21879400A64CA0 /* Gendut-run-13.png in Resources */,
 				273B70F62C21879400A64CA0 /* Kecil-walk-16.png in Resources */,
@@ -1158,11 +1162,12 @@
 				273B70D72C21879400A64CA0 /* Gendut-run-3.png in Resources */,
 				279B4EA72C2C80A200E273A1 /* run-k-2.png in Resources */,
 				27200B602C2A8A82007F0408 /* att-r-8.png in Resources */,
+				279B4ED42C2D338A00E273A1 /* AppLogo16.png in Resources */,
+				279B4ECF2C2D338A00E273A1 /* AppLogo512.png in Resources */,
 				273B70EE2C21879400A64CA0 /* Kecil-walk-8.png in Resources */,
 				279B4E892C2C80A200E273A1 /* Idle b-1.png in Resources */,
 				27200B502C2A8A82007F0408 /* att-b-8.png in Resources */,
 				279B4E522C2C77F100E273A1 /* TowerPurple.svg in Resources */,
-				279B4EC32C2D062F00E273A1 /* AppLogo128.png in Resources */,
 				279B4E512C2C77F100E273A1 /* TowerGreenActive.svg in Resources */,
 				273B70EB2C21879400A64CA0 /* Kecil-walk-5.png in Resources */,
 				27200B522C2A8A82007F0408 /* att-p-2.png in Resources */,
@@ -1234,6 +1239,7 @@
 				27200B9D2C2AAA8B007F0408 /* EntityManager.swift in Sources */,
 				27200BA52C2AE3FD007F0408 /* MonsterGeneratorSetUp.swift in Sources */,
 				273B6F972C217E6D00A64CA0 /* Gendut.swift in Sources */,
+				279B4EC82C2D131B00E273A1 /* PrologVideoScene.swift in Sources */,
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,
