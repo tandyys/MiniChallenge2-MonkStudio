@@ -246,6 +246,7 @@
 		279B4EE62C2D7A9D00E273A1 /* SKTextureLoadTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4EE52C2D7A9D00E273A1 /* SKTextureLoadTexture.swift */; };
 		279B4EE82C2D7AF200E273A1 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279B4EE72C2D7AF200E273A1 /* AnimationComponent.swift */; };
 		279B4EEC2C2D7EDD00E273A1 /* Attack-b.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EEB2C2D7EDD00E273A1 /* Attack-b.svg */; };
+		279B4EEE2C2E538600E273A1 /* Attack-b(0.5).svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EED2C2E538600E273A1 /* Attack-b(0.5).svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -495,6 +496,7 @@
 		279B4EE52C2D7A9D00E273A1 /* SKTextureLoadTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTextureLoadTexture.swift; sourceTree = "<group>"; };
 		279B4EE72C2D7AF200E273A1 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		279B4EEB2C2D7EDD00E273A1 /* Attack-b.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Attack-b.svg"; sourceTree = "<group>"; };
+		279B4EED2C2E538600E273A1 /* Attack-b(0.5).svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Attack-b(0.5).svg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -712,6 +714,7 @@
 		273B700A2C2180EA00A64CA0 /* Level_1_Assets */ = {
 			isa = PBXGroup;
 			children = (
+				279B4EED2C2E538600E273A1 /* Attack-b(0.5).svg */,
 				279B4EEB2C2D7EDD00E273A1 /* Attack-b.svg */,
 				279B4EDB2C2D6C5D00E273A1 /* symbol-b.svg */,
 				279B4EDE2C2D6C5D00E273A1 /* symbol-g.svg */,
@@ -1190,6 +1193,7 @@
 				27200A692C2A6790007F0408 /* TowerRedActivate_2.svg in Resources */,
 				273B70E12C21879400A64CA0 /* Gendut-run-13.png in Resources */,
 				273B70F62C21879400A64CA0 /* Kecil-walk-16.png in Resources */,
+				279B4EEE2C2E538600E273A1 /* Attack-b(0.5).svg in Resources */,
 				27200B652C2A8A82007F0408 /* dead-b-5.png in Resources */,
 				273B70E42C21879400A64CA0 /* Gendut-run-16.png in Resources */,
 				279B4EA92C2C80A200E273A1 /* run-k-4.png in Resources */,
