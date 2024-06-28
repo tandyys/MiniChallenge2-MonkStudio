@@ -16,6 +16,7 @@ class ViewController: NSViewController {
 
         if let view = self.view as? SKView {
             // Load the SKScene from 'GameScene.sks'
+//            let scene = HomeScene(size: view.bounds.size)
             let scene = GameScene(size: view.bounds.size)
 //            let scene = PrologVideoScene(size: view.bounds.size)
             // Set the scale mode to scale to fit the window
