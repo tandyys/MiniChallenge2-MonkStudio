@@ -251,6 +251,7 @@
 		279B4EF22C2E605500E273A1 /* HomeView.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EF12C2E605500E273A1 /* HomeView.svg */; };
 		279B4EF42C2E611500E273A1 /* HomeView.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EF32C2E611500E273A1 /* HomeView.svg */; };
 		279B4EF62C2E61BE00E273A1 /* HomeViewLogo.svg in Resources */ = {isa = PBXBuildFile; fileRef = 279B4EF52C2E61BE00E273A1 /* HomeViewLogo.svg */; };
+		27D4556C2C2EDA3200032250 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4556B2C2EDA3200032250 /* MenuScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -505,6 +506,7 @@
 		279B4EF12C2E605500E273A1 /* HomeView.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HomeView.svg; sourceTree = "<group>"; };
 		279B4EF32C2E611500E273A1 /* HomeView.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HomeView.svg; sourceTree = "<group>"; };
 		279B4EF52C2E61BE00E273A1 /* HomeViewLogo.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HomeViewLogo.svg; sourceTree = "<group>"; };
+		27D4556B2C2EDA3200032250 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -857,6 +859,7 @@
 			children = (
 				279B4EEF2C2E600600E273A1 /* HomeScene.swift */,
 				273B6F702C214EB800A64CA0 /* GameScene.swift */,
+				27D4556B2C2EDA3200032250 /* MenuScene.swift */,
 				279B4EE52C2D7A9D00E273A1 /* SKTextureLoadTexture.swift */,
 				279B4ED92C2D64ED00E273A1 /* GameOverScene.swift */,
 				279B4EC72C2D131B00E273A1 /* PrologVideoScene.swift */,
@@ -1299,6 +1302,7 @@
 				273B6F6B2C214EB800A64CA0 /* AppDelegate.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */,
+				27D4556C2C2EDA3200032250 /* MenuScene.swift in Sources */,
 				279B4EDA2C2D64ED00E273A1 /* GameOverScene.swift in Sources */,
 				279B4EE82C2D7AF200E273A1 /* AnimationComponent.swift in Sources */,
 				279B4EF02C2E600600E273A1 /* HomeScene.swift in Sources */,

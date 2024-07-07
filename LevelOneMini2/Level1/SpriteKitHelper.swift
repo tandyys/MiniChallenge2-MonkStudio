@@ -49,7 +49,6 @@ extension SKSpriteNode {
             let temp = textureAtlas.textureNamed(textureName)
             textureArray.append(temp)
         }
-        
         return textureArray
     }
     
