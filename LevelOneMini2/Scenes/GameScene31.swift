@@ -12,6 +12,7 @@ class GameScene31: SKScene {
     let gendut = Gendut()
     let kecil = Kecil()
     let bos = Bos()
+
     var gedeProjectile : GedeProjectile?
     var kecilProjectile : KecilProjectile?
     
@@ -68,7 +69,7 @@ class GameScene31: SKScene {
     var white1ActivatePressedTime:Double = 0.0
     var white2ActivatePressedTime:Double = 0.0
     var white3ActivatePressedTime:Double = 0.0
-    let maxPressedTime:Double = 200.0
+    let maxPressedTime:Double = 500.0
     
     let tower1White = Tower.tower1White()
     let tower1WhiteBuilt = Tower.tower1WhiteBuilt()
@@ -86,10 +87,10 @@ class GameScene31: SKScene {
     let domain3White = Domain.tower3WhiteDomain()
     
     
-    var buildWhite1TowerAvailable:Bool = false
+    var buildWhite1TowerAvailable:Bool = true
     var buildWhite1TowerPressed:Bool = false
     var towerWhite1BuildBool:Bool = false
-    var activateWhite1TowerButtonAvailable:Bool = false
+    var activateWhite1TowerButtonAvailable:Bool = true
     var activateWhite1TowerButtonPressed:Bool = false
     var towerWhite1ActivateBool: Bool = false
     var plusAllDamage: Bool = false
@@ -132,6 +133,7 @@ class GameScene31: SKScene {
     var attackedBosHit:Bool = false
        var attackedKecilHit:Bool = false
        var attackedGendutHit:Bool = false
+    var attackCooldownActive: Bool = false
     
 //    private var healthBarBos: HpProgressBar!
 //    private var healthBarGendut: HpProgressBar!
@@ -206,7 +208,7 @@ class GameScene31: SKScene {
         
         tower1White.position = CGPoint(x: 500, y: 700)
         //        towerWhite.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
-        tower1White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1White.size.width/1.5, height: tower1White.size.height/4), center: CGPoint(x: 0, y: tower1White.size.height/2.5))
+        tower1White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1White.size.width/2, height: tower1White.size.height/4), center: CGPoint(x: 0, y: tower1White.size.height/1.5))
         tower1White.physicsBody?.affectedByGravity = false
         tower1White.physicsBody?.isDynamic = false
         tower1White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite1Destroyed
@@ -216,7 +218,7 @@ class GameScene31: SKScene {
         
         tower2White.position = CGPoint(x: 650, y: 200)
         //        towerWhite.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
-        tower2White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/1.5, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height/2.5))
+        tower2White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/2, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height/1.5))
         tower2White.physicsBody?.affectedByGravity = false
         tower2White.physicsBody?.isDynamic = false
         tower2White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite2Destroyed
@@ -226,7 +228,7 @@ class GameScene31: SKScene {
         
         tower3White.position = CGPoint(x: 2000, y: 100)
         //        towerWhite.size = CGSize(width: gendut.size.width/1.5, height: gendut.size.height*1.5)
-        tower3White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3White.size.width/1.5, height: tower3White.size.height/4), center: CGPoint(x: 0, y: tower3White.size.height/2.5))
+        tower3White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3White.size.width/2, height: tower3White.size.height/4), center: CGPoint(x: 0, y: tower3White.size.height/1.5))
         tower3White.physicsBody?.affectedByGravity = false
         tower3White.physicsBody?.isDynamic = false
         tower3White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite3Destroyed
@@ -303,67 +305,116 @@ class GameScene31: SKScene {
         healthBarKecil.position = CGPoint(x: kecil.position.x, y: kecil.position.y + 1000)
         
         addChild(healthBarBos)
-        addChild(healthBarGendut)
-        addChild(healthBarKecil)
+//        addChild(healthBarGendut)
+//        addChild(healthBarKecil)
         
         physicsWorld.contactDelegate = self
         print(String(collectibleItemsTower1))
 
 //        NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
-        let stopAction = SKAction.run { [self] in
-                    if minionCount >= maxMinion {
-                        self.removeAction(forKey: "Spawn")
-                    }
-                }
-                
-                let spawnSequence = SKAction.sequence([
-                    SKAction.run { [self] in
-                        if minionCount < maxMinion {
-                            spawnMonster(blueMinion)
-                            minionCount += 1
-                        }
-                    },
-                    SKAction.wait(forDuration: 2),
-                    SKAction.run { [self] in
-                        if minionCount < maxMinion {
-                            spawnMonster(redMinion)
-                            minionCount += 1
-                        }
-                    },
-                    
-                    SKAction.wait(forDuration: 2),
-                    SKAction.run { [self] in
-                        if minionCount < maxMinion {
-                            spawnMonster(purpleMinion)
-                            minionCount += 1
-                        }
-                    },
-                    SKAction.wait(forDuration: 2),
-                    stopAction
+//        let stopAction = SKAction.run { [self] in
+//                    if minionCount >= maxMinion {
+//                        self.removeAction(forKey: "Spawn")
+//                    }
+//                }
+//                
+//                let spawnSequence = SKAction.sequence([
+//                    SKAction.run { [self] in
+//                        if minionCount < maxMinion {
+//                            spawnMonster(blueMinion)
+//                            minionCount += 1
+//                        }
+//                    },
+//                    SKAction.wait(forDuration: 2),
+//                    SKAction.run { [self] in
+//                        if minionCount < maxMinion {
+//                            spawnMonster(redMinion)
+//                            minionCount += 1
+//                        }
+//                    },
+//                    
+//                    SKAction.wait(forDuration: 2),
+//                    SKAction.run { [self] in
+//                        if minionCount < maxMinion {
+//                            spawnMonster(purpleMinion)
+//                            minionCount += 1
+//                        }
+//                    },
+//                    SKAction.wait(forDuration: 2),
+//                    stopAction
+//                ])
+        
+        run(SKAction.repeatForever(
+              SKAction.sequence([
+                SKAction.run({ [unowned self] in spawnRedMonster()}),
+                SKAction.wait(forDuration: 1),
+                SKAction.run({ [unowned self] in spawnBlueMonster()}),
+                SKAction.wait(forDuration: 1),
+                SKAction.run({ [unowned self] in spawnPurpleMonster()}),
+                SKAction.wait(forDuration: 1)
                 ])
-                run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
+            ))
+
                 
                 physicsWorld.contactDelegate = self
         
     }
-    
-    
-//    @objc func didConnectController(_ notification: Notification) {
-//        guard connectedControllers.count < maximumControllerCount else { return }
-//        if let controller = notification.object as? GCController {
-//            connectedControllers.append(controller)
-//            if playerControllers[0] == nil {
-//                playerControllers[0] = controller
-//                print("Controller connected and assigned to Player 1 (Gendut).")
-//                setupGamepadInputGendut(for: controller)
-//                
-//            } else if playerControllers[1] == nil {
-//                playerControllers[1] = controller
-//                print("Controller connected and assigned to Player 2 (Kecil). ")
-//                setupGamepadInputKecil(for: controller)
-//            }
+    override func mouseDown(with event: NSEvent) {
+        
+        if attackCooldownActive {
+            return
+        }
+        
+        gendut.attack()
+        gendut.attackAudio?.stop()
+        gendut.attackAudio?.currentTime = 0
+        gendut.attackAudio?.play()
+        activateCooldown(duration: 0.3)
+        
+        let touchLocation = event.location(in: self)
+        let projectile = SKSpriteNode(imageNamed: "gedeProjectile")
+        projectile.name = "gedeProjectile"
+        projectile.position = CGPoint(x: gendut.position.x, y: gendut.position.y + gendut.position.y/6)
+        projectile.zPosition = SKSpriteNode.Layer.projectile.rawValue
+        projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
+        projectile.physicsBody?.isDynamic = true
+        projectile.physicsBody?.affectedByGravity = false
+        projectile.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.projectileCharacter
+        projectile.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.bos
+        projectile.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.monster
+        
+//        let offset = touchLocation - projectile.position
+//        if offset.x < 0 {
+//            gendut.xScale = -1
+//        } else {
+//            gendut.xScale = 1
 //        }
-//    }
+        
+        addChild(projectile)
+        
+//        let direction = offset.normalized()
+//        let shootAmount = direction * 1000
+//        let realDest = (shootAmount + projectile.position) * 3
+    
+        let actionMove = SKAction.move(to: touchLocation, duration: 0.75)
+        let actionMoveDone = SKAction.removeFromParent()
+        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+        gendut.stopAttack()
+    }
+    
+    func activateCooldown(duration: TimeInterval) {
+        // Aktifkan cooldown
+        attackCooldownActive = true
+        
+        // Setelah durasi cooldown selesai, matikan cooldown
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
+            self?.attackCooldownActive = false
+        }
+    }
+
     
     func setupGamepadInputGendut(for controller: GCController) {
         if let extendedGamepad = controller.extendedGamepad {
@@ -394,41 +445,6 @@ class GameScene31: SKScene {
             }
         }
     }
-
-
-    
-//    func setupGamepadInputKecil(for controller: GCController) {
-//
-//        if let extendedGamepad = controller.extendedGamepad {
-//            let handlerInstance = Handler()
-//            extendedGamepad.buttonMenu.valueChangedHandler = handlerInstance.buttonMenuValueChangedHandler
-//            extendedGamepad.buttonX.valueChangedHandler = handlerInstance.buttonXValueChangedHandler
-//            extendedGamepad.leftThumbstick.valueChangedHandler = { (thumbstick, xValue, yValue) in
-//                if controller == self.playerControllers[1] {
-//                    if xValue < -0.5 {
-//                        self.kecilRightPressed = true
-//                    } else if xValue > 0.5 {
-//                        self.kecilLeftPressed = true
-//                    } else {
-//                        self.kecilLeftPressed = false
-//                        self.kecilRightPressed = false
-//     
-//                    }
-//                    if yValue < -0.5 {
-//                        self.kecilDownPressed = true
-//                    } else if yValue > 0.5 {
-//                        self.kecilUpPressed = true
-//                    } else {
-//                        self.kecilDownPressed = false
-//                        self.kecilUpPressed = false
-//                    }
-//                    self.kecil.stop()
-//                
-//                }
-//                
-//            }
-//        }
-//    }
     
     override func keyDown(with event: NSEvent) {
         func getKeysPressed() -> Set<Int> {
@@ -469,15 +485,9 @@ class GameScene31: SKScene {
             
             case kVK_ANSI_U:
             kecilShoot = true
-//            shootKecilProjectile(keysPressed: getKeysPressed())
             
             case kVK_Escape:
             
-//            let scene = self
-//            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-//            let gameOverScene = GameOverScene(size: scene.size, won: false)
-//            scene.view?.presentScene(gameOverScene, transition: reveal)
-//            
             let scene = self
             let reveal = SKTransition.fade(withDuration: 0.5)
             let pauseMenuScene = PauseMenuScene(size: scene.size)
@@ -485,7 +495,6 @@ class GameScene31: SKScene {
 
             
             case kVK_ANSI_Q:
-//            print("Q pressed down")
             if towerWhite1BuildBool == true && activateWhite1TowerButtonAvailable == true{
                 activateWhite1TowerButtonPressed = true
             }
@@ -654,7 +663,7 @@ class GameScene31: SKScene {
             if let parent = tower1WhiteBuilt.parent {
                 let position = tower1WhiteBuilt.position
                 let zPos = tower1WhiteBuilt.zPosition
-                tower1WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1WhiteBuilt.size.width/2, height: tower1WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower1WhiteBuilt.size.height/5))
+                tower1WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1WhiteBuilt.size.width/9, height: tower1WhiteBuilt.size.height/6.5), center: CGPoint(x: 0, y: tower1WhiteBuilt.size.height/2.3))
                 tower1WhiteActivated.physicsBody?.affectedByGravity = false
                 tower1WhiteActivated.physicsBody?.isDynamic = false
                 tower1WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite1Activated
@@ -669,7 +678,7 @@ class GameScene31: SKScene {
                 if let parent = tower1WhiteActivated.parent{
                     let position = tower1WhiteBuilt.position
                     let Zpos = tower1WhiteBuilt.zPosition
-                    domain1White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1WhiteBuilt.size.width, height: tower1WhiteBuilt.size.height/2), center: CGPoint(x: 0, y: tower1WhiteBuilt.size.height/5))
+                    domain1White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1WhiteBuilt.size.width, height: tower1WhiteBuilt.size.height/2), center: CGPoint(x: 0, y: tower1WhiteBuilt.size.height/3))
                     domain1White.physicsBody?.affectedByGravity = false
                     domain1White.physicsBody?.isDynamic = false
                     domain1White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.domain1White
@@ -688,7 +697,7 @@ class GameScene31: SKScene {
             if let parent = tower2WhiteBuilt.parent {
                 let position = tower2WhiteBuilt.position
                 var zPos = tower2WhiteBuilt.zPosition
-                tower2WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2WhiteBuilt.size.width/2, height: tower2WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower2WhiteBuilt.size.height/5))
+                tower2WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2WhiteBuilt.size.width/9, height: tower2WhiteBuilt.size.height/6.5), center: CGPoint(x: 0, y: tower2WhiteBuilt.size.height/2.3))
                 tower2WhiteActivated.physicsBody?.affectedByGravity = false
                 tower2WhiteActivated.physicsBody?.isDynamic = false
                 tower2WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite2Activated
@@ -702,7 +711,7 @@ class GameScene31: SKScene {
                 if let parent = tower2WhiteActivated.parent{
                     let position = tower2WhiteBuilt.position
                     let Zpos = tower2WhiteBuilt.zPosition
-                    domain2White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2WhiteBuilt.size.width, height: tower2WhiteBuilt.size.height/2), center: CGPoint(x: 0, y: tower2WhiteBuilt.size.height/5))
+                    domain2White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2WhiteBuilt.size.width, height: tower2WhiteBuilt.size.height/2), center: CGPoint(x: 0, y: tower2WhiteBuilt.size.height/3))
                     domain2White.physicsBody?.affectedByGravity = false
                     domain2White.physicsBody?.isDynamic = false
                     domain2White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.domain2White
@@ -721,7 +730,7 @@ class GameScene31: SKScene {
             if let parent = tower3WhiteBuilt.parent {
                 let position = tower3WhiteBuilt.position
                 let zPos = tower3WhiteBuilt.zPosition
-                tower3WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3WhiteBuilt.size.width/2, height: tower3WhiteBuilt.size.height/4), center: CGPoint(x: 0, y: tower3WhiteBuilt.size.height/5))
+                tower3WhiteActivated.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3WhiteBuilt.size.width/9, height: tower3WhiteBuilt.size.height/6.5), center: CGPoint(x: 0, y: tower3WhiteBuilt.size.height/2.3))
                 tower3WhiteActivated.physicsBody?.affectedByGravity = false
                 tower3WhiteActivated.physicsBody?.isDynamic = false
                 tower3WhiteActivated.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite3Activated
@@ -735,7 +744,7 @@ class GameScene31: SKScene {
                 if let parent = tower3WhiteActivated.parent{
                     let position = tower3WhiteBuilt.position
                     let Zpos = tower3WhiteBuilt.zPosition
-                    domain3White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3WhiteBuilt.size.width, height: tower3WhiteBuilt.size.height/2), center: CGPoint(x: 0, y: tower3WhiteBuilt.size.height/5))
+                    domain3White.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3WhiteBuilt.size.width, height: tower3WhiteBuilt.size.height/2), center: CGPoint(x: 0, y: tower3WhiteBuilt.size.height/3))
                     domain3White.physicsBody?.affectedByGravity = false
                     domain3White.physicsBody?.isDynamic = false
                     domain3White.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.domain3White
@@ -754,7 +763,7 @@ class GameScene31: SKScene {
                 let position = tower1White.position
                 let zPos = tower1White.zPosition
                 tower1WhiteBuilt.position = position
-                tower1WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1White.size.width/2, height: tower1White.size.height/4), center: CGPoint(x: 0, y: tower1White.size.height/3))
+                tower1WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower1White.size.width/2, height: tower1White.size.height/4), center: CGPoint(x: 0, y: tower1White.size.height))
                 tower1WhiteBuilt.physicsBody?.affectedByGravity = false
                 tower1WhiteBuilt.physicsBody?.isDynamic = false
                 tower1WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite1NotActivated
@@ -764,6 +773,7 @@ class GameScene31: SKScene {
 //                tower1WhiteBuilt.size = CGSize(width: 300, height: 600)
                 tower1WhiteBuilt.position = position
                 tower1WhiteBuilt.zPosition = zPos
+                removecollectTextTower()
                 parent.addChild(tower1WhiteBuilt)
             }
         }
@@ -773,7 +783,7 @@ class GameScene31: SKScene {
             if let parent = tower2White.parent {
                 let position = tower2White.position
                 let zPos = tower2White.zPosition
-                tower2WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/2, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height/3))
+                tower2WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower2White.size.width/2, height: tower2White.size.height/4), center: CGPoint(x: 0, y: tower2White.size.height))
                 tower2WhiteBuilt.physicsBody?.affectedByGravity = false
                 tower2WhiteBuilt.physicsBody?.isDynamic = false
                 tower2WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
@@ -783,6 +793,7 @@ class GameScene31: SKScene {
 //                tower2WhiteBuilt.size = CGSize(width: 300, height: 600)
                 tower2WhiteBuilt.position = position
                 tower2WhiteBuilt.zPosition = zPos
+                removecollectTextTower()
                 parent.addChild(tower2WhiteBuilt)
             }
         }
@@ -792,7 +803,7 @@ class GameScene31: SKScene {
             if let parent = tower3White.parent {
                 let position = tower3White.position
                 let zPos = tower3White.zPosition
-                tower3WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3White.size.width/2, height: tower3White.size.height/4), center: CGPoint(x: 0, y: tower3White.size.height/3))
+                tower3WhiteBuilt.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tower3White.size.width/2, height: tower3White.size.height/4), center: CGPoint(x: 0, y: tower3White.size.height))
                 tower3WhiteBuilt.physicsBody?.affectedByGravity = false
                 tower3WhiteBuilt.physicsBody?.isDynamic = false
                 tower3WhiteBuilt.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
@@ -802,6 +813,7 @@ class GameScene31: SKScene {
 //                tower3WhiteBuilt.size = CGSize(width: 300, height: 600)
                 tower3WhiteBuilt.position = position
                 tower3WhiteBuilt.zPosition = zPos
+                removecollectTextTower()
                 parent.addChild(tower3WhiteBuilt)
             }
         }
@@ -991,6 +1003,26 @@ class GameScene31: SKScene {
             addChild(collectText)
         }
     }
+    func checkGameOver() {
+        if kecil.kecilHealth <= 0 {
+            triggerGameOver()
+        }
+    }
+    
+    func triggerGameOver() {
+        // Option 1: Transition to a game over scene
+        let gameOverScene = GameOverSceneSena(size: self.size)
+        let transition = SKTransition.crossFade(withDuration: 1.0)
+        self.view?.presentScene(gameOverScene, transition: transition)
+    
+        self.isPaused = true
+        
+    }
+    
+    func applyRedFilter() {
+        kecil.color = .red
+        kecil.colorBlendFactor = 0.25
+    }
     
     func shootGedeProjectile(keysPressed: Set<Int>){
         gendut.attack()
@@ -1047,8 +1079,8 @@ class GameScene31: SKScene {
 //    func shootKecilProjectile(keysPressed: Set<Int>) {
 //        let projectile = KecilProjectile()
 //        projectile.position = CGPoint(x: kecil.position.x + 100, y: kecil.position.y + 100)
-//        addChild(projectile)
-//        
+//        addChild(projectile)s
+//
 //        var direction = CGVector(dx: 0, dy: 0)
 //        
 //        if keysPressed.contains(kVK_UpArrow) {

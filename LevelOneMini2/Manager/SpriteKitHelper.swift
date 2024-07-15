@@ -65,6 +65,7 @@ extension SKSpriteNode {
         case towerDown
         case decor
         case canon
+        case backProgBar
         case progressBar
         case boundaries
         case projectile

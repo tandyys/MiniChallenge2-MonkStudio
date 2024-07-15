@@ -77,11 +77,11 @@ class GameScene32: SKScene {
     let progressBarSize = CGSize(width: 1264, height: 39)
     let progressBarSizeGendut = CGSize(width: 195/1.4, height: 27.42/1.4)
     let progressBarSizeKecil = CGSize(width: 195/1.4, height: 27.42/1.4)
+    var attackCooldownActive: Bool = false
     
     override func didMove(to view: SKView) {
         gendut.position = CGPoint(x: 600, y: 450)
         kecil.position = CGPoint(x: 100, y: 300)
-        
         
         
         backgroundManager = BackgroundManager(scene: self)
@@ -109,9 +109,9 @@ class GameScene32: SKScene {
         healthBarKecil.position = CGPoint(x: kecil.position.x, y: kecil.position.y + 10)
         
         addChild(healthBarBos)
-        addChild(healthBarGendut)
-        addChild(healthBarKecil)
-        
+//        addChild(healthBarGendut)
+//        addChild(healthBarKecil)
+//        
         //minion.position = CGPoint(x: 1000, y: 300)
         //minion.walk()
         //addChild(minion)
@@ -152,18 +152,20 @@ class GameScene32: SKScene {
         //            SKAction.wait(forDuration: 5),
         //            stopAction
         //        ])
-        //        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")
-        
+        //        run(SKAction.repeatForever(spawnSequence), withKey: "Spawn")        
         run(SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.run({ [self] in spawnMonster(blueMinion)}),
+              SKAction.sequence([
+                SKAction.run({ [unowned self] in spawnRedMonster()}),
                 SKAction.wait(forDuration: 3),
-                SKAction.run({ [self] in spawnMonster(redMinion)}),
+                SKAction.run({ [unowned self] in spawnBlueMonster()}),
                 SKAction.wait(forDuration: 3),
-                SKAction.run({ [self] in spawnMonster(purpleMinion)}),
+                SKAction.run({ Bos().startAttackCycle()}),
+                SKAction.wait(forDuration: 15),
+                SKAction.run({ [unowned self] in spawnPurpleMonster()}),
                 SKAction.wait(forDuration: 3)
-            ])
-        ))
+                ])
+            ))
+        
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(didConnectController(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
@@ -389,6 +391,20 @@ class GameScene32: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if bos.hpBos < 1{
+            let scene = self
+            let reveal = SKTransition.fade(withDuration: 0.5)
+            let gameScene32 = EpilogVideoScene(size: scene.size)
+            view?.scene?.scaleMode = .aspectFit
+            scene.view?.presentScene(gameScene32, transition: reveal)
+            
+        }
+        
+        if kecil.position.y < gendut.position.y {
+                    kecil.zPosition = SKSpriteNode.Layer.characterKecilBack.rawValue
+                } else if kecil.position.y > gendut.position.y {
+                    kecil.zPosition = SKSpriteNode.Layer.characterKecilFront.rawValue
+                }
         if kecil.hp < 1{
             let scene = self
             let reveal = SKTransition.fade(withDuration: 0.5)
@@ -453,6 +469,62 @@ class GameScene32: SKScene {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func mouseDown(with event: NSEvent) {
+        
+        if attackCooldownActive {
+            return
+        }
+        
+        gendut.attack()
+        gendut.attackAudio?.stop()
+        gendut.attackAudio?.currentTime = 0
+        gendut.attackAudio?.play()
+        activateCooldown(duration: 0.3)
+        
+        let touchLocation = event.location(in: self)
+        let projectile = SKSpriteNode(imageNamed: "gedeProjectile")
+        projectile.name = "gedeProjectile"
+        projectile.position = CGPoint(x: gendut.position.x, y: gendut.position.y + gendut.position.y/6)
+        projectile.zPosition = SKSpriteNode.Layer.projectile.rawValue
+        projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
+        projectile.physicsBody?.isDynamic = true
+        projectile.physicsBody?.affectedByGravity = false
+        projectile.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.projectileCharacter
+        projectile.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.bos
+        projectile.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.monster
+        
+//        let offset = touchLocation - projectile.position
+//        if offset.x < 0 {
+//            gendut.xScale = -1
+//        } else {
+//            gendut.xScale = 1
+//        }
+        
+        addChild(projectile)
+        
+//        let direction = offset.normalized()
+//        let shootAmount = direction * 1000
+//        let realDest = (shootAmount + projectile.position) * 3
+        
+        let actionMove = SKAction.move(to: touchLocation, duration: 0.75)
+        let actionMoveDone = SKAction.removeFromParent()
+        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+        gendut.stopAttack()
+    }
+    
+    func activateCooldown(duration: TimeInterval) {
+        // Aktifkan cooldown
+        attackCooldownActive = true
+        
+        // Setelah durasi cooldown selesai, matikan cooldown
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
+            self?.attackCooldownActive = false
+        }
+    }
+    
     
     func shootGedeProjectile(keysPressed: Set<Int>){
         let projectile = GedeProjectile()
@@ -514,37 +586,57 @@ class GameScene32: SKScene {
         
     }
     
-    func spawnMonster(_ imageCode: String) {
-        let minSpawn = 100
-        let maxSpawn = 4000
-        let position = Int.random(in: minSpawn...maxSpawn )
-        let minionTexture = SKTexture(imageNamed: "walk-\(imageCode)-1")
-        let healthBarSize = CGSize(width: 100, height: 20)
-        let maxHealth = 100.0
-        let minion = Minion(texture: minionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager, position: position)
-        
-        if let spriteComponent = minion.component(ofType: SpriteComponent.self) {
-    
-            entityManager.add(minion)
-            
-            minion.setTargetAgent(kecil.playerAgent)
-
-            
-            let updateAction = SKAction.run { [self] in
-                minion.minionAgent.update(deltaTime: 1.0/60.0)
-                spriteComponent.node.position = CGPoint(x: CGFloat(minion.minionAgent.position.x), y: CGFloat(minion.minionAgent.position.y))
-                
-                if minion.minionAgent.position.x < kecil.playerAgent.position.x {
-                    spriteComponent.node.xScale = -1
-                } else {
-                    spriteComponent.node.xScale = 1
-                }
-            }
-            
-            let updateLoop = SKAction.repeatForever(SKAction.sequence([updateAction, SKAction.wait(forDuration: 1.0 / 60.0)]))
-            
-            run(updateLoop)
+//    func spawnMonster(_ imageCode: String) {
+//        let minSpawn = 100
+//        let maxSpawn = 4000
+//        let position = Int.random(in: minSpawn...maxSpawn )
+//        let minionTexture = SKTexture(imageNamed: "walk-\(imageCode)-1")
+//        let healthBarSize = CGSize(width: 100, height: 20)
+//        let maxHealth = 100.0
+//        let minion = Minion(texture: minionTexture, healthBarSize: healthBarSize, maxHealth: maxHealth, entityManager: entityManager, position: position)
+//        
+//        if let spriteComponent = minion.component(ofType: SpriteComponent.self) {
+//    
+//            entityManager.add(minion)
+//            
+//            minion.setTargetAgent(kecil.playerAgent)
+//
+//            
+//            let updateAction = SKAction.run { [self] in
+//                minion.minionAgent.update(deltaTime: 1.0/60.0)
+//                spriteComponent.node.position = CGPoint(x: CGFloat(minion.minionAgent.position.x), y: CGFloat(minion.minionAgent.position.y))
+//                
+//                if minion.minionAgent.position.x < kecil.playerAgent.position.x {
+//                    spriteComponent.node.xScale = -1
+//                } else {
+//                    spriteComponent.node.xScale = 1
+//                }
+//            }
+//            
+//            let updateLoop = SKAction.repeatForever(SKAction.sequence([updateAction, SKAction.wait(forDuration: 1.0 / 60.0)]))
+//            
+//            run(updateLoop)
+//        }
+//    }
+    func checkGameOver() {
+        if kecil.kecilHealth <= 0 {
+            triggerGameOver()
         }
+    }
+    
+    func triggerGameOver() {
+        // Option 1: Transition to a game over scene
+        let gameOverScene = GameOverSceneSena(size: self.size)
+        let transition = SKTransition.crossFade(withDuration: 1.0)
+        self.view?.presentScene(gameOverScene, transition: transition)
+    
+        self.isPaused = true
+        
+    }
+    
+    func applyRedFilter() {
+        kecil.color = .red
+        kecil.colorBlendFactor = 0.25
     }
     
 }

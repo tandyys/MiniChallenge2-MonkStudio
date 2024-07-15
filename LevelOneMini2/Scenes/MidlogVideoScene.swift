@@ -21,7 +21,7 @@ class MidlogVideoScene: SKScene {
     
     func playMidlogVideo() {
         // Path ke file video dalam bundle
-        if let path = Bundle.main.url(forResource: "MidLogueVideo", withExtension: "mp4"){
+        if let path = Bundle.main.url(forResource: "Midlogue", withExtension: ".m4v"){
         
             // Buat AVPlayer
             player = AVPlayer(url: path)
@@ -64,7 +64,7 @@ class MidlogVideoScene: SKScene {
     
     func startGameplay() {
         let reveal = SKTransition.fade(withDuration: 0.5)
-        let scene = GameScene1(size: size)
+        let scene = GameScene31(size: size)
         view?.scene?.scaleMode = .aspectFit
         self.view?.presentScene(scene, transition:reveal)
     }

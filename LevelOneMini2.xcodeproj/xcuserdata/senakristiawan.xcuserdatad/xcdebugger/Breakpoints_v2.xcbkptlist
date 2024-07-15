@@ -3,4 +3,385 @@
    uuid = "D37FF76C-56A0-4011-BF41-AF7833DDD4D7"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "901908C2-8EF4-4F0E-8B01-4A8C411B8FF7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Objects/Bos.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "startAttackCycle()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "901908C2-8EF4-4F0E-8B01-4A8C411B8FF7 - 7d259e19ea4c19c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "901908C2-8EF4-4F0E-8B01-4A8C411B8FF7 - 67425b7dae5e2c9a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "901908C2-8EF4-4F0E-8B01-4A8C411B8FF7 - 7d259e19ea4c19c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "901908C2-8EF4-4F0E-8B01-4A8C411B8FF7 - 7d259e19ea4c19c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D38DB81-F067-426F-9D60-DD5FA9F6BD4E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Scenes/GameScene32.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0D38DB81-F067-426F-9D60-DD5FA9F6BD4E - 7765b0186b6de520"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.GameScene32.didMove(to: __C.SKView) -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Scenes/GameScene32.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "3756">
+               </Location>
+               <Location
+                  uuid = "0D38DB81-F067-426F-9D60-DD5FA9F6BD4E - acc4a004cd6da8d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in LevelOneMini2.GameScene32.didMove(to: __C.SKView) -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Scenes/GameScene32.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D17EF6A-9FE2-4141-9EB9-93D0E2AE75F6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Objects/Bos.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "spawnAttackingMaterialFromBoss()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C7A2F09C-64AC-4DD7-9A79-0AB9A461643C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Objects/Bos.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "startAttackCycle()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7A038EF4-F84E-4413-A164-DDE943187DB2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Objects/Bos.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "startAttackCycle()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7A038EF4-F84E-4413-A164-DDE943187DB2 - 7d259e19ea4c16d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "568">
+               </Location>
+               <Location
+                  uuid = "7A038EF4-F84E-4413-A164-DDE943187DB2 - 7d259e19ea4c16d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "516">
+               </Location>
+               <Location
+                  uuid = "7A038EF4-F84E-4413-A164-DDE943187DB2 - 7d259e19ea4c16d1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "512">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "96074EF7-1EDC-4BC3-AB26-B8DB92887F1D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Objects/Bos.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "startAttackCycle()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "96074EF7-1EDC-4BC3-AB26-B8DB92887F1D - 7d259e19ea4c1632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "796">
+               </Location>
+               <Location
+                  uuid = "96074EF7-1EDC-4BC3-AB26-B8DB92887F1D - 7d259e19ea4c1632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "724">
+               </Location>
+               <Location
+                  uuid = "96074EF7-1EDC-4BC3-AB26-B8DB92887F1D - 7d259e19ea4c1613"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "736">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5EAE978F-CDCC-42B9-B843-A88CACEDE9A7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Objects/Bos.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "startAttackCycle()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5EAE978F-CDCC-42B9-B843-A88CACEDE9A7 - 7d259e19ea4c1613"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "856">
+               </Location>
+               <Location
+                  uuid = "5EAE978F-CDCC-42B9-B843-A88CACEDE9A7 - 7d259e19ea4c1613"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "784">
+               </Location>
+               <Location
+                  uuid = "5EAE978F-CDCC-42B9-B843-A88CACEDE9A7 - 7d259e19ea4c1613"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LevelOneMini2.Bos.startAttackCycle() -&gt; ()"
+                  moduleName = "LevelOneMini2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/senakristiawan/Documents/Other/MiniChallenge2-MonkStudio/LevelOneMini2/Objects/Bos.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "88"
+                  endingLineNumber = "88"
+                  offsetFromSymbolStart = "736">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A4566BD-5880-4FE6-975D-73799F332257"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Objects/Bos.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "startAttackCycle()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E801FAE-E3F7-4ECD-BEB5-0410A856F926"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LevelOneMini2/Scenes/GameScene32.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "update(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

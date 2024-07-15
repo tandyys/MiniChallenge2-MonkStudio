@@ -26,26 +26,6 @@ class Intro: SKScene{
             logo.position = CGPoint(x: self.frame.midX, y: self.frame.midY+400)
             logo.zPosition = SKSpriteNode.Layer.logoMenu.rawValue
             addChild(logo)
-            
-//            let introAction = SKAction.run { [unowned self] in
-//                self.addChild(intro)
-//            }
-//            
-//            let buttonAction = SKAction.run { [unowned self] in
-//                self.addChild(button)
-//            }
-//            
-//            let logoAction = SKAction.run { [unowned self] in
-//                self.addChild(logo)
-//            }
-//            
-//            let removeAction = SKAction.run { [unowned self] in
-//                intro.removeFromParent()
-//                button.removeFromParent()
-//                logo.removeFromParent()
-//            }
-//            
-//            run(SKAction.sequence([introAction, SKAction.wait(forDuration: 2.0), buttonAction, SKAction.wait(forDuration: 2.0), logoAction, SKAction.wait(forDuration: 2.0), removeAction]))
     }
     
     override func mouseDown(with event: NSEvent) {

@@ -31,7 +31,7 @@ class Canon_Left: SKSpriteNode {
         self.anchorPoint = CGPoint(x: 0, y: 0.5)
         self.zPosition = SKSpriteNode.Layer.canon.rawValue
         self.position = CGPoint(x: 150, y: 450)
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width/5, height: self.size.height/5), center: CGPoint(x: self.size.width/2, y: -25))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width/5, height: self.size.height/3), center: CGPoint(x: self.size.width/2, y: -70))
         self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.canonLeftNotActivated
         self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.kecil
         self.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none

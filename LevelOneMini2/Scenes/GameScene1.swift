@@ -261,11 +261,14 @@ class GameScene1: SKScene {
         }
         
         gendut.attack()
-        activateCooldown(duration: 1.0)
+        gendut.attackAudio?.stop()
+        gendut.attackAudio?.currentTime = 0
+        gendut.attackAudio?.play()
+        activateCooldown(duration: 0.3)
         
         let touchLocation = event.location(in: self)
         let projectile = SKSpriteNode(imageNamed: "gedeProjectile")
-        projectile.name = "Projectile"
+        projectile.name = "gedeProjectile"
         projectile.position = CGPoint(x: gendut.position.x, y: gendut.position.y + gendut.position.y/6)
         projectile.zPosition = SKSpriteNode.Layer.projectile.rawValue
         projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
@@ -275,23 +278,20 @@ class GameScene1: SKScene {
         projectile.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.monster
         projectile.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.monster
         
-        let offset = touchLocation - projectile.position
-        
-        if offset.x < 0 {
-            gendut.xScale = -1
-        } else {
-            gendut.xScale = 1
-        }
+//        let offset = touchLocation - projectile.position
+//        if offset.x < 0 {
+//            gendut.xScale = -1
+//        } else {
+//            gendut.xScale = 1
+//        }
         
         addChild(projectile)
         
-        let direction = offset.normalized()
+//        let direction = offset.normalized()
+//        let shootAmount = direction * 1000
+//        let realDest = (shootAmount + projectile.position) * 3
         
-        let shootAmount = direction * 1000
-        
-        let realDest = shootAmount + projectile.position
-        
-        let actionMove = SKAction.move(to: realDest, duration: 0.75)
+        let actionMove = SKAction.move(to: touchLocation, duration: 0.75)
         let actionMoveDone = SKAction.removeFromParent()
         projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
     }

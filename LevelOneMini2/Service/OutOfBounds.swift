@@ -8,10 +8,10 @@ func outOfBounds(gendut:Gendut, kecil:Kecil, foregroundImage: SKSpriteNode ) {
         gendut.position.x = foregroundImage.size.width - 150
     }
 
-    if gendut.position.y < 150 {
-        gendut.position.y = 150
-    } else if gendut.position.y > foregroundImage.size.height - 170 {
-        gendut.position.y = foregroundImage.size.height - 170
+    if gendut.position.y < 1 {
+        gendut.position.y = 1
+    } else if gendut.position.y > foregroundImage.size.height - 1100 {
+        gendut.position.y = foregroundImage.size.height - 1100
     }
     
     if kecil.position.x < 150 {
@@ -20,9 +20,9 @@ func outOfBounds(gendut:Gendut, kecil:Kecil, foregroundImage: SKSpriteNode ) {
         kecil.position.x = foregroundImage.size.width - 150
     }
     
-    if kecil.position.y < 150 {
-        kecil.position.y = 150
-    } else if kecil.position.y > foregroundImage.size.height - 170 {
-        kecil.position.y = foregroundImage.size.height - 170
+    if kecil.position.y < 1 {
+        kecil.position.y = 1
+    } else if kecil.position.y > foregroundImage.size.height - 1100{
+        kecil.position.y = foregroundImage.size.height - 1100
     }
 }

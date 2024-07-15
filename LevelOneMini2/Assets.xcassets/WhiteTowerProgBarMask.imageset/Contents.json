@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "WhiteTowerProgBarMask.svg",
+      "filename" : "Rectangle 107.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Rectangle 108.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Rectangle 109.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

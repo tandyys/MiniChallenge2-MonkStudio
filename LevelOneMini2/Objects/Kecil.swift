@@ -52,19 +52,27 @@ class Kecil: SKSpriteNode {
         
         self.physicsBody?.collisionBitMask =
         SKSpriteNode.PhysicsCategory.gendut 
-        SKSpriteNode.PhysicsCategory.monster
-        | SKSpriteNode.PhysicsCategory.towerRedNotActivated | SKSpriteNode.PhysicsCategory.towerBlueNotActivated | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated | SKSpriteNode.PhysicsCategory.towerGreenNotActivated
-        
+        | SKSpriteNode.PhysicsCategory.monster
+        | SKSpriteNode.PhysicsCategory.towerRedNotActivated
+        | SKSpriteNode.PhysicsCategory.towerBlueNotActivated 
+        | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated
+        | SKSpriteNode.PhysicsCategory.towerGreenNotActivated
         | SKSpriteNode.PhysicsCategory.towerActivated
-        
         | SKSpriteNode.PhysicsCategory.platform
-        
-        | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed | SKSpriteNode.PhysicsCategory.towerWhite1Activated | SKSpriteNode.PhysicsCategory.towerWhite1NotActivated
-        
-        | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed | SKSpriteNode.PhysicsCategory.towerWhite2Activated | SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
-        
-        | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed | SKSpriteNode.PhysicsCategory.towerWhite3Activated | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
-        | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | SKSpriteNode.PhysicsCategory.jatuhan
+        | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed 
+        | SKSpriteNode.PhysicsCategory.towerWhite1Activated
+        | SKSpriteNode.PhysicsCategory.towerWhite1NotActivated
+        | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed 
+        | SKSpriteNode.PhysicsCategory.towerWhite2Activated
+        | SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
+        | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed 
+        | SKSpriteNode.PhysicsCategory.towerWhite3Activated 
+        | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
+        | SKSpriteNode.PhysicsCategory.canonLeft 
+        | SKSpriteNode.PhysicsCategory.canonRight
+        | SKSpriteNode.PhysicsCategory.canonLeftNotActivated
+        | SKSpriteNode.PhysicsCategory.canonRightNotActivated
+        | SKSpriteNode.PhysicsCategory.jatuhan
         
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true

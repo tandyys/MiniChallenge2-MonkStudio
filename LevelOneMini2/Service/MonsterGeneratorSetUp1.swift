@@ -8,8 +8,10 @@
 import Foundation
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
-extension GameScene1 {
+extension GameScene31 {
+
     
     func spawnRedMonster() {
 //        let minionTexture = SKTexture(imageNamed: "walk-\(imageCode)-1")

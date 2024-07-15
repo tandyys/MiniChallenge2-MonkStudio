@@ -10,18 +10,18 @@ import SpriteKit
 
 class GateSymbol: SKSpriteNode {
     class func symbolRed() -> GateSymbol {
-        let symbol = GateSymbol(imageNamed: "symbol-r")
-        symbol.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        symbol.zPosition = SKSpriteNode.Layer.towerUp.rawValue
-        symbol.position = CGPoint(x: 2155, y: 1740)
-        return symbol
-    }
-    
-    class func symbolPurple() -> GateSymbol {
         let symbol = GateSymbol(imageNamed: "symbol-p")
         symbol.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         symbol.zPosition = SKSpriteNode.Layer.towerUp.rawValue
         symbol.position = CGPoint(x: 2350, y: 1705)
+        return symbol
+    }
+    
+    class func symbolPurple() -> GateSymbol {
+        let symbol = GateSymbol(imageNamed: "symbol-r")
+        symbol.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        symbol.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        symbol.position = CGPoint(x: 2155, y: 1740)
         return symbol
     }
     

@@ -94,7 +94,7 @@ extension GameScene1: SKPhysicsContactDelegate {
         projectile.removeFromParent()
         monster.removeFromParent()
         if let minionEntity = entityManager.getEntity(for: monster) as? Minion {
-            minionEntity.changeHealth(by: -25)  // Reduce health by 25 points
+            minionEntity.changeHealth(by: -25, scene: self)  // Reduce health by 25 points
         }
     }
     

@@ -17,6 +17,8 @@
 		273B712B2C2297FC00A64CA0 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B712A2C2297FC00A64CA0 /* Tower.swift */; };
 		273B71372C22B21500A64CA0 /* GameScenePhysicsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */; };
 		273B71442C28414300A64CA0 /* TowerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B71432C28414300A64CA0 /* TowerProgressBar.swift */; };
+		B588E7C52C4581F200032FCA /* MonsterGeneratorSetUp2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B588E7C42C4581F200032FCA /* MonsterGeneratorSetUp2.swift */; };
+		B588E7CA2C4585D200032FCA /* EpilogVideoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B588E7C92C4585D200032FCA /* EpilogVideoScene.swift */; };
 		B5AFD1442C286EDC006715F8 /* GameScene31.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1432C286EDC006715F8 /* GameScene31.swift */; };
 		B5AFD1462C286F1B006715F8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1452C286F1B006715F8 /* MenuScene.swift */; };
 		B5AFD1482C2917B7006715F8 /* Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AFD1472C2917B7006715F8 /* Handler.swift */; };
@@ -57,6 +59,8 @@
 		B5C2822B2C2DD47A003CAF05 /* whoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B5C2822A2C2DD47A003CAF05 /* whoosh.mp3 */; };
 		B5C2822D2C2DD74F003CAF05 /* dieMinion.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5C2822C2C2DD74F003CAF05 /* dieMinion.wav */; };
 		B5C2822F2C2DE38F003CAF05 /* stoneDrop.wav in Resources */ = {isa = PBXBuildFile; fileRef = B5C2822E2C2DE38F003CAF05 /* stoneDrop.wav */; };
+		B5E095F52C4593AD005141D0 /* Midlogue.m4v in Resources */ = {isa = PBXBuildFile; fileRef = B588E7CD2C4590C200032FCA /* Midlogue.m4v */; };
+		B5E095F62C4593B0005141D0 /* Prologue.m4v in Resources */ = {isa = PBXBuildFile; fileRef = B588E7CE2C4590C300032FCA /* Prologue.m4v */; };
 		B5EA60B82C321C3E00E58EEE /* Animation Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA60B72C321C3E00E58EEE /* Animation Component.swift */; };
 		B5EA60BC2C321F7800E58EEE /* GameScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA60BB2C321F7800E58EEE /* GameScene1.swift */; };
 		B5EA60BE2C3220DA00E58EEE /* TowerRed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA60BD2C3220DA00E58EEE /* TowerRed.swift */; };
@@ -67,8 +71,6 @@
 		B5EA60C82C3222B400E58EEE /* SKTextureLoadTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA60C72C3222B400E58EEE /* SKTextureLoadTexture.swift */; };
 		B5EA60CA2C3229E600E58EEE /* MidlogVideoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA60C92C3229E600E58EEE /* MidlogVideoScene.swift */; };
 		B5EA60CF2C3285AB00E58EEE /* Epilogue.m4v in Resources */ = {isa = PBXBuildFile; fileRef = B5EA60CC2C322BEC00E58EEE /* Epilogue.m4v */; };
-		B5EA60D02C32861500E58EEE /* Midlogue.m4v in Resources */ = {isa = PBXBuildFile; fileRef = B5EA60CB2C322AD200E58EEE /* Midlogue.m4v */; };
-		B5EA60D12C32863D00E58EEE /* Prologue.m4v in Resources */ = {isa = PBXBuildFile; fileRef = B5EA60CE2C3283CC00E58EEE /* Prologue.m4v */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +86,11 @@
 		273B712A2C2297FC00A64CA0 /* Tower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		273B71362C22B21500A64CA0 /* GameScenePhysicsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScenePhysicsDelegate.swift; sourceTree = "<group>"; };
 		273B71432C28414300A64CA0 /* TowerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TowerProgressBar.swift; sourceTree = "<group>"; };
+		B588E7C42C4581F200032FCA /* MonsterGeneratorSetUp2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterGeneratorSetUp2.swift; sourceTree = "<group>"; };
+		B588E7C62C4582C300032FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B588E7C92C4585D200032FCA /* EpilogVideoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpilogVideoScene.swift; sourceTree = "<group>"; };
+		B588E7CD2C4590C200032FCA /* Midlogue.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Midlogue.m4v; sourceTree = "<group>"; };
+		B588E7CE2C4590C300032FCA /* Prologue.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Prologue.m4v; sourceTree = "<group>"; };
 		B5AFD1432C286EDC006715F8 /* GameScene31.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene31.swift; sourceTree = "<group>"; };
 		B5AFD1452C286F1B006715F8 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		B5AFD1472C2917B7006715F8 /* Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Handler.swift; sourceTree = "<group>"; };
@@ -133,9 +140,7 @@
 		B5EA60C52C32229600E58EEE /* PrologVideoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrologVideoScene.swift; sourceTree = "<group>"; };
 		B5EA60C72C3222B400E58EEE /* SKTextureLoadTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTextureLoadTexture.swift; sourceTree = "<group>"; };
 		B5EA60C92C3229E600E58EEE /* MidlogVideoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MidlogVideoScene.swift; sourceTree = "<group>"; };
-		B5EA60CB2C322AD200E58EEE /* Midlogue.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Midlogue.m4v; sourceTree = "<group>"; };
 		B5EA60CC2C322BEC00E58EEE /* Epilogue.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Epilogue.m4v; sourceTree = "<group>"; };
-		B5EA60CE2C3283CC00E58EEE /* Prologue.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Prologue.m4v; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +173,7 @@
 		273B6F692C214EB800A64CA0 /* LevelOneMini2 */ = {
 			isa = PBXGroup;
 			children = (
+				B588E7C62C4582C300032FCA /* Info.plist */,
 				273B6F6A2C214EB800A64CA0 /* AppDelegate.swift */,
 				273B6F722C214EB800A64CA0 /* ViewController.swift */,
 				B5EA60CD2C322C0C00E58EEE /* Video & Sound */,
@@ -215,9 +221,9 @@
 				B5C2821D2C2D7A6D003CAF05 /* bg.mp3 */,
 				B5C2821F2C2D7A73003CAF05 /* rock-falling-010-104938.mp3 */,
 				B5C2822A2C2DD47A003CAF05 /* whoosh.mp3 */,
-				B5EA60CB2C322AD200E58EEE /* Midlogue.m4v */,
 				B5EA60CC2C322BEC00E58EEE /* Epilogue.m4v */,
-				B5EA60CE2C3283CC00E58EEE /* Prologue.m4v */,
+				B588E7CD2C4590C200032FCA /* Midlogue.m4v */,
+				B588E7CE2C4590C300032FCA /* Prologue.m4v */,
 				B5C2822C2C2DD74F003CAF05 /* dieMinion.wav */,
 				B5C2822E2C2DE38F003CAF05 /* stoneDrop.wav */,
 			);
@@ -231,6 +237,7 @@
 				B5EA60BB2C321F7800E58EEE /* GameScene1.swift */,
 				B5EA60C52C32229600E58EEE /* PrologVideoScene.swift */,
 				B5EA60C92C3229E600E58EEE /* MidlogVideoScene.swift */,
+				B588E7C92C4585D200032FCA /* EpilogVideoScene.swift */,
 				B5AFD1572C2BDF82006715F8 /* ChooseCharacterScene.swift */,
 				B5AFD1552C2BD5C8006715F8 /* Intro.swift */,
 				B5AFD1532C2BCF9F006715F8 /* PauseMenuScene.swift */,
@@ -264,6 +271,7 @@
 				B5C282172C2D79FF003CAF05 /* GameScene32PhysicsDelegate.swift */,
 				B5AFD1652C2C2FA8006715F8 /* MonsterGeneratorSetUp.swift */,
 				B5EA60C32C32227000E58EEE /* MonsterGeneratorSetUp1.swift */,
+				B588E7C42C4581F200032FCA /* MonsterGeneratorSetUp2.swift */,
 				B5EA60C72C3222B400E58EEE /* SKTextureLoadTexture.swift */,
 				B5AFD1632C2C2D66006715F8 /* GKComponentExtension.swift */,
 				B5EA60BF2C32216800E58EEE /* GameScene1PhysicsDelegate.swift */,
@@ -333,14 +341,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5EA60D12C32863D00E58EEE /* Prologue.m4v in Resources */,
-				B5EA60D02C32861500E58EEE /* Midlogue.m4v in Resources */,
 				B5EA60CF2C3285AB00E58EEE /* Epilogue.m4v in Resources */,
+				B5E095F52C4593AD005141D0 /* Midlogue.m4v in Resources */,
 				273B6F752C214EB900A64CA0 /* Assets.xcassets in Resources */,
 				273B6F782C214EB900A64CA0 /* Base in Resources */,
 				B5C2822B2C2DD47A003CAF05 /* whoosh.mp3 in Resources */,
 				B5C282202C2D7A73003CAF05 /* rock-falling-010-104938.mp3 in Resources */,
 				B5C2822D2C2DD74F003CAF05 /* dieMinion.wav in Resources */,
+				B5E095F62C4593B0005141D0 /* Prologue.m4v in Resources */,
 				B5C2821E2C2D7A6D003CAF05 /* bg.mp3 in Resources */,
 				B5C2822F2C2DE38F003CAF05 /* stoneDrop.wav in Resources */,
 				B5C282292C2DD2BC003CAF05 /* walking.mp3 in Resources */,
@@ -388,6 +396,7 @@
 				B5AFD1482C2917B7006715F8 /* Handler.swift in Sources */,
 				B5EA60B82C321C3E00E58EEE /* Animation Component.swift in Sources */,
 				B5AFD1642C2C2D66006715F8 /* GKComponentExtension.swift in Sources */,
+				B588E7CA2C4585D200032FCA /* EpilogVideoScene.swift in Sources */,
 				273B71442C28414300A64CA0 /* TowerProgressBar.swift in Sources */,
 				273B6F972C217E6D00A64CA0 /* Gendut.swift in Sources */,
 				B5AFD15A2C2BF773006715F8 /* KecilProjectile.swift in Sources */,
@@ -399,6 +408,7 @@
 				B5AFD1662C2C2FA8006715F8 /* MonsterGeneratorSetUp.swift in Sources */,
 				B5C2821A2C2D7A38003CAF05 /* Movement.swift in Sources */,
 				B5EA60BE2C3220DA00E58EEE /* TowerRed.swift in Sources */,
+				B588E7C52C4581F200032FCA /* MonsterGeneratorSetUp2.swift in Sources */,
 				B5AFD1702C2C3E28006715F8 /* HpProgressBar.swift in Sources */,
 				273B6F912C215B0C00A64CA0 /* SpriteKitHelper.swift in Sources */,
 				B5C282182C2D79FF003CAF05 /* GameScene32PhysicsDelegate.swift in Sources */,
@@ -549,9 +559,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "LevelOneMini2/Video\\ &\\ Sound/Epilogue.m4v LevelOneMini2/Video\\ &\\ Sound/Midlogue.m4v LevelOneMini2/Video\\ &\\ Sound LevelOneMini2/Video\\ &\\ Sound/Prologue.m4v";
 				DEVELOPMENT_TEAM = VNG2A57GP5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LevelOneMini2/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -577,9 +589,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "LevelOneMini2/Video\\ &\\ Sound/Epilogue.m4v LevelOneMini2/Video\\ &\\ Sound/Midlogue.m4v LevelOneMini2/Video\\ &\\ Sound LevelOneMini2/Video\\ &\\ Sound/Prologue.m4v";
 				DEVELOPMENT_TEAM = VNG2A57GP5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LevelOneMini2/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;

@@ -15,60 +15,82 @@ extension GameScene32: SKPhysicsContactDelegate {
 
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
         let canonContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let contactProjectileMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let contactJatuhanCharacterMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let collectableItemsContactCharacter = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let collectableItemsContactCanon = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         let contactMonsterAndWeapon = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        let towerContactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         
         
-        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.monster {
-            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
-                if nodeA.name == "Gendut" && nodeB.name == "Minion" {
-                    // Minion is hit by projectile
-                    let damage = 10
-                    attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
-                } else if nodeA.name == "Minion" && nodeB.name == "Gendut" {
-                    // Minion is hit by projectile
-                    let damage = 10
-                    attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
-                }
-            }
+//        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.gendut | SKSpriteNode.PhysicsCategory.monster {
+//            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+//                if nodeA.name == "Gendut" && nodeB.name == "Minion" {
+//                    // Minion is hit by projectile
+//                    let damage = 10
+//                    attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
+//                } else if nodeA.name == "Minion" && nodeB.name == "Gendut" {
+//                    // Minion is hit by projectile
+//                    let damage = 10
+//                    attackManager.gendutGotAttack(gendut: gendut, healthBarGendut: healthBarGendut, totalhpGendut: gendut.hpTotalGendut, damage: CGFloat(damage), attackedGendutHit: &attackedGendutHit)
+//                }
+//            }
+//        }
+//        
+//        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
+//            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+//                if nodeA.name == "Kecil" && nodeB.name == "Minion" {
+//                    // Minion is hit by projectile
+//                    let damage = 10
+//                    attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
+//                } else if nodeA.name == "Monster" && nodeB.name == "Kecil" {
+//                    // Minion is hit by projectile
+//                    let damage = 10
+//                    attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
+//
+//                }
+//            }
+//        }
+        
+//        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.projectileCharacter | SKSpriteNode.PhysicsCategory.monster {
+//            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
+//                if nodeA.name == "gedeProjectile" && nodeB.name == "Minion" {
+//                    // Minion is hit by projectile
+//                    if let minion = entityManager.getEntity(for: nodeB) as? Minion {
+//                        minion.applyDamage(50)
+//                    }
+//                    nodeA.isHidden = true
+//                } else if nodeA.name == "Minion" && nodeB.name == "gedeProjectile" {
+//                    // Minion is hit by projectile
+//                    if let minion = entityManager.getEntity(for: nodeA) as? Minion {
+//                        minion.applyDamage(50)
+//                    }
+//                    nodeB.isHidden = true
+//                }
+//            }
+//        }
+        let firstBody: SKPhysicsBody
+        let secondBody: SKPhysicsBody
+               
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
         }
         
-        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
-            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
-                if nodeA.name == "Kecil" && nodeB.name == "Minion" {
-                    // Minion is hit by projectile
-                    let damage = 10
-                    attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
-                } else if nodeA.name == "Monster" && nodeB.name == "Kecil" {
-                    // Minion is hit by projectile
-                    let damage = 10
-                    attackManager.kecilGotAttack(kecil: kecil, healthBarKecil: healthBarKecil, totalhpKecil: kecil.hpTotalKecil, damage: CGFloat(damage), attackedKecilHit: &attackedKecilHit)
-
+        if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.projectileCharacter != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) {
+                if let projectile = firstBody.node as? SKSpriteNode, let minionNode = secondBody.node as? SKSpriteNode {
+                    projectileDidCollideWithMonster(projectile: projectile, monster: minionNode)
+                }
+        } else if (firstBody.categoryBitMask & SKSpriteNode.PhysicsCategory.monster != 0) && (secondBody.categoryBitMask & SKSpriteNode.PhysicsCategory.projectileCharacter != 0) {
+                if let minionNode = firstBody.node as? SKSpriteNode, let projectile = secondBody.node as? SKSpriteNode {
+                    projectileDidCollideWithMonster(projectile: projectile, monster: minionNode)
                 }
             }
-        }
-        
-        if contactMonsterAndWeapon == SKSpriteNode.PhysicsCategory.projectileCharacter | SKSpriteNode.PhysicsCategory.monster {
-            if let nodeA = contact.bodyA.node, let nodeB = contact.bodyB.node {
-                if nodeA.name == "gedeProjectile" && nodeB.name == "Minion" {
-                    // Minion is hit by projectile
-                    if let minion = entityManager.getEntity(for: nodeB) as? Minion {
-                        minion.applyDamage(50)
-                    }
-                    nodeA.isHidden = true
-                } else if nodeA.name == "Minion" && nodeB.name == "gedeProjectile" {
-                    // Minion is hit by projectile
-                    if let minion = entityManager.getEntity(for: nodeA) as? Minion {
-                        minion.applyDamage(50)
-                    }
-                    nodeB.isHidden = true
-                }
-            }
-        }
 
         
         
@@ -134,13 +156,13 @@ extension GameScene32: SKPhysicsContactDelegate {
                 if nodeA.name == "Projectile" && nodeB.name == "Bos" {
                     attackedBosHit = true
                     print("\(attackedBosHit)")
-                    let damage = 200
+                    let damage = 500
                     attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: totalhpBos, damage: CGFloat(damage), attackedBosHit: &attackedBosHit)
                     nodeA.isHidden = true
                 } else if nodeA.name == "Bos" && nodeB.name == "Projectile" {
                     attackedBosHit = true
                     print("\(attackedBosHit)")
-                    let damage = 200
+                    let damage = 500
                     attackManager.bosGotAttack(bos: bos, healthBarBos: healthBarBos, totalhpBos: totalhpBos, damage: CGFloat(damage), attackedBosHit: &attackedBosHit)
                     nodeB.isHidden = true
                 }
@@ -260,7 +282,20 @@ extension GameScene32: SKPhysicsContactDelegate {
                 CanonContactRight = true
             }
         }
+        if towerContactMask == SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster {
+            applyRedFilter()
+            kecil.kecilHealth -= 10
+            checkGameOver()
+        }
         
+    }
+    func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
+        print("Hit!")
+        projectile.removeFromParent()
+        monster.removeFromParent()
+        if let minionEntity = entityManager.getEntity(for: monster) as? Minion {
+            minionEntity.changeHealth(by: -25, scene: self)  // Reduce health by 25 points
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {

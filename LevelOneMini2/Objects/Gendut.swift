@@ -48,22 +48,31 @@ class Gendut: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width - 120, height: self.size.height/3), center: CGPoint(x: self.size.width - 250, y: self.size.height/3))
         self.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.gendut
         self.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil | SKSpriteNode.PhysicsCategory.monster | SKSpriteNode.PhysicsCategory.towerRedNotActivated | SKSpriteNode.PhysicsCategory.towerBlueNotActivated | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated | SKSpriteNode.PhysicsCategory.towerGreenNotActivated | SKSpriteNode.PhysicsCategory.towerActivated | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | SKSpriteNode.PhysicsCategory.jatuhan
+        
         self.physicsBody?.collisionBitMask =
         SKSpriteNode.PhysicsCategory.kecil
-        SKSpriteNode.PhysicsCategory.monster
-        | SKSpriteNode.PhysicsCategory.towerRedNotActivated | SKSpriteNode.PhysicsCategory.towerBlueNotActivated | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated | SKSpriteNode.PhysicsCategory.towerGreenNotActivated
-        
+        | SKSpriteNode.PhysicsCategory.monster
+        | SKSpriteNode.PhysicsCategory.towerRedNotActivated
+        | SKSpriteNode.PhysicsCategory.towerBlueNotActivated
+        | SKSpriteNode.PhysicsCategory.towerPurpleNotActivated
+        | SKSpriteNode.PhysicsCategory.towerGreenNotActivated
         | SKSpriteNode.PhysicsCategory.towerActivated
-        
         | SKSpriteNode.PhysicsCategory.platform
+        | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed 
+        | SKSpriteNode.PhysicsCategory.towerWhite1Activated
+        | SKSpriteNode.PhysicsCategory.towerWhite1NotActivated
+        | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed 
+        | SKSpriteNode.PhysicsCategory.towerWhite2Activated
+        | SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
+        | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed 
+        | SKSpriteNode.PhysicsCategory.towerWhite3Activated
+        | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
+        | SKSpriteNode.PhysicsCategory.canonLeft 
+        | SKSpriteNode.PhysicsCategory.canonRight
+        | SKSpriteNode.PhysicsCategory.canonLeftNotActivated
+        | SKSpriteNode.PhysicsCategory.canonRightNotActivated
+        | SKSpriteNode.PhysicsCategory.jatuhan
         
-        | SKSpriteNode.PhysicsCategory.towerWhite1Destroyed | SKSpriteNode.PhysicsCategory.towerWhite1Activated | SKSpriteNode.PhysicsCategory.towerWhite1NotActivated
-        
-        | SKSpriteNode.PhysicsCategory.towerWhite2Destroyed | SKSpriteNode.PhysicsCategory.towerWhite2Activated | SKSpriteNode.PhysicsCategory.towerWhite2NotActivated
-        
-        | SKSpriteNode.PhysicsCategory.towerWhite3Destroyed | SKSpriteNode.PhysicsCategory.towerWhite3Activated | SKSpriteNode.PhysicsCategory.towerWhite3NotActivated
-        
-        | SKSpriteNode.PhysicsCategory.canonLeft | SKSpriteNode.PhysicsCategory.canonRight | SKSpriteNode.PhysicsCategory.canonLeftNotActivated | SKSpriteNode.PhysicsCategory.canonRightNotActivated | SKSpriteNode.PhysicsCategory.jatuhan
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = false
@@ -121,6 +130,7 @@ class Gendut: SKSpriteNode {
     }
     func stopWalk() {
             removeAction(forKey: PlayerAnimationType.walk.rawValue)
+        audioPlayer?.stop()
     //        removeAllActions()
         }
     func stopAttack() {
@@ -132,7 +142,7 @@ class Gendut: SKSpriteNode {
         guard let attackTexture = gendutAttackTexture else{
             preconditionFailure("Cant find kecil attack texture")
         }
-        startAnimation(textures: attackTexture, speed: 0.1, name: PlayerAnimationType.attack.rawValue, count: 0, resize: true, restore: true)
+        startAnimation(textures: attackTexture, speed: 2, name: PlayerAnimationType.attack.rawValue, count: 0, resize: true, restore: true)
 
     }
     

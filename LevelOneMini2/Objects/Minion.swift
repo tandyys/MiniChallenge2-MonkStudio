@@ -63,7 +63,8 @@ class Minion: GKEntity, GKAgentDelegate {
         fatalError("Init coder hasn't been implemented")
     }
     
-    func changeHealth(by delta: CGFloat) {
+    func changeHealth(by delta: CGFloat, scene: SKScene) {
+        die(scene: scene)
         if let healthBarComponent = component(ofType: MinionHealthComponent.self) {
             let newHealth = healthBarComponent.currentHealth - delta
             healthBarComponent.updateHealth(to: newHealth)
@@ -71,7 +72,6 @@ class Minion: GKEntity, GKAgentDelegate {
             if newHealth <= 0 {
                 if let entityManager = entityManager {
                     entityManager.remove(self)
-                    die()
                 }
                 if let spriteComponent = component(ofType: SpriteComponent.self) {
                     spriteComponent.node.removeFromParent()
@@ -113,21 +113,19 @@ class Minion: GKEntity, GKAgentDelegate {
         }
     }
     
-    func die() {
+    func die(scene: SKScene) {
         dieEffect?.play()
          if let spriteComponent = component(ofType: SpriteComponent.self) {
              stoneEffect?.play()
              let item = CollectableItem()
              item.position = spriteComponent.node.position
-             if let parent = spriteComponent.node.parent {
+             scene.addChild(item)
+
+             if let parent = spriteComponent.node.parent{
                  parent.addChild(item)
              }
              
              spriteComponent.node.removeFromParent()
-         }
-         
-         if let entityManager = entityManager {
-             entityManager.remove(self)
          }
      }
      
@@ -136,7 +134,7 @@ class Minion: GKEntity, GKAgentDelegate {
      }
     
     func applyDamage(_ damage: CGFloat) {
-        changeHealth(by: damage)
+//        changeHealth(by: damage)
     }
     
     func random() -> CGFloat {

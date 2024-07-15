@@ -14,6 +14,7 @@ class Tower: SKSpriteNode {
         let tower = Tower(imageNamed: "Tower_Level 3_White Broken")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     
@@ -21,6 +22,7 @@ class Tower: SKSpriteNode {
         let tower = Tower(imageNamed: "Tower_Level 3_White Built")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     
@@ -28,6 +30,7 @@ class Tower: SKSpriteNode {
         let tower = Tower(imageNamed: "Tower_Level 3_White Activated")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     
@@ -35,6 +38,7 @@ class Tower: SKSpriteNode {
         let tower = Tower(imageNamed: "Tower_Level 3_White Broken")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     
@@ -42,6 +46,7 @@ class Tower: SKSpriteNode {
         let tower = Tower(imageNamed: "Tower_Level 3_White Built")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     
@@ -49,12 +54,14 @@ class Tower: SKSpriteNode {
         let tower = Tower(imageNamed: "Tower_Level 3_White Activated")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     class func tower3White() -> Tower {
         let tower = Tower(imageNamed: "Tower_Level 3_White Broken")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     
@@ -62,6 +69,7 @@ class Tower: SKSpriteNode {
         let tower = Tower(imageNamed: "Tower_Level 3_White Built")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     
@@ -69,12 +77,14 @@ class Tower: SKSpriteNode {
         let tower = Tower(imageNamed: "Tower_Level 3_White Activated")
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
+        tower.setScale(1.15)
         return tower
     }
     
     
     class func towerRed() -> Tower {
         let tower = Tower(imageNamed: "Tower_Level 1_Red_Not Active")
+//        tower.size = CGSize(width: <#T##CGFloat#>, height: <#T##CGFloat#>)
         tower.anchorPoint = CGPoint(x: 0.5, y: 0)
         tower.zPosition = SKSpriteNode.Layer.towerUp.rawValue
         tower.position = CGPoint(x: 500, y: 750)
@@ -83,7 +93,7 @@ class Tower: SKSpriteNode {
         tower.physicsBody?.isDynamic = false
         tower.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerRedNotActivated
         tower.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
-        tower.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        tower.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil
         return tower
     }
     
@@ -104,7 +114,7 @@ class Tower: SKSpriteNode {
         tower.physicsBody?.isDynamic = false
         tower.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerPurpleNotActivated
         tower.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
-        tower.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        tower.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil
         return tower
     }
     
@@ -146,7 +156,7 @@ class Tower: SKSpriteNode {
         tower.physicsBody?.isDynamic = false
         tower.physicsBody?.categoryBitMask = SKSpriteNode.PhysicsCategory.towerGreenNotActivated
         tower.physicsBody?.contactTestBitMask = SKSpriteNode.PhysicsCategory.kecil
-        tower.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.none
+        tower.physicsBody?.collisionBitMask = SKSpriteNode.PhysicsCategory.kecil
         return tower
     }
     
